@@ -1,5 +1,7 @@
 # ckg-mcp
 
+mcp-name: io.github.Yarmoluk/ckg-mcp
+
 **Compact Knowledge Graph MCP server.** Pre-structured domain knowledge as a routing layer for agent stacks — 42× more efficient than RAG on structural queries.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)

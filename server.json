@@ -1,0 +1,21 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.Yarmoluk/ckg-mcp",
+  "description": "Structured domain knowledge for AI agents. 42x more accurate than RAG, 11x fewer tokens.",
+  "repository": {
+    "url": "https://github.com/Yarmoluk/ckg-mcp",
+    "source": "github"
+  },
+  "version": "0.1.1",
+  "packages": [
+    {
+      "registryType": "pypi",
+      "identifier": "ckg-mcp",
+      "version": "0.1.1",
+      "transport": {
+        "type": "stdio"
+      },
+      "environmentVariables": []
+    }
+  ]
+}

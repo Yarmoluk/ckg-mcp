@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "ckg-mcp"
-version = "0.1.0"
+version = "0.1.1"
 description = "Compact Knowledge Graph MCP server — 42× more efficient than RAG on structural queries"
 readme = "README.md"
 license = { text = "MIT" }
