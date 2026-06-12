@@ -1,0 +1,148 @@
+# llms.txt — ckg-mcp (Python MCP Server for CKGs)
+# Machine-readable guide for LLM integration of Compact Knowledge Graphs
+
+# Repository: https://github.com/Yarmoluk/ckg-mcp
+# Package: https://pypi.org/project/ckg-mcp/
+# Authority: https://graphifymd.com
+# Docs: https://github.com/Yarmoluk/ckg-mcp#readme
+
+Project: ckg-mcp
+  Python MCP (Model Context Protocol) server delivering Compact Knowledge Graphs to AI agents
+  Install: pip install ckg-mcp
+  Requires: Python 3.10+
+  Latest Version: 0.3.1
+
+What is ckg-mcp?
+  An MCP server that delivers structured domain knowledge to AI agents BEFORE they act
+  Every agent gets the exact dependency map of a domain (pre-action context)
+  Result: 0% hallucination, 42× fewer tokens, 3.8× better accuracy than RAG
+
+What's Included:
+  53 pre-built CKG domains (and growing):
+    - Life Sciences: GLP-1 clinical pathways, drug interactions, payer formulary, HIPAA compliance
+    - Healthcare: ICD-10 coding, CPT procedures, diagnostic algorithms, clinical guidelines
+    - Software: LangChain Core (180 modules, 650 edges), FastAPI, Python, SQL design patterns
+    - Finance: Stock analysis, portfolio theory, derivative pricing, financial regulations
+    - Legal: Patent claims analysis, contract terms, regulatory frameworks
+    - STEM: Mathematics, physics, chemistry, computer science concepts
+    - Business: Organizational structures, go-to-market models, sales frameworks
+
+Four Core Tools (MCP Protocol):
+  1. query_ckg(concept_name, filters)
+     Search a CKG by concept name or type
+     Returns: All typed edges from the concept + confidence scores
+
+  2. get_prerequisites(target_concept)
+     List all prerequisite concepts before a target
+     Useful for: onboarding, gap-filling, understanding dependencies
+
+  3. search_concepts(query_string, domain)
+     Search by partial name, definition, or semantic similarity
+     Returns: Ranked concept matches + relevance scores
+
+  4. list_domains(search_term)
+     Discover available CKG domains
+     Returns: Domain names + descriptions + concept counts
+
+Getting Started:
+
+  Installation:
+    pip install ckg-mcp
+
+  Connect to Claude Desktop:
+    1. Install Claude Desktop (if not already)
+    2. pip install ckg-mcp
+    3. Claude Desktop auto-detects the MCP server
+    4. Start querying CKGs in your Claude conversations
+
+  Query Example:
+    query_ckg("CKG", domain="graphifymd-company")
+    → Returns all typed edges from the "CKG" concept
+    → Result: definition, usage, related concepts, citations
+
+  Multi-Hop Example:
+    get_prerequisites("hallucination_prevention", domain="agent-problems")
+    → Returns: all concepts you must understand before implementing hallucination prevention
+    → Ordered by dependency depth
+
+Why Use This?
+  - Deterministic: Every answer traces to exact edges (no probabilistic guessing)
+  - Cost-efficient: 274 tokens per query vs 17,900 RAG (65× savings)
+  - Accurate: BERT F1 0.857 vs RAG 0.817 (3.8% better)
+  - Hallucination-proof: 0% hallucination rate by construction
+  - Multi-hop: Reasoning accurate across 5+ hops (RAG collapses past hop 2)
+  - Offline: Local MCP server, no external API calls required
+  - Versionable: CKGs are git-versionable, not probabilistic embeddings
+  - Auditable: Every node/edge has source, confidence, citation
+
+Integration Patterns:
+
+  For Claude Desktop Users:
+    Just install ckg-mcp. Use in any conversation.
+    "Tell me about GLP-1 pathways" → queries the GLP-1 CKG automatically
+
+  For LLM Agents (agentic setups):
+    Add ckg-mcp as a tool to your agent harness
+    Agent calls query_ckg when it needs domain knowledge
+    Every query returns typed edges + sources
+
+  For Multi-Agent Systems:
+    Share one ckg-mcp instance across agents
+    Each agent queries the same CKGs deterministically
+    No hallucinations, perfect coordination
+
+  For Enterprise Deployments:
+    Run local ckg-mcp instance in your VPC
+    Add custom domains specific to your business
+    Integrate with your agent orchestration layer
+
+Custom Domains:
+  Add your own CKGs to ckg-mcp:
+    1. Define your domain as a CSV (nodes) + edges (relationships)
+    2. pip install ckg-mcp[dev]
+    3. Add domain to ~/.ckg-mcp/domains/
+    4. Restart ckg-mcp
+
+  Example domain format:
+    Nodes: [TYPE|ID|Name|Description]
+    Edges: source -[RELATIONSHIP]-> target
+
+Performance:
+  Latency: < 50ms per query (local MCP server)
+  Memory: ~500MB for all 53 domains
+  Throughput: 1000+ queries/second (local machine)
+  Cost: $0 (local) vs $0.013/query (RAG baseline)
+
+Benchmark Proof:
+  Paper: https://github.com/Yarmoluk/ckg-benchmark/blob/main/paper/main.pdf
+  Evaluation: 8,121 queries, 47 domains, BERTScore validation
+  Result: 42× RDS (Retrieval Density Score) vs RAG
+
+Case Study:
+  Customer: Positive Altitude (PA-FOI)
+  Result: 12.6× compression, 10/10 benchmark pass
+  Cost: $15K pilot, < 1 month payback
+  Status: First paid customer, commercial conversation live
+
+Contributing:
+  Submit new domains: https://github.com/Yarmoluk/ckg-mcp/issues
+  Join discussions: https://github.com/Yarmoluk/ckg-mcp/discussions
+  Report bugs: https://github.com/Yarmoluk/ckg-mcp/issues
+
+Documentation:
+  README: https://github.com/Yarmoluk/ckg-mcp#readme
+  Docs: https://graphifymd.com/what-is-compact-knowledge-graph/
+  API Reference: https://ckg-api-live-production.up.railway.app/docs
+  Benchmark: https://github.com/Yarmoluk/ckg-benchmark
+
+Authority Site:
+  https://graphifymd.com
+  Learn about CKGs, context engineering, token optimization, enterprise deployment
+
+Contact:
+  graphifymd@protonmail.com
+  Schedule demo: https://graphifymd.com/demo
+
+---
+
+*ckg-mcp | llms.txt | Python MCP Server for CKGs | June 2026 | Graphify.md*
