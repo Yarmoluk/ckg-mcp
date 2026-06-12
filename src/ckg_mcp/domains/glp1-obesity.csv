@@ -30,20 +30,20 @@ ConceptID,ConceptLabel,Dependencies,TaxonomyID
 29,Dulaglutide (Trulicity),26,DRUG
 30,Exenatide (Byetta / Bydureon),26,DRUG
 31,Tirzepatide (Mounjaro / Zepbound),4|5|26,DRUG
-32,Oral semaglutide (Rybelsus),28,DRUG
+32,Oral semaglutide (Rybelsus 14mg),28,DRUG
 33,Dose escalation protocol,26,DRUG
 34,Subcutaneous injection formulation,26,DRUG
 35,Half-life and dosing interval,26,DRUG
 36,Once-weekly administration,28|29|31|35,DRUG
 37,Dual GIP/GLP-1 agonism,31|4|5,DRUG
 38,Triple agonism (GLP-1/GIP/glucagon),37,DRUG
-39,Small molecule GLP-1 receptor agonists,26,DRUG
+39,Small molecule oral GLP-1 receptor agonists,26,DRUG
 40,Weight loss efficacy endpoints,15|26,TRIAL
 41,HbA1c reduction endpoints,19|26,TRIAL
 42,SUSTAIN trial program (semaglutide T2DM),28|41,TRIAL
 43,STEP trial program (semaglutide obesity),28|40,TRIAL
 44,SURMOUNT trial program (tirzepatide obesity),31|40,TRIAL
-45,SELECT trial (semaglutide cardiovascular),28|24|40,TRIAL
+45,SELECT trial (semaglutide cardiovascular outcomes),28|24|40,TRIAL
 46,LEADER trial (liraglutide cardiovascular),27|24|41,TRIAL
 47,SCALE trial program (liraglutide obesity),27|40,TRIAL
 48,AWARD trial program (dulaglutide),29|41,TRIAL
@@ -72,8 +72,8 @@ ConceptID,ConceptLabel,Dependencies,TaxonomyID
 71,Idiopathic intracranial hypertension,14,SPEC
 72,Kidney transplant candidacy,23,SPEC
 73,Atrial fibrillation,24,SPEC
-74,Heart failure,24,SPEC
-75,Obstructive sleep apnea,14|16,SPEC
+74,Heart failure with preserved ejection fraction (HFpEF),24,SPEC
+75,Obstructive sleep apnea (OSA),14|16,SPEC
 76,Major depressive disorder with obesity,65,SPEC
 77,Alcohol use disorder,65,SPEC
 78,Bariatric surgery (reference comparator),14|40,SPEC
@@ -84,8 +84,48 @@ ConceptID,ConceptLabel,Dependencies,TaxonomyID
 83,GLP-1RA plus exercise intervention,80|52|53,COMBO
 84,GLP-1RA plus metformin,80|26,COMBO
 85,GLP-1RA plus bariatric surgery,79|80,COMBO
-86,GLP-1RA discontinuation protocols,61|80,COMBO
+86,GLP-1RA discontinuation and maintenance protocols,61|80,COMBO
 87,Real-world effectiveness vs trial efficacy,43|44|47,COMBO
 88,Cost-effectiveness of GLP-1RA therapy,26|40,COMBO
 89,Access and affordability barriers,88,COMBO
-90,Pipeline agents (next-generation obesogens),38|39,COMBO
+90,Pipeline agents overview,38|39,PIPELINE
+91,Retatrutide (GLP-1/GIP/glucagon triple agonist),38,PIPELINE
+92,TRIUMPH trial program (retatrutide),91|40,PIPELINE
+93,CagriSema (cagrilintide plus semaglutide),28,PIPELINE
+94,REDEFINE trial program (CagriSema),93|40,PIPELINE
+95,Amycretin (amylin-GLP-1 dual agonist),26,PIPELINE
+96,Amylin receptor signaling,10,FOUND
+97,Amycretin mechanism,95|96|2,PIPELINE
+98,Oral semaglutide 50mg formulation,32|28,PIPELINE
+99,GLP-1 biosimilars,26,PIPELINE
+100,SURMOUNT-5 head-to-head trial (tirzepatide vs semaglutide),31|28|44|43,TRIAL
+101,SURMOUNT-5 primary outcome 72-week weight loss,100|40,TRIAL
+102,Tirzepatide superior weight loss vs semaglutide,100|101,TRIAL
+103,STEP-HFpEF trial (semaglutide in heart failure),28|74|40,TRIAL
+104,STEP-HFpEF outcomes Kansas City Cardiomyopathy Score,103|74,TRIAL
+105,SELECT trial 20 percent MACE reduction non-diabetic,45|50,TRIAL
+106,SELECT cardiovascular benefit mechanism,45|105|24,TRIAL
+107,FLOW trial (semaglutide in chronic kidney disease),28|23|51,TRIAL
+108,FLOW trial renal and cardiovascular endpoints,107|51|50,TRIAL
+109,SURMOUNT-OSA trial (tirzepatide in sleep apnea),31|75|44,TRIAL
+110,Zepbound FDA approval for moderate-severe OSA 2024,31|75|109,APPROVAL
+111,Wegovy FDA approval for cardiovascular risk reduction 2024,28|45|105,APPROVAL
+112,Wegovy pediatric approval ages 12 plus,28|64,APPROVAL
+113,Tirzepatide 22 percent average weight loss SURMOUNT-4,44|40,TRIAL
+114,GLP-1 neurological mechanisms,2|4|10,NEURO
+115,GLP-1 receptor expression in brain regions,114|4,NEURO
+116,Reward pathway modulation by GLP-1,115|77,NEURO
+117,GLP-1 signal in alcohol and substance use disorder,77|116,NEURO
+118,GLP-1 signal in compulsive behavior reduction,116|65,NEURO
+119,EVOKE trial (semaglutide in early Alzheimer disease),28|114,NEURO
+120,Neuroinflammation and obesity,114|65,NEURO
+121,GLP-1 neuroprotective hypothesis,114|120|119,NEURO
+122,Muscle mass monitoring during GLP-1 therapy,62|53|83,MGMT
+123,Protein intake recommendation during GLP-1 therapy,62|122,MGMT
+124,Resistance training with GLP-1 therapy,83|122,MGMT
+125,Individualized dose maintenance strategy,33|86,MGMT
+126,Shared decision making obesity treatment,26|78|82,MGMT
+127,Supply shortage and formulary access issues,89|99,ACCESS
+128,Compounded semaglutide controversy,99|89,ACCESS
+129,Prior authorization burden GLP-1,89|21,ACCESS
+130,Employer coverage expansion GLP-1,89|88,ACCESS

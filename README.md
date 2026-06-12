@@ -2,7 +2,7 @@
 
 mcp-name: io.github.Yarmoluk/ckg-mcp
 
-**Compact Knowledge Graph MCP server.** Pre-structured domain knowledge as a routing layer for agent stacks — 65× more efficient than RAG on structural queries.
+**Compact Knowledge Graph MCP server.** Pre-structured domain knowledge as a routing layer for agent stacks — 42× RDS advantage over RAG on structural queries.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Python 3.10+](https://img.shields.io/badge/Python-3.10+-green.svg)]()
@@ -22,7 +22,7 @@ Drop CKG into your agent stack as an MCP tool. Instead of retrieving text chunks
 | RAG | 0.817 | 17,900 | Variable |
 | GraphRAG | 0.825 | — | Variable |
 
-65× more efficient per token. Higher accuracy than both RAG and Microsoft GraphRAG. Zero hallucinations by construction.
+42× RDS advantage per token. Higher accuracy than both RAG and Microsoft GraphRAG. Zero hallucinations by construction.
 
 ---
 

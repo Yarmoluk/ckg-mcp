@@ -1,0 +1,39 @@
+ConceptID,ConceptLabel,Dependencies,TaxonomyID
+1,GLP-1 Receptor Agonists,,DRUG
+2,Semaglutide,1,DRUG
+3,Tirzepatide,1,DRUG
+4,STEP 1 Trial,2,DRUG
+5,SURMOUNT Trial,3,DRUG
+6,Total Weight Loss,4|5,MECH
+7,Lean Mass Loss,6,MECH
+8,39-40% Lean Mass Figure,7|4,MECH
+9,Starvation Cascade,7,MECH
+10,Caloric Deficit,9,MECH
+11,Muscle Protein Catabolism,9|10,MECH
+12,BMR Decline,11,MECH
+13,Mitochondrial Dysfunction,11|12,MECH
+14,Sarcopenic Obesity,7|12,RISK
+15,Metabolic Penalty,12|13,RISK
+16,Insulin Resistance Worsening,15|14,RISK
+17,70% Discontinuation Crisis,1,RISK
+18,Weight Regain Cascade,17,RISK
+19,Net Metabolic Harm Risk,18|16|14,RISK
+20,Protein Protocol 1.2-1.6g/kg/day,11,INTER
+21,Resistance Training,11|12,INTER
+22,Combined Protocol,20|21,INTER
+23,Lean Mass Preservation,22,INTER
+24,Myostatin Pathway,11,PIPELINE
+25,Trevogrumab,24,PIPELINE
+26,COURAGE Trial,25,PIPELINE
+27,50% Lean Loss Prevention,26,PIPELINE
+28,Apitegromab,24,PIPELINE
+29,EMBRAZE Trial,28,PIPELINE
+30,Myostatin Inhibitor Class,25|28,PIPELINE
+31,Obesity Drug Plus Muscle Preserving,30|22,PIPELINE
+32,Irony Node A: GLP-1 Causes Muscle Loss,2|7,CONTRA
+33,Irony Node B: Muscle Loss Worsens Metabolic Health,7|16,CONTRA
+34,Irony Node C: Drug Treats Obesity Creates Sarcopenia,1|14,CONTRA
+35,Protein Synthesis,20|21,INTER
+36,mTOR Activation,21|35,MECH
+37,Clinical Endpoint Lean Mass,27|29,PIPELINE
+38,Standard of Care Gap,19|37,RISK
