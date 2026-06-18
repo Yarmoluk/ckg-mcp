@@ -16,13 +16,13 @@ mcp-name: io.github.Yarmoluk/ckg-mcp
 
 Drop CKG into your agent stack as an MCP tool. Instead of retrieving text chunks and hoping the LLM infers structure, CKG gives agents pre-compiled dependency paths, prerequisite chains, and concept relationships — directly from a structured graph.
 
-| System | BERT F1 | Tokens/query | Hallucination Rate |
+| System | Macro-F1 | Tokens/query | Hallucination Rate |
 |--------|---------|-------------|-------------------|
-| **CKG** | **0.857** | **274** | **0%** |
-| RAG | 0.817 | 17,900 | Variable |
-| GraphRAG | 0.825 | — | Variable |
+| **CKG** | **0.471** | **269** | **0%** |
+| RAG | 0.123 | 2,982 | Variable |
+| GraphRAG | 0.120 | — | Variable |
 
-42× RDS advantage per token. Higher accuracy than both RAG and Microsoft GraphRAG. Zero hallucinations by construction.
+42× RDS advantage per token (45 domains, 7,928 queries). ~4× higher Macro-F1 than both RAG and Microsoft GraphRAG. Zero hallucinations by construction.
 
 ---
 

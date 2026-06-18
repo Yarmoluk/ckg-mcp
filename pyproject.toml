@@ -5,7 +5,7 @@ build-backend = "hatchling.build"
 [project]
 name = "ckg-mcp"
 version = "0.4.0"
-description = "Compact Knowledge Graph MCP server — 59 domains, 65× more efficient than RAG on structural queries"
+description = "Compact Knowledge Graph MCP server — 59 domains, 42× RDS advantage over RAG on structural queries"
 readme = "README.md"
 license = { text = "MIT" }
 authors = [{ name = "Daniel Yarmoluk", email = "daniel.yarmoluk@gmail.com" }]

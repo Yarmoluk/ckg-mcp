@@ -15,10 +15,10 @@ Project: ckg-mcp
 What is ckg-mcp?
   An MCP server that delivers structured domain knowledge to AI agents BEFORE they act
   Every agent gets the exact dependency map of a domain (pre-action context)
-  Result: 0% hallucination, 42× fewer tokens, 3.8× better accuracy than RAG
+  Result: 0% hallucination, 11× fewer tokens, ~4× higher Macro-F1 than RAG (42× RDS)
 
 What's Included:
-  53 pre-built CKG domains (and growing):
+  59 pre-built CKG domains (and growing):
     - Life Sciences: GLP-1 clinical pathways, drug interactions, payer formulary, HIPAA compliance
     - Healthcare: ICD-10 coding, CPT procedures, diagnostic algorithms, clinical guidelines
     - Software: LangChain Core (180 modules, 650 edges), FastAPI, Python, SQL design patterns
@@ -67,8 +67,8 @@ Getting Started:
 
 Why Use This?
   - Deterministic: Every answer traces to exact edges (no probabilistic guessing)
-  - Cost-efficient: 274 tokens per query vs 17,900 RAG (65× savings)
-  - Accurate: BERT F1 0.857 vs RAG 0.817 (3.8% better)
+  - Cost-efficient: 269 tokens per query vs 2,982 RAG (11× fewer; 42× RDS)
+  - Accurate: Macro-F1 0.471 vs RAG 0.123 (~4× higher)
   - Hallucination-proof: 0% hallucination rate by construction
   - Multi-hop: Reasoning accurate across 5+ hops (RAG collapses past hop 2)
   - Offline: Local MCP server, no external API calls required
@@ -115,7 +115,7 @@ Performance:
 
 Benchmark Proof:
   Paper: https://github.com/Yarmoluk/ckg-benchmark/blob/main/paper/main.pdf
-  Evaluation: 8,121 queries, 47 domains, BERTScore validation
+  Evaluation: 7,928 queries, 45 domains, Macro-F1 validation
   Result: 42× RDS (Retrieval Density Score) vs RAG
 
 Case Study:
