@@ -1,0 +1,206 @@
+ConceptID,ConceptLabel,Dependencies,TaxonomyID
+1,Databricks Lakehouse Platform,,CORE
+2,Unity Catalog,1,CORE
+3,Databricks Account,,CORE
+4,Account Console,3,CORE
+5,Workspace,3,CORE
+6,Cloud Object Storage,,CORE
+7,Metastore,2|3,CORE
+8,Metastore per Region,7,CORE
+9,Workspace-Metastore Assignment,5|7,CORE
+10,Identity Federation,3|5,CORE
+11,Account-Level Identities (users/groups/SPs),10,CORE
+12,Account Admin,3|11,CORE
+13,Metastore Admin,7|11,CORE
+14,Workspace Admin,5|11,CORE
+15,Three-Level Namespace (catalog.schema.object),7,CORE
+16,Securable Object,7|15,CORE
+17,Workspace-Catalog Binding,5|15,CORE
+18,Default Catalog,15|5,CORE
+19,Workspace Catalog (auto-provisioned),18|9,CORE
+20,hive_metastore (legacy catalog),5|15,CORE
+21,Legacy Hive Metastore Migration (UCX),20|7,CORE
+22,Unified Governance for Data & AI,2|16,CORE
+23,Catalog,15|7,META
+24,Schema (database),23,META
+25,Table,24,META
+26,Managed Table,25,META
+27,External Table,25,META
+28,Foreign Table,25,META
+29,View,24,META
+30,Materialized View,24|29,META
+31,Streaming Table,25,META
+32,Metric View,24|29,META
+33,Temporary View,29,META
+34,Volume,24,META
+35,Managed Volume,34,META
+36,External Volume,34,META
+37,Volume Path (/Volumes/catalog/schema/volume),34|15,META
+38,Function,24,META
+39,SQL User-Defined Function (UDF),38,META
+40,Python UDF,38,META
+41,Registered Model (Models in Unity Catalog),24|38,META
+42,Model Version,41,META
+43,Model Alias,42,META
+44,MLflow Model Registry (databricks-uc),41,META
+45,Column,25|29,META
+46,Comment (object/column),25|45|24|23,META
+47,Constraint,25,META
+48,System Catalog (system),23|7,META
+49,system.access schema,48,META
+50,system.billing schema,48,META
+51,system.compute schema,48,META
+52,system.lakeflow schema,48,META
+53,system.query schema,48,META
+54,system.storage schema,48,META
+55,system.marketplace schema,48,META
+56,information_schema (per-catalog),23,META
+57,External Metadata (external system object),7|16,META
+58,Catalog Explorer,2|16,SRCH
+59,Browse Catalogs / Schemas / Objects,58|15,SRCH
+60,Workspace Search,58,SRCH
+61,Sample Data Preview,58|25,SRCH
+62,Object Details / Schema View,58|25|45,SRCH
+63,Tag (key + optional value),16,SRCH
+64,Apply Tag to Object / Column,63|45,SRCH
+65,AI-Generated Comments,58|46,SRCH
+66,AI-Generated Documentation,65|25|45,SRCH
+67,Natural Language Exploration (LLM),58|61,SRCH
+68,Genie Code Interface,58,SRCH
+69,Certification Status (system.certification_status),63,SRCH
+70,Certified Flag,69,SRCH
+71,Deprecated Flag,69,SRCH
+72,Certification Status Search Filter,60|69,SRCH
+73,Intelligent Signals (quality/usage/relationships),58|69,SRCH
+74,Discover Experience (curated marketplace),58|75,SRCH
+75,Data Steward Curation,58|70,SRCH
+76,Insights (popularity/frequent queries),58|60,SRCH
+77,Lakehouse Monitoring,2|25,DQ
+78,Monitor,77,DQ
+79,Snapshot Profile Monitor,78,DQ
+80,Time Series Profile Monitor,78,DQ
+81,Inference Log Monitor,78,DQ
+82,Profile Metrics Table,78,DQ
+83,Drift Metrics Table,78,DQ
+84,Baseline Table,78,DQ
+85,Data Slices / Time Windows,82,DQ
+86,Monitor Dashboard,82|83,DQ
+87,Monitor Alerts,86,DQ
+88,Lakeflow Declarative Pipelines (DLT),31|30,DQ
+89,Pipeline Expectation,88,DQ
+90,expect (retain + track),89,DQ
+91,expect_or_drop (drop invalid),89,DQ
+92,expect_or_fail (halt pipeline),89,DQ
+93,Expectation Metrics (pass/fail counts),89,DQ
+94,Table Constraint,47,DQ
+95,CHECK Constraint,94,DQ
+96,NOT NULL Constraint,94,DQ
+97,Primary Key (informational),94,DQ
+98,Foreign Key (informational),94,DQ
+99,data_quality_monitoring system table,49|78,DQ
+100,Data Lineage,2|7,LIN
+101,Automatic Lineage Capture,100,LIN
+102,Table-Level Lineage,101|25,LIN
+103,Column-Level Lineage,102|45,LIN
+104,Lineage Graph,102|103,LIN
+105,Lineage Graph Visualization (Catalog Explorer),104|58,LIN
+106,Upstream / Downstream Lineage,105,LIN
+107,Notebook / Job / Pipeline Lineage,101|5,LIN
+108,Dashboard / Query Lineage,101,LIN
+109,ML Model Lineage,101|41,LIN
+110,External Asset Lineage (External Metadata),101|57,LIN
+111,Lineage System Tables (table_lineage/column_lineage),49|102|103,LIN
+112,Lineage Permissions (BROWSE/SELECT gating),104|116,LIN
+113,Lineage Retention (1-yr system tables),111,LIN
+114,Impact Analysis / Root-Cause Tracing,106,LIN
+115,Principal (user/group/service principal),11,GOV
+116,Privilege,16,GOV
+117,Ownership / Owner,16|115,GOV
+118,GRANT,116|115,GOV
+119,REVOKE,116|115,GOV
+120,Privilege Inheritance (downward),116|15,GOV
+121,ALL PRIVILEGES,116,GOV
+122,MANAGE privilege,116,GOV
+123,BROWSE privilege,116,GOV
+124,USE CATALOG,116|23,GOV
+125,USE SCHEMA,116|24,GOV
+126,CREATE SCHEMA / CREATE TABLE / CREATE VOLUME / CREATE FUNCTION / CREATE MODEL,116|23|24,GOV
+127,SELECT,116|25|29,GOV
+128,MODIFY,116|25,GOV
+129,EXECUTE,116|38,GOV
+130,READ VOLUME / WRITE VOLUME,116|34,GOV
+131,APPLY TAG,116|63,GOV
+132,EXTERNAL USE SCHEMA,116|24,GOV
+133,Storage Credential,7|6,GOV
+134,IAM Role / Managed Identity / Service Principal (cloud auth),133,GOV
+135,External Location,133|6,GOV
+136,Managed Storage Location,135|7|23|24,GOV
+137,Default Storage,136,GOV
+138,READ FILES / WRITE FILES,116|133|135,GOV
+139,Service Credential,7,GOV
+140,Allowlist (init scripts/JARs),7|135,GOV
+141,Dynamic View (FGAC),29|116,GOV
+142,current_user() / is_account_group_member(),141,GOV
+143,Row Filter Function,39|25,GOV
+144,Column Mask Function,39|45,GOV
+145,ALTER TABLE SET ROW FILTER,143,GOV
+146,ALTER COLUMN SET MASK,144,GOV
+147,Fine-Grained Access Control (FGAC),143|144|141,GOV
+148,Attribute-Based Access Control (ABAC),157|120,GOV
+149,ABAC Policy,148,GOV
+150,Row Filter Policy,149|143,GOV
+151,Column Mask Policy,149|144,GOV
+152,GRANT Policy (Beta),149|118,GOV
+153,Audit Logs,7|3,GOV
+154,system.access.audit (audit system table),49|153,GOV
+155,Verbose Audit Logs,153,GOV
+156,Encryption (CMK / at-rest),6|7,GOV
+157,Governed Tag,63|3,GLOS
+158,Tag Policy,157,GLOS
+159,Allowed Tag Values,158,GLOS
+160,ASSIGN permission (governed tags),157|116,GLOS
+161,System Tag (Databricks-predefined),157,GLOS
+162,Tag-Based Inheritance,63|120,GLOS
+163,Business Domain (Sales/Marketing/Finance),74|157,GLOS
+164,Data Product,74|70,GLOS
+165,Data Steward / Ownership Context,117|75,GLOS
+166,Data Classification (PII tagging),161|157,GLOS
+167,Attribute (for ABAC),157|148,GLOS
+168,Delta Lake,25,OPEN
+169,Apache Iceberg,25,OPEN
+170,Managed Iceberg Table,26|169,OPEN
+171,Foreign Iceberg Table,28|169,OPEN
+172,Delta UniForm (Iceberg reads on Delta),168|169,OPEN
+173,Iceberg Metadata Generation (async),172,OPEN
+174,Iceberg REST Catalog API,169|2,OPEN
+175,IRC Endpoint (/api/2.1/unity-catalog/iceberg-rest),174,OPEN
+176,Credential Vending,175|133,OPEN
+177,External Data Access (metastore setting),7|132,OPEN
+178,External Engine Access (Trino/Snowflake/DuckDB/Spark/Dremio),174|176,OPEN
+179,Predictive Optimization (OPTIMIZE/VACUUM/ANALYZE),26|168,OPEN
+180,Unity Catalog REST API (open),2|16,OPEN
+181,Unity Catalog OSS (Apache 2.0),180,OPEN
+182,UC OSS OpenAPI Spec + Server + Clients,181,OPEN
+183,LF AI & Data Foundation (Linux Foundation),181,OPEN
+184,Multi-Format Support (Delta/Iceberg/Hudi/Parquet),181|168|169,OPEN
+185,Lakehouse Federation,2|6,OPEN
+186,Connection (external system),7|185,OPEN
+187,Foreign Catalog,186|23,OPEN
+188,Query Federation (JDBC + pushdown),187|186,OPEN
+189,Catalog Federation (Hive/Glue/Snowflake),187,OPEN
+190,Hive Metastore Federation,189|20,OPEN
+191,Supported Sources (MySQL/Postgres/Snowflake/Redshift/BigQuery/SQL Server),188,OPEN
+192,Delta Sharing (open protocol),2|7,SHARE
+193,Share,192|7,SHARE
+194,Recipient,192,SHARE
+195,Provider,192,SHARE
+196,Databricks-to-Databricks Sharing,193|194,SHARE
+197,Open Sharing (Databricks-to-Open),193|194,SHARE
+198,Recipient Bearer Token,197,SHARE
+199,Shared Catalog (mount of a share),193|23,SHARE
+200,Shared Assets (tables/views/volumes/models/notebooks),193|25|34|41,SHARE
+201,Databricks Marketplace,192|195,SHARE
+202,Marketplace Listing / Data Product,201|164,SHARE
+203,Clean Rooms,192|16,SHARE
+204,Clean Room Task / Collaboration,203,SHARE
+205,sharing.materialization_history system table,49|193,SHARE

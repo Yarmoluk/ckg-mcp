@@ -1,0 +1,289 @@
+ConceptID,ConceptLabel,Dependencies,TaxonomyID
+1,Microsoft Purview,,CORE
+2,Microsoft Purview account,1,CORE
+3,Microsoft Purview portal (new),2,CORE
+4,Classic governance portal,2,CORE
+5,Free vs Enterprise account type,2,CORE
+6,Microsoft Entra ID tenant,,CORE
+7,Data governance solution,2,CORE
+8,Federated data governance,7,CORE
+9,Data Map,7,CORE
+10,Unified Catalog,7,CORE
+11,Classic Data Catalog,9,CORE
+12,Data Map vs Unified Catalog split,9|10,CORE
+13,New experience upgrade,2|3,CORE
+14,Data Map capacity unit (CU),9,CORE
+15,Operations throughput,14,CORE
+16,Metadata storage,14,CORE
+17,Elastic Data Map (autoscale),14|15|16,CORE
+18,Technical metadata,16,CORE
+19,Business metadata,16,CORE
+20,Operational metadata,16,CORE
+21,Semantic metadata,16,CORE
+22,Data Map monitoring metrics,14|16,CORE
+23,Data asset,9|18,META
+24,Asset fully qualified name (FQN),23,META
+25,Asset schema,23|18,META
+26,Column,25,META
+27,Asset type,23,META
+28,Table asset,27|25,META
+29,View asset,27|25,META
+30,File asset,27,META
+31,Folder / container asset,27,META
+32,Nested data (JSON),25|26,META
+33,Asset business metadata curation,23|19,META
+34,Asset description,33,META
+35,Asset owner / expert (contacts),33,META
+36,Asset certification,23|33,META
+37,Related entities (child objects),23,META
+38,Live view,23|6,META
+39,Resource set,23|25,META
+40,Resource set pattern,39,META
+41,Built-in resource set patterns,40,META
+42,Regex-based pattern ({GUID}/{N}/{HEX}/{LOC}),41,META
+43,Complex pattern ({SparkPartitions}/date-in-path),41,META
+44,Resource set detection,40|39,META
+45,Resource set display name extraction,44,META
+46,Advanced resource sets,39|44,META
+47,Resource set partition count / sample path / size,46,META
+48,Resource set pattern rules (custom),40|46,META
+49,Data source registration,9|202,SRCH
+50,Scan,49,SRCH
+51,Scan authentication method,50|6,SRCH
+52,Managed identity (system-assigned),51|2,SRCH
+53,Service principal credential,51,SRCH
+54,Azure Key Vault credential connection,51,SRCH
+55,Scan scope (entity selection),50,SRCH
+56,Scan level (L1/L2/L3),50,SRCH
+57,L1 scan (basic metadata),56,SRCH
+58,L2 scan (schema),56|25,SRCH
+59,L3 scan (classification),56|76,SRCH
+60,Auto detect scan level,56,SRCH
+61,Data sampling for classification,59,SRCH
+62,Scan rule set,50,SRCH
+63,System scan rule set,62,SRCH
+64,Custom scan rule set,62,SRCH
+65,File types supported for scanning,62,SRCH
+66,Custom file type / parser,64|65,SRCH
+67,Scan trigger,50,SRCH
+68,Scan schedule (daily/weekly/monthly),67,SRCH
+69,Run scan now (one-time),67,SRCH
+70,Full vs incremental scan,50,SRCH
+71,Deleted asset detection,50|70,SRCH
+72,Scan run monitoring,50,SRCH
+73,Ingestion,50|9,SRCH
+74,Ingestion from scans,73|44,SRCH
+75,Ingestion from lineage connections,73|118,SRCH
+76,Data classification,23,SRCH
+77,System classification (200+),76,SRCH
+78,Custom classification,76,SRCH
+79,Classification rule,76,SRCH
+80,Custom classification rule (regex / dictionary),78|79,SRCH
+81,Asset-level vs column-level classification,76|26,SRCH
+82,Auto-applied classification on scan,76|59,SRCH
+83,Unified Catalog search,10|23,SRCH
+84,AI-powered copilot search,83,SRCH
+85,Browse by collection / source type,83|243,SRCH
+86,Search by governance domain / data product,83|165|175,SRCH
+87,Data quality,10|175,DQ
+88,Data quality life cycle,87,DQ
+89,Data source connection (DQ),87|52,DQ
+90,Data quality compute (Spark/Delta),87,DQ
+91,Data profiling,87|89,DQ
+92,AI-recommended columns for profiling,91,DQ
+93,Profiling statistics (min/max/std/uniqueness),91,DQ
+94,Column-level profiling drill-down,93|26,DQ
+95,Data quality rule,87|91,DQ
+96,Out-of-the-box (OOB) rule,95,DQ
+97,AI-generated rule,95|92,DQ
+98,Custom rule (functions / expressions),95,DQ
+99,Data quality dimension,95,DQ
+100,Completeness dimension,99,DQ
+101,Conformity dimension,99,DQ
+102,Consistency dimension,99,DQ
+103,Accuracy dimension,99,DQ
+104,Uniqueness dimension,99,DQ
+105,Freshness / timeliness dimension,99,DQ
+106,Rule-to-column assignment,95|26,DQ
+107,Freshness rule (entity/table level),95|105,DQ
+108,Data quality rule at CDE level,95|185,DQ
+109,Data quality scan,95|106,DQ
+110,Data quality scan scheduling,109|68,DQ
+111,Data quality job monitoring,109,DQ
+112,Data quality score (rule level),109|95,DQ
+113,Data quality score (asset/product/domain),112|23|175|165,DQ
+114,Data quality alert / notification,109|112,DQ
+115,Data quality action center,109|112,DQ
+116,Data quality managed virtual network,87|232,DQ
+117,Data Governance Processing Unit (DGPU),90,DQ
+118,Data lineage,9|23,LIN
+119,Lineage graph (source-process-target),118,LIN
+120,Lineage process / activity,119,LIN
+121,Source and target entity,119,LIN
+122,Entity-level (table) lineage,119|28,LIN
+123,Column / attribute-level lineage,122|26,LIN
+124,Process execution status,120,LIN
+125,Azure Data Factory lineage,118|75,LIN
+126,Azure Synapse pipeline lineage,118|75,LIN
+127,Power BI lineage,118|219,LIN
+128,Microsoft Fabric lineage,118|220,LIN
+129,Azure Data Share lineage,118,LIN
+130,Azure Machine Learning lineage,118,LIN
+131,Databricks Unity Catalog lineage,118,LIN
+132,Lineage on Data Map assets,118|24,LIN
+133,Unified Catalog asset lineage view,118|83,LIN
+134,Unified Catalog access policy,10|175,GOV
+135,Self-service data access,134,GOV
+136,Request access (data product),135|175,GOV
+137,Permitted access / usage purpose,134,GOV
+138,Terms of use attestation,134,GOV
+139,No-copy attestation,138,GOV
+140,Tiered / sequential approval,136,GOV
+141,Manager approval tier,140,GOV
+142,Privacy & compliance review tier,140,GOV
+143,Access request approver,140,GOV
+144,Access provider tier,140,GOV
+145,Request status (pending/approved/completed),136,GOV
+146,Inherited / aggregated policy,134|148|149|147,GOV
+147,Policy on governance domain,134|165,GOV
+148,Policy on glossary term,134|180,GOV
+149,Policy on CDE,134|185,GOV
+150,Disable access management,134,GOV
+151,Data owner policy (Data Map),9|202,GOV
+152,DevOps policy,151,GOV
+153,Self-service access policy (Data Map),151,GOV
+154,Sensitivity label,6,GOV
+155,Microsoft Purview Information Protection (MIP),154,GOV
+156,Label scope (Files & other data assets),154,GOV
+157,Sensitivity label on Data Map asset,154|23|155,GOV
+158,Auto-labeling policy,157|82,GOV
+159,Label travels with data,155,GOV
+160,M365 license requirement (labels),157,GOV
+161,Customer-managed key (CMK),2,GOV
+162,Encryption at rest,2,GOV
+163,Private endpoint,2,GOV
+164,Microsoft Purview firewall,2|163,GOV
+165,Governance domain,10,GLOS
+166,Governance domain type,165,GLOS
+167,Functional unit domain,166,GLOS
+168,Line of business domain,166,GLOS
+169,Data domain (entity),166,GLOS
+170,Regulatory domain,166,GLOS
+171,Project domain,166,GLOS
+172,Governance domain owner,165,GLOS
+173,Governance domain published status,165,GLOS
+174,Business concept,165,GLOS
+175,Data product,165|23,GLOS
+176,Data product owner,175,GLOS
+177,Associated data assets,175|23,GLOS
+178,Data product published / draft status,175,GLOS
+179,Data product business context (use case),175,GLOS
+180,Glossary term,165|174,GLOS
+181,Classic glossary term migration,180|11,GLOS
+182,Active glossary term (carries policy),180|148,GLOS
+183,Term applied to data product / asset / column,180|175|23|26,GLOS
+184,Related terms,180,GLOS
+185,Critical data element (CDE),165|174,GLOS
+186,CDE expected data type,185,GLOS
+187,CDE column mapping,185|26,GLOS
+188,CDE associated data products,185|175,GLOS
+189,CDE status (draft/published/expired),185,GLOS
+190,CDE bulk import (CSV),185,GLOS
+191,CDE related glossary terms,185|180,GLOS
+192,Custom / business concept attributes,174,GLOS
+193,Managed attribute group,192,GLOS
+194,OKR (objectives and key results),165|175,GLOS
+195,Objective definition,194,GLOS
+196,Key result,194,GLOS
+197,OKR target date,194,GLOS
+198,OKR progress status,196,GLOS
+199,OKR owner,194,GLOS
+200,OKR related data products,194|175,GLOS
+201,Enterprise glossary view,180|185,GLOS
+202,Data source,9,OPEN
+203,Azure data source category,202,OPEN
+204,Database source category,202,OPEN
+205,File source category,202,OPEN
+206,Services and apps source category,202,OPEN
+207,Multicloud source (AWS / GCP),202,OPEN
+208,Azure SQL Database source,203,OPEN
+209,Azure Data Lake Storage Gen2 source,203,OPEN
+210,Azure Blob Storage source,203,OPEN
+211,Azure Synapse Analytics source,203,OPEN
+212,Azure Databricks Unity Catalog source,203,OPEN
+213,Amazon S3 source,207|205,OPEN
+214,Amazon RDS / Redshift source,207|204,OPEN
+215,Google BigQuery source,207|204,OPEN
+216,Snowflake source,204,OPEN
+217,SAP source (ECC / S4HANA / HANA / BW),206,OPEN
+218,On-premises SQL Server source,204,OPEN
+219,Power BI tenant source,206,OPEN
+220,Fabric tenant source,206,OPEN
+221,Same-tenant vs cross-tenant scan,220|219,OPEN
+222,OneLake,220,OPEN
+223,Fabric item,220,OPEN
+224,Fabric Lakehouse,223,OPEN
+225,Fabric Warehouse,223,OPEN
+226,Fabric semantic model (dataset),223,OPEN
+227,Fabric sub-item (tables/files),224|222,OPEN
+228,Fabric metadata scanning (admin API),220,OPEN
+229,OneLake security role (Read),222|223,OPEN
+230,Integration runtime (IR),50|202,OPEN
+231,Azure integration runtime,230,OPEN
+232,Managed Virtual Network IR,230|163,OPEN
+233,Managed private endpoint,232|163,OPEN
+234,Self-hosted integration runtime (SHIR),230,OPEN
+235,Kubernetes-supported SHIR,234,OPEN
+236,AWS integration runtime,230|207,OPEN
+237,Java Runtime Environment (JRE/JDK) prereq,234,OPEN
+238,IR hibernation,232,OPEN
+239,Domain (Data Map),9,RBAC
+240,Default domain,239,RBAC
+241,Custom domain,239,RBAC
+242,Root collection,240,RBAC
+243,Collection,239|242,RBAC
+244,Collection hierarchy (sub-collections),243,RBAC
+245,Collection-based RBAC,243,RBAC
+246,Permission inheritance,245|244,RBAC
+247,Restrict inherited permissions,246,RBAC
+248,Register source to collection,243|49,RBAC
+249,Move asset between collections,243|23,RBAC
+250,Domain administrator,239,RBAC
+251,Collection administrator,245|242,RBAC
+252,Data curator,245,RBAC
+253,Data reader,245,RBAC
+254,Data source administrator,245|49,RBAC
+255,Insights reader,245|253,RBAC
+256,Policy author,245|151,RBAC
+257,Workflow administrator,245,RBAC
+258,Tenant-level role group,2|6,RBAC
+259,Purview Administrators role group,258,RBAC
+260,Data Source Administrators role group,258,RBAC
+261,Data Governance role group,258,RBAC
+262,Catalog-level permission,10|258,RBAC
+263,Data Governance Administrator,262,RBAC
+264,Governance Domain Creator,262|165,RBAC
+265,Global Catalog Reader,262,RBAC
+266,Local Catalog Reader,262|165,RBAC
+267,Global Asset Curator,262|180,RBAC
+268,Data Health Owner,262|277,RBAC
+269,Data Health Reader,262|277,RBAC
+270,Governance-domain-level permission,165,RBAC
+271,Data Steward,270,RBAC
+272,Data Product Owner (role),270|175,RBAC
+273,Data Quality Steward,270|109,RBAC
+274,Data Profile Steward,270|91,RBAC
+275,Data Quality Reader / Metadata Reader,270|112,RBAC
+276,Governance Domain Reader,270,RBAC
+277,Data estate health,10|165,INSIGHTS
+278,Health management,277,INSIGHTS
+279,Health control,277,INSIGHTS
+280,Health score,279,INSIGHTS
+281,Health action,279|280,INSIGHTS
+282,Data observability,277|113,INSIGHTS
+283,Governance progress reporting,277|280,INSIGHTS
+284,Data Estate Insights (classic reports),11|23,INSIGHTS
+285,Classification insights,284|76,INSIGHTS
+286,Sensitivity labeling insights,284|157,INSIGHTS
+287,Asset / scan insights,284|72,INSIGHTS
+288,Glossary insights,284|180,INSIGHTS

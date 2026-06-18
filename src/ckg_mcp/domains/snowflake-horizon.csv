@@ -1,0 +1,258 @@
+ConceptID,ConceptLabel,Dependencies,TaxonomyID
+1,Snowflake Account,,CORE
+2,Organization,,CORE
+3,Snowflake Horizon Catalog,1|2,CORE
+4,Securable Object,1,CORE
+5,Object Hierarchy,4|1|2,CORE
+6,Organization Account,2|1,CORE
+7,Database,1|5,CORE
+8,Schema,7|5,CORE
+9,Schema-Level Object,8|4,CORE
+10,Account-Level Object,1|4,CORE
+11,Virtual Warehouse,10,CORE
+12,Warehouse Size,11,CORE
+13,Multi-Cluster Warehouse,11|12,CORE
+14,Credits,11|12,CORE
+15,Serverless Compute,1|14,CORE
+16,Snowsight,1,CORE
+17,Horizon: Governance Pillar,3,CORE
+18,Horizon: Compliance & Privacy Pillar,3,CORE
+19,Horizon: Security Pillar,3,CORE
+20,Horizon: Discovery Pillar,3,CORE
+21,Horizon: Collaboration Pillar,3,CORE
+22,Horizon: AI Context Layer,3,CORE
+23,Cross-Engine Policy Enforcement,3|17,CORE
+24,Table,9,META
+25,Micro-partitions,24,META
+26,Data Clustering,24|25,META
+27,Clustering Key,24|26,META
+28,Automatic Clustering,27|26,META
+29,Hybrid Table,24,META
+30,Event Table,24,META
+31,Dynamic Table,24,META
+32,View,9|24,META
+33,Non-materialized View,32,META
+34,Materialized View,32|24|11,META
+35,Secure View,32|34,META
+36,Recursive View,33,META
+37,External Table,24|9,META
+38,Secure UDF,9,META
+39,Tag,9,META
+40,Object Tag,39|4,META
+41,Tag Inheritance,39|5,META
+42,Automatic Tag Propagation,40|156,META
+43,Tag Allowed Values,39,META
+44,Tag Apply Method,40,META
+45,TAG_REFERENCES,40,META
+46,INFORMATION_SCHEMA,7|11,META
+47,SNOWFLAKE Database,1,META
+48,ACCOUNT_USAGE,47,META
+49,ORGANIZATION_USAGE,47|2,META
+50,READER_ACCOUNT_USAGE,47|199,META
+51,Account Usage Database Roles,48|64,META
+52,POLICY_REFERENCES,46|48|88|94,META
+53,Privilege,4,GOV
+54,Role,53,GOV
+55,User,54,GOV
+56,Discretionary Access Control (DAC),4|59|54,GOV
+57,Role-Based Access Control (RBAC),54|53|55,GOV
+58,User-Based Access Control (UBAC),55|53|76,GOV
+59,Object Ownership,54|60,GOV
+60,OWNERSHIP Privilege,53,GOV
+61,Role Hierarchy,54|79,GOV
+62,Privilege Inheritance,61,GOV
+63,Account Role,54|1,GOV
+64,Database Role,54|7,GOV
+65,Instance Role,54,GOV
+66,Application Role,54,GOV
+67,Custom Role,54|83|61,GOV
+68,System-Defined Roles,54,GOV
+69,ORGADMIN,68|2,GOV
+70,ACCOUNTADMIN,68|73|71,GOV
+71,SECURITYADMIN,68|72|82,GOV
+72,USERADMIN,68|83,GOV
+73,SYSADMIN,68|11|7,GOV
+74,PUBLIC,68|55|54,GOV
+75,Primary Role,54|59,GOV
+76,Secondary Roles,54|77,GOV
+77,Privilege Aggregation,75|76,GOV
+78,GRANT TO ROLE,53|54,GOV
+79,GRANT ROLE,54|61,GOV
+80,REVOKE,53|54,GOV
+81,WITH GRANT OPTION,78,GOV
+82,MANAGE GRANTS,53|85,GOV
+83,CREATE ROLE,72,GOV
+84,Future Grants,7|8|78,GOV
+85,Managed Access Schema,8|59|82,GOV
+86,USE SECONDARY ROLES,76,GOV
+87,Column-level Security,88,GOV
+88,Masking Policy,9|53,GOV
+89,Dynamic Data Masking,88|87,GOV
+90,External Tokenization,88|87,GOV
+91,Conditional Masking,88,GOV
+92,APPLY MASKING POLICY,88|53,GOV
+93,Row-level Security,94,GOV
+94,Row Access Policy,9|53,GOV
+95,Policy Expression,94,GOV
+96,Mapping Table,95|24,GOV
+97,APPLY ROW ACCESS POLICY,94|53,GOV
+98,Tag-based Masking Policy,40|88,GOV
+99,Projection Policy,9|53,GOV
+100,PROJECTION_CONSTRAINT,99,GOV
+101,APPLY PROJECTION POLICY,99|53,GOV
+102,Aggregation Policy,9|53,GOV
+103,AGGREGATION_CONSTRAINT,102,GOV
+104,MIN_GROUP_SIZE,103,GOV
+105,Entity-Level Privacy,102|106,GOV
+106,Entity Key,102,GOV
+107,APPLY AGGREGATION POLICY,102|53,GOV
+108,Policy Evaluation Order,94|88|99|102,GOV
+109,Sensitive Data Classification,40|24,GOV
+110,Semantic Category,109,GOV
+111,Privacy Category,109,GOV
+112,SNOWFLAKE.CORE.SEMANTIC_CATEGORY,110|40,GOV
+113,SNOWFLAKE.CORE.PRIVACY_CATEGORY,111|40,GOV
+114,Custom Classifier,109|110,GOV
+115,Classification Profile,109|114,GOV
+116,SYSTEM$CLASSIFY,109,GOV
+117,Auto Classification,115|114,GOV
+118,Classification-to-Masking Loop,117|98,GOV
+119,Trust Center,1|48,GOV
+120,Scanner Package,119,GOV
+121,Scanner,120,GOV
+122,Finding,121,GOV
+123,Violation,122,GOV
+124,Detection,122,GOV
+125,Security Essentials Scanner Package,120,GOV
+126,CIS Benchmarks Scanner Package,120,GOV
+127,Threat Intelligence Scanner Package,120,GOV
+128,AI Security Scanner Package,120,GOV
+129,Data Metric Function (DMF),9,DQ
+130,Data Quality Monitoring,129|137|15,DQ
+131,System DMF,129|132,DQ
+132,SNOWFLAKE.CORE Schema,47,DQ
+133,Custom DMF,129|134,DQ
+134,CREATE DATA METRIC FUNCTION,53|133,DQ
+135,EXECUTE DATA METRIC FUNCTION,53,DQ
+136,DMF Association,129|24|32,DQ
+137,Data Metric Schedule,138|136,DQ
+138,DATA_METRIC_SCHEDULE,136,DQ
+139,TRIGGER_ON_CHANGES,138,DQ
+140,USING CRON,138,DQ
+141,Completeness DMFs,131,DQ
+142,Volume DMFs,131,DQ
+143,Uniqueness DMFs,131,DQ
+144,Freshness DMFs,131|137,DQ
+145,Accuracy DMFs,131,DQ
+146,Statistics DMFs,131,DQ
+147,Schema DMFs,131,DQ
+148,Anomaly Detection,129|130,DQ
+149,Expectation,136|150,DQ
+150,VALUE Keyword,149,DQ
+151,Expectation Violation,149,DQ
+152,SYSTEM$EVALUATE_DATA_QUALITY_EXPECTATIONS,149,DQ
+153,DATA_QUALITY_MONITORING_RESULTS,136|15,DQ
+154,DATA_METRIC_FUNCTION_EXPECTATIONS,149|48,DQ
+155,DATA_QUALITY_MONITORING_USAGE_HISTORY,15|48,DQ
+156,Object Dependencies,4,LIN
+157,OBJECT_DEPENDENCIES,156|48,LIN
+158,Referenced Object,157,LIN
+159,Referencing Object,157,LIN
+160,DEPENDENCY_TYPE,157,LIN
+161,Recursive Dependency Chain,157,LIN
+162,Access History,163,LIN
+163,ACCESS_HISTORY,48,LIN
+164,DIRECT_OBJECTS_ACCESSED,163,LIN
+165,BASE_OBJECTS_ACCESSED,163,LIN
+166,OBJECTS_MODIFIED,163,LIN
+167,OBJECT_MODIFIED_BY_DDL,163,LIN
+168,POLICIES_REFERENCED,163,LIN
+169,Data Lineage,156|162,LIN
+170,Lineage Graph,169|16,LIN
+171,Column Lineage,169|166,LIN
+172,Data Movement Lineage,162,LIN
+173,GET_LINEAGE,169|132,LIN
+174,VIEW LINEAGE Privilege,169|53,LIN
+175,End-to-End Data Lineage,169|171,LIN
+176,Universal Search,3|16|54,SRCH
+177,Cortex Search,178,SRCH
+178,Cortex Search Service,11|182|24,SRCH
+179,Hybrid Search,178|180|181,SRCH
+180,Vector Search,182,SRCH
+181,Keyword Search,178,SRCH
+182,Embedding Models,183,SRCH
+183,Snowflake Cortex,1,SRCH
+184,Semantic View,9|24,SRCH
+185,Logical Tables,184|24,SRCH
+186,Metrics,185|188,SRCH
+187,Dimensions,185|188,SRCH
+188,Facts,185,SRCH
+189,Relationships,185,SRCH
+190,Cortex Analyst,184,SRCH
+191,Auto-Generated Descriptions,183|40,SRCH
+192,Business Glossary (substitute),184|40|191|193,SRCH
+193,Data Product,212,SRCH
+194,Secure Data Sharing,195,SHARE
+195,Share,7|1,SHARE
+196,Provider,195,SHARE
+197,Consumer,195|198,SHARE
+198,Shared Database,195|197,SHARE
+199,Reader Account,196|194,SHARE
+200,Direct Share,195,SHARE
+201,Listing,194|193|196,SHARE
+202,Free Listing,201,SHARE
+203,Paid Listing,201,SHARE
+204,Limited Trial Listing,201|203,SHARE
+205,Private Listing,201,SHARE
+206,Pricing Plans,203,SHARE
+207,Offers,206|203,SHARE
+208,Snowflake Marketplace,201|196|197,SHARE
+209,Cross-Cloud Auto-Fulfillment,201|194,SHARE
+210,Provider Studio,201|208|16,SHARE
+211,Internal Marketplace,212|3,SHARE
+212,Organizational Listing,211|214|196,SHARE
+213,Organization Profile,212,SHARE
+214,Account Targeting,57|212,SHARE
+215,Request Approval Workflow,212,SHARE
+216,Snowflake Data Clean Rooms,217|196|197,SHARE
+217,Data Clean Room,218|223,SHARE
+218,Collaboration,219|220|221,SHARE
+219,Owner,218,SHARE
+220,Data Provider (clean room),218|223,SHARE
+221,Analysis Runner,218|222|223,SHARE
+222,Template,218,SHARE
+223,Data Offering,220,SHARE
+224,Differential Privacy,217,SHARE
+225,Apache Iceberg Table,227|226,OPEN
+226,Iceberg Metadata,225,OPEN
+227,Iceberg Catalog,225,OPEN
+228,Snowflake-managed Iceberg Table,225|227|230,OPEN
+229,Externally-managed Iceberg Table,225|233|230,OPEN
+230,External Volume,10|231,OPEN
+231,Cloud Principal,230,OPEN
+232,SNOWFLAKE_MANAGED,230,OPEN
+233,Catalog Integration,10|230,OPEN
+234,AWS Glue Catalog Integration,233,OPEN
+235,Object Storage Catalog Integration,233,OPEN
+236,Apache Iceberg REST Catalog Integration,233|237,OPEN
+237,Iceberg REST Protocol,225,OPEN
+238,REST_AUTHENTICATION,233,OPEN
+239,Vended Credentials,233|240,OPEN
+240,Credential Vending,253,OPEN
+241,Catalog-Linked Database,236|249|242,OPEN
+242,Automated Refresh,241,OPEN
+243,Externally-managed Writes,229|241,OPEN
+244,Snowflake Open Catalog,245|237,OPEN
+245,Apache Polaris,,OPEN
+246,Catalog (Polaris),244,OPEN
+247,Internal Catalog,246|253,OPEN
+248,External Catalog,246,OPEN
+249,Namespace,246,OPEN
+250,Service Principal,244,OPEN
+251,Principal Role,250|252,OPEN
+252,Catalog Role,246|251,OPEN
+253,Storage Configuration,246,OPEN
+254,Horizon Iceberg REST Catalog API,3|245,OPEN
+255,Horizon Catalog Endpoint,254|256,OPEN
+256,Account Identifier,,OPEN
+257,External Query Engine,254|239,OPEN

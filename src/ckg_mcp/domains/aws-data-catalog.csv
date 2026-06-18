@@ -1,0 +1,269 @@
+ConceptID,ConceptLabel,Dependencies,TaxonomyID
+1,AWS account,,CORE
+2,Amazon S3 data lake,1,CORE
+3,Amazon S3 bucket,2,CORE
+4,AWS analytics & ML services,1,CORE
+5,Amazon Athena,4,CORE
+6,Amazon EMR,4,CORE
+7,Amazon Redshift,4,CORE
+8,Amazon Redshift Spectrum,7,CORE
+9,AWS Glue (service),4,CORE
+10,AWS Glue Data Catalog,9|2,CORE
+11,Central technical metastore,10,CORE
+12,Catalog resource (multi-level federated catalog),10,CORE
+13,Catalog ID (CatalogId),10|1,CORE
+14,Default Data Catalog,10|12,CORE
+15,AWS Lake Formation,10,CORE
+16,Amazon DataZone,4,CORE
+17,Amazon SageMaker Catalog (DataZone rebrand),16,CORE
+18,Amazon SageMaker Unified Studio,17,CORE
+19,Data mesh,10|16,CORE
+20,Three-layer catalog split (Glue + Lake Formation + DataZone),10|15|16,CORE
+21,Business data catalog,16,CORE
+22,Data portal,16|21,CORE
+23,Self-service data access,22|237,CORE
+24,Data producer,19,CORE
+25,Data consumer,19,CORE
+26,Producer-consumer separation,24|25,CORE
+27,Database,11,META
+28,Table (metadata table),27,META
+29,Column,28,META
+30,Schema (table definition),28|29,META
+31,Nested column / struct,29,META
+32,Table version,28,META
+33,Partition,28|3,META
+34,Partition key,33|30,META
+35,Partition index,33|34,META
+36,SerDe (serialization library),28,META
+37,Table properties / parameters,28,META
+38,Table location (Amazon S3 path),28|3,META
+39,AWS Glue Data Catalog view,28|15,META
+40,Resource link,27|28,META
+41,Connection (connection definition),11,META
+42,JDBC connection,41,META
+43,NETWORK connection,41,META
+44,MONGODB connection,41,META
+45,KAFKA connection,41,META
+46,MARKETPLACE / CUSTOM connector connection,41,META
+47,Column statistics,29|28,META
+48,Materialized view (Iceberg),28|240,META
+49,AWS Glue Schema Registry,9,META
+50,Registry,49,META
+51,Schema (stream schema),50,META
+52,Schema version,51,META
+53,Schema definition,52,META
+54,Data format (Avro / JSON Schema / Protobuf),51,META
+55,Compatibility mode,52,META
+56,Schema checkpoint version,55|52,META
+57,Serializer / deserializer (SerDe libraries),52|54,META
+58,Schema evolution (streams),52|55,META
+59,Streaming integration (Kafka/MSK/Kinesis/Flink/Lambda),57|45,META
+60,Federation to external data sources,12|41,META
+61,Amazon Redshift managed catalog (RMS),12|7,META
+62,Crawler,10,SRCH
+63,Crawler data store / data source,62|3,SRCH
+64,Automatic discovery,62,SRCH
+65,Schema inference,62|30,SRCH
+66,Include / exclude patterns,63,SRCH
+67,Crawler schedule,62,SRCH
+68,Incremental crawl,62|67,SRCH
+69,Recrawl policy,62|68,SRCH
+70,Schema change policy (SchemaChangePolicy),62|30,SRCH
+71,Partition detection (crawler),62|33,SRCH
+72,Classifier,62,SRCH
+73,Built-in classifier,72,SRCH
+74,Custom classifier,72,SRCH
+75,Classifier certainty,72,SRCH
+76,Classifier order / priority,72|74,SRCH
+77,Grok classifier,74,SRCH
+78,XML classifier,74,SRCH
+79,JSON path classifier,74,SRCH
+80,CSV classifier,73,SRCH
+81,Classification string,72|65,SRCH
+82,Hudi / Iceberg crawler support,62|240,SRCH
+83,DataZone search & browse,21|220,SRCH
+84,"Semantic search (Glue Catalog, Preview)",10|229,SRCH
+85,Glue Search API,84,SRCH
+86,Subscribe (request access),83|231,SRCH
+87,AWS Glue Data Quality,9,DQ
+88,DeeQu framework,87,DQ
+89,Data quality for the Data Catalog (entry point),87|28,DQ
+90,Data quality for ETL jobs (entry point),87|260,DQ
+91,Data Quality Definition Language (DQDL),87,DQ
+92,Ruleset,91|28,DQ
+93,Rule,91,DQ
+94,Rule type,93,DQ
+95,Rule parameters,94,DQ
+96,Expression,93,DQ
+97,Composite rule (and/or/not),93|96,DQ
+98,compositeRuleEvaluation.method (ROW/COLUMN),97,DQ
+99,Where clause filter,93,DQ
+100,Threshold (with threshold),96,DQ
+101,NULL / EMPTY / WHITESPACES_ONLY keywords,96,DQ
+102,Constants,91,DQ
+103,Labels,93,DQ
+104,Completeness rule,94,DQ
+105,ColumnValues rule,94,DQ
+106,ColumnCount rule,94,DQ
+107,ColumnDataType rule,94,DQ
+108,ColumnLength rule,94,DQ
+109,ColumnCorrelation rule,94,DQ
+110,RowCount rule,94,DQ
+111,Uniqueness rule,94,DQ
+112,IsComplete rule,94,DQ
+113,IsUnique rule,94,DQ
+114,IsPrimaryKey rule,94,DQ
+115,DataFreshness rule,94,DQ
+116,ReferentialIntegrity rule,94,DQ
+117,SchemaMatch rule,94,DQ
+118,DatasetMatch / AggregateMatch / RowCountMatch rules,94,DQ
+119,CustomSQL rule,94,DQ
+120,FileFreshness / FileSize / FileUniqueness / FileMatch rules,94,DQ
+121,DetectAnomalies rule,94|126,DQ
+122,Analyzer,91,DQ
+123,AllStatistics analyzer,122,DQ
+124,Statistics,122|93,DQ
+125,Observation,124,DQ
+126,Anomaly detection (ML),87|124,DQ
+127,Dynamic rule (last() operator),93|124,DQ
+128,Rule recommendations,87|124,DQ
+129,Data quality score,92|93,DQ
+130,Data quality results,92|129,DQ
+131,Row-level error record identification,130|90,DQ
+132,Write DQ results to Amazon S3,130|3,DQ
+133,EventBridge / CloudWatch DQ integration,130,DQ
+134,DataZone data lineage,21,LIN
+135,OpenLineage compatibility,134,LIN
+136,Lineage node,134,LIN
+137,Dataset node,136,LIN
+138,Job (run) node,136,LIN
+139,RunEvent / JobEvent / DatasetEvent,135,LIN
+140,Lineage event,135|139,LIN
+141,sourceIdentifier,136,LIN
+142,Lineage facet / form type,140|223,LIN
+143,Upstream / downstream traversal,137|138,LIN
+144,Column-level lineage,137|29,LIN
+145,Lineage versioning (history),136|140,LIN
+146,PostLineageEvent API,140,LIN
+147,GetLineageNode / ListLineageNodeHistory API,136,LIN
+148,Automated lineage from Glue catalog,134|213,LIN
+149,Automated lineage from Amazon Redshift,134|7,LIN
+150,OpenLineage Spark listener (Glue 5.0),135|260,LIN
+151,Lineage capture in blueprint config,148|208,LIN
+152,Glue Data Catalog lineage record,10|134,LIN
+153,Lake Formation permissions model,15,GOV
+154,Data lake administrator,15,GOV
+155,Lake Formation principal,153,GOV
+156,Data location registration,15|3,GOV
+157,DATA_LOCATION_ACCESS permission,156|153,GOV
+158,Named-resource permission method,153|27|28,GOV
+159,Data lake permission (SELECT/INSERT/ALTER/DROP/DELETE/DESCRIBE),158,GOV
+160,CREATE_DATABASE / CREATE_TABLE permission,158|27,GOV
+161,Super permission (ALL),159,GOV
+162,Super user permission (catalog),161|12,GOV
+163,Grantable permission (grant option),159,GOV
+164,Implicit permission (DESCRIBE),159,GOV
+165,IAMAllowedPrincipals group,153,GOV
+166,ALLIAMPrincipals group,153,GOV
+167,Hybrid access mode,153|165,GOV
+168,LF-Tag (key-value pair),15,GOV
+169,LF-Tag definition,168,GOV
+170,Tag-based access control (LF-TBAC),168|153,GOV
+171,LF-Tag assignment to resources,168|27|28|29,GOV
+172,LF-Tag expression / policy,170|171,GOV
+173,LF-Tag inheritance,171,GOV
+174,ASSOCIATE permission (LF-Tag),168|170,GOV
+175,CREATE_LF_TAG / ALTER / DROP LF-Tag permission,168,GOV
+176,"Attribute-based access control (ABAC, IAM tags)",153,GOV
+177,Data filter (DataCellsFilter),158|28,GOV
+178,Column-level security (column filtering),177|29,GOV
+179,Row-level security (row filtering),177,GOV
+180,Cell-level security,178|179,GOV
+181,Row filter expression (PartiQL WHERE),179,GOV
+182,Column include / exclude list,178,GOV
+183,AllRowsWildcard / all-columns wildcard,177,GOV
+184,CreateDataCellsFilter API,177,GOV
+185,Cross-account data sharing,153|170,GOV
+186,Cross-account version 3 settings,185,GOV
+187,Share to organization / OU,185,GOV
+188,Credential vending (integrated engine access),177|4,GOV
+189,AWS IAM,1,GOV
+190,IAM role / user (principal),189,GOV
+191,IAM policy (coarse-grained),189,GOV
+192,IAM Identity Center principal,189,GOV
+193,Resource policy (Data Catalog),10|189,GOV
+194,AWS KMS,1,GOV
+195,Data Catalog encryption (KMS),194|11,GOV
+196,CloudTrail audit logging,15|189,GOV
+197,Blueprint (Lake Formation ingestion),15|62,GOV
+198,Lake Formation workflow,197,GOV
+199,Domain,16,GLOS
+200,Domain unit,199,GLOS
+201,Root domain unit,200,GLOS
+202,Associated account,199|1,GLOS
+203,Authorization policy,200,GLOS
+204,Project,199,GLOS
+205,Project membership (owner/contributor/consumer/steward/viewer),204,GLOS
+206,Environment,204,GLOS
+207,Environment profile,206,GLOS
+208,Environment blueprint,207,GLOS
+209,Data lake blueprint,208|15,GLOS
+210,Data warehouse blueprint,208|7,GLOS
+211,SageMaker blueprint,208|18,GLOS
+212,Data source,204|10,GLOS
+213,Data source run,212,GLOS
+214,Inventory asset,204|213,GLOS
+215,Asset,214,GLOS
+216,Asset type,215,GLOS
+217,System asset type (Glue/Redshift/S3),216,GLOS
+218,Custom asset type,216,GLOS
+219,Asset version / revision,215,GLOS
+220,Published asset,215|21,GLOS
+221,Listing (published asset),220,GLOS
+222,Publishing workflow,214|220,GLOS
+223,Metadata form,215|199,GLOS
+224,Metadata form type,223,GLOS
+225,Metadata form field,223,GLOS
+226,Business glossary,199,GLOS
+227,Glossary term,226,GLOS
+228,Term-to-asset / term-to-column assignment,227|215|29,GLOS
+229,Business context enrichment,10|226|223,GLOS
+230,Data product,215|19,GLOS
+231,Subscription request,220|204,GLOS
+232,Subscription approval (approve/reject/revoke/grant),231,GLOS
+233,Subscription grant,232,GLOS
+234,Subscription target,233|206,GLOS
+235,Subscription fulfillment workflow,233|15|7,GLOS
+236,Managed vs unmanaged asset,235,GLOS
+237,Publish-subscribe workflow,222|231,GLOS
+238,User / group profile,199,GLOS
+239,DataZone to SageMaker upgrade,16|17,GLOS
+240,Open table format support,10,OPEN
+241,Apache Iceberg (on Glue),240,OPEN
+242,Apache Hudi (on Glue),240,OPEN
+243,Delta Lake (on Glue),240,OPEN
+244,Transactional data lake table,241|242|243,OPEN
+245,--datalake-formats job parameter,244|260,OPEN
+246,Iceberg managed compaction / table optimization,241|28,OPEN
+247,Amazon S3 Tables,2|241,OPEN
+248,Table bucket,247,OPEN
+249,Table namespace,248,OPEN
+250,S3 Tables table (managed Iceberg),248|249,OPEN
+251,S3 Tables maintenance (compaction/snapshot/unref removal),250,OPEN
+252,s3tables service namespace,247,OPEN
+253,S3 Tables integration with Glue Data Catalog,247|10|15,OPEN
+254,Apache Iceberg V3,247|241,OPEN
+255,Iceberg REST catalog endpoint,10|241,OPEN
+256,Athena query on cataloged tables,5|28,OPEN
+257,EMR access to Data Catalog,6|10,OPEN
+258,Redshift Spectrum on external tables,8|28,OPEN
+259,Engine fine-grained access enforcement,188|256|257,OPEN
+260,AWS Glue ETL job,9,PROC
+261,AWS Glue Spark engine,260,PROC
+262,AWS Glue version (3.0/4.0/5.0/5.1),261,PROC
+263,DynamicFrame,260,PROC
+264,Job bookmark,260,PROC
+265,AWS Glue Studio (visual ETL),260,PROC
+266,Schema/partition update from ETL,260|30|33,PROC
+267,Crawler runtime,62|9,PROC
+268,EvaluateDataQuality transform,260|90,PROC
