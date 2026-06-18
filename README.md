@@ -7,6 +7,8 @@
 [![MCP](https://img.shields.io/badge/MCP-server-blue)](https://modelcontextprotocol.io)
 [![Benchmark](https://img.shields.io/badge/benchmark-reproducible-orange)](https://github.com/Yarmoluk/ckg-benchmark)
 
+`mcp-name: io.github.Yarmoluk/ckg-mcp`
+
 **Give your agent the structure, not the search.** `ckg-mcp` serves **Compressed Knowledge Graphs** — pre-structured, typed dependency graphs — to any MCP client. Instead of retrieving text chunks and hoping the model infers the relationships, your agent traverses *declared* edges: prerequisites, dependency chains, and category membership, returned as a tight subgraph.
 
 On the open [CKG Benchmark](https://github.com/Yarmoluk/ckg-benchmark), this approach scores **3.8× the F1 of RAG at 11× fewer tokens** — and unlike RAG, it **cannot fabricate a relationship that isn't in the graph**.
