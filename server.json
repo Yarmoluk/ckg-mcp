@@ -1,17 +1,17 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "io.github.Yarmoluk/ckg-mcp",
-  "description": "Structured domain knowledge for AI agents. 42x more accurate than RAG, 11x fewer tokens.",
+  "description": "Pre-structured knowledge graphs for AI agents: 3.8x RAG's F1, 11x fewer tokens, 0 invented edges.",
   "repository": {
     "url": "https://github.com/Yarmoluk/ckg-mcp",
     "source": "github"
   },
-  "version": "0.1.1",
+  "version": "0.4.0",
   "packages": [
     {
       "registryType": "pypi",
       "identifier": "ckg-mcp",
-      "version": "0.1.1",
+      "version": "0.4.0",
       "transport": {
         "type": "stdio"
       },
