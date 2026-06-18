@@ -4,29 +4,55 @@ from .graph import available_domains, load_graph, find_concept, bfs_subgraph, pr
 mcp = FastMCP(
     "ckg",
     instructions=(
-        "Compact Knowledge Graph (CKG) server. Use list_domains to see available domains, "
-        "then query_ckg or get_prerequisites to retrieve structured domain knowledge. "
-        "CKG is a pre-structured routing layer — 42x more efficient than RAG on structural queries."
+        "Compressed Knowledge Graph (CKG) server: serves pre-structured, typed dependency "
+        "graphs of domain concepts so an agent traverses declared relationships instead of "
+        "inferring them. Workflow: call list_domains first to get valid domain names; use "
+        "search_concepts to resolve a concept's exact label; then query_ckg for a concept's "
+        "subgraph (prerequisites + dependents) or get_prerequisites for its full upstream "
+        "chain. Every result is composed of edges declared in the graph — the server cannot "
+        "return a relationship that is not in the data."
     ),
 )
 
 
 @mcp.tool()
 def list_domains() -> str:
-    """List all available CKG domains."""
+    """List every Compressed Knowledge Graph (CKG) domain this server can answer about.
+
+    Call this FIRST, before the other tools. Each domain is a self-contained dependency
+    graph for one subject area (e.g. "calculus", "google-dataplex", "glp1-obesity"). The
+    `domain` argument required by query_ckg, get_prerequisites, and search_concepts must be
+    an exact name returned here. Takes no arguments.
+
+    Returns:
+        One line: the domain count followed by the comma-separated domain names, e.g.
+        "Available domains (65): algebra-1, aws-data-catalog, calculus, ...".
+    """
     domains = available_domains()
     return f"Available domains ({len(domains)}): " + ", ".join(domains)
 
 
 @mcp.tool()
 def query_ckg(domain: str, concept: str, depth: int = 3) -> str:
-    """
-    Extract a CKG subgraph for a concept — returns related concepts up to `depth` hops.
+    """Return the dependency subgraph around a concept: what it requires, and what builds on it.
+
+    Use this for the local neighborhood of a concept — both the prerequisites it depends on
+    and the downstream concepts that depend on it. For ONLY the upstream prerequisite chain,
+    use get_prerequisites instead. If unsure of the exact concept name, call search_concepts
+    first to find it.
 
     Args:
-        domain: Domain name (use list_domains to see options)
-        concept: Concept to query (e.g. "Taylor Series", "Semaglutide")
-        depth: Hop depth for subgraph extraction (default 3, max 5)
+        domain: Exact domain name from list_domains (e.g. "calculus", "google-dataplex").
+        concept: Concept to center the subgraph on. Matched case-insensitively; a partial
+            name resolves to the first containing match (e.g. "taylor" -> "Taylor Series").
+        depth: Upstream prerequisite hops to include, 1-5 (default 3; higher values are
+            capped at 5). Downstream "builds toward" concepts are always included to 2 hops.
+
+    Returns:
+        A Markdown report titled with the resolved concept, with a "Prerequisites (what you
+        need to know first)" tree and a "Builds toward (concepts that depend on this)" tree,
+        plus the concept's taxonomy tag when present. If the concept is not found, returns a
+        message listing up to 5 similar names to retry with.
     """
     depth = min(depth, 5)
     id_to_label, label_to_id, prerequisites, dependents, taxonomy = load_graph(domain)
@@ -59,12 +85,22 @@ def query_ckg(domain: str, concept: str, depth: int = 3) -> str:
 
 @mcp.tool()
 def get_prerequisites(domain: str, concept: str) -> str:
-    """
-    Get the full prerequisite chain for a concept — everything you need to know first.
+    """Return the full ordered chain of concepts to understand before a target concept.
+
+    Use this for onboarding, gap-filling, or sequencing study — it walks every upstream
+    dependency back to the root concepts. For a two-directional neighborhood (prerequisites
+    AND dependents) use query_ckg; to resolve an exact concept name use search_concepts.
 
     Args:
-        domain: Domain name
-        concept: Concept to trace back to roots
+        domain: Exact domain name from list_domains.
+        concept: Target concept to trace back to its roots. Matched case-insensitively; a
+            partial name resolves to the first containing match.
+
+    Returns:
+        One line listing the prerequisite chain in dependency order, e.g. "Prerequisite chain
+        for 'Taylor Series' in calculus (5 concepts): Function -> Derivative -> ... -> Taylor
+        Series". States that the concept is a root if it has no prerequisites, or that it was
+        not found.
     """
     id_to_label, label_to_id, prerequisites, _, _ = load_graph(domain)
     cid = find_concept(label_to_id, concept)
@@ -83,12 +119,20 @@ def get_prerequisites(domain: str, concept: str) -> str:
 
 @mcp.tool()
 def search_concepts(domain: str, query: str) -> str:
-    """
-    Search for concepts in a domain by name.
+    """Find concepts in a domain by partial name — use this to discover exact concept labels.
+
+    Run this before query_ckg or get_prerequisites when you do not know the precise label a
+    concept is stored under. Does a case-insensitive substring match over every concept name
+    in the domain.
 
     Args:
-        domain: Domain name
-        query: Partial concept name to search for
+        domain: Exact domain name from list_domains.
+        query: Substring to match against concept names (e.g. "mask", "iceberg", "lineage").
+
+    Returns:
+        Up to 20 matching concept names (title-cased), each annotated with its taxonomy tag in
+        brackets when present, e.g. "  - Masking Policy [GOV]". Returns a "no concepts matching"
+        message when there are no matches.
     """
     _, label_to_id, _, _, taxonomy = load_graph(domain)
     q = query.lower().strip()

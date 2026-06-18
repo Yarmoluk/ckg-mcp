@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "ckg-mcp"
-version = "0.5.0"
+version = "0.5.1"
 description = "Compressed Knowledge Graph MCP server — 65 domains, 3.8x the F1 of RAG at 11x fewer tokens (~42x RDS)"
 readme = "README.md"
 license = { text = "MIT" }
