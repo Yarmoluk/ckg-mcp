@@ -1,5 +1,5 @@
 # llms.txt — ckg-mcp (Python MCP Server for CKGs)
-# Machine-readable guide for LLM integration of Compact Knowledge Graphs
+# Machine-readable guide for LLM integration of Compressed Knowledge Graphs
 
 # Repository: https://github.com/Yarmoluk/ckg-mcp
 # Package: https://pypi.org/project/ckg-mcp/
@@ -7,10 +7,10 @@
 # Docs: https://github.com/Yarmoluk/ckg-mcp#readme
 
 Project: ckg-mcp
-  Python MCP (Model Context Protocol) server delivering Compact Knowledge Graphs to AI agents
+  Python MCP (Model Context Protocol) server delivering Compressed Knowledge Graphs to AI agents
   Install: pip install ckg-mcp
   Requires: Python 3.10+
-  Latest Version: 0.3.1
+  Latest Version: 0.5.1
 
 What is ckg-mcp?
   An MCP server that delivers structured domain knowledge to AI agents BEFORE they act

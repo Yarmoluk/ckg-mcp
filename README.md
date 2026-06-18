@@ -157,7 +157,7 @@ MIT. Source learning graphs derive from the McCreary Intelligent Textbook Corpus
 ```bibtex
 @misc{yarmoluk2026ckg,
   title  = {Benchmarking Knowledge Retrieval Architectures Across Educational
-            and Commercial Domains: RAG, GraphRAG, and Compact Knowledge Graphs},
+            and Commercial Domains: RAG, GraphRAG, and Compressed Knowledge Graphs},
   author = {Yarmoluk, Daniel and McCreary, Dan},
   year   = {2026},
   note   = {Pre-print in preparation. v0.6.2.}
