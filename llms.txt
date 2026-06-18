@@ -18,7 +18,7 @@ What is ckg-mcp?
   Result: 0% hallucination, 11× fewer tokens, ~4× higher Macro-F1 than RAG (42× RDS)
 
 What's Included:
-  59 pre-built CKG domains (and growing):
+  65 pre-built CKG domains (and growing):
     - Life Sciences: GLP-1 clinical pathways, drug interactions, payer formulary, HIPAA compliance
     - Healthcare: ICD-10 coding, CPT procedures, diagnostic algorithms, clinical guidelines
     - Software: LangChain Core (180 modules, 650 edges), FastAPI, Python, SQL design patterns
@@ -109,7 +109,7 @@ Custom Domains:
 
 Performance:
   Latency: < 50ms per query (local MCP server)
-  Memory: ~500MB for all 53 domains
+  Memory: ~500MB for all 65 domains
   Throughput: 1000+ queries/second (local machine)
   Cost: $0 (local) vs $0.013/query (RAG baseline)
 

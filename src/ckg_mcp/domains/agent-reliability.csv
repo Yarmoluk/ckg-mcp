@@ -1,0 +1,15 @@
+ConceptID,ConceptLabel,Dependencies,TaxonomyID
+1,AI agent,,FOUND
+2,Hallucination,1,RISK
+3,Dark uncertainty,1,RISK
+4,Valid SQL / wrong answer,3,RISK
+5,Drift over a session,1,RISK
+6,Context rot,5,RISK
+7,Intent verification,,FIX
+8,Grounding,,FIX
+9,Compressed Knowledge Graph,8,CKG
+10,Deterministic traversal,9,CKG
+11,Cited path,10,CKG
+12,0% hallucination by construction,10,CKG
+13,Pre-action context,9,CKG
+14,Reliable agent,12|13,CKG

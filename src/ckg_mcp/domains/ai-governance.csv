@@ -1,0 +1,15 @@
+ConceptID,ConceptLabel,Dependencies,TaxonomyID
+1,AI decision,,FOUND
+2,Accountability,1,GOV
+3,The AI told me to (not a defense),1,GOV
+4,Auditability,,GOV
+5,Reasoning trail,4,GOV
+6,Immutable log,5,GOV
+7,Provenance,,FIX
+8,Cited source,7,FIX
+9,Compressed Knowledge Graph,,CKG
+10,Deterministic traversal,9,CKG
+11,Human attestation (L2),9,CKG
+12,Conformance profile,11,CKG
+13,EU AI Act / NIST AI RMF,,REG
+14,Audit-ready decision,6|8|11,GOV

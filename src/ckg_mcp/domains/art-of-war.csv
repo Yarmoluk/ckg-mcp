@@ -1,0 +1,15 @@
+ConceptID,ConceptLabel,Dependencies,TaxonomyID
+1,The Art of War (Sun Tzu),,DOC
+2,Thirteen chapters,1,STRUCT
+3,Laying Plans,2,CH
+4,Five Factors (Moral law / Heaven / Earth / Commander / Method),3,CONCEPT
+5,Waging War,2,CH
+6,Attack by Stratagem,2,CH
+7,Know yourself and your enemy,6,CONCEPT
+8,Tactical Dispositions,2,CH
+9,Energy (shih),2,CONCEPT
+10,Weak & Strong Points,2,CONCEPT
+11,Maneuvering,2,CH
+12,Deception,6,CONCEPT
+13,Win without fighting,6,CONCEPT
+14,Use of Spies,2,CH

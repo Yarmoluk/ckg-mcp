@@ -1,0 +1,43 @@
+ConceptID,ConceptLabel,Dependencies,TaxonomyID
+1,Protected Health Information (PHI),,FOUND
+2,Electronic PHI (ePHI),1,FOUND
+3,Individually Identifiable Health Information,1,FOUND
+4,Covered Entity,1,FOUND
+5,Business Associate,1|4,FOUND
+6,Business Associate Agreement (BAA),5,FOUND
+7,Privacy Rule (45 CFR 164 Subpart E),1,PRIV
+8,Security Rule (45 CFR 164 Subpart C),2,SEC
+9,Minimum Necessary Standard,7,PRIV
+10,Permitted Uses & Disclosures,7,PRIV
+11,Treatment/Payment/Operations (TPO),10,PRIV
+12,Patient Authorization,7,PRIV
+13,Individual Right of Access (164.524),7,PRIV
+14,Accounting of Disclosures,7,PRIV
+15,Notice of Privacy Practices,7,PRIV
+16,Risk Analysis (164.308(a)(1)),8,SEC
+17,Administrative Safeguards,8|16,SEC
+18,Physical Safeguards,8,SEC
+19,Technical Safeguards,8,SEC
+20,Access Control (164.312(a)),19,SEC
+21,Audit Controls (164.312(b)),19,SEC
+22,Integrity Controls (164.312(c)),19,SEC
+23,Transmission Security / Encryption (164.312(e)),19,SEC
+24,Authentication (164.312(d)),19,SEC
+25,De-identification (164.514),1,DEID
+26,Safe Harbor — 18 Identifiers,25,DEID
+27,Expert Determination,25,DEID
+28,Limited Data Set,25|12,DEID
+29,Re-identification Risk,25,DEID
+30,Training an AI model on PHI,1|10,AI
+31,Inference / prompting with PHI,2|9,AI
+32,LLM / AI vendor as Business Associate,5|6,AI
+33,Model memorization & leakage,30|29,AI
+34,Output disclosure risk,31|33,AI
+35,De-identify before training,25|30,AI
+36,Minimum-necessary prompting,9|31,AI
+37,Human oversight & review,34,AI
+38,Audit logging of AI access to PHI,21|31,AI
+39,No PHI to a public LLM without a BAA,32|34,AI
+40,Breach of unsecured PHI,2,ENF
+41,Breach Notification Rule (164.400),40,ENF
+42,OCR enforcement & civil penalties,41|8,ENF

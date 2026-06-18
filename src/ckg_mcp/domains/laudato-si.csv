@@ -1,0 +1,16 @@
+ConceptID,ConceptLabel,Dependencies,TaxonomyID
+1,Laudato Si' (Francis,2015),
+2,Integral ecology,1,THEME
+3,Common home (Earth),2,THEME
+4,Cry of the earth,3,THEME
+5,Cry of the poor,2,THEME
+6,Everything is connected,2,THEME
+7,Throwaway culture,2,CRIT
+8,Consumerism,7,CRIT
+9,Technocratic paradigm,2,CRIT
+10,Climate change,4,ISSUE
+11,Loss of biodiversity,4,ISSUE
+12,Water & the poor,5,ISSUE
+13,Intergenerational justice,5,THEME
+14,Ecological conversion,2,CALL
+15,Care for creation,14,CALL

@@ -1,0 +1,15 @@
+ConceptID,ConceptLabel,Dependencies,TaxonomyID
+1,Context window,,FOUND
+2,Input tokens,1,FOUND
+3,Re-shipped context,2,ECON
+4,RAG retrieval,,RAG
+5,Chunk bloat,4,RAG
+6,Context budget (25/30/30/15),3,ECON
+7,Cost per query,2,ECON
+8,Compounding spend,7,ECON
+9,Bigger window (false fix),1,ECON
+10,Compression,,CKG
+11,Compressed Knowledge Graph,10,CKG
+12,Deterministic retrieval,11,CKG
+13,Cost per correct answer,7|11,ECON
+14,Predictable owned spend,11,CKG

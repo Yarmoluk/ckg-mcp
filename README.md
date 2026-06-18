@@ -57,7 +57,7 @@ Restart the client. Ask your agent: *"Use the ckg tools — list the domains, th
 
 ## What you get
 
-Four tools over **59 bundled domains** (no database, no embeddings, no API key):
+Four tools over **65 bundled domains** (no database, no embeddings, no API key):
 
 | Tool | Signature | What it does |
 |------|-----------|--------------|
@@ -70,7 +70,7 @@ Four tools over **59 bundled domains** (no database, no embeddings, no API key):
 
 ```
 list_domains()
-→ calculus, circuits, machine-learning-textbook, glp1-obesity, payer-formulary, google-dataplex, ... (59)
+→ calculus, circuits, machine-learning-textbook, glp1-obesity, payer-formulary, google-dataplex, ... (65)
 
 get_prerequisites(domain="calculus", concept="Taylor Series")
 → Function → Derivative → Higher-Order Derivatives → Power Series → Taylor Series
@@ -126,8 +126,9 @@ No graph database. No vector store. No retrieval pipeline. Drop the server in, o
 
 ---
 
-## Bundled domains (59)
+## Bundled domains (65)
 
+**Reference graphs** — laudato-si, art-of-war, token-cost-crisis, agent-reliability, ai-governance, hipaa-ai
 **Data catalog / governance** — google-dataplex, aws-data-catalog, azure-purview, databricks-unity, snowflake-horizon
 **Life sciences / clinical** — glp1-obesity, glp1-muscle-loss, drug-interactions, dementia, icd10-metabolic, cpt-em-coding, hipaa-compliance, payer-formulary, modeling-healthcare-data, bioinformatics, genetics, biology
 **STEM / math** — calculus, pre-calc, algebra-1, linear-algebra, geometry-course, statistics-course, functions, intro-to-physics-course, chemistry, ecology, signal-processing, fft-benchmarking
@@ -145,7 +146,7 @@ Works with any MCP client — Claude Desktop, Claude Code, Cursor, Cline, Windsu
 
 ## Commercial
 
-The open package ships 59 domains under MIT. Managed enterprise domains (clinical, regulatory, financial), weekly delta updates, and pilot engagements are available through **[Graphify.md](https://graphifymd.com)**.
+The open package ships 65 domains under MIT. Managed enterprise domains (clinical, regulatory, financial), weekly delta updates, and pilot engagements are available through **[Graphify.md](https://graphifymd.com)**.
 
 ## License
 

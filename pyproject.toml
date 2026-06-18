@@ -4,8 +4,8 @@ build-backend = "hatchling.build"
 
 [project]
 name = "ckg-mcp"
-version = "0.4.1"
-description = "Compressed Knowledge Graph MCP server — 59 domains, 3.8x the F1 of RAG at 11x fewer tokens (~42x RDS)"
+version = "0.5.0"
+description = "Compressed Knowledge Graph MCP server — 65 domains, 3.8x the F1 of RAG at 11x fewer tokens (~42x RDS)"
 readme = "README.md"
 license = { text = "MIT" }
 authors = [{ name = "Daniel Yarmoluk", email = "daniel.yarmoluk@gmail.com" }]
