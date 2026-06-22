@@ -379,3 +379,6 @@ ConceptID,ConceptLabel,Dependencies,TaxonomyID
 378,Completing Square,308,TECH
 379,Partial Fractions,308|11,TECH
 380,Integration Strategy,370|377|378,TECH
+381,Power Series,184,SERIES
+382,Taylor Series,381,SERIES
+383,Maclaurin Series,382,SERIES

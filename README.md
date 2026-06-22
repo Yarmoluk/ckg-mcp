@@ -73,8 +73,8 @@ list_domains()
 → calculus, circuits, machine-learning-textbook, glp1-obesity, payer-formulary, google-dataplex, ... (65)
 
 get_prerequisites(domain="calculus", concept="Taylor Series")
-→ Function → Derivative → Higher-Order Derivatives → Power Series → Taylor Series
-  (each edge is declared in the graph, not inferred from prose)
+→ Taylor Series → Power Series → Higher-Order Derivative → Derivative Function
+  → … → Limit → … → Function   (20 concepts — every edge declared in the graph, not inferred from prose)
 
 query_ckg(domain="circuits", concept="RC Discharging", depth=2)
 → subgraph: RC Discharging ← RC Circuit, Capacitor Energy Storage, Initial Conditions ...
