@@ -1,0 +1,197 @@
+ConceptID,ConceptLabel,Dependencies,TaxonomyID
+1,Apache Iceberg,,REST
+2,Open Table Format,1,REST
+3,Iceberg Table Metadata,1|2,REST
+4,Iceberg Snapshot,3,REST
+5,Iceberg View Metadata,1|2,REST
+6,Iceberg REST Catalog API,1|2,REST
+7,REST Catalog Spec (OpenAPI),6,REST
+8,config Endpoint,6|7,REST
+9,loadTable Operation,6|3,REST
+10,Namespace (REST entity),6,REST
+11,Table (REST entity),6|10,REST
+12,View (REST entity),6|10,REST
+13,Bearer Token Auth (REST),6,REST
+14,OAuth2 Token Endpoint (REST),6|13,REST
+15,X-Iceberg-Access-Delegation Header,6|9,REST
+16,Multi-Engine Interoperability,6|8,REST
+17,Neutral Catalog Layer,16|6,INTEROP
+18,Vendor-Independent Catalog Thesis,17|2,INTEROP
+19,Iceberg REST as Common Protocol,6|17,INTEROP
+20,One Copy of Data,2|19,INTEROP
+21,Engine-Agnostic Read/Write,19|16,INTEROP
+22,Credential Vending (cross-impl pattern),19|15,INTEROP
+23,Scoped Temporary Credentials,22,INTEROP
+24,STS AssumeRole Vending Path,23,INTEROP
+25,RBAC Model Divergence,19,INTEROP
+26,Federation vs Native Catalog,19|17,INTEROP
+27,Git-style Versioning (Nessie-unique),19,INTEROP
+28,Three-Level Namespace Convergence,19,INTEROP
+29,Catalog-Schema-Table Pattern,28,INTEROP
+30,Managed vs External Asset Pattern,17,INTEROP
+31,Multimodal Asset Pattern,17,INTEROP
+32,Model Registry as Catalog Asset,31,INTEROP
+33,Hyperscaler Catalog Bridge,26|19,INTEROP
+34,Apache Polaris (incubating),19|25,INTEROP
+35,Unity Catalog OSS,19|31,INTEROP
+36,Project Nessie,19|27,INTEROP
+37,Apache Gravitino,19|26,INTEROP
+38,Securable Object (cross-impl),25,RBAC
+39,Privilege (cross-impl),38,RBAC
+40,Grant (cross-impl),39|38,RBAC
+41,Role (cross-impl),39,RBAC
+42,Principal / User (cross-impl),41,RBAC
+43,Deny-by-Default Authorization,39,RBAC
+44,Composite Privilege Aggregation,39,RBAC
+45,Authorization Pushdown Pattern,43|26,RBAC
+46,Two-Role Indirection (Polaris-style),41|25,RBAC
+47,Flat Grant Model (UC-style),40|25,RBAC
+48,Role-Bundle Model (Gravitino-style),41|25,RBAC
+49,External Identity Provider (cross-impl),42,RBAC
+50,OIDC / JWT Auth (cross-impl),49,RBAC
+51,OAuth2 Client Credentials (cross-impl),42,RBAC
+52,Personal Access Token (cross-impl),42,RBAC
+53,Local Authorization Database (cross-impl),42|50,RBAC
+54,Internal / Native Catalog,26,FED
+55,External Catalog,26,FED
+56,Catalog Federation,55|26,FED
+57,Metadata Proxying,56,FED
+58,Connection Configuration,56|55,FED
+59,Connection Type (iceberg-rest / hive),58,FED
+60,Iceberg REST Federation,59|6,FED
+61,Federation Auth (OAUTH/BEARER/SIGV4/IMPLICIT),58,FED
+62,Hive Metastore (HMS),,FED
+63,Polaris Realm,34,POL
+64,Polaris Entity,63,POL
+65,Polaris Catalog,64|54,POL
+66,Polaris External Catalog,65|55,POL
+67,Polaris Namespace,65|10,POL
+68,Polaris Table,67|11,POL
+69,Polaris View,67|12,POL
+70,Polaris Generic Table,67|103,POL
+71,Polaris Policy Entity,65|67,POL
+72,Polaris Principal,63|42,POL
+73,Polaris Service Principal,72|51,POL
+74,Polaris Root Principal,72|189,POL
+75,Polaris Principal Role,72|46,POL
+76,Polaris Catalog Role,65|75|46,POL
+77,Polaris Role-Mapping Chain,72|75|76,POL
+78,Polaris Grant,76|39|44,POL
+79,Polaris Securable Types,65|67|68|69|71,POL
+80,Polaris OAuth2 Token Endpoint,73|14,POL
+81,Polaris Token Broker,80,POL
+82,Polaris External IdP (OIDC),63|50,POL
+83,Polaris Storage Configuration,65|23,POL
+84,Polaris allowedLocations,83,POL
+85,Polaris S3 Storage Config,83|24,POL
+86,Polaris GCS Storage Config,83,POL
+87,Polaris Azure Storage Config,83,POL
+88,Polaris Credential Vending,83|22|78,POL
+89,Polaris Catalog Federation,66|56|58,POL
+90,Polaris Management API,34|77,POL
+91,Polaris Catalog API,34|6,POL
+92,UC Server (Reference Impl),35,UCO
+93,UC OpenAPI Spec,35,UCO
+94,UC REST API,92|93,UCO
+95,UC Metastore,92,UCO
+96,UC Catalog,95|29,UCO
+97,UC Schema,96|29,UCO
+98,UC Three-Level Namespace,96|97|28,UCO
+99,UC Table,97,UCO
+100,UC Managed Table,99|30,UCO
+101,UC External Table,99|116|30,UCO
+102,UC Delta Lake Table,99|195,UCO
+103,Multi-format Table Support,99|2,UCO
+104,UC Volume,97|31,UCO
+105,UC Function,97,UCO
+106,UC Registered Model,97|32,UCO
+107,UC Model Version,106,UCO
+108,UC Securable Object,95|38,UCO
+109,UC Privilege Model,108|47,UCO
+110,UC Permission Grant,109|40,UCO
+111,UC Authentication,49,UCO
+112,UC OAuth2 / OIDC Flow,111|50,UCO
+113,UC Personal Access Token,111|52,UCO
+114,UC Local Authorization DB,111|53,UCO
+115,UC Storage Credential,95|23,UCO
+116,UC External Location,115,UCO
+117,UC Credential Vending,115|22,UCO
+118,UC Temporary Table Credentials API,117|94,UCO
+119,UC Iceberg REST Endpoint,94|6|120,UCO
+120,UniForm (UC),102|103,UCO
+121,UC CLI,94,UCO
+122,UCFunctionToolkit (GenAI),105|32,UCO
+123,Nessie Content,36,NES
+124,Nessie Content-Type,123,NES
+125,Nessie Content Key,123|127,NES
+126,Nessie Content ID,123,NES
+127,Nessie Namespace,124,NES
+128,Nessie Iceberg Table (content),124|3,NES
+129,Nessie Iceberg View (content),124|5,NES
+130,Nessie Reference,36|27,NES
+131,Nessie Named Reference,130,NES
+132,Nessie Branch,131|137,NES
+133,Nessie Tag,131,NES
+134,Nessie Detached Reference,130|136,NES
+135,Nessie Default Branch (main),132,NES
+136,Nessie Hash,138,NES
+137,Nessie HEAD,131|138,NES
+138,Nessie Commit,140|125|136,NES
+139,Nessie Commit Log,138,NES
+140,Nessie Operation (Put/Delete/Unchanged),125|123,NES
+141,Nessie Multi-Table Transaction,138|27,NES
+142,Nessie Serializable Isolation,140|148,NES
+143,Nessie Merge,132|148,NES
+144,Nessie Transplant (Cherry-pick),139|148,NES
+145,Nessie Assign Reference,131|136,NES
+146,Nessie Optimistic Concurrency (CAS),139|149,NES
+147,Nessie Expected Hash,138|148,NES
+148,Nessie Conflict Detection,125|146,NES
+149,Nessie Global Pointer,139|131,NES
+150,Nessie REST API v2,36|7,NES
+151,Nessie Version Store,36,NES
+152,Nessie Catalog (Iceberg REST),151|6|131,NES
+153,NessieCatalog (native Iceberg impl),131|1,NES
+154,Nessie GC (Garbage Collection),151|130,NES
+155,Gravitino Server,37,GRAV
+156,Gravitino Metadata Store,155,GRAV
+157,Gravitino Catalog Operations,155|161,GRAV
+158,Gravitino Federated Metadata Lake,37|26,GRAV
+159,Gravitino Unified REST API,155,GRAV
+160,Gravitino Metalake,155,GRAV
+161,Gravitino Catalog,160,GRAV
+162,Gravitino Catalog Provider,161,GRAV
+163,Gravitino Schema,161|29,GRAV
+164,Gravitino Three-Level Namespace,161|163|28,GRAV
+165,Gravitino Relational Catalog,162,GRAV
+166,Gravitino Fileset Catalog,162,GRAV
+167,Gravitino Messaging Catalog,162,GRAV
+168,Gravitino Model Catalog,162|32,GRAV
+169,Gravitino Table,163|165,GRAV
+170,Gravitino Fileset,163|166,GRAV
+171,Gravitino Topic,163|167,GRAV
+172,Gravitino Model,163|168,GRAV
+173,Gravitino Hive Catalog Connector,165|62,GRAV
+174,Gravitino Iceberg Catalog Connector,165|1,GRAV
+175,Gravitino JDBC Catalog Connector,165,GRAV
+176,Gravitino Kafka Catalog Connector,167,GRAV
+177,Gravitino Column,169,GRAV
+178,Gravitino Type System,177,GRAV
+179,Gravitino Iceberg REST Catalog Service,155|174|6,GRAV
+180,Gravitino REST Catalog Backend,179,GRAV
+181,Gravitino Catalog Config Provider,179|160,GRAV
+182,Gravitino Metadata Object,164,GRAV
+183,Gravitino Tag,182,GRAV
+184,Gravitino Role / Privilege,182|48,GRAV
+185,Gravitino Authorization Pushdown,184|45,GRAV
+186,Gravitino Credential Vending,179|22,GRAV
+187,Metastore Persistence (cross-impl),17,DEPLOY
+188,JDBC / Relational Backend,187,DEPLOY
+189,Polaris Bootstrap,34|187,DEPLOY
+190,Polaris Relational JDBC Backend,189|188,DEPLOY
+191,Nessie Version Store Backends,151|188,DEPLOY
+192,Spark Engine Integration,19|21,DEPLOY
+193,Trino Engine Integration,19|21,DEPLOY
+194,Flink Engine Integration,19|21,DEPLOY
+195,Delta Lake,2,DEPLOY
+196,Snowflake Open Catalog (managed Polaris),34|91,DEPLOY

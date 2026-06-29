@@ -1,0 +1,190 @@
+ConceptID,ConceptLabel,Dependencies,TaxonomyID
+1,SQL Type System,,TYPE
+2,Fixed-Point Numeric,1,TYPE
+3,Floating-Point Numeric,1,TYPE
+4,DECIMAL Max Precision 38,2,TYPE
+5,Snowflake NUMBER,2|4,TYPE
+6,"Snowflake Integer Collapse to NUMBER(38,0)",5,TYPE
+7,"Spark DECIMAL Default (10,0)",2|4,TYPE
+8,Trino DECIMAL,2|4,TYPE
+9,NUMBER vs DECIMAL Precision Mapping,5|7|8|6,TYPE
+10,Snowflake FLOAT = 64-bit Double,3,TYPE
+11,String Type Family,1,TYPE
+12,Snowflake VARCHAR Synonyms,11,TYPE
+13,Spark STRING Canonical,11,TYPE
+14,Trino VARCHAR,11,TYPE
+15,STRING vs VARCHAR Canonical-Name Divergence,12|13|14,TYPE
+16,Snowflake Semi-Structured Types,1,TYPE
+17,Spark Complex Types (STRUCT/MAP/ARRAY),1,TYPE
+18,Trino Structural Types (ROW/MAP/ARRAY),1,TYPE
+19,STRUCT vs ROW vs OBJECT,16|17|18,TYPE
+20,VARIANT Concept,16,SEMI
+21,Snowflake VARIANT,20|16,SEMI
+22,Snowflake OBJECT and ARRAY,16|20,SEMI
+23,Spark VARIANT (Spark 4.0 / DBR 15.3),20|17,SEMI
+24,Trino JSON Type,18,SEMI
+25,VARIANT Equivalence (Snowflake ≈ Spark ≈ Trino JSON),21|23|24,SEMI
+26,PARSE_JSON to VARIANT,21,SEMI
+27,Spark parse_json / variant_get,23,SEMI
+28,Trino json_parse / json_extract,24,SEMI
+29,JSON Ingestion Function Divergence,26|27|28,SEMI
+30,Colon Path Operator,21|23,SEMI
+31,Path Access Divergence,30|28|32,SEMI
+32,VARIANT Key Case-Sensitivity,30|135,SEMI
+33,Snowflake FLATTEN,22|64,SEMI
+34,FLATTEN Output Columns (SEQ/KEY/PATH/INDEX/VALUE/THIS),33,SEMI
+35,Spark explode / posexplode,17,SEMI
+36,Spark LATERAL VIEW,35,SEMI
+37,Trino UNNEST,18,SEMI
+38,Trino CROSS JOIN UNNEST,37|64,SEMI
+39,UNNEST WITH ORDINALITY,37,SEMI
+40,Unnesting Divergence (FLATTEN vs explode vs UNNEST),33|35|38|39|34,SEMI
+41,OUTER Unnest Semantics Divergence,40|36,SEMI
+42,Scalar Function Concept,1,FUNC
+43,CAST and Type Coercion,1|44,FUNC
+44,CAST and Type Coercion Divergence,9|15,FUNC
+45,Snowflake OBJECT_CONSTRUCT / ARRAY_CONSTRUCT,22|42,FUNC
+46,Spark struct() / array() / map(),17|42,FUNC
+47,Trino ROW / MAP / ARRAY Constructors,18|42,FUNC
+48,Object Constructor Divergence,45|46|47,FUNC
+49,JSON Scalar Extraction Functions,28|27,FUNC
+50,SQL/JSON Standard Functions (JSON_VALUE/JSON_QUERY/JSON_TABLE),24|49,FUNC
+51,Higher-Order Function Concept,42,FUNC
+52,Spark Higher-Order Functions (transform/filter/aggregate),51|17,FUNC
+53,Trino Lambda Functions,51|18,FUNC
+54,Higher-Order Function Divergence,52|53,FUNC
+55,Array Subscript Operator,42,FUNC
+56,Snowflake Zero-Based Array Access,55|22,FUNC
+57,Spark Zero-Based Subscript,55|17,FUNC
+58,Trino One-Based Array Indexing,55|18,FUNC
+59,Array Index-Base Off-By-One Trap,56|57|58,FUNC
+60,SELECT Statement,1,DML
+61,WHERE Clause,60,DML
+62,GROUP BY and HAVING,60,DML
+63,JOIN Operations,60,DML
+64,LATERAL Keyword,63,DML
+65,Snowflake LATERAL,64|33,DML
+66,Spark LATERAL Subquery (Spark 3.2+),64,DML
+67,Trino LATERAL,64,DML
+68,LATERAL vs LATERAL VIEW Divergence,65|66|67|36,DML
+69,Clause Evaluation Order,61|62|125,DML
+70,QUALIFY Clause Concept,69|125,DML
+71,Snowflake QUALIFY,70,DML
+72,Databricks QUALIFY (DBR 10.4+),70,DML
+73,"Spark QUALIFY Gap (OSS ≤4.1, lands 4.2.0)",70|72,DML
+74,Trino No QUALIFY,70,DML
+75,QUALIFY Support Matrix,71|72|73|74,DML
+76,QUALIFY-to-Subquery Rewrite,75|61|125,DML
+77,MERGE Statement Concept,63|81,DML
+78,Snowflake MERGE,77,DML
+79,Databricks MERGE INTO,77|96,DML
+80,Trino MERGE,77|147,DML
+81,DML Mutation Concept,60,DML
+82,WHEN MATCHED Clause,77,DML
+83,WHEN NOT MATCHED Clause,77,DML
+84,WHEN NOT MATCHED BY SOURCE (Delta-only),82|79,DML
+85,Snowflake MERGE Lacks NOT MATCHED BY SOURCE,78|84,DML
+86,MERGE Syntax Divergence,78|79|80|84|82|83,DML
+87,DDL Statement Concept,1,DDL
+88,CREATE TABLE,87,DDL
+89,CTAS (CREATE TABLE AS SELECT),88|60,DDL
+90,CREATE OR REPLACE TABLE,88,DDL
+91,Snowflake CTAS,89,DDL
+92,Databricks CTAS USING DELTA,89|96,DDL
+93,Trino CTAS WITH [NO] DATA,89|147,DDL
+94,CTAS Default-Format Divergence,91|92|93,DDL
+95,Snowflake Table Kinds (Transient/Temporary),88,DDL
+96,Delta Lake Table Format,87,DDL
+97,Iceberg Table Format,87,DDL
+98,Table Format Coupling Divergence,95|96|97,DDL
+99,Sequence Concept,87,DDL
+100,Snowflake CREATE SEQUENCE / NEXTVAL,99,DDL
+101,Snowflake AUTOINCREMENT = IDENTITY,100|88,DDL
+102,Spark GENERATED ALWAYS AS IDENTITY (Delta),88|96,DDL
+103,Non-Gapless Surrogate Keys,101|102,DDL
+104,Sequence / Identity Divergence,100|101|102|103,DDL
+105,Timestamp Type Concept,1,TIME
+106,Time Zone Semantics,105,TIME
+107,Snowflake TIMESTAMP_NTZ,105|106,TIME
+108,Snowflake TIMESTAMP_LTZ,105|106,TIME
+109,Snowflake TIMESTAMP_TZ,105|106,TIME
+110,Snowflake TIMESTAMP_TYPE_MAPPING Default NTZ,107|108|109,TIME
+111,Spark TIMESTAMP = LTZ,105|106,TIME
+112,Spark TIMESTAMP_NTZ (Spark 3.4+),105|106,TIME
+113,Spark Has No TIMESTAMP_TZ,111|109,TIME
+114,Trino TIMESTAMP (without TZ),105|106,TIME
+115,Trino TIMESTAMP WITH TIME ZONE,105|106,TIME
+116,Timestamp Precision Parameter,105,TIME
+117,TIMESTAMP Variant Mapping Hazard,110|111|112|113|114|115,TIME
+118,Bare TIMESTAMP Default Inversion,110|111|114,TIME
+119,Time Travel Concept,60|98,TIME
+120,Snowflake Time Travel AT/BEFORE,119|95,TIME
+121,Snowflake AT (TIMESTAMP/OFFSET/STATEMENT),120,TIME
+122,Databricks VERSION AS OF / TIMESTAMP AS OF,119|96,TIME
+123,Trino FOR VERSION AS OF / FOR TIMESTAMP AS OF,119|97|147,TIME
+124,Time-Travel Syntax Divergence,121|122|123,TIME
+125,Window Function Concept,60,WIN
+126,OVER Clause (PARTITION/ORDER),125,WIN
+127,Ranking Functions (ROW_NUMBER/RANK/DENSE_RANK),126,WIN
+128,Value Functions (LEAD/LAG/FIRST_VALUE),126,WIN
+129,Window Frame (ROWS/RANGE/GROUPS),126,WIN
+130,Default Frame Divergence,129|128,WIN
+131,Top-N-Per-Group Pattern,127|70,WIN
+132,Window Function Portability Surface,127|128|129|130,WIN
+133,Identifier Concept,1,IDENT
+134,Identifier Quoting,133,IDENT
+135,Identifier Case-Folding Concept,133,IDENT
+136,Snowflake Upper Case-Folding,135,IDENT
+137,Snowflake Quoted Identifiers Case-Sensitive,136|134,IDENT
+138,Spark Case-Preserving Insensitive,135,IDENT
+139,Spark Backtick Quoting,134|138,IDENT
+140,Trino Lower Case-Folding,135,IDENT
+141,Three-Way Case-Folding Divergence,136|138|140,IDENT
+142,Quoting Character Divergence,137|139|134,IDENT
+143,Quoted Identifier Round-Trip Breakage,141|142,IDENT
+144,Snowflake Streams (CDC),81|95,PROC
+145,Snowflake Tasks (Scheduling),87,PROC
+146,Stream/Task CDC Has No Cross-Dialect Equivalent,144|145,PROC
+147,Trino Connector Model,1,PROC
+148,Connector-Gated Feature Support,147|77|119,PROC
+149,SQLGlot,1,XLAT
+150,Transpilation Concept,149,XLAT
+151,SQLGlot Tokenizer,149,XLAT
+152,SQLGlot Parser,151,XLAT
+153,Expression AST,152,XLAT
+154,Normalized AST (Portability Mechanism),153|150,XLAT
+155,SQLGlot Generator,153,XLAT
+156,transpile() Function,152|155|154,XLAT
+157,read / write Dialect Args,156,XLAT
+158,Dialect Class,152|155,XLAT
+159,Dialect Tokenizer/Parser/Generator Triad,158|151|152|155,XLAT
+160,Snowflake Dialect (SQLGlot),158|21|110,XLAT
+161,Spark / Databricks Dialect (SQLGlot),158|17,XLAT
+162,Trino / Presto Dialect (SQLGlot),158|18,XLAT
+163,TYPE_MAPPING Dict,158|43|9,XLAT
+164,TIME_MAPPING Dict,158|117,XLAT
+165,Generator TRANSFORMS Dict,155|158,XLAT
+166,NORMALIZATION_STRATEGY,158|135,XLAT
+167,NormalizationStrategy Enum (UPPER/LOWER/CASE_*),166|141,XLAT
+168,normalize_identifiers Rule,166|167,XLAT
+169,transforms Module,165,XLAT
+170,eliminate_qualify Transform,169|76|74,XLAT
+171,explode_projection_to_unnest Transform,169|40,XLAT
+172,unnest_to_explode Transform,169|40,XLAT
+173,remove_precision_parameterized_types Transform,169|116,XLAT
+174,SQLGlot Optimizer,153,XLAT
+175,optimizer.qualify Rule,174|168|63,XLAT
+176,annotate_types Rule,174|43|163,XLAT
+177,ErrorLevel / unsupported(),155|150,XLAT
+178,Unsupported Feature Fallback,177|179,XLAT
+179,Best-Effort Transpilation Limitation,150|154,XLAT
+180,Migration Translation Path,154|157|163|165,XLAT
+181,Snowflake-to-Databricks Path,180|160|161|117|40,XLAT
+182,Snowflake-to-Trino Path,180|160|162|170|59,XLAT
+183,Databricks-to-Trino Path,180|161|162|172|59,XLAT
+184,Case-Folding Translation Step,180|168|143,XLAT
+185,Timestamp Translation Step,180|117|164,XLAT
+186,Semi-Structured Translation Step,180|25|31|40,XLAT
+187,QUALIFY Translation Step,180|75|170,XLAT
+188,Unsupported-Feature Fallback Path,180|178|146|148,XLAT
+189,Manual Review Checklist,184|185|186|187|59|188,XLAT

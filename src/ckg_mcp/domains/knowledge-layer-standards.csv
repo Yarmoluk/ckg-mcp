@@ -1,0 +1,221 @@
+ConceptID,ConceptLabel,Dependencies,TaxonomyID
+1,Resource,,RDF
+2,IRI,1,RDF
+3,Namespace IRI,2,RDF
+4,Namespace Prefix,3,RDF
+5,Literal,1,RDF
+6,Lexical Form,5,RDF
+7,Datatype IRI,5|2,RDF
+8,Language Tag,5,RDF
+9,Simple Literal,5|7,RDF
+10,Language-Tagged String,5|8,RDF
+11,Blank Node,1,RDF
+12,RDF Triple,2|5|11,RDF
+13,RDF Statement,12,RDF
+14,RDF Graph,12,RDF
+15,Default Graph,14,RDF
+16,Named Graph,14|2,RDF
+17,RDF Dataset,15|16,RDF
+18,Datatype,5,RDF
+19,XSD Datatypes,18,RDF
+20,rdf:langString,18|10,RDF
+21,RDF Document,14|17,RDF
+22,Triple Term (RDF-star),12,RDF
+23,rdf:reifies,22,RDF
+24,Reifier,23,RDF
+25,RDF-star vs Legacy Reification,22|202,RDF
+26,RDF 1.2,22|23,RDF
+27,rdf:type,12|1,RDFS
+28,rdf:Property,27|13,RDFS
+29,rdfs:Resource,1|27,RDFS
+30,rdfs:Class,27|29,RDFS
+31,Class Extension,30,RDFS
+32,rdfs:subClassOf,30|31,RDFS
+33,rdfs:subPropertyOf,28,RDFS
+34,rdfs:domain,28|30,RDFS
+35,rdfs:range,28|30,RDFS
+36,rdfs:Literal,29|5,RDFS
+37,rdfs:Datatype,30|18|36,RDFS
+38,rdfs:label,29|5,RDFS
+39,rdfs:comment,29|5,RDFS
+40,rdfs:seeAlso,29,RDFS
+41,rdfs:member,28,RDFS
+42,rdfs:Container,30,RDFS
+43,rdf:List,27|30,RDFS
+44,Class vs Property Distinction,30|28,RDFS
+45,RDFS Entailment,32|33|34|35,RDFS
+46,OWL 2 Ontology,45|30,OWL
+47,Description Logic (SROIQ),46,OWL
+48,owl:Class,30|46,OWL
+49,owl:Thing,48,OWL
+50,owl:Nothing,48,OWL
+51,owl:ObjectProperty,28|48,OWL
+52,owl:DatatypeProperty,28|36,OWL
+53,owl:NamedIndividual,48|27,OWL
+54,Class Expression,48|47,OWL
+55,owl:Restriction,54|51,OWL
+56,Value Restriction (some/allValuesFrom),55,OWL
+57,Cardinality Restriction,55,OWL
+58,owl:FunctionalProperty,51,OWL
+59,owl:InverseFunctionalProperty,51,OWL
+60,owl:TransitiveProperty,51,OWL
+61,owl:SymmetricProperty,51,OWL
+62,owl:inverseOf,51,OWL
+63,owl:equivalentClass,48,OWL
+64,owl:disjointWith,48,OWL
+65,owl:sameAs,53,OWL
+66,owl:differentFrom,53,OWL
+67,owl:imports,46|2,OWL
+68,OWL 2 DL vs OWL 2 Full,47|46,OWL
+69,OWL 2 Profiles (EL/QL/RL),68,OWL
+70,Shapes Graph,14,SHACL
+71,Data Graph,14,SHACL
+72,NodeShape,70|30,SHACL
+73,PropertyShape,70|28,SHACL
+74,sh:path,73|107,SHACL
+75,sh:property,72|73,SHACL
+76,sh:node,73|72,SHACL
+77,sh:targetClass,72|30,SHACL
+78,sh:minCount,73,SHACL
+79,sh:maxCount,73,SHACL
+80,sh:datatype,73|7,SHACL
+81,sh:class,73|30,SHACL
+82,sh:nodeKind,73|2|11|5,SHACL
+83,Logical Constraints (and/or/not/xone),72|73,SHACL
+84,Validation Report,71|70,SHACL
+85,Conformance (sh:conforms),84,SHACL
+86,Validation Result,84,SHACL
+87,sh:severity,86,SHACL
+88,SHACL-SPARQL,72|96,SHACL
+89,SHACL Rules (Advanced Features),70|88,SHACL
+90,ShEx (Shape Expressions),71|72,SHACL
+91,Triple Pattern,12,SPARQL
+92,Basic Graph Pattern (BGP),91,SPARQL
+93,Group Graph Pattern,92,SPARQL
+94,Solution Mapping,91,SPARQL
+95,Solution Sequence,94,SPARQL
+96,SELECT,93|95,SPARQL
+97,CONSTRUCT,93|14,SPARQL
+98,ASK,93,SPARQL
+99,OPTIONAL,93,SPARQL
+100,UNION,93,SPARQL
+101,FILTER,93|103,SPARQL
+102,BIND,93|103,SPARQL
+103,Expression,94,SPARQL
+104,ORDER BY,95|103,SPARQL
+105,LIMIT,95,SPARQL
+106,GROUP BY,95|103,SPARQL
+107,Property Path,91,SPARQL
+108,FROM / FROM NAMED,96|17,SPARQL
+109,GRAPH,93|16,SPARQL
+110,SPARQL Update,17,SPARQL
+111,INSERT DATA / DELETE DATA,110|12,SPARQL
+112,DELETE/INSERT WHERE,110|93,SPARQL
+113,Graph Management (LOAD/CLEAR/CREATE/DROP),110|16,SPARQL
+114,SPARQL Endpoint,96,SPARQL
+115,SPARQL Protocol,114,SPARQL
+116,SERVICE (Federated Query),115|93,SPARQL
+117,@context,2|4,JSONLD
+118,Term Definition,117|2,JSONLD
+119,@id,117|2,JSONLD
+120,@type,117|27,JSONLD
+121,@value,5,JSONLD
+122,@language,121|8,JSONLD
+123,@graph,117|16,JSONLD
+124,@container,118,JSONLD
+125,@list / @set,124,JSONLD
+126,Node Object,119|120,JSONLD
+127,Compact IRI,4|2,JSONLD
+128,IRI Expansion / Compaction,127|117,JSONLD
+129,JSON-LD as RDF Syntax,117|17,JSONLD
+130,Expansion Algorithm,129|128,JSONLD
+131,Framing Algorithm,130|123,JSONLD
+132,schema.org,45|27,JSONLD
+133,Microdata,132|12,JSONLD
+134,RDFa,132|12,JSONLD
+135,Content Negotiation,129|21,JSONLD
+136,Labeled Property Graph (LPG),,LPG
+137,Node (vertex),136,LPG
+138,Relationship (edge),136,LPG
+139,Label,137|138,LPG
+140,Property (LPG),137|138,LPG
+141,Directed Edge,138,LPG
+142,Multigraph,137|138,LPG
+143,Edge-Property Gap,138|12,LPG
+144,Cypher,136,LPG
+145,openCypher,144,LPG
+146,MATCH Clause,144|147,LPG
+147,Declarative Pattern Matching,136,LPG
+148,ISO/IEC 39075 GQL,136|147,LPG
+149,GQL Property Graph Data Model,148|142,LPG
+150,GQL Provenance (Cypher/PGQL/GSQL),148|144|152,LPG
+151,First New ISO Query Language Since SQL,148,LPG
+152,PGQL,136|147,LPG
+153,SQL/PGQ (SQL:2023),152|147,LPG
+154,GQL / SQL-PGQ Alignment,148|153,LPG
+155,SPARQL-star,96|22,LPG
+156,Quoted Triple,22|13,LPG
+157,skos:Concept,27|29,VOCAB
+158,skos:ConceptScheme,157,VOCAB
+159,skos:inScheme,157|158,VOCAB
+160,skos:broader / skos:narrower,157,VOCAB
+161,skos:broaderTransitive,160|60,VOCAB
+162,skos:related,157|61,VOCAB
+163,skos:prefLabel,157|38,VOCAB
+164,SKOS Mapping Properties,157|63,VOCAB
+165,SKOS vs rdfs:subClassOf,160|32,VOCAB
+166,prov:Entity,27,VOCAB
+167,prov:Activity,27,VOCAB
+168,prov:Agent,27,VOCAB
+169,prov:wasGeneratedBy,166|167,VOCAB
+170,prov:wasAttributedTo,166|168,VOCAB
+171,prov:wasDerivedFrom,166,VOCAB
+172,Dublin Core Elements,28|29,VOCAB
+173,foaf:Person,27|168,VOCAB
+174,foaf:knows,173|61,VOCAB
+175,VoID / DCAT,17|27,VOCAB
+176,FAIR Principles,,FAIR
+177,Findable,176,FAIR
+178,Accessible,176,FAIR
+179,Interoperable,176,FAIR
+180,Reusable,176,FAIR
+181,Persistent Identifier (PID),177|2,FAIR
+182,Rich Metadata,177|172,FAIR
+183,Shared Knowledge Representation,179|45,FAIR
+184,FAIR Vocabularies,179|157,FAIR
+185,Provenance for Reuse,180|171,FAIR
+186,Usage License,180,FAIR
+187,Machine-Actionability,176|200,FAIR
+188,Entailment,14,REASON
+189,Entailment Regime,188|45,REASON
+190,Inference,188|46,REASON
+191,Open World Assumption (OWA),46|190,REASON
+192,No Unique Name Assumption (NUNA),65|66,REASON
+193,Axioms vs Facts (TBox/ABox),46|53,REASON
+194,Reasoning: Consistency,190|64,REASON
+195,Reasoning: Classification,190|32,REASON
+196,Reasoning: Satisfiability,190|54,REASON
+197,Reasoning: Realization,190|53,REASON
+198,Closed World Validation,71|85,REASON
+199,SHACL Validation vs OWL Reasoning,198|191|190,REASON
+200,Linked Data Principles,2|12|96,INTEROP
+201,5-Star Open Data,200|186,INTEROP
+202,rdf:Statement Reification,13|28,INTEROP
+203,RDF as Interchange Model,12|200|45,INTEROP
+204,RDF vs LPG (the two paradigms),203|136|143,INTEROP
+205,RDF-star as the RDF-LPG Bridge,22|143|204,INTEROP
+206,One Quad Store vs Native Graph,204|17,INTEROP
+207,ISO GQL (unifying query standard),148|154|151,INTEROP
+208,RDF-LPG Query Reconciliation,207|155|96,INTEROP
+209,Inference / Entailment (what reasoning adds),190|45|199,INTEROP
+210,Shapes vs Ontology (constraint vs meaning),199|72|46,INTEROP
+211,Vocabulary Reuse (don't reinvent terms),132|172|157|184,INTEROP
+212,Provenance Layer (trust the graph),171|203,INTEROP
+213,The Formal Substrate (logics under the layer),203|46|199|207,INTEROP
+214,LLM-Wiki Pattern,213,INTEROP
+215,Open Knowledge Format (OKF),214|203|211,INTEROP
+216,W3C Context Graph CG,215|213,INTEROP
+217,Typed Dependency Edge,32|34|140,INTEROP
+218,CKG / OKF as Compaction Layer,213|217|215,INTEROP
+219,Token Efficiency (why compact above formal),218|214,INTEROP
+220,Discover then Compress (the thesis),218|219|209,INTEROP

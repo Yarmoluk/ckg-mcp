@@ -1,0 +1,81 @@
+ConceptID,ConceptLabel,Dependencies,TaxonomyID
+1,GPU Architecture,,HW
+2,CPU Architecture,,HW
+3,Hybrid Computing Model,1|2,HW
+4,Memory Bandwidth,,HW
+5,Compute Throughput (TFLOPS),,HW
+6,Roofline Model,4|5,PERF
+7,Arithmetic Intensity,5|4,PERF
+8,Memory Bound Operation,6|7,PERF
+9,Compute Bound Operation,6|7,PERF
+10,CUDA Programming Model,1,EXEC
+11,Thread Hierarchy,10,EXEC
+12,Warp,11,EXEC
+13,SIMT Execution,12,EXEC
+14,Kernel,11,EXEC
+15,Latency Hiding,13|12,EXEC
+16,Occupancy,12|15,PERF
+17,Global Memory,1,MEM
+18,Shared Memory,1,MEM
+19,L2 Cache,1,MEM
+20,L1 Cache,1,MEM
+21,Register File,14,MEM
+22,Memory Coalescing,17|13,PERF
+23,Unified Memory,17,MEM
+24,Prefill Phase,10,INF
+25,Decode Phase,24,INF
+26,Autoregressive Generation,25,INF
+27,Token Generation,26,INF
+28,Multi-Head Attention,24|25,ATTN
+29,Multi-Query Attention,28,ATTN
+30,Grouped-Query Attention,28|29,ATTN
+31,FlashAttention,28|8|18,ATTN
+32,KV Cache,28|25,MEM
+33,KV Cache Memory Formula,32,MEM
+34,Internal Fragmentation,32,MEM
+35,External Fragmentation,32,MEM
+36,PagedAttention,32|34|35,MEM
+37,Quantization,17|1,OPT
+38,FP8 Precision,37,OPT
+39,INT8 Precision,37,OPT
+40,INT4 Precision,37,OPT
+41,Sparsity,37,OPT
+42,Structured Sparsity,41,OPT
+43,Distillation,24|25,OPT
+44,Tensor Parallelism,11|1,PARA
+45,Pipeline Parallelism,44,PARA
+46,Pipeline Bubbles,45,PARA
+47,Sequence Parallelism,44,PARA
+48,Multi-GPU Inference,44|45,PARA
+49,NVLink,48,HW
+50,NVSwitch,49,HW
+51,Static Batching,24|25,SCHED
+52,Dynamic Batching,51,SCHED
+53,In-Flight Batching,52,SCHED
+54,Speculative Decoding,25|27,SCHED
+55,Draft Model,54,SCHED
+56,Verification Model,54,SCHED
+57,NVIDIA Hopper H100,1,HW
+58,NVIDIA Ampere A100,1,HW
+59,Transformer Engine,57|38,HW
+60,Tensor Cores,57|58,HW
+61,TensorRT,10|37,FRAME
+62,TensorRT-LLM,61|31|36,FRAME
+63,Triton Inference Server,62,FRAME
+64,vLLM,36|53,FRAME
+65,SGLang,64,FRAME
+66,NVIDIA NIM,63|62,FRAME
+67,Model Repository,63,FRAME
+68,Tokens Per Second,27|53,METRIC
+69,Time to First Token,24,METRIC
+70,Inter-Token Latency,25,METRIC
+71,GPU Utilization,16|53,METRIC
+72,Total Cost of Ownership,68|71,METRIC
+73,Energy Efficiency,72,METRIC
+74,KV Cache Constraint,32|63,PERF
+75,Context Window Size,24|32,INF
+76,Long Context Inference,75|36,INF
+77,Batch Size Limit,32|74,PERF
+78,Throughput vs Latency Tradeoff,68|70|71,PERF
+79,Serving Strategy,53|78,SCHED
+80,Production Inference,63|79|48,FRAME

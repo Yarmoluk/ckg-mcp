@@ -1,5 +1,9 @@
+import json
+from pathlib import Path
 from mcp.server.fastmcp import FastMCP
 from .graph import available_domains, load_graph, find_concept, bfs_subgraph, prerequisite_chain
+
+AGENTS_DIR = Path(__file__).parent / "agents"
 
 mcp = FastMCP(
     "ckg",
@@ -143,6 +147,86 @@ def search_concepts(domain: str, query: str) -> str:
     for label, cid in sorted(matches)[:20]:
         tax = taxonomy.get(cid, "")
         lines.append(f"  - {label.title()}" + (f" [{tax}]" if tax else ""))
+    return "\n".join(lines)
+
+
+@mcp.tool()
+def list_agent_blueprints() -> str:
+    """List available domain-locked agent blueprints — pre-built orchestration configs for specific use cases.
+
+    Each blueprint bundles: required CKG domains, agent constraints, workflow steps, a prompt
+    template, and an orchestration hint (LangGraph state machine). Use get_agent_blueprint to
+    retrieve the full spec for a specific use case.
+
+    Returns:
+        Available blueprint names and one-line descriptions.
+    """
+    if not AGENTS_DIR.exists():
+        return "No agent blueprints available."
+    blueprints = []
+    for p in sorted(AGENTS_DIR.glob("*.json")):
+        try:
+            data = json.loads(p.read_text())
+            blueprints.append(f"  {p.stem}: {data.get('description', '')[:80]}")
+        except Exception:
+            pass
+    if not blueprints:
+        return "No agent blueprints available."
+    return f"Agent blueprints ({len(blueprints)}):\n" + "\n".join(blueprints)
+
+
+@mcp.tool()
+def get_agent_blueprint(use_case: str) -> str:
+    """Return the full domain-locked agent blueprint for a specific use case.
+
+    A blueprint is a complete locked-agent specification: which CKG domains to load,
+    what constraints the agent must enforce, the step-by-step workflow, a ready-to-use
+    system prompt template, example queries, and an orchestration hint for LangGraph or
+    similar frameworks. Use list_agent_blueprints to see available use cases.
+
+    Args:
+        use_case: Blueprint name from list_agent_blueprints (e.g. "gpu-inference-optimizer").
+
+    Returns:
+        Full blueprint as formatted Markdown including constraints, workflow, prompt template,
+        example queries, and agent map (orchestration hints + guardrails).
+    """
+    path = AGENTS_DIR / f"{use_case}.json"
+    if not path.exists():
+        available = [p.stem for p in AGENTS_DIR.glob("*.json")]
+        return f"Blueprint '{use_case}' not found. Available: {available}"
+    data = json.loads(path.read_text())
+
+    lines = [
+        f"## Agent Blueprint: {data['use_case']} (v{data['version']})",
+        f"\n{data['description']}",
+        f"\n**Required domains:** {', '.join(data['required_domains'])}",
+        "\n### Constraints",
+    ]
+    for k, v in data.get("constraints", {}).items():
+        lines.append(f"- **{k}**: {v}")
+
+    lines.append("\n### Workflow Steps")
+    for step in data.get("workflow_steps", []):
+        lines.append(f"{step}")
+
+    lines.append("\n### Prompt Template")
+    lines.append(f"```\n{data.get('prompt_template', '')}\n```")
+
+    lines.append("\n### Example Queries")
+    for q in data.get("example_queries", []):
+        lines.append(f"- {q}")
+
+    agent_map = data.get("agent_map", {})
+    if agent_map:
+        lines.append("\n### Agent Map (Orchestration)")
+        lines.append(f"- **Orchestration:** {agent_map.get('orchestration_hint', '')}")
+        lines.append(f"- **Tool sequence:** {' → '.join(agent_map.get('tool_sequence', []))}")
+        lines.append(f"- **Exit condition:** {agent_map.get('exit_condition', '')}")
+        lines.append("- **Guardrails:**")
+        for g in agent_map.get("guardrails", []):
+            lines.append(f"  - {g}")
+
     return "\n".join(lines)
 
 

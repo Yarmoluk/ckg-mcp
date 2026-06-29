@@ -1,0 +1,232 @@
+ConceptID,ConceptLabel,Dependencies,TaxonomyID
+1,AI SDK,,CORE
+2,Generative AI,,CORE
+3,Large Language Model (LLM),2,CORE
+4,AI SDK Core,1,CORE
+5,AI SDK UI,1,CORE
+6,AI SDK RSC,1,CORE
+7,LanguageModel specification,4|3,CORE
+8,LanguageModelV2,7,CORE
+9,LanguageModelV3,8,CORE
+10,model parameter,7,CORE
+11,prompt input,4,CORE
+12,text prompt,11,CORE
+13,system prompt,11,CORE
+14,message prompt,11,CORE
+15,ModelMessage,14,CORE
+16,message role,15,CORE
+17,message content part,15,CORE
+18,text content part,17|16,CORE
+19,image content part,17|16,CORE
+20,file content part,17|16,CORE
+21,multimodal message,19|20|18,CORE
+22,template literal prompt,12,CORE
+23,generateText,4|10|11,GEN
+24,streamText,4|10|11,GEN
+25,generation settings,4,GEN
+26,temperature,25,GEN
+27,topP,25,GEN
+28,topK,25,GEN
+29,maxOutputTokens,25,GEN
+30,presencePenalty,25,GEN
+31,frequencyPenalty,25,GEN
+32,stopSequences,25,GEN
+33,seed,25,GEN
+34,maxRetries,25,GEN
+35,abortSignal,25,GEN
+36,headers setting,25,GEN
+37,result.text,23,GEN
+38,result.content,23,GEN
+39,result.reasoningText,23,GEN
+40,finishReason,23|24,GEN
+41,rawFinishReason,40,GEN
+42,usage,23|24,GEN
+43,result.response,23,GEN
+44,providerMetadata,23|24,GEN
+45,result.steps,23|124,GEN
+46,warnings,23|24,GEN
+47,textStream,24,STREAM
+48,fullStream,24,STREAM
+49,stream part,48,STREAM
+50,onChunk callback,24,STREAM
+51,onFinish callback,24|23,STREAM
+52,onError callback,24,STREAM
+53,onAbort callback,24|35,STREAM
+54,backpressure,24,STREAM
+55,experimental_transform,24,STREAM
+56,smoothStream,55,STREAM
+57,stream transformation,55,STREAM
+58,text stream protocol,24|5,STREAM
+59,data stream protocol,24|5,STREAM
+60,UI Message Stream,59,STREAM
+61,Server-Sent Events (SSE),59,STREAM
+62,text-start/delta/end parts,60|49,STREAM
+63,reasoning-start/delta/end parts,60|49,STREAM
+64,tool-input-start/delta/available parts,60|49,STREAM
+65,start-step / finish-step parts,60|49,STREAM
+66,data-* stream part,60|49,STREAM
+67,toTextStreamResponse,58,STREAM
+68,toUIMessageStreamResponse,59|60,STREAM
+69,provider abstraction,7,PROVIDER
+70,provider package,69,PROVIDER
+71,cross-model portability,69|10,PROVIDER
+72,@ai-sdk/openai,70,PROVIDER
+73,@ai-sdk/anthropic,70,PROVIDER
+74,@ai-sdk/google,70,PROVIDER
+75,@ai-sdk/google-vertex,70,PROVIDER
+76,@ai-sdk/xai,70,PROVIDER
+77,@ai-sdk/mistral,70,PROVIDER
+78,@ai-sdk/amazon-bedrock,70,PROVIDER
+79,@ai-sdk/groq,70,PROVIDER
+80,@ai-sdk/deepseek,70,PROVIDER
+81,@ai-sdk/cohere,70,PROVIDER
+82,@ai-sdk/togetherai,70,PROVIDER
+83,community provider,69|7,PROVIDER
+84,OpenAI-compatible provider,69,PROVIDER
+85,createOpenAICompatible,84,PROVIDER
+86,baseURL option,85,PROVIDER
+87,self-hosted endpoint,85|86,PROVIDER
+88,provider options,69,PROVIDER
+89,AnthropicLanguageModelOptions,88|73,PROVIDER
+90,AI Gateway,69|71,PROVIDER
+91,provider registry,71,PROVIDER
+92,createProviderRegistry,91,PROVIDER
+93,customProvider,71,PROVIDER
+94,model alias,93,PROVIDER
+95,fallback provider,93|91,PROVIDER
+96,registry model lookup,92|10,PROVIDER
+97,tool calling,23|24,TOOL
+98,tool() function,97,TOOL
+99,tool description,98,TOOL
+100,inputSchema,98|143,TOOL
+101,tool execute,98,TOOL
+102,strict tool,98,TOOL
+103,tool call,97,TOOL
+104,tool result,103|101,TOOL
+105,toolChoice,97,TOOL
+106,active tools,97,TOOL
+107,dynamicTool,98,TOOL
+108,provider-defined tool,97|88,TOOL
+109,tool approval,97|9,TOOL
+110,needsApproval,109,TOOL
+111,experimental_repairToolCall,103|100,TOOL
+112,NoSuchToolError,103,TOOL
+113,InvalidToolInputError,103|100,TOOL
+114,ToolCallRepairError,111,TOOL
+115,tool-error content part,104|124,TOOL
+116,MCP client,97,TOOL
+117,createMCPClient,116,TOOL
+118,MCP transport,116,TOOL
+119,MCP HTTP transport,118,TOOL
+120,MCP SSE transport,118,TOOL
+121,MCP stdio transport,118,TOOL
+122,mcpClient.tools(),116|98,TOOL
+123,agentic loop,97|124,AGENT
+124,multi-step generation,23|24|97,AGENT
+125,stopWhen,124,AGENT
+126,stepCountIs,125,AGENT
+127,hasToolCall,125,AGENT
+128,StopCondition,125,AGENT
+129,prepareStep,124,AGENT
+130,onStepFinish callback,124,AGENT
+131,Agent interface,123|9,AGENT
+132,ToolLoopAgent,131|97|125,AGENT
+133,agent.generate,132|23,AGENT
+134,agent.stream,132|24,AGENT
+135,agent instructions,132|13,AGENT
+136,agent context,132,AGENT
+137,workflow pattern,123,AGENT
+138,sequential chain,137,AGENT
+139,routing pattern,137,AGENT
+140,parallel pattern,137,AGENT
+141,orchestrator-worker pattern,137,AGENT
+142,evaluator-optimizer pattern,137,AGENT
+143,Zod schema,4,STRUCT
+144,JSON schema,4,STRUCT
+145,Valibot schema,4,STRUCT
+146,schema descriptions,143,STRUCT
+147,output property,23|24,STRUCT
+148,Output.object,147|143,STRUCT
+149,Output.array,147|143,STRUCT
+150,Output.choice,147,STRUCT
+151,Output.json,147,STRUCT
+152,Output.text,147,STRUCT
+153,generateObject (deprecated),147|143,STRUCT
+154,streamObject (deprecated),147|143,STRUCT
+155,partialOutputStream,154|148|24,STRUCT
+156,elementStream,154|149|24,STRUCT
+157,schemaName / schemaDescription,148|146,STRUCT
+158,structured output with tools,147|97|124,STRUCT
+159,NoObjectGeneratedError,147,STRUCT
+160,schema validation,143|144,STRUCT
+161,useChat,5|59,UI
+162,useCompletion,5|58,UI
+163,useObject,5|59|143,UI
+164,@ai-sdk/react,5,UI
+165,@ai-sdk/vue,5,UI
+166,@ai-sdk/svelte,5,UI
+167,@ai-sdk/angular,5,UI
+168,UIMessage,161,UI
+169,UIMessage part,168,UI
+170,text UI part,169,UI
+171,reasoning UI part,169,UI
+172,tool UI part,169|103,UI
+173,file UI part,169,UI
+174,source UI part,169,UI
+175,data UI part,169|66,UI
+176,sendMessage,161,UI
+177,chat status,161,UI
+178,regenerate,161,UI
+179,DefaultChatTransport,161,UI
+180,chat transport,161|179,UI
+181,experimental_throttle,161,UI
+182,message metadata,168|68,UI
+183,generative UI,161|172,UI
+184,message persistence,161|51,UI
+185,embedding model,4|69,EMBED
+186,embed,185,EMBED
+187,embedMany,185,EMBED
+188,cosineSimilarity,186,EMBED
+189,embedding usage,186|187|42,EMBED
+190,maxParallelCalls,187,EMBED
+191,rerank,4|69,EMBED
+192,image model,4|69,EMBED
+193,generateImage,192|11,EMBED
+194,image n parameter,193,EMBED
+195,image size,193,EMBED
+196,image aspectRatio,193,EMBED
+197,image editing,193|19,EMBED
+198,transcription model,4|69,EMBED
+199,transcribe,198,EMBED
+200,transcript segments,199,EMBED
+201,speech model,4|69,EMBED
+202,generateSpeech,201,EMBED
+203,speech voice,202,EMBED
+204,speech audio output,202,EMBED
+205,language model middleware,7,MW
+206,wrapLanguageModel,205|10,MW
+207,LanguageModelMiddleware interface,205,MW
+208,transformParams,207,MW
+209,wrapGenerate,207|23,MW
+210,wrapStream,207|24,MW
+211,extractReasoningMiddleware,205|39,MW
+212,extractJsonMiddleware,205|147,MW
+213,simulateStreamingMiddleware,205|24,MW
+214,defaultSettingsMiddleware,205|25,MW
+215,middleware chaining,206,MW
+216,RAG via middleware,208|186,MW
+217,experimental_telemetry,4|23|24,OPS
+218,OpenTelemetry,217,OPS
+219,telemetry isEnabled,217,OPS
+220,recordInputs / recordOutputs,217,OPS
+221,telemetry functionId,217,OPS
+222,telemetry metadata,217,OPS
+223,telemetry tracer,217|218,OPS
+224,telemetry span,218|217,OPS
+225,unified usage model,42|44,OPS
+226,cache token usage,225,OPS
+227,AISDKError,1,OPS
+228,APICallError,227,OPS
+229,NoSuchModelError,227|10,OPS
+230,TypeValidationError,227|160,OPS
+231,DevTools,1|124,OPS

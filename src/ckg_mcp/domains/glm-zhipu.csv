@@ -1,0 +1,209 @@
+ConceptID,ConceptLabel,Dependencies,TaxonomyID
+1,Zhipu AI,,CORE
+2,GLM model family,1,CORE
+3,z.ai API platform,1,CORE
+4,BigModel platform (open.bigmodel.cn),1,CORE
+5,z.ai base URL (api.z.ai/api/paas/v4),3,CORE
+6,BigModel base URL (open.bigmodel.cn/api/paas/v4),4,CORE
+7,API key,3,CORE
+8,API key management page,7,CORE
+9,Billing top-up,7,CORE
+10,Bearer token authentication,7,CORE
+11,Authorization header,10,CORE
+12,chat/completions endpoint,5,CORE
+13,GLM Coding Plan base URL (api.z.ai/api/coding/paas/v4),3|7,CORE
+14,HTTP REST API,5|10,CORE
+15,cURL usage,14|11,CORE
+16,OpenAI SDK compatibility,5|7,CORE
+17,OpenAI Python client init,16,CORE
+18,official Python SDK (zai-sdk),3,CORE
+19,ZaiClient,18,CORE
+20,ZAI_API_KEY env var,7|19,CORE
+21,ZhipuAI SDK (bigmodel),4,CORE
+22,SDK base_url config,19|16,CORE
+23,SDK timeout & max_retries,19,CORE
+24,async SDK support,18,CORE
+25,official Java SDK,3,CORE
+26,LangChain integration,18|16,CORE
+27,synchronous vs asynchronous calls,14,CORE
+28,llms.txt doc index,3,CORE
+29,model parameter,12,MODEL
+30,GLM-5.2 (glm-5.2),29|2,MODEL
+31,GLM-5.2 1M context,30,MODEL
+32,glm-5.2[1m] variant,31,MODEL
+33,GLM-5.1 (glm-5.1),29|2,MODEL
+34,GLM-5 (glm-5),29|2,MODEL
+35,GLM-5-Turbo (glm-5-turbo),29|2,MODEL
+36,GLM-4.7 (glm-4.7),29|2,MODEL
+37,GLM-4.7-FlashX (glm-4.7-flashx),29|2,MODEL
+38,GLM-4.7-Flash free tier,29|2,MODEL
+39,GLM-4.6 (glm-4.6),29|2,MODEL
+40,GLM-4.5 (glm-4.5),29|2,MODEL
+41,GLM-4.5-Air (glm-4.5-air),29|2,MODEL
+42,GLM-4.5-X (glm-4.5-x),29|2,MODEL
+43,GLM-4.5-AirX (glm-4.5-airx),29|2,MODEL
+44,GLM-4.5-Flash free tier,29|2,MODEL
+45,GLM-4-32B-0414-128K,29|2,MODEL
+46,MoE architecture,2,MODEL
+47,GLM-4.5 total/active params (355B/32B),40|46,MODEL
+48,GLM-4.5-Air params (106B/12B),41|46,MODEL
+49,GLM-5 params (744B/40B),34|46,MODEL
+50,sparse attention (GLM-5),49,MODEL
+51,hybrid reasoning model,40|34,MODEL
+52,context window,29,MODEL
+53,128K context (GLM-4.5),52|40,MODEL
+54,200K context (GLM-4.6/4.7/5),52|39|36|34,MODEL
+55,1M context (GLM-5.2),52|31,MODEL
+56,max output tokens (128K),29,MODEL
+57,agentic coding capability,30|36|34,MODEL
+58,open-weight variants (zai-org),40|39|34,MODEL
+59,SWE-bench Verified score (GLM-5),34|57,MODEL
+60,Terminal-Bench / SWE-bench Pro (GLM-5.2),30|57,MODEL
+61,LiveCodeBench V6 SOTA (GLM-4.7),36|57,MODEL
+62,migrate-to-GLM-5.2 guide,30|29,MODEL
+63,chat completion request,12|29,CHAT
+64,messages array,63,CHAT
+65,message role,64,CHAT
+66,system role,65,CHAT
+67,user role,65,CHAT
+68,assistant role,65,CHAT
+69,message content,64,CHAT
+70,temperature parameter,63,CHAT
+71,top_p parameter,63,CHAT
+72,max_tokens parameter,63|56,CHAT
+73,do_sample parameter,63,CHAT
+74,stop words parameter,63,CHAT
+75,stream parameter,63,CHAT
+76,SSE streaming,75,CHAT
+77,streaming delta chunks,76,CHAT
+78,chat completion response,63,CHAT
+79,response id,78,CHAT
+80,choices array,78,CHAT
+81,finish_reason,80,CHAT
+82,finish_reason length,81|72,CHAT
+83,finish_reason sensitive (content filter),81,CHAT
+84,usage object,78,CHAT
+85,prompt_tokens & completion_tokens,84,CHAT
+86,total_tokens,84|85,CHAT
+87,multi-turn conversation,64|68|67,CHAT
+88,created timestamp,78,CHAT
+89,thinking parameter,63,THINK
+90,thinking.type enabled,89,THINK
+91,thinking.type disabled,89,THINK
+92,dynamic thinking default,89|51,THINK
+93,clear_thinking flag,89,THINK
+94,reasoning_effort parameter,63|30,THINK
+95,reasoning_effort max (default),94,THINK
+96,reasoning_effort high/medium/low,94,THINK
+97,reasoning_effort minimal/none,94,THINK
+98,reasoning_content field,78|90,THINK
+99,thinking-mode toggle (quick vs deep),90|91,THINK
+100,forced deep thinking models,90|30|34,THINK
+101,non-thinking mode (fast response),91|41,THINK
+102,reasoning over tool use,98|103,THINK
+103,tools array,63,TOOL
+104,tool_choice parameter,103,TOOL
+105,tool_choice auto,104,TOOL
+106,function tool type,103,TOOL
+107,function name & description,106,TOOL
+108,function parameters JSON schema,106,TOOL
+109,tool_calls in response,78|106,TOOL
+110,tool_call id,109,TOOL
+111,function.arguments (JSON string),109,TOOL
+112,tool role message,65|110,TOOL
+113,finish_reason tool_calls,81|109,TOOL
+114,parallel tool calls,109,TOOL
+115,tool streaming (tool_stream),103|76,TOOL
+116,built-in web_search tool,103,TOOL
+117,web_search search_engine (search-prime),116,TOOL
+118,web_search search_query,116,TOOL
+119,web_search count (1-50),116,TOOL
+120,search_domain_filter,116,TOOL
+121,search_recency_filter,116,TOOL
+122,content_size,116,TOOL
+123,standalone Web Search API (/web_search),5|118,TOOL
+124,search_result object (title/link/content),123,TOOL
+125,Web Reader tool,14,TOOL
+126,Agent Chat API (/v1/agents),3|64,TOOL
+127,agent_id parameter,126,TOOL
+128,translation agent (general_translation),127,TOOL
+129,slide/poster agent (slides_glm_agent),127,TOOL
+130,MCP integration,103|30,TOOL
+131,response_format parameter,63,STRUCT
+132,response_format type text,131,STRUCT
+133,response_format json_object,131,STRUCT
+134,JSON mode,133,STRUCT
+135,schema-in-system-message,134|66,STRUCT
+136,required-fields enforcement,135,STRUCT
+137,jsonschema post-validation,134,STRUCT
+138,structured-output supported models,134|34|36,STRUCT
+139,vision model (VLM),2,MM
+140,GLM-4.5V (glm-4.5v),139|29,MM
+141,GLM-4.6V (glm-4.6v),139|29,MM
+142,GLM-5V-Turbo (glm-5v-turbo),139|29,MM
+143,GLM-OCR (glm-ocr),139|29,MM
+144,AutoGLM-Phone-Multilingual,139|57,MM
+145,image_url input,140|64,MM
+146,base64 image input,145,MM
+147,image understanding,145,MM
+148,video understanding,140|145,MM
+149,document/GUI understanding,140,MM
+150,VLM thinking mode,140|90,MM
+151,video generation API (/videos/generations),5|27,MM
+152,CogVideoX-3 (cogvideox-3),151|29,MM
+153,Vidu 2 / Vidu Q1 models,151|29,MM
+154,video prompt & image_url,151|145,MM
+155,video quality/duration/fps,151,MM
+156,video with_audio,151,MM
+157,video async task id + polling,151|27,MM
+158,audio transcription API (/audio/transcriptions),5,MM
+159,GLM-ASR-2512 (glm-asr-2512),158|29,MM
+160,ASR file input,158,MM
+161,ASR hotwords & prompt,158,MM
+162,ASR streaming transcription,158|76,MM
+163,image generation API (/images/generations),5,IMG
+164,GLM-Image (glm-image),163|29,IMG
+165,CogView-4 (cogview-4),163|29,IMG
+166,image prompt,163,IMG
+167,image size parameter,163,IMG
+168,image quality (hd/standard),163|164,IMG
+169,image generation response (url),163,IMG
+170,image url 30-day expiry,169,IMG
+171,async image generation,163|27,IMG
+172,content_filter (image safety),169,IMG
+173,context caching,63|64,CACHE
+174,implicit/automatic caching,173,CACHE
+175,cached_tokens (prompt_tokens_details),84|173,CACHE
+176,cache hit discount (~50%),175,CACHE
+177,cache-friendly stable prompts,174|66,CACHE
+178,caching supported models,173|34|39,CACHE
+179,embeddings API (/embeddings),6|29,EMBED
+180,embedding-3 model,179,EMBED
+181,embedding-2 model,179,EMBED
+182,embedding input parameter,179,EMBED
+183,embedding dimensions (2048 default),180,EMBED
+184,embeddings for semantic search,180|182,EMBED
+185,GLM Coding Plan (developer pack),13|7,OPS
+186,Coding Plan Lite tier,185,OPS
+187,Coding Plan Pro tier,185,OPS
+188,Coding Plan Max tier,185,OPS
+189,prompt-quota windows (5h/weekly),186|187,OPS
+190,Anthropic-compatible endpoint (api.z.ai/api/anthropic),3|185,OPS
+191,ANTHROPIC_BASE_URL env var,190,OPS
+192,ANTHROPIC_AUTH_TOKEN env var,190|7,OPS
+193,API_TIMEOUT_MS env var,190,OPS
+194,Claude Code on GLM,191|192,OPS
+195,server-side model mapping (Haiku/Sonnet/Opus to GLM),194|36,OPS
+196,ANTHROPIC_DEFAULT_SONNET_MODEL override,195|32,OPS
+197,CLAUDE_CODE_AUTO_COMPACT_WINDOW,32|55,OPS
+198,Claude Code /status verification,194,OPS
+199,other coding tools (Cline/OpenCode/Roo),13|16,OPS
+200,Web Search MCP server,185|130,OPS
+201,Web Reader MCP server,185|130|125,OPS
+202,Vision MCP server,185|130|139,OPS
+203,Zread MCP server,185|130,OPS
+204,token-based pricing (per 1M tokens),84,OPS
+205,free vs paid models,204|38|44,OPS
+206,rate limits & tiers,7|204,OPS
+207,concurrency limits,206,OPS
+208,error codes & finish_reason network_error,78|206,OPS

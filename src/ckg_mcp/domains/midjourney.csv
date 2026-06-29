@@ -1,0 +1,195 @@
+ConceptID,ConceptLabel,Dependencies,TaxonomyID
+1,Midjourney Service,,CMD
+2,Discord Bot Interface,1,CMD
+3,Web App Interface,1,CMD
+4,Slash Command,2,CMD
+5,Imagine Command,4,CMD
+6,Imagine Bar,3|5,CMD
+7,Blend Command,4,CMD
+8,Describe Command,4,CMD
+9,Shorten Command,4,CMD
+10,Tune Command,4,CMD
+11,Settings Command,4,CMD
+12,Info Command,4,CMD
+13,Subscribe Command,4,CMD
+14,Fast Command,4,CMD
+15,Relax Command,4,CMD
+16,Turbo Command,4,CMD
+17,Help Command,4,CMD
+18,Ask Command,4,CMD
+19,Docs Command,4,CMD
+20,Show Command,4,CMD
+21,Prefer Command,4,CMD
+22,Prefer Suffix,21,CMD
+23,Prefer Remix,21|117,CMD
+24,Stealth Command,4,CMD
+25,Public Command,4,CMD
+26,Job,5,CMD
+27,Job ID,26,CMD
+28,Image Grid,26,CMD
+29,Parameter,5,PARAM
+30,Parameter Syntax,29,PARAM
+31,Aspect Ratio Parameter,30,PARAM
+32,Max Aspect Ratio,31|129,PARAM
+33,Version Parameter,30|129,PARAM
+34,Niji Parameter,30|138,PARAM
+35,Style Parameter,30,PARAM
+36,Raw Style,35,PARAM
+37,Stylize Parameter,30,PARAM
+38,Default Stylize Value,37,PARAM
+39,Chaos Parameter,30,PARAM
+40,Chaos Range,39,PARAM
+41,Weird Parameter,30,PARAM
+42,Quality Parameter,30,PARAM
+43,Default Quality Value,42,PARAM
+44,Seed Parameter,30,PARAM
+45,Seed Number Range,44,PARAM
+46,Noise Field,44,PARAM
+47,Sameseed Parameter,44|46,PARAM
+48,Stop Parameter,30,PARAM
+49,Tile Parameter,30,PARAM
+50,Seamless Pattern,49,PARAM
+51,No Parameter,30,PARAM
+52,Negative Prompting,51,PARAM
+53,Repeat Parameter,30,PARAM
+54,Image Weight Parameter,30|91,PARAM
+55,HD Parameter,30|135,PARAM
+56,SD Parameter,30|135,PARAM
+57,HD Image Output,55|137,PARAM
+58,Draft Parameter,30|142,PARAM
+59,Personalization Parameter,30|83,PARAM
+60,Style Reference Weight,30|70,PARAM
+61,Character Reference Weight,30|73,PARAM
+62,Omni Reference Weight,30|76,PARAM
+63,Style Code,70|60,PARAM
+64,Video Parameter,30,PARAM
+65,Motion Parameter,30|123,PARAM
+66,Loop Parameter,30|123,PARAM
+67,Video Extend Parameter,30|123,PARAM
+68,End Frame Parameter,30|123,PARAM
+69,Reference System,91,REF
+70,Style Reference,69|63,REF
+71,Style Reference URL,70,REF
+72,Random Style Reference,70|63,REF
+73,Character Reference,69,REF
+74,Character Reference URL,73,REF
+75,Character Consistency,73,REF
+76,Omni Reference,69,REF
+77,Omni Reference URL,76,REF
+78,Omni Weight Range,62,REF
+79,Subject Consistency,76|73,REF
+80,Moodboard,69,REF
+81,Moodboard ID,80,REF
+82,Moodboard Code,81|59,REF
+83,Personalization,69,REF
+84,Personalization Profile,83,REF
+85,Global Profile,84,REF
+86,Profile Compatibility,84|135,REF
+87,Prompt,5,PROMPT
+88,Text Prompt,87,PROMPT
+89,Prompt Structure,87,PROMPT
+90,Prompt Length,89,PROMPT
+91,Image Prompt,87|92,PROMPT
+92,Image Upload,87,PROMPT
+93,Multi-Prompt,87,PROMPT
+94,Double Colon Separator,93,PROMPT
+95,Prompt Weight,94,PROMPT
+96,Decimal Weight,95|129,PROMPT
+97,Negative Weight,95|52,PROMPT
+98,Permutation Prompt,87,PROMPT
+99,Curly Brace Syntax,98,PROMPT
+100,Permutation Job Count,98|26,PROMPT
+101,Mode Restriction,98|150|152,PROMPT
+102,Prompt Suffix,22|87,PROMPT
+103,Image Action,28,EDIT
+104,Upscale,103,EDIT
+105,Subtle Upscale,104,EDIT
+106,Creative Upscale,104,EDIT
+107,Variation,103,EDIT
+108,Vary Strong,107,EDIT
+109,Vary Subtle,107,EDIT
+110,Vary Region,107,EDIT
+111,Inpainting,110,EDIT
+112,Region Selection Tool,110,EDIT
+113,Zoom Out,103,EDIT
+114,Custom Zoom,113|31,EDIT
+115,Pan,103,EDIT
+116,Outpainting,115|113,EDIT
+117,Remix Mode,103,EDIT
+118,Reroll,103,EDIT
+119,Editor,3,EDIT
+120,Erase Tool,119|111,EDIT
+121,Retexture,119|35,EDIT
+122,Smart Select,119|112,EDIT
+123,Video Model,103|124,EDIT
+124,V1 Video,129,EDIT
+125,Image-to-Video,123|28,EDIT
+126,Animate Button,125,EDIT
+127,Automatic Animation,126,EDIT
+128,Manual Animation,126|88,EDIT
+129,Model Version,33,MODEL
+130,V5 Model,129,MODEL
+131,V6 Model,129,MODEL
+132,V6.1 Model,131,MODEL
+133,V7 Model,129,MODEL
+134,V8 Model,129,MODEL
+135,V8.1 Model,134,MODEL
+136,Default Model,135,MODEL
+137,2K Resolution,135,MODEL
+138,Niji Model,129,MODEL
+139,Niji 6 Model,138,MODEL
+140,Niji 7 Model,138,MODEL
+141,Anime Aesthetic,138,MODEL
+142,Draft Mode,135,MODEL
+143,Draft Batch,142|28,MODEL
+144,Conversational Mode,142|88,MODEL
+145,Model Aesthetic Bias,129|37,MODEL
+146,Prompt Adherence,36|129,MODEL
+147,Legacy Model,129,MODEL
+148,Model Default Transition,136|147,MODEL
+149,GPU Mode,26,MODE
+150,Fast Mode,149|14,MODE
+151,Relax Mode,149|15,MODE
+152,Turbo Mode,149|16,MODE
+153,Fast Time,150|164,MODE
+154,Fast Time Reset,153|170,MODE
+155,Relax Time,151|166,MODE
+156,Unlimited Relax Generation,155,MODE
+157,Turbo GPU Cost,152|153,MODE
+158,GPU Time,149,MODE
+159,GPU Cost Per Job,158|42,MODE
+160,Creation Settings,11|3,MODE
+161,Default Speed Setting,160|149,MODE
+162,Speed Switching,14|15|16,MODE
+163,User Account,13,ACCT
+164,Subscription Plan,163,ACCT
+165,Basic Plan,164,ACCT
+166,Standard Plan,164,ACCT
+167,Pro Plan,164,ACCT
+168,Mega Plan,164,ACCT
+169,Annual Billing,164,ACCT
+170,Subscription Renewal,164,ACCT
+171,Stealth Mode,167|24,ACCT
+172,Public Mode,25|164,ACCT
+173,Gallery Visibility,171|172,ACCT
+174,Community Guidelines,163,ACCT
+175,Content Moderation,174,ACCT
+176,Banned Words Filter,175|87,ACCT
+177,Prompt Blocking,176,ACCT
+178,Create Page,3,ACCT
+179,Organize Page,3,ACCT
+180,Folder,179,ACCT
+181,Smart Folder,180,ACCT
+182,Explore Page,3|173,ACCT
+183,Tasks Page,3|84,ACCT
+184,Image Rating,183|83,ACCT
+185,Developer Surface,4|29,API
+186,Official Public API Absence,185,API
+187,Enterprise API Access,186|164,API
+188,Programmatic Generation,5|29,API
+189,Unofficial Third-Party Wrapper,188|186,API
+190,ToS Automation Restriction,189|174,API
+191,Account Ban Risk,190,API
+192,Command-as-API Pattern,185|27,API
+193,Job Polling Pattern,192|26,API
+194,Webhook Absence,186,API

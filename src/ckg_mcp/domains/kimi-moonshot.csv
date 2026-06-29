@@ -1,0 +1,205 @@
+ConceptID,ConceptLabel,Dependencies,TaxonomyID
+1,Moonshot AI,,CORE
+2,Kimi,1,CORE
+3,Kimi OpenPlatform,2|1,CORE
+4,Long-Context LLM,2,CORE
+5,256K Context Window,4,CORE
+6,API Base URL,3,CORE
+7,api.moonshot.ai,6,CORE
+8,api.moonshot.cn,6,CORE
+9,v1 Path Prefix,7,CORE
+10,OpenAI-SDK Compatibility,9|7,CORE
+11,OpenAI Base URL Override,10|9,CORE
+12,OpenAI Python SDK,10,CORE
+13,OpenAI Node SDK,10,CORE
+14,Anthropic-Compatible Endpoint,6|7,CORE
+15,anthropic Path Prefix,14,CORE
+16,Anthropic Messages Endpoint,15|14,CORE
+17,Migrating from OpenAI,10|11,CORE
+18,API Key,3,CORE
+19,Console,3,CORE
+20,API Key Creation,18|19,CORE
+21,MOONSHOT_API_KEY,18,CORE
+22,Bearer Authentication,18,CORE
+23,Organization Setup,3|18,CORE
+24,llms.txt Doc Index,3,CORE
+25,Model ID,3,MODEL
+26,List Models Endpoint,25|9,MODEL
+27,Kimi K2 Family,2|25,MODEL
+28,kimi-k2.5,27,MODEL
+29,kimi-k2.6,27,MODEL
+30,kimi-k2.7-code,27,MODEL
+31,kimi-k2.7-code-highspeed,30,MODEL
+32,Latest Model kimi-k2.6,29,MODEL
+33,Code Model kimi-k2.7-code,30,MODEL
+34,Highspeed Variant,31|30,MODEL
+35,Agentic Model,27,MODEL
+36,300-Step Tool Calling,35|29,MODEL
+37,Moonshot V1 Family,2|25,MODEL
+38,moonshot-v1-8k,37,MODEL
+39,moonshot-v1-32k,37,MODEL
+40,moonshot-v1-128k,37,MODEL
+41,moonshot-v1-vision-preview,37,MODEL
+42,Multimodal Model,28|29,MODEL
+43,Context Window Sizes,25|5,MODEL
+44,Model Capabilities,25,MODEL
+45,Model Selection,25|44,MODEL
+46,Model Inference Pricing,25,MODEL
+47,Per-Million-Token Pricing,46,MODEL
+48,Input Token Price,47,MODEL
+49,Output Token Price,47,MODEL
+50,Cache-Hit Price,47,MODEL
+51,Limited-Time Promotions,46,MODEL
+52,Model Parameter Reference,25|44,MODEL
+53,Chat Completions Endpoint,9|22|25,MODEL
+54,chat/completions Path,53,MODEL
+55,messages Array,53,MODEL
+56,Message Object,55,MODEL
+57,role Field,56,MODEL
+58,system Role,57,MODEL
+59,user Role,57,MODEL
+60,assistant Role,57,MODEL
+61,System Prompt,58,MODEL
+62,content Field,56,MODEL
+63,String Content,62,MODEL
+64,model Field,53|25,MODEL
+65,temperature,53|37,MODEL
+66,top_p,53|37,MODEL
+67,n Parameter,53|37,MODEL
+68,max_completion_tokens,53,MODEL
+69,max_tokens,68,MODEL
+70,stop Sequences,53,MODEL
+71,presence_penalty,53|37,MODEL
+72,frequency_penalty,53|37,MODEL
+73,Sampling Parameters,65|66,MODEL
+74,Completion Response,53,MODEL
+75,choices Array,74,MODEL
+76,choice index,75,MODEL
+77,response message,75|56,MODEL
+78,finish_reason,75,MODEL
+79,finish_reason stop,78,MODEL
+80,finish_reason length,78|68,MODEL
+81,usage Object,74,MODEL
+82,prompt_tokens,81,MODEL
+83,completion_tokens,81,MODEL
+84,total_tokens,81,MODEL
+85,stream Parameter,53,MODEL
+86,Server-Sent Events,85,MODEL
+87,Streaming Delta,86|77,MODEL
+88,stream_options,85,MODEL
+89,include_usage,88|81,MODEL
+90,DONE Sentinel,86,MODEL
+91,Automatic Reconnection,86,MODEL
+92,Multi-Turn Chat,55|60,MODEL
+93,Partial Mode,60|62,PARTIAL
+94,partial Flag,93,PARTIAL
+95,Prefix Completion,94|77,PARTIAL
+96,Prefill Assistant Message,93|60,PARTIAL
+97,Manual Prefix Concatenation,95|77,PARTIAL
+98,Format Control via Prefix,95,PARTIAL
+99,JSON Forcing via Prefix,98,PARTIAL
+100,name Field,56,PARTIAL
+101,Role-Play Consistency,93|100,PARTIAL
+102,Continue from Truncation,93|80,PARTIAL
+103,Tool Use,53|55,TOOL
+104,tools Array,103,TOOL
+105,Tool Definition,104,TOOL
+106,function Tool Type,105,TOOL
+107,function name,106,TOOL
+108,function description,106,TOOL
+109,function parameters,106,TOOL
+110,JSON Schema Parameters,109,TOOL
+111,Max 128 Tools,104,TOOL
+112,tool_choice,103,TOOL
+113,tool_choice auto,112,TOOL
+114,tool_choice none,112,TOOL
+115,tool_choice required,112,TOOL
+116,tool_choice specific,112|107,TOOL
+117,tool_calls Response,77|106,TOOL
+118,tool_call id,117,TOOL
+119,tool_call arguments,117,TOOL
+120,finish_reason tool_calls,78|117,TOOL
+121,tool Role Message,55|117,TOOL
+122,tool_call_id Field,121|118,TOOL
+123,Agentic Tool Loop,120|121|79,TOOL
+124,Streaming Tool Arguments,119|87,TOOL
+125,Built-in Tools,104,TOOL
+126,builtin_function Type,125|105,TOOL
+127,web_search Tool,126,TOOL
+128,Web Search Pricing,127|47,TOOL
+129,Thinking Models,27|29,REASON
+130,thinking Parameter,129|53,REASON
+131,thinking type enabled,130,REASON
+132,thinking type disabled,130,REASON
+133,Thinking on by Default,130|29,REASON
+134,Forced Thinking,30|129,REASON
+135,reasoning_content,129|77,REASON
+136,reasoning_content Ordering,135|87,REASON
+137,Reasoning Token Budget,135|69,REASON
+138,Min 16K max_tokens,137|69,REASON
+139,No Temperature in Thinking,129|65,REASON
+140,Preserved Thinking,135|92,REASON
+141,thinking keep all,140|29,REASON
+142,Reasoning Tool Loop,135|123,REASON
+143,response_format,53,STRUCT
+144,json_object Mode,143,STRUCT
+145,json_schema Mode,143,STRUCT
+146,JSON Schema Validation,145|110,STRUCT
+147,Strict Schema,146,STRUCT
+148,JSON Prompt Requirement,144|61,STRUCT
+149,Partial vs JSON Conflict,144|93,STRUCT
+150,Estimate Token Endpoint,9|55|25,STRUCT
+151,tokenizers Path,150,STRUCT
+152,estimate-token-count,151,STRUCT
+153,estimate total_tokens,152|84,STRUCT
+154,Pre-Send Token Budgeting,153|193,STRUCT
+155,Context Caching,3|55,CACHE
+156,Explicit Context Cache,155,CACHE
+157,Create Cache Endpoint,156|9,CACHE
+158,caching Path,157,CACHE
+159,Cache Object,157,CACHE
+160,cache id,159,CACHE
+161,cache status,159,CACHE
+162,cache ttl,159,CACHE
+163,cache expired_at,159|162,CACHE
+164,reset_ttl,162|159,CACHE
+165,cache Role Reference,159|55,CACHE
+166,Cache Tag,159,CACHE
+167,Cache Pricing,156|47,CACHE
+168,Automatic Prefix Caching,155|28,CACHE
+169,prompt_cache_key,168|53,CACHE
+170,cached_tokens,81|155,CACHE
+171,Files API,9|22,FILE
+172,files Path,171,FILE
+173,Upload File,171,FILE
+174,purpose file-extract,173,FILE
+175,File Extraction,174,FILE
+176,Get File Content,171|175,FILE
+177,Extracted Text into System,176|61,FILE
+178,Document Q&A,177|53,FILE
+179,List Files,171,FILE
+180,Get File Info,171,FILE
+181,Delete File,171,FILE
+182,1000-File Limit,171,FILE
+183,Vision Model,42|41,FILE
+184,Multimodal Content Array,62|183,FILE
+185,image_url Content,184,FILE
+186,Base64 Data URL,185,FILE
+187,video_url Content,184|183,FILE
+188,Image Size Limits,185,FILE
+189,Check Balance Endpoint,9|22,OPS
+190,available_balance,189,OPS
+191,voucher_balance,189|190,OPS
+192,cash_balance,189|190,OPS
+193,Rate Limiting,3|18,OPS
+194,RPM Limit,193,OPS
+195,TPM Limit,193,OPS
+196,TPD Limit,193,OPS
+197,Concurrency Limit,193,OPS
+198,User-Level Limits,193|23,OPS
+199,Recharge Tiers,193|192,OPS
+200,429 Rate Limit Error,193|194,OPS
+201,Error Codes,53,OPS
+202,Batch API,53|171,OPS
+203,Batch 50pct Discount,202|46,OPS
+204,MoonPalace Debugger,53|18,OPS

@@ -1,0 +1,185 @@
+ConceptID,ConceptLabel,Dependencies,TaxonomyID
+1,xAI API,,CORE
+2,Grok,1,CORE
+3,xAI Console (console.x.ai),1,CORE
+4,accounts.x.ai,1,CORE
+5,Team,3,CORE
+6,API key,3|5,CORE
+7,XAI_API_KEY env var,6,CORE
+8,Base URL https://api.x.ai/v1,1,CORE
+9,Bearer authentication,6,CORE
+10,Authorization header,9,CORE
+11,api.x.ai inference host,8,CORE
+12,HTTPS request,11,CORE
+13,JSON request body,12,CORE
+14,JSON response body,12,CORE
+15,HTTP error codes,14,CORE
+16,xai-sdk (native SDK),6|8,CORE
+17,xai-sdk Python,16,CORE
+18,xai-sdk TypeScript,16,CORE
+19,pip install xai-sdk,17,CORE
+20,Quickstart tutorial,6|7|16,CORE
+21,Prepaid credits,5,CORE
+22,Cookbook examples,20,CORE
+23,Model identifier,1,MODEL
+24,Model alias system,23,MODEL
+25,Latest alias (<modelname>-latest),24,MODEL
+26,Stable alias (<modelname>),24,MODEL
+27,Context window,23,MODEL
+28,Token pricing,23,MODEL
+29,Per-million-token pricing,28,MODEL
+30,Input token price,29,MODEL
+31,Output token price,29,MODEL
+32,Cached prompt token price,29,MODEL
+33,grok-4.3,23|27|29,MODEL
+34,grok-4.3 1M context,33|27,MODEL
+35,grok-4.3 flagship,33,MODEL
+36,grok-4.20-0309-reasoning,23,MODEL
+37,grok-4.20-0309-non-reasoning,23,MODEL
+38,grok-4.20-multi-agent-0309,23,MODEL
+39,grok-build-0.1,23,MODEL
+40,grok-build-0.1 coding model,39,MODEL
+41,grok-imagine-image,23,MODEL
+42,grok-imagine-image-quality,23,MODEL
+43,grok-imagine-video,23,MODEL
+44,grok-imagine-video-1.5,23,MODEL
+45,Lowest hallucination rate claim,35,MODEL
+46,List language models endpoint,23|8,MODEL
+47,Responses API,8|13,CHAT
+48,POST /v1/responses,47,CHAT
+49,input parameter,47,CHAT
+50,instructions parameter,47,CHAT
+51,message role,49,CHAT
+52,system role,51,CHAT
+53,user role,51,CHAT
+54,assistant role,51,CHAT
+55,content field,51,CHAT
+56,model parameter,48|23,CHAT
+57,output field,48,CHAT
+58,response id,48,CHAT
+59,Stateful responses,58,CHAT
+60,store parameter,59,CHAT
+61,previous_response_id,58|59,CHAT
+62,30-day response retention,59,CHAT
+63,GET /v1/responses/{response_id},58,CHAT
+64,DELETE /v1/responses/{response_id},58,CHAT
+65,POST /v1/responses/compact,47|59,CHAT
+66,temperature,56,CHAT
+67,top_p,56,CHAT
+68,max_tokens,56,CHAT
+69,seed,56,CHAT
+70,stop sequences,56,CHAT
+71,Streaming (stream=true),48,CHAT
+72,Server-sent events (SSE),71,CHAT
+73,streamed delta,72,CHAT
+74,Usage object,57,CHAT
+75,prompt_tokens,74,CHAT
+76,completion_tokens,74,CHAT
+77,finish_reason,57,CHAT
+78,Function calling,47|13,TOOL
+79,tools parameter,78,TOOL
+80,tool definition,79,TOOL
+81,function name,80,TOOL
+82,function description,80,TOOL
+83,function parameters (JSON Schema),80,TOOL
+84,parameters root must be object,83,TOOL
+85,tool_choice,79,TOOL
+86,tool_choice auto,85,TOOL
+87,tool_choice none,85,TOOL
+88,tool_choice required,85,TOOL
+89,tool_choice specific function,85,TOOL
+90,parallel_tool_calls,79,TOOL
+91,tool_call (model output),78|57,TOOL
+92,tool role message,91,TOOL
+93,tool_call_id,92,TOOL
+94,Agentic loop,91|92,TOOL
+95,Client-side tools,78,TOOL
+96,Server-side tools (built-in),79|94,TOOL
+97,Tool type field,96,TOOL
+98,Automatic tool execution,96,TOOL
+99,Model Context Protocol (MCP) tool,96,TOOL
+100,code_execution tool,96,TOOL
+101,code_interpreter (OpenAI alias),100,TOOL
+102,Python sandbox,100,TOOL
+103,response_format,47,STRUCT
+104,response_format text,103,STRUCT
+105,response_format json_object,103,STRUCT
+106,response_format json_schema,103,STRUCT
+107,JSON mode,105,STRUCT
+108,JSON Schema subset,106,STRUCT
+109,JSON Schema Draft 2020-12,108,STRUCT
+110,Schema basic types,108,STRUCT
+111,Schema constraints,108,STRUCT
+112,Schema composition (anyOf/oneOf/allOf),108,STRUCT
+113,Schema $ref / $defs,108,STRUCT
+114,strict mode,106,STRUCT
+115,Guaranteed schema conformance,114|108,STRUCT
+116,Pydantic schema,106,STRUCT
+117,Zod schema,106,STRUCT
+118,Reasoning model,23,REASON
+119,reasoning_effort,118,REASON
+120,reasoning_effort none,119,REASON
+121,reasoning_effort low (default),119,REASON
+122,reasoning_effort medium,119,REASON
+123,reasoning_effort high,119,REASON
+124,reasoning_content,118|73,REASON
+125,reasoning_tokens,118|74,REASON
+126,Encrypted reasoning content,118,REASON
+127,include reasoning.encrypted_content,126|59,REASON
+128,Reasoning param restrictions,118,REASON
+129,Multi-agent effort semantics,119|38,REASON
+130,Image understanding,55|33,VISION
+131,content array (multimodal),55|130,VISION
+132,input_text part,131,VISION
+133,input_image part,131,VISION
+134,image_url field,133,VISION
+135,base64 data URI image,134,VISION
+136,detail parameter,133,VISION
+137,Supported image formats (jpg/png),133,VISION
+138,20MiB image limit,133,VISION
+139,Multiple images per request,131,VISION
+140,Video input (grok-4.3),131|33,VISION
+141,Imagine API,1,VISION
+142,Image generation,141|42,VISION
+143,"n (image count, max 10)",142,VISION
+144,image response_format (url / b64_json),142,VISION
+145,revised prompt,142,VISION
+146,Video generation,141|44,VISION
+147,Async poll by request id,146,VISION
+148,web_search tool,96,SEARCH
+149,Real-time web browsing,148,SEARCH
+150,allowed_domains (max 5),148,SEARCH
+151,excluded_domains (max 5),148,SEARCH
+152,enable_image_understanding,148,SEARCH
+153,enable_image_search,148,SEARCH
+154,x_search tool,96,SEARCH
+155,X keyword/semantic/user/thread search,154,SEARCH
+156,allowed_x_handles (max 20),154,SEARCH
+157,excluded_x_handles (max 20),154,SEARCH
+158,from_date / to_date (ISO8601),154|148,SEARCH
+159,collections_search tool,96,SEARCH
+160,file_search (OpenAI alias),159,SEARCH
+161,collection_ids,159,SEARCH
+162,Citations,148|154|57,SEARCH
+163,Deprecated Live Search (search_parameters),148|154,SEARCH
+164,OpenAI SDK compatibility,8|6,COMPAT
+165,base_url override,164,COMPAT
+166,Legacy Chat Completions,164,COMPAT
+167,POST /v1/chat/completions,166,COMPAT
+168,messages array,167|51,COMPAT
+169,Anthropic SDK compatibility,8|6,COMPAT
+170,POST /v1/messages,169,COMPAT
+171,Vercel AI SDK (@ai-sdk/xai),164,COMPAT
+172,Migration guide,164|169,COMPAT
+173,deferred parameter (deferred=true),167,OPS
+174,deferred request_id,173,OPS
+175,GET /v1/chat/deferred-completion/{request_id},174,OPS
+176,Deferred polling (200/202),175,OPS
+177,Rate limits (RPM/TPM),23|5,OPS
+178,Spend-based tiers (T0–T4),177|21,OPS
+179,429 Too Many Requests,177,OPS
+180,Exponential backoff retry,179|176,OPS
+181,Management API (management-api.x.ai),5,OPS
+182,Management key,181|3,OPS
+183,Management API key CRUD,182|6,OPS
+184,Billing & usage analytics endpoints,182|21,OPS

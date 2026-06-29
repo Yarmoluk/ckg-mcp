@@ -1,0 +1,291 @@
+ConceptID,ConceptLabel,Dependencies,TaxonomyID
+1,dbt Project,2,CORE
+2,dbt_project.yml,,CORE
+3,config-version,2,CORE
+4,project name,2,CORE
+5,project version,2,CORE
+6,profiles.yml,1,CORE
+7,Profile,6,CORE
+8,profile key,2|7,CORE
+9,Target,7,CORE
+10,outputs,7,CORE
+11,connection config,10|215,CORE
+12,threads,10,CORE
+13,Jinja,1,CORE
+14,Macro,13,CORE
+15,config() function,13,CORE
+16,vars,2,CORE
+17,var() function,16|13,CORE
+18,environment variables,1,CORE
+19,env_var() function,18|13,CORE
+20,secret env vars,18,CORE
+21,model-paths,2,CORE
+22,seed-paths,2,CORE
+23,snapshot-paths,2,CORE
+24,macro-paths,2,CORE
+25,analysis-paths,2,CORE
+26,test-paths,2,CORE
+27,target-path,2,CORE
+28,packages-install-path,2|36,CORE
+29,Seed,22,CORE
+30,seed config,29,CORE
+31,Snapshot,23|44|39,CORE
+32,snapshot timestamp strategy,31,CORE
+33,snapshot check strategy,31,CORE
+34,snapshot validity columns,31,CORE
+35,Analysis,25|52,CORE
+36,Package,1,CORE
+37,packages.yml,36,CORE
+38,dependencies.yml,36|1,CORE
+39,Model,21,MODL
+40,SQL Model,39,MODL
+41,Python Model,39,MODL
+42,model() function,41,MODL
+43,DataFrame,41,MODL
+44,Source,1,MODL
+45,ref() function,39|13,MODL
+46,source() function,44|13,MODL
+47,two-argument ref(),45|36,MODL
+48,versioned ref(),45|59,MODL
+49,this variable,39|45,MODL
+50,dbt.ref(),45|41,MODL
+51,dbt.source(),46|41,MODL
+52,Compiled SQL,40|45,MODL
+53,config.get(),15,MODL
+54,Configuration Hierarchy,15|2,MODL
+55,meta config,15|39,MODL
+56,Model Contract,39|15,MODL
+57,contract enforced,56,MODL
+58,constraints,56,MODL
+59,Model Versions,39|56,MODL
+60,latest_version,59,MODL
+61,deprecation_date,59,MODL
+62,Model Access,39,MODL
+63,Group,39,MODL
+64,Custom Schema,15|39,MODL
+65,generate_schema_name macro,64|14,MODL
+66,Custom Alias,15|39,MODL
+67,generate_alias_name macro,66|14,MODL
+68,Custom Database,15|39,MODL
+69,generate_database_name macro,68|14,MODL
+70,hooks,39|15,MODL
+71,pre-hook / post-hook,70,MODL
+72,Materialization,39,MATL
+73,materialized config,72|15,MATL
+74,View materialization,72,MATL
+75,Table materialization,72,MATL
+76,Ephemeral materialization,72,MATL
+77,Materialized View materialization,72,MATL
+78,Incremental materialization,72|75,MATL
+79,Custom Materialization,72|14,MATL
+80,is_incremental() macro,78,MATL
+81,unique_key,78,MATL
+82,on_schema_change,78,MATL
+83,full-refresh flag,78,MATL
+84,full_refresh config,78|83,MATL
+85,incremental_strategy config,78,MATL
+86,append strategy,85,MATL
+87,merge strategy,85|81,MATL
+88,delete+insert strategy,85|81,MATL
+89,insert_overwrite strategy,85,MATL
+90,microbatch strategy,85,MATL
+91,merge_update_columns,87,MATL
+92,incremental_predicates,87,MATL
+93,event_time,90,MATL
+94,batch_size,90,MATL
+95,begin config,90,MATL
+96,lookback,90,MATL
+97,persist_docs,72|269,MATL
+98,indexes config,75,MATL
+99,grants config,72,MATL
+100,Node,1,DAG
+101,DAG,100|45,DAG
+102,unique_id,100,DAG
+103,FQN,100,DAG
+104,Node Graph / Lineage,101,DAG
+105,parent_map / child_map,101|108,DAG
+106,dbt artifacts,27|100,DAG
+107,Artifact metadata,106,DAG
+108,manifest.json,106|101|39|44|113,DAG
+109,run_results.json,106|108,DAG
+110,catalog.json,106|272,DAG
+111,sources.json,106|174,DAG
+112,semantic_manifest.json,106|182,DAG
+113,Exposure,100|101,DAG
+114,exposure type,113,DAG
+115,exposure depends_on,113|45,DAG
+116,exposure owner,113,DAG
+117,Node Selection,101|100,DAG
+118,--select,117,DAG
+119,--exclude,117,DAG
+120,Selection Syntax,117,DAG
+121,Selection Methods,120,DAG
+122,tag method,121,DAG
+123,path method,121|103,DAG
+124,config method,121,DAG
+125,state method,121|136,DAG
+126,result method,121|109,DAG
+127,source_status method,121|111,DAG
+128,Graph Operators,120|101,DAG
+129,plus operator,128,DAG
+130,at operator,128,DAG
+131,Set Operators,120,DAG
+132,Indirect Selection,117,DAG
+133,YAML Selectors,117,DAG
+134,--selector,133,DAG
+135,dbt ls,117,DAG
+136,State Comparison,108|137,DAG
+137,--state,136|108,DAG
+138,state:modified,125|136,DAG
+139,state:new,125|136,DAG
+140,State Comparison Caveats,136,DAG
+141,Defer,137|45,DAG
+142,--favor-state,141|137,DAG
+143,Slim CI,138|141|128,DAG
+144,Continuous Integration,143,DAG
+145,Discovery API,108|110|109,DAG
+146,Data Test,39|44,TEST
+147,dbt test command,146|167,TEST
+148,Singular Test,146|26,TEST
+149,Generic Test,146|14,TEST
+150,unique test,149,TEST
+151,not_null test,149,TEST
+152,accepted_values test,149,TEST
+153,relationships test,149|45,TEST
+154,Custom Generic Test,149,TEST
+155,data_tests property,149,TEST
+156,test arguments,149,TEST
+157,Test config,146|15,TEST
+158,severity,157,TEST
+159,error_if / warn_if,158,TEST
+160,fail_calc,157,TEST
+161,store_failures,157,TEST
+162,store_failures_as,161,TEST
+163,--store-failures flag,147|161,TEST
+164,where config,157,TEST
+165,limit config,157,TEST
+166,--warn-error flag,158,TEST
+167,Unit Test,39|40,TEST
+168,given / input,167|45,TEST
+169,expect,167,TEST
+170,mock data format,168|169,TEST
+171,Fixture,170,TEST
+172,unit test overrides,167,TEST
+173,test_type selector,147|121,TEST
+174,Source Freshness,44,TEST
+175,freshness block,174,TEST
+176,warn_after / error_after,175,TEST
+177,loaded_at_field,174,TEST
+178,dbt source freshness command,174|111,TEST
+179,dbt Semantic Layer,39|180,SEM
+180,MetricFlow,1,SEM
+181,dbt Semantic Interfaces,180,SEM
+182,Semantic Model,39|180,SEM
+183,Semantic Graph,182|184,SEM
+184,Entity,182,SEM
+185,Primary Entity,184,SEM
+186,Unique Entity,184,SEM
+187,Foreign Entity,184,SEM
+188,Natural Entity,184,SEM
+189,composite entity key,184,SEM
+190,Dimension,182|184,SEM
+191,Categorical Dimension,190,SEM
+192,Time Dimension,190,SEM
+193,agg_time_dimension,192|197,SEM
+194,metric_time,193|192,SEM
+195,Time Spine,192|180,SEM
+196,validity_params,192|188,SEM
+197,Measure,182,SEM
+198,aggregation,197,SEM
+199,non_additive_dimension,197|190,SEM
+200,create_metric,197|202,SEM
+201,Metric,182|197,SEM
+202,Simple Metric,201|198,SEM
+203,Ratio Metric,201,SEM
+204,Cumulative Metric,201|195|194,SEM
+205,Derived Metric,201|194,SEM
+206,Conversion Metric,201|184,SEM
+207,metric filter,201|190|184,SEM
+208,default_granularity,192|201,SEM
+209,Saved Query,201|190|207,SEM
+210,Export,209,SEM
+211,Semantic Layer API,179,SEM
+212,GraphQL API,211,SEM
+213,JDBC API,211,SEM
+214,Python SDK,211,SEM
+215,Adapter,,ADPT
+216,Adapter Abstraction Layer,215,ADPT
+217,Warehouse-Agnostic Portability,216,ADPT
+218,SQL Dialect Differences,216,ADPT
+219,Adapter Plugin,215,ADPT
+220,Supported Data Platforms,219,ADPT
+221,Trusted Adapters,219,ADPT
+222,Connection Manager,219,ADPT
+223,Adapter Credentials,222|6,ADPT
+224,Client Library / Driver,222,ADPT
+225,adapter object,215,ADPT
+226,adapter.dispatch,225,ADPT
+227,Dispatcher Macro,226|14,ADPT
+228,adapter-specific implementation,227,ADPT
+229,default implementation,227,ADPT
+230,dispatch search_order,226|2,ADPT
+231,Adapter Inheritance,226|219,ADPT
+232,Cross-Database Macros,226,ADPT
+233,dateadd / datediff macros,232,ADPT
+234,string macros,232,ADPT
+235,cast / type macros,232,ADPT
+236,aggregate / set macros,232,ADPT
+237,Relation object,216,ADPT
+238,Column object,216,ADPT
+239,Adapter Methods,225,ADPT
+240,BaseAdapter vs SQLAdapter,219,ADPT
+241,dbt-adapters package,219,ADPT
+242,builtins,237|45,ADPT
+243,Postgres adapter,219|240,ADPT
+244,Snowflake adapter,219,ADPT
+245,BigQuery adapter,219|240,ADPT
+246,Databricks adapter,219|248,ADPT
+247,Redshift adapter,219|243,ADPT
+248,Spark adapter,219,ADPT
+249,Trino adapter,219,ADPT
+250,dbt Cloud,1,CLOUD
+251,dbt Cloud IDE,250|255|253,CLOUD
+252,dbt Cloud CLI,250|254,CLOUD
+253,Git Integration,250,CLOUD
+254,Environment,250|253|11,CLOUD
+255,Development Environment,254,CLOUD
+256,Deployment Environment,254,CLOUD
+257,Job,256|258,CLOUD
+258,Job Scheduler,256,CLOUD
+259,Deploy Job,257,CLOUD
+260,CI Job,257|253|143,CLOUD
+261,Merge Job,257|253,CLOUD
+262,Temporary CI schema,260,CLOUD
+263,dbt Cloud CI/CD,260|259|258,CLOUD
+264,Notifications,257|258,CLOUD
+265,Caching,209|210|258,CLOUD
+266,Service Layer,180|250,CLOUD
+267,Service Token,211|254,CLOUD
+268,Documentation,269|272,DOCS
+269,Description,1,DOCS
+270,Docs Block,1,DOCS
+271,doc() function,270|269,DOCS
+272,dbt docs generate,1|269|11,DOCS
+273,dbt docs serve,272,DOCS
+274,Column-Level Metadata,110|269,DOCS
+275,dbt Explorer,259|145|268,DOCS
+276,Column-Level Lineage (Cloud),275|110|274,DOCS
+277,Data Health Tiles,145|113|174,DOCS
+278,Applied vs Definition State,145,DOCS
+279,persist_docs (catalog push),97|110,DOCS
+280,manifest.json as graph artifact,108|104,INTEROP
+281,Warehouse Catalog Bridge,279|269,INTEROP
+282,Adapter Portability Bridge,217|232,INTEROP
+283,Semantic Layer as catalog overlay,179|211,INTEROP
+284,OpenLineage Emission (dbt-ol),108|109|110,INTEROP
+285,dbt-ol send-events,284,INTEROP
+286,OpenLineage Backend / Marquez,284,INTEROP
+287,Data Catalog Interop,281|280|284|145,INTEROP
+288,Cross-Warehouse Migration,282|280,INTEROP
+289,Metric Governance Layer,283|201,INTEROP
+290,Lineage Export Surface,105|284|145,INTEROP

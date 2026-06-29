@@ -1,0 +1,157 @@
+ConceptID,ConceptLabel,Dependencies,TaxonomyID
+1,DeepSeek API,,CORE
+2,DeepSeek Platform,1,CORE
+3,platform.deepseek.com,2,CORE
+4,API key,2,CORE
+5,API key page (platform.deepseek.com/api_keys),4|3,CORE
+6,account balance / top-up,2,CORE
+7,base_url (https://api.deepseek.com),1,CORE
+8,Bearer token authentication,4|7,CORE
+9,Authorization header,8,CORE
+10,RESTful JSON API,1,CORE
+11,OpenAI SDK compatibility,7,CORE
+12,drop-in replacement (OpenAI client),11|4,CORE
+13,Python openai client,11,CORE
+14,Node.js openai client,11,CORE
+15,curl invocation,10|9,CORE
+16,Anthropic API compatibility,1,CORE
+17,Anthropic base_url (/anthropic),16|7,CORE
+18,ANTHROPIC_BASE_URL / ANTHROPIC_API_KEY env vars,17|4,CORE
+19,Anthropic model name mapping,16,CORE
+20,AI coding-agent integrations,19|11,CORE
+21,DeepSeek-V4,1,MODEL
+22,DeepSeek-V4 Preview (2026-04-24),21,MODEL
+23,model parameter,10,MODEL
+24,deepseek-v4-flash,21|23,MODEL
+25,deepseek-v4-pro,21|23,MODEL
+26,1M-token context window,21,MODEL
+27,384K-token max output,21,MODEL
+28,thinking mode,21,MODEL
+29,non-thinking mode,21,MODEL
+30,thinking parameter,28|29,MODEL
+31,thinking enabled/disabled,30,MODEL
+32,reasoning effort (high / max),30,MODEL
+33,effort auto-set to max (agent requests),32|20,MODEL
+34,legacy deepseek-chat alias,24|29,MODEL
+35,legacy deepseek-reasoner alias,24|28,MODEL
+36,legacy alias deprecation (2026-07-24),34|35,MODEL
+37,claude-opus -> deepseek-v4-pro mapping,19|25,MODEL
+38,claude-sonnet/haiku -> deepseek-v4-flash mapping,19|24,MODEL
+39,List Models endpoint (GET /models),23|9,MODEL
+40,model object (id / object / owned_by),39,MODEL
+41,Chat Completions endpoint (POST /chat/completions),10|23,CHAT
+42,messages array,41,CHAT
+43,message role,42,CHAT
+44,system role message,43,CHAT
+45,user role message,43,CHAT
+46,assistant role message,43,CHAT
+47,tool role message,43,CHAT
+48,message content,42,CHAT
+49,stateless API,41,CHAT
+50,multi-round conversation,49|42,CHAT
+51,conversation history concatenation,50|46,CHAT
+52,append assistant reply then new user turn,51,CHAT
+53,system prompt,44,CHAT
+54,temperature parameter,41,CHAT
+55,temperature default (1.0),54,CHAT
+56,temperature range (0-2),54,CHAT
+57,temperature by use case (0.0 code / 1.3 chat / 1.5 creative),54,CHAT
+58,max_tokens parameter,41,CHAT
+59,top_p (nucleus sampling),41,CHAT
+60,stop sequences (up to 16),41,CHAT
+61,deprecated frequency_penalty,41,CHAT
+62,deprecated presence_penalty,41,CHAT
+63,logprobs parameter,41,CHAT
+64,top_logprobs (0-20),63,CHAT
+65,stream parameter,41,CHAT
+66,streaming SSE deltas,65,CHAT
+67,stream_options (include_usage),65,CHAT
+68,completion response object,41,CHAT
+69,choices array,68,CHAT
+70,choice message,69,CHAT
+71,finish_reason (stop / length / tool_calls / content_filter / insufficient_system_resource),69,CHAT
+72,response id / created / model fields,68,CHAT
+73,reasoning model (deepseek-reasoner),35|28,REASON
+74,Chain of Thought (CoT) generation,73,REASON
+75,reasoning_content field,74|70,REASON
+76,content field (final answer),74|70,REASON
+77,reasoning_content vs content separation,75|76,REASON
+78,reasoner max_tokens (default 32K / max 64K incl. CoT),73|58,REASON
+79,reasoning_tokens (completion_tokens_details),74,REASON
+80,unsupported sampling params on reasoner,73|54|59,REASON
+81,logprobs error on reasoner,73|63,REASON
+82,do NOT feed reasoning_content back into context,77|51,REASON
+83,400 error if reasoning_content in input messages,82,REASON
+84,strip reasoning_content before next round,82|52,REASON
+85,CoT not concatenated across rounds,82|50,REASON
+86,reasoning + multi-round conversation,84|85,REASON
+87,tool-call exception (keep reasoning_content in agent turns),82|28,REASON
+88,reasoner supports JSON Output + Prefix Completion,73,REASON
+89,reasoner does NOT support FIM,73,REASON
+90,streaming reasoning_content deltas,75|66,REASON
+91,Function Calling,41,TOOL
+92,tools parameter (max 128 functions),91,TOOL
+93,function definition (type=function),92,TOOL
+94,function name,93,TOOL
+95,function description,93,TOOL
+96,function parameters (JSON Schema),93,TOOL
+97,required parameters array,96,TOOL
+98,tool_choice (none / auto / required / specific),92,TOOL
+99,model returns tool_calls,91|70,TOOL
+100,tool_calls finish_reason,99|71,TOOL
+101,tool_call_id,99,TOOL
+102,developer executes function,99,TOOL
+103,append tool result message,102|47|101,TOOL
+104,send updated history for final answer,103|51,TOOL
+105,strict mode (beta),93|133,TOOL
+106,strict schema types (object/string/array/enum/anyOf/$ref),105,TOOL
+107,JSON Output,41,STRUCT
+108,response_format parameter,107,STRUCT
+109,response_format type json_object,108,STRUCT
+110,"prompt must contain word ""json""",109,STRUCT
+111,provide JSON example in prompt,110,STRUCT
+112,set reasonable max_tokens (JSON),107|58,STRUCT
+113,parse model JSON output,109|76,STRUCT
+114,empty-content caveat (JSON mode),107,STRUCT
+115,Context Caching on Disk,1,CACHE
+116,KV-cache reuse,115,CACHE
+117,enabled by default (no code change),115,CACHE
+118,cache prefix unit,116,CACHE
+119,exact prefix match requirement,118,CACHE
+120,prefix units at input/output end positions,118,CACHE
+121,common-prefix detection,118,CACHE
+122,fixed-interval prefix units (long inputs/outputs),118,CACHE
+123,cache hit,119,CACHE
+124,cache miss,119,CACHE
+125,prompt_cache_hit_tokens (usage),123,CACHE
+126,prompt_cache_miss_tokens (usage),124,CACHE
+127,cache-hit input pricing (much cheaper),123|148,CACHE
+128,cache-miss input pricing (full rate),124|149,CACHE
+129,output still computed (not cached),115,CACHE
+130,cache auto-cleared (hours to days),116,CACHE
+131,caching benefits multi-round + few-shot + repeated system prompt,117|51|53,CACHE
+132,caching benefits long-context Q&A,131|26,CACHE
+133,base_url (beta /beta),7,FIM
+134,"Completions endpoint (POST /completions, beta)",133|10,FIM
+135,FIM (Fill-In-the-Middle) Completion,134,FIM
+136,FIM prompt (prefix),135,FIM
+137,FIM suffix,135,FIM
+138,FIM max_tokens (cap 4096),135|58,FIM
+139,FIM for code/content completion,136|137,FIM
+140,Chat Prefix Completion (beta),133|46,FIM
+141,prefix=true on last assistant message,140,FIM
+142,prefix completion + stop parameter,141|60,FIM
+143,token,1,OPS
+144,token-to-character ratio (EN ~0.3 / ZH ~0.6),143,OPS
+145,offline tokenizer (deepseek_v3_tokenizer),143,OPS
+146,usage object,68,OPS
+147,prompt_tokens / completion_tokens / total_tokens,146|143,OPS
+148,input cache-hit price,143|115,OPS
+149,input cache-miss price,143,OPS
+150,output token price,143,OPS
+151,flash pricing ($0.0028 hit / $0.14 miss / $0.28 out per M),24|148|149|150,OPS
+152,pro pricing ($0.003625 hit / $0.435 miss / $0.87 out per M),25|148|149|150,OPS
+153,concurrency limit (flash 2500 / pro 500),24|25,OPS
+154,keep-alive under load (empty lines / : keep-alive SSE),153|66,OPS
+155,user_id isolation (scheduling),153,OPS
+156,error codes (400/401/402/422/429/500/503),10|6|153,OPS

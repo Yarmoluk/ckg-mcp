@@ -1,0 +1,251 @@
+ConceptID,ConceptLabel,Dependencies,TaxonomyID
+1,Claude API,,CORE
+2,Anthropic Console,1,CORE
+3,API base URL (api.anthropic.com),1,CORE
+4,RESTful API design,1,CORE
+5,anthropic-version header,3,CORE
+6,content-type application/json header,3,CORE
+7,API key,2,CORE
+8,Authorization Bearer header,3,CORE
+9,Workload Identity Federation,8|2,CORE
+10,Client SDKs,1,CORE
+11,beta headers (anthropic-beta),5,CORE
+12,request-id response header,4,CORE
+13,cloud platform access,1,CORE
+14,Claude Platform on AWS,13|9,CORE
+15,Amazon Bedrock,13,CORE
+16,Google Vertex AI,13,CORE
+17,Claude model family,1,MODEL
+18,model parameter,17,MODEL
+19,model ID (pinned snapshot),17,MODEL
+20,model alias,19,MODEL
+21,dateless model ID format,19,MODEL
+22,Claude Opus tier,17,MODEL
+23,Claude Sonnet tier,17,MODEL
+24,Claude Haiku tier,17,MODEL
+25,claude-opus-4-8,22|21,MODEL
+26,claude-opus-4-7,22|21,MODEL
+27,claude-opus-4-6,22|21,MODEL
+28,claude-sonnet-4-6,23|21,MODEL
+29,claude-haiku-4-5-20251001,24|19,MODEL
+30,claude-haiku-4-5 (alias),29|20,MODEL
+31,claude-fable-5,17|21,MODEL
+32,claude-mythos-5,17|21,MODEL
+33,context window,17,MODEL
+34,1M token context window,33,MODEL
+35,max output tokens,17,MODEL
+36,token pricing (per MTok),17,MODEL
+37,choosing a model,22|23|24,MODEL
+38,knowledge cutoff,17,MODEL
+39,Messages API,1|5|6,MSG
+40,POST /v1/messages,39|3,MSG
+41,messages parameter,40,MSG
+42,max_tokens parameter,40,MSG
+43,message role,41,MSG
+44,user role,43,MSG
+45,assistant role,43,MSG
+46,content block,41,MSG
+47,system prompt,40,MSG
+48,mid-conversation system message,47|43|11,MSG
+49,temperature parameter,40,MSG
+50,top_p parameter,40,MSG
+51,stop_sequences parameter,40,MSG
+52,stateless conversation model,41,MSG
+53,multi-turn conversation,52|44|45,MSG
+54,message response object,40,MSG
+55,usage object,54,MSG
+56,input_tokens,55,MSG
+57,output_tokens,55,MSG
+58,stop_reason,54,MSG
+59,end_turn stop reason,58,MSG
+60,max_tokens stop reason,58|42,MSG
+61,refusal stop reason,58,MSG
+62,stop_details,61,MSG
+63,pause_turn stop reason,58,MSG
+64,streaming (stream parameter),40,MSG
+65,Server-Sent Events (SSE),64,MSG
+66,content_block_start event,65|46,MSG
+67,content_block_delta event,66,MSG
+68,Token Counting API,39,MSG
+69,POST /v1/messages/count_tokens,68|3,MSG
+70,Models API,1,MSG
+71,GET /v1/models,70|3,MODEL
+72,GET /v1/models/{id},70,MODEL
+73,model capabilities object,72,MODEL
+74,tool use,39,TOOL
+75,tools parameter,74|40,TOOL
+76,tool definition,75,TOOL
+77,tool name,76,TOOL
+78,tool description,76,TOOL
+79,input_schema (JSON Schema),76,TOOL
+80,tool_use content block,76|46,TOOL
+81,tool_use stop reason,58|80,TOOL
+82,tool_result content block,80|44,TOOL
+83,client tools,74,TOOL
+84,server tools,74,TOOL
+85,agentic loop,81|82,TOOL
+86,tool_choice parameter,75,TOOL
+87,tool_choice auto,86,TOOL
+88,tool_choice any,86,TOOL
+89,parallel tool use,85,TOOL
+90,tool runner (SDK helper),85|10,TOOL
+91,web_search tool,84,TOOL
+92,web_search_20260209,91,TOOL
+93,web_fetch tool,84,TOOL
+94,web_fetch_20260209,93,TOOL
+95,code execution tool,84,TOOL
+96,code_execution_20260120,95,TOOL
+97,sandboxed container,95,TOOL
+98,bash tool,83,TOOL
+99,text editor tool,83,TOOL
+100,memory tool,83,TOOL
+101,memory_20250818,100,TOOL
+102,tool search tool,84,TOOL
+103,programmatic tool calling,95|85,TOOL
+104,strict tool use,76|79,TOOL
+105,computer use tool,74|11,TOOL
+106,screenshot action,105,TOOL
+107,mouse control action,105,TOOL
+108,keyboard input action,105,TOOL
+109,server-hosted computer use,105|84,TOOL
+110,self-hosted computer use,105|83,TOOL
+111,computer use loop,105|85|106,TOOL
+112,Model Context Protocol (MCP),74,MCP
+113,MCP connector,112|39,MCP
+114,mcp_servers parameter,113,MCP
+115,MCP server definition,114,MCP
+116,remote MCP server (url),115,MCP
+117,MCP server name,115,MCP
+118,mcp_toolset,75|117,MCP
+119,mcp_toolset default_config,118,MCP
+120,mcp_toolset configs (per-tool),118,MCP
+121,mcp_tool_use block,118|46,MCP
+122,mcp_tool_result block,121,MCP
+123,MCP OAuth authorization_token,115|8,MCP
+124,multiple MCP servers,114|118,MCP
+125,client-side MCP helpers,112|10,MCP
+126,prompt caching,39,CACHE
+127,prefix-match invariant,126,CACHE
+128,cache_control ephemeral,126,CACHE
+129,cache breakpoint,128,CACHE
+130,top-level auto-caching,128,CACHE
+131,minimum cacheable prefix,126|18,CACHE
+132,cache_creation_input_tokens,55|128,CACHE
+133,cache_read_input_tokens,55|128,CACHE
+134,silent cache invalidator,127,CACHE
+135,cache pre-warming (max_tokens 0),129|42,CACHE
+136,cache write/read economics,132|133,CACHE
+137,extended thinking,39,THINK
+138,thinking parameter,137|40,THINK
+139,thinking content block,138|46,THINK
+140,thinking signature,139,THINK
+141,budget_tokens (legacy),138|42,THINK
+142,adaptive thinking,138,THINK
+143,effort parameter,142,THINK
+144,output_config parameter,40,THINK
+145,effort levels (low/medium/high/max),143|144,THINK
+146,thinking display (summarized),138,THINK
+147,thinking display (omitted),138,THINK
+148,interleaved thinking,142|85,THINK
+149,redacted_thinking block,139,THINK
+150,thinking_delta event,139|67,THINK
+151,thinking block replay (multi-turn),139|53,THINK
+152,task budgets (beta),144|85,THINK
+153,structured outputs,39,STRUCT
+154,output_config.format,153|144,STRUCT
+155,json_schema output format,154|79,STRUCT
+156,messages.parse helper,154|10,STRUCT
+157,strict schema conformance,155|104,STRUCT
+158,compaction (beta),39|33,STRUCT
+159,compaction block,158|46,STRUCT
+160,context_management config,158,STRUCT
+161,context editing,160|85,STRUCT
+162,prefill removal (4.6+),45|153,STRUCT
+163,Claude Agent SDK,10|85,AGENT
+164,agent design,85|74,AGENT
+165,subagent,164|163,AGENT
+166,agent tool surface,164|76,AGENT
+167,Managed Agents,1|11,AGENT
+168,Agent object,167,AGENT
+169,POST /v1/agents,168|3,AGENT
+170,agent versioning,169,AGENT
+171,Session object,167|168,AGENT
+172,POST /v1/sessions,171|3,AGENT
+173,session lifecycle,171,AGENT
+174,Environment object,167,AGENT
+175,container (session workspace),174|171,AGENT
+176,session event stream,171|65,AGENT
+177,agent_toolset_20260401,171|74,AGENT
+178,custom tool (managed agent),171|76,AGENT
+179,session resources (files/repos),171,AGENT
+180,vault (credentials),171|123,AGENT
+181,memory store (managed agent),171,AGENT
+182,multiagent coordinator,168|165,AGENT
+183,outcomes (define_outcome),171,AGENT
+184,scheduled deployment,168|174,AGENT
+185,Anthropic CLI (ant),1|7,AGENT
+186,vision (image input),46,MM
+187,image content block,186,MM
+188,base64 image source,187,MM
+189,URL image source,187,MM
+190,high-resolution vision,186,MM
+191,PDF support,46,MM
+192,document content block,191,MM
+193,base64 PDF source,192,MM
+194,URL PDF source,192,MM
+195,plain text document source,192,MM
+196,custom content document source,192,MM
+197,citations,192,MM
+198,citations enabled flag,197,MM
+199,char_location citation,197|195,MM
+200,page_location citation,197|193,MM
+201,content_block_location citation,197|196,MM
+202,Files API,1,FILES
+203,POST /v1/files (upload),202|3,FILES
+204,file_id reference,203,FILES
+205,file document source,192|204,FILES
+206,file image source,187|204,FILES
+207,file download,202|95,FILES
+208,Message Batches API,39,BATCH
+209,POST /v1/messages/batches,208|3,BATCH
+210,batch request (custom_id),209,BATCH
+211,batch 50% discount,208|36,BATCH
+212,batch processing_status,209,BATCH
+213,batch polling (retrieve),212,BATCH
+214,batch results retrieval,209|212,BATCH
+215,batch with prompt caching,209|126,BATCH
+216,extended output (300k beta),209|35,BATCH
+217,Claude Code,1,CODE
+218,Claude Code CLI,217,CODE
+219,CLAUDE.md memory,217,CODE
+220,auto memory,219,CODE
+221,slash commands,217,CODE
+222,Claude Code skills,217|221,CODE
+223,hooks,217,CODE
+224,settings.json,217,CODE
+225,Claude Code MCP integration,217|112,CODE
+226,Claude Code subagents,217|165,CODE
+227,headless mode (claude -p),218,CODE
+228,VS Code extension,217,CODE
+229,JetBrains plugin,217,CODE
+230,Claude Code desktop app,217,CODE
+231,Claude Code on the web,217,CODE
+232,remote control / teleport,217|231,CODE
+233,GitHub Actions integration,217,CODE
+234,Slack integration,217,CODE
+235,routines (scheduled tasks),217,CODE
+236,Claude Code Agent SDK link,217|163,CODE
+237,error response format,4|12,OPS
+238,HTTP error codes,237,OPS
+239,400 invalid_request_error,238,OPS
+240,429 rate_limit_error,238,OPS
+241,SDK retry with backoff,240|10,OPS
+242,typed exception classes,238|10,OPS
+243,rate limits (RPM/TPM/spend),1,OPS
+244,usage tiers,243,OPS
+245,service tiers (priority),243,OPS
+246,workspace,2,OPS
+247,Admin API,2|7,OPS
+248,Admin API key,247,OPS
+249,organization members & roles,247,OPS
+250,Usage and Cost API,247|55,OPS

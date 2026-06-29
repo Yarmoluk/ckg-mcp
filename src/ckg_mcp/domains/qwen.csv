@@ -1,0 +1,230 @@
+ConceptID,ConceptLabel,Dependencies,TaxonomyID
+1,Alibaba Cloud Model Studio,,CORE
+2,DashScope,1,CORE
+3,Qwen model family,1,CORE
+4,Alibaba Cloud account,1,CORE
+5,Activate Model Studio,4,CORE
+6,Workspace,5,CORE
+7,API key,5,CORE
+8,Key Management page,5,CORE
+9,DASHSCOPE_API_KEY env var,7,CORE
+10,Region selection,2,CORE
+11,DashScope native endpoint,2|10,CORE
+12,OpenAI-compatible endpoint,2|10,CORE
+13,compatible-mode/v1 base_url,12,CORE
+14,Beijing endpoint,10,CORE
+15,Singapore international endpoint,10,CORE
+16,US Virginia endpoint,10,CORE
+17,Hong Kong endpoint,10,CORE
+18,Region key isolation,7|10,CORE
+19,DashScope Python SDK,11|9,CORE
+20,DashScope Java SDK,11|9,CORE
+21,OpenAI Python SDK,13|9,CORE
+22,OpenAI Node.js SDK,13|9,CORE
+23,HTTP REST call,11|7,CORE
+24,LangChain integration,21,CORE
+25,Model ID,3,MODEL
+26,Context window,25,MODEL
+27,Commercial model,25,MODEL
+28,Open-weight model,25,MODEL
+29,Model snapshot version,25,MODEL
+30,Latest alias,25,MODEL
+31,Pricing tier,25,MODEL
+32,qwen3-max,27|26,MODEL
+33,qwen3.5-plus,27|26,MODEL
+34,qwen3.5-flash,27|26,MODEL
+35,qwen-plus,27|26,MODEL
+36,qwen-flash,27|26,MODEL
+37,qwen-turbo,27|26,MODEL
+38,qwen-max,27|26,MODEL
+39,qwen-long,27|26,MODEL
+40,qwq-plus,27|26,MODEL
+41,qwen3-coder-plus,27|26,MODEL
+42,qwen3-coder-flash,27|26,MODEL
+43,qwen3-coder-next,27|26,MODEL
+44,qwen3-vl-plus,27|26,MODEL
+45,qwen3-vl-flash,27|26,MODEL
+46,qwen-vl-max,27|26,MODEL
+47,qwen-vl-plus,27|26,MODEL
+48,qwen-vl-ocr,27|26,MODEL
+49,qvq-max,27|26,MODEL
+50,qwen3.5-omni-plus,27|26,MODEL
+51,qwen3-omni-flash,27|26,MODEL
+52,qwen-omni-turbo,27|26,MODEL
+53,qwen-math-plus,27|26,MODEL
+54,qwen3-235b-a22b,28|26,MODEL
+55,qwen3.5-397b-a17b,28|26,MODEL
+56,qwen3-32b,28|26,MODEL
+57,1M-token context,26|35|36|37,MODEL
+58,10M-token context,26|39,MODEL
+59,Chat completion,25|12,CHAT
+60,Generation.call,19|25,CHAT
+61,chat.completions.create,21|25,CHAT
+62,messages array,59,CHAT
+63,role field,62,CHAT
+64,system role,63,CHAT
+65,user role,63,CHAT
+66,assistant role,63,CHAT
+67,tool role,63,CHAT
+68,content field,62,CHAT
+69,System prompt,64,CHAT
+70,Multi-turn conversation,62|66,CHAT
+71,model parameter,59|25,CHAT
+72,temperature,59,CHAT
+73,top_p,59,CHAT
+74,top_k,60,CHAT
+75,max_tokens,59,CHAT
+76,presence_penalty,59,CHAT
+77,frequency_penalty,59,CHAT
+78,seed,59,CHAT
+79,stop,59,CHAT
+80,n parameter,59,CHAT
+81,result_format,60,CHAT
+82,choices array,59,CHAT
+83,finish_reason,82,CHAT
+84,usage object,59,CHAT
+85,prompt_tokens,84,CHAT
+86,completion_tokens,84,CHAT
+87,total_tokens,84,CHAT
+88,Streaming output,59,CHAT
+89,stream parameter,88,CHAT
+90,stream_options include_usage,89|84,CHAT
+91,incremental_output,60|88,CHAT
+92,Deep thinking mode,59|25,THINK
+93,Hybrid thinking model,92|32,THINK
+94,enable_thinking,92,THINK
+95,thinking_budget,94,THINK
+96,reasoning_content field,92|82,THINK
+97,Thinking-only model,92|40,THINK
+98,Thinking default on (Qwen3.5),93|33,THINK
+99,Thinking default off (Qwen3),93|35,THINK
+100,enable_thinking via extra_body,94|21,THINK
+101,enable_thinking via DashScope param,94|60,THINK
+102,Thinking streaming requirement,92|91|89,THINK
+103,Reasoning latency cost,92|84,THINK
+104,QwQ reasoning model,97|40,THINK
+105,QVQ visual reasoning,97|49,THINK
+106,Early-stop summary,95,THINK
+107,Reasoning effort control,95,THINK
+108,Function calling,59,TOOL
+109,tools array,108,TOOL
+110,tool type function,109,TOOL
+111,function name,110,TOOL
+112,function description,110,TOOL
+113,function parameters schema,110,TOOL
+114,JSON Schema,113,TOOL
+115,tool_choice,109,TOOL
+116,tool_choice auto,115,TOOL
+117,tool_choice none,115,TOOL
+118,tool_choice required,115,TOOL
+119,tool_choice specific function,115,TOOL
+120,parallel_tool_calls,109,TOOL
+121,tool_calls response,108|82,TOOL
+122,tool_call id,121,TOOL
+123,function arguments JSON,121,TOOL
+124,tool result message,67|122,TOOL
+125,Streaming tool calls,121|88,TOOL
+126,Agentic loop,124|70,TOOL
+127,OpenAI Responses API,12|59,TOOL
+128,Built-in web search tool,127,TOOL
+129,Built-in code interpreter tool,127,TOOL
+130,Built-in web extractor tool,127,TOOL
+131,Stateful conversation,127|70,TOOL
+132,response_format,59,STRUCT
+133,json_object mode,132,STRUCT
+134,JSON keyword requirement,133|62,STRUCT
+135,Structured output non-thinking only,133|92,STRUCT
+136,Schema in prompt guidance,133|69,STRUCT
+137,Avoid max_tokens truncation,133|75,STRUCT
+138,JSON parsing of arguments,123|133,STRUCT
+139,Structured extraction pattern,133|136,STRUCT
+140,Multimodal content array,68,MM
+141,type text part,140,MM
+142,type image_url part,140,MM
+143,Vision understanding,44|140,MM
+144,Qwen3-VL,143|44|45,MM
+145,Qwen2.5-VL,143|46|47,MM
+146,Image by public URL,142,MM
+147,Image by base64 data URI,142,MM
+148,Image by local file path,142|19,MM
+149,Multiple images input,140|142,MM
+150,Resolution limits,143,MM
+151,OCR capability,143|48,MM
+152,Document parsing to markdown,151|144,MM
+153,Object localization,144,MM
+154,Video understanding,143,MM
+155,video_url part,154|140,MM
+156,video frame sequence,154|140,MM
+157,fps parameter,155,MM
+158,max_frames parameter,156,MM
+159,Qwen-Omni,51|50,MM
+160,Any-to-any modality,159|140,MM
+161,modalities parameter,159,MM
+162,Audio output,161|163,MM
+163,audio voice config,159,MM
+164,Omni streaming-only,159|89,MM
+165,Audio understanding,159|142,MM
+166,Async task pattern,11,GEN
+167,Create task,166,GEN
+168,Query task by task_id,167,GEN
+169,task result URL 24h expiry,168,GEN
+170,Image generation,166,GEN
+171,ImageSynthesis interface,170|19,GEN
+172,qwen-image,170,GEN
+173,qwen-image-2.0-pro,170,GEN
+174,wan2.6-t2i,170,GEN
+175,prompt parameter,170,GEN
+176,negative_prompt,170,GEN
+177,size parameter,170,GEN
+178,prompt_extend,175,GEN
+179,Image editing,170|172,GEN
+180,Synchronous image call,172|174,GEN
+181,Video generation,166,GEN
+182,VideoSynthesis interface,181|19,GEN
+183,wan2.7-t2v text-to-video,181,GEN
+184,wan2.6-i2v image-to-video,181,GEN
+185,Speech recognition ASR,2,GEN
+186,qwen3-asr-flash,185,GEN
+187,Paraformer ASR,185,GEN
+188,Realtime ASR WebSocket,185,GEN
+189,Speech synthesis TTS,2,GEN
+190,qwen3-tts-flash,189,GEN
+191,CosyVoice TTS,189,GEN
+192,Context caching,59|84,CACHE
+193,Implicit cache,192,CACHE
+194,Explicit cache,192,CACHE
+195,cache_control ephemeral,194,CACHE
+196,cached_tokens usage field,192|85,CACHE
+197,Implicit cache discount,193|31,CACHE
+198,Explicit cache discount,194|31,CACHE
+199,Cache minimum tokens,193|194,CACHE
+200,Long context handling,57|58,CACHE
+201,qwen-long large documents,200|39,CACHE
+202,Qwen-Coder agentic,41|108,CACHE
+203,Fill-in-the-middle completion,41,CACHE
+204,Text embedding,2|7,EMBED
+205,text-embedding-v4,204,EMBED
+206,text-embedding-v3,204,EMBED
+207,TextEmbedding.call,204|19,EMBED
+208,embeddings endpoint OpenAI,204|13,EMBED
+209,dimensions parameter,205,EMBED
+210,output_type dense sparse,207,EMBED
+211,text_type query document,204,EMBED
+212,embedding batch limit,204,EMBED
+213,8192 token input limit,204,EMBED
+214,Batch inference,12|166,OPS
+215,File upload purpose batch,214|13,OPS
+216,JSONL batch format,215,OPS
+217,batch custom_id,216,OPS
+218,Create batch /v1/batches,215|216,OPS
+219,batch completion_window,218,OPS
+220,Batch status polling,218,OPS
+221,Batch output file retrieval,220,OPS
+222,Batch 50% discount,214|31,OPS
+223,Batch scale limits,216,OPS
+224,Rate limiting,7|25,OPS
+225,RPM limit,224,OPS
+226,TPM limit,224,OPS
+227,Account-level quota,224|6,OPS
+228,Tier-based limits,224|31,OPS
+229,Error and retry handling,224|83,OPS

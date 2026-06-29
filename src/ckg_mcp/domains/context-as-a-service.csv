@@ -1,0 +1,61 @@
+ConceptID,ConceptLabel,Dependencies,TaxonomyID
+1,Large Language Model,,FOUND
+2,Context Window,1,FOUND
+3,Token,1,FOUND
+4,Token Budget,2|3,FOUND
+5,Context Engineering,2|4,FOUND
+6,Retrieval Augmented Generation,1|2,RETR
+7,Vector Embedding,6,RETR
+8,Similarity Search,7,RETR
+9,Chunk Retrieval,6|8,RETR
+10,Context Bloat,6|9|4,RETR
+11,Lost in the Middle Problem,10|2,RETR
+12,Retrieval Noise,9|10,RETR
+13,Hallucination,12|11,RETR
+14,GraphRAG,6,RETR
+15,Knowledge Graph,1,KG
+16,Ontology,15,KG
+17,Node,15,KG
+18,Edge,15|17,KG
+19,Typed Edge,18,KG
+20,Directed Acyclic Graph,15|18,KG
+21,Compact Knowledge Graph,15|20|19,CKG
+22,Graph Traversal,21|18,CKG
+23,Prerequisite Chain,22|20,CKG
+24,Subgraph Query,22|21,CKG
+25,Concept Node,17|21,CKG
+26,Dependency Edge,19|21,CKG
+27,Taxonomy Tag,25|16,CKG
+28,Domain CKG,21|16,CKG
+29,Token Compression,3|4|21,COMP
+30,Compression Ratio,29,COMP
+31,Intelligence Density,30|21,COMP
+32,Signal-to-Noise Ratio,12|29,COMP
+33,Domain Lock,28|5,COMP
+34,Domain-Locked Agent,33|21|22,AGENT
+35,Deterministic Reasoning,34|22,AGENT
+36,Atomic Context,35|29,AGENT
+37,Auditable Answer,35|19,AGENT
+38,Business Rules,34,AGENT
+39,Agent Constraints,38|34,AGENT
+40,State Machine,39,AGENT
+41,Workflow Orchestration,40,AGENT
+42,Model Context Protocol,22|34,SERVE
+43,MCP Tool,42,SERVE
+44,Context as a Service,42|28|33,SERVE
+45,ckg-mcp Server,44|42,SERVE
+46,Domain Endpoint,45|28,SERVE
+47,BERT F1 Score,34|35,BENCH
+48,Cost per Correct Answer,47|3,BENCH
+49,Token Efficiency,30|48,BENCH
+50,RAG Benchmark,6|47,BENCH
+51,CKG Benchmark,21|47,BENCH
+52,RAG Token Burn,6|9|4,COMP
+53,CKG Token Footprint,21|29|3,COMP
+54,Compression Factor 11x,30|52|53,COMP
+55,Accuracy Improvement,47|51|50,COMP
+56,Local LLM,1,LLM
+57,Small Open Source Model,56,LLM
+58,Domain Finetuning,57|28,LLM
+59,Knowledge Gap in Weights,57|1,LLM
+60,CKG as Knowledge Supplement,59|44|21,LLM

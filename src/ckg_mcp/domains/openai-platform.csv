@@ -1,0 +1,258 @@
+ConceptID,ConceptLabel,Dependencies,TaxonomyID
+1,OpenAI Platform,,CORE
+2,OpenAI API,1,CORE
+3,REST API,,CORE
+4,HTTPS Endpoint,3,CORE
+5,Bearer Token Auth,4,CORE
+6,API Request,2|4|5,CORE
+7,API Response,6,CORE
+8,JSON Payload,3,CORE
+9,Token,,CORE
+10,Tokenizer,9,CORE
+11,Input Tokens,9|6,CORE
+12,Output Tokens,9|7,CORE
+13,Usage Object,11|12,CORE
+14,Official SDKs,2,CORE
+15,Python SDK,14,CORE
+16,Node.js SDK,14,CORE
+17,Streaming,7,CORE
+18,Server-Sent Events,17,CORE
+19,Idempotency Key,6,CORE
+20,Error Handling,7,CORE
+21,Webhooks,7,CORE
+22,Changelog,2,CORE
+23,Dashboard,1,CORE
+24,API Reference,2,CORE
+25,Model,2,MODEL
+26,Model ID,25,MODEL
+27,Context Window,25|9,MODEL
+28,Knowledge Cutoff,25,MODEL
+29,Frontier Model,25,MODEL
+30,GPT-5.5,29|27,MODEL
+31,GPT-5.5-pro,30,MODEL
+32,GPT-5.4,29|27,MODEL
+33,GPT-5.4-pro,32,MODEL
+34,GPT-5.4-mini,32|36,MODEL
+35,GPT-5.4-nano,32|37,MODEL
+36,Mini Variant,25,MODEL
+37,Nano Variant,25,MODEL
+38,GPT-5.2,29,MODEL
+39,GPT-5.1,29,MODEL
+40,GPT-4.1,25,MODEL
+41,o-series Reasoning Model,25|130,MODEL
+42,o3,41,MODEL
+43,o3-pro,42,MODEL
+44,o4-mini,41|36,MODEL
+45,Open-Weight Model,25,MODEL
+46,gpt-oss-120b,45,MODEL
+47,gpt-oss-20b,45,MODEL
+48,Million-Token Context,27|30|32,MODEL
+49,Long-Context Pricing,48|50,MODEL
+50,Pricing,25|11|12,MODEL
+51,Per-Token Pricing,50,MODEL
+52,Model Selection,25|27|50,MODEL
+53,Latency vs Quality Tradeoff,52|36|133,MODEL
+54,Model Deprecation,25|55,MODEL
+55,Model Lifecycle,25,MODEL
+56,Snapshot Model ID,26|55,MODEL
+57,Capability Matrix,25|146|89|130,MODEL
+58,Model Release Notes,55|22,MODEL
+59,Responses API,2|25,RESP
+60,Item,59,RESP
+61,Input Item,60|6,RESP
+62,Output Item,60|7,RESP
+63,Message Item,60,RESP
+64,Output Text,62|63,RESP
+65,instructions Parameter,59,RESP
+66,input Parameter,59|61,RESP
+67,store Parameter,59|7,RESP
+68,previous_response_id,59|67,RESP
+69,Response Chaining,68|62,RESP
+70,Item Replay,61|62,RESP
+71,Stateful Context,67|69,RESP
+72,Conversations API,59|71,RESP
+73,Conversation Object,72,RESP
+74,Conversation Items,73|60,RESP
+75,30-Day Retention,67,RESP
+76,Chat Completions API,2|25,RESP
+77,messages Array,76,RESP
+78,choices Array,76|7,RESP
+79,System Message,77,RESP
+80,Responses-vs-Chat Migration,59|76,RESP
+81,Assistants API,2,RESP
+82,Assistants Deprecation,81|59,RESP
+83,Thread Object,81,RESP
+84,Run Object,81|83,RESP
+85,max_output_tokens,59|12,RESP
+86,Response Object,59|62|13,RESP
+87,Tool Use,59|25,TOOL
+88,tools Array,87,TOOL
+89,Function Calling,88,TOOL
+90,Function Definition,89|117,TOOL
+91,Function Name,90,TOOL
+92,Function Parameters,90|117,TOOL
+93,Tool Call,89|62,TOOL
+94,Function Output,93|61,TOOL
+95,Tool Call Loop,93|94,TOOL
+96,tool_choice,89,TOOL
+97,Parallel Tool Calls,89|93,TOOL
+98,allowed_tools,96|88,TOOL
+99,Strict Function Mode,90|118,TOOL
+100,Custom Tool,87,TOOL
+101,Context-Free Grammar,100,TOOL
+102,Tool Namespaces,88,TOOL
+103,Tool Search,88|32,TOOL
+104,Built-in Tool,87|59,TOOL
+105,Web Search Tool,104,TOOL
+106,File Search Tool,104|194,TOOL
+107,Code Interpreter Tool,104,TOOL
+108,Computer Use Tool,104|109,TOOL
+109,Computer Use Model,25|146,TOOL
+110,Computer Action Loop,108|111,TOOL
+111,Screenshot,146,TOOL
+112,MCP,,TOOL
+113,Remote MCP Tool,104|112,TOOL
+114,MCP Connector,113,TOOL
+115,Structured Outputs,59|117,STRUCT
+116,JSON Mode,76|8,STRUCT
+117,JSON Schema,8,STRUCT
+118,Strict Mode,115|117,STRUCT
+119,text.format,59|115,STRUCT
+120,response_format,76|115,STRUCT
+121,Pydantic Parsing,115|15,STRUCT
+122,Zod Parsing,115|16,STRUCT
+123,parse Helper,121|122,STRUCT
+124,Schema Refusal,115|125,STRUCT
+125,Refusal Handling,115|62,STRUCT
+126,Supported Schema Subset,117|118,STRUCT
+127,Recursive Schema,126,STRUCT
+128,Enum Constraint,126,STRUCT
+129,Structured Tool Args,99|115,STRUCT
+130,Reasoning Model,25,REASON
+131,Internal Reasoning,130,REASON
+132,Reasoning Tokens,131|12,REASON
+133,reasoning.effort,130,REASON
+134,Effort none,133,REASON
+135,Effort minimal,133,REASON
+136,Effort low,133,REASON
+137,Effort medium,133,REASON
+138,Effort high,133,REASON
+139,Effort xhigh,133,REASON
+140,Reasoning Summary,130|141,REASON
+141,reasoning.summary,130,REASON
+142,Reasoning Item,130|62,REASON
+143,Encrypted Reasoning,142|144,REASON
+144,include Parameter,59,REASON
+145,Multimodal Input,25|6,MM
+146,Vision Input,145,MM
+147,Image URL Input,146,MM
+148,Base64 Image Input,146,MM
+149,File ID Input,146|191,MM
+150,Image Detail Level,146,MM
+151,Detail low,150,MM
+152,Detail high,150,MM
+153,Detail original,150,MM
+154,Multi-Image Input,146,MM
+155,PDF Input,149,MM
+156,Image Generation,25|145,MM
+157,Images API,156,MM
+158,gpt-image-2,156,MM
+159,Image Generation Tool,104|158,MM
+160,Image Editing,157|158,MM
+161,Inpainting Mask,160,MM
+162,Input Fidelity,160,MM
+163,Multi-Turn Image Editing,160|68,MM
+164,Audio API,25|145,MM
+165,Text-to-Speech,164,MM
+166,TTS Voices,165,MM
+167,gpt-4o-mini-tts,165,MM
+168,Speech-to-Text,164,MM
+169,gpt-4o-transcribe,168,MM
+170,whisper-1,168,MM
+171,Audio in Chat,76|164,MM
+172,Moderation API,2|213,MM
+173,Agents SDK,59|87,AGENT
+174,Agent,173|65,AGENT
+175,Agent Tools,174|88,AGENT
+176,Runner,173|174,AGENT
+177,Agent Loop,176|95,AGENT
+178,Handoff,174|176,AGENT
+179,Guardrail,174,AGENT
+180,Input Guardrail,179,AGENT
+181,Output Guardrail,179,AGENT
+182,Agent Session,173|71,AGENT
+183,Tracing,173|177,AGENT
+184,Trace Dashboard,183|23,AGENT
+185,Agent Orchestration,178|177,AGENT
+186,Specialist Agent,174|178,AGENT
+187,AgentKit,173|185,AGENT
+188,Hosted Tool,175|104,AGENT
+189,MCP Agent Tool,175|113,AGENT
+190,Human Approval Checkpoint,179|108,AGENT
+191,Files API,2,RETR
+192,File Object,191,RETR
+193,File Upload,191|192,RETR
+194,Vector Store,191|209,RETR
+195,Vector Store File,194|192,RETR
+196,Chunking,195,RETR
+197,Chunk Overlap,196,RETR
+198,Semantic Search,194|209,RETR
+199,File Attributes,195,RETR
+200,Metadata Filtering,199|198,RETR
+201,Retrieval API,194|198,RETR
+202,RAG Workflow,106|201,RETR
+203,Vector Store Expiration,194,RETR
+204,Hybrid Search,198,RETR
+205,Prompt Caching,6|11,RETR
+206,Cached Tokens,205|13,RETR
+207,prompt_cache_key,205,RETR
+208,Cache Discount,205|50,RETR
+209,Embeddings,25|210,FT
+210,Vector Embedding,9,FT
+211,text-embedding-3-small,209,FT
+212,text-embedding-3-large,209,FT
+213,Moderation Model,25,FT
+214,omni-moderation-latest,213|172,FT
+215,Moderation Categories,172,FT
+216,Category Scores,172|215,FT
+217,Fine-Tuning,25|218,FT
+218,Training Data,191|219,FT
+219,JSONL Format,8,FT
+220,Supervised Fine-Tuning,217|218,FT
+221,Direct Preference Optimization,217|218,FT
+222,Reinforcement Fine-Tuning,217|130|226,FT
+223,Vision Fine-Tuning,217|146,FT
+224,Distillation,217|67,FT
+225,Evals API,2|226,FT
+226,Grader,225,FT
+227,Model Grader,226|25,FT
+228,Batch API,2|219,FT
+229,Realtime API,2|164,RT
+230,Realtime Session,229|71,RT
+231,WebRTC Transport,229,RT
+232,WebSocket Transport,229,RT
+233,SIP Transport,229,RT
+234,gpt-realtime-2,229|130,RT
+235,Speech-to-Speech,229|234,RT
+236,Voice Activity Detection,230,RT
+237,Turn Detection,236,RT
+238,Realtime Function Calling,230|89,RT
+239,Live Transcription,230|168,RT
+240,Realtime Translation,230|241,RT
+241,gpt-realtime-translate,229,RT
+242,API Key,1|5,OPS
+243,Organization,1,OPS
+244,Project,243|242,OPS
+245,Rate Limit,6|243|244,OPS
+246,RPM Limit,245,OPS
+247,TPM Limit,245|9,OPS
+248,RPD Limit,245,OPS
+249,Rate Limit Headers,245|7,OPS
+250,Usage Tier,243|50,OPS
+251,Tier Progression,250,OPS
+252,Exponential Backoff,20|245,OPS
+253,Safety Identifier,6|254,OPS
+254,Usage Policies,1,OPS
+255,Zero Data Retention,67|143,OPS
+256,Production Best Practices,245|20|205,OPS
+257,Usage Tracking,13|23,OPS

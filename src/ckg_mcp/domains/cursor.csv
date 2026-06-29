@@ -1,0 +1,221 @@
+ConceptID,ConceptLabel,Dependencies,TaxonomyID
+1,Cursor editor,,CORE
+2,VS Code fork,1,CORE
+3,Cursor Settings,1,CORE
+4,Command palette,1,CORE
+5,Keyboard shortcuts,1,CORE
+6,Status bar indicator,1,CORE
+7,Integrated terminal,1,CORE
+8,Three entry points,1,CORE
+9,Chat,1|8,CORE
+10,Chat input box,9,CORE
+11,Open Chat (Cmd+I),9|5,CORE
+12,Conversation history,9,CORE
+13,Queued messages,10,CORE
+14,Stop / cancel generation,9,CORE
+15,New chat (reset context),9|77,CORE
+16,Slash commands,10,CORE
+17,Image input,10,CORE
+18,Workspace,1,CORE
+19,Diff view,1,CORE
+20,Real-time diffs,19,CORE
+21,Tab autocomplete,1|8,TAB
+22,Ghost text,21,TAB
+23,Accept suggestion (Tab),22|5,TAB
+24,Word-by-word partial accept,23,TAB
+25,Multi-line edits (Tab),21,TAB
+26,Auto-import,25,TAB
+27,Next cursor prediction,23,TAB
+28,Cross-file edits (Tab),27,TAB
+29,Tab in peek,21,TAB
+30,Linter-aware suggestions,21,TAB
+31,Recent-edits context,21,TAB
+32,Tab model,21,TAB
+33,Cmd-K inline edit,1|8,TAB
+34,Selected-code context,33,TAB
+35,Follow-up instructions (inline),33,TAB
+36,Quick question mode (Opt+Enter),33,TAB
+37,Send to Agent (Cmd+L),34|42,TAB
+38,Terminal Cmd-K,33|7,TAB
+39,Run generated command (Cmd+Enter),38,TAB
+40,Agent,9|52|151,AGENT
+41,Composer,40,AGENT
+42,Agent mode,40,AGENT
+43,Ask mode,42,AGENT
+44,Manual mode,42,AGENT
+45,Plan mode,42,AGENT
+46,Mode switching (Shift+Tab),42|43|44|45|5,AGENT
+47,Implementation plan,45,AGENT
+48,Clarifying questions,45|61,AGENT
+49,Agent iteration loop,40|52,AGENT
+50,System prompt,40,AGENT
+51,Instructions,50|111,AGENT
+52,Tools,40,AGENT
+53,Read file tool,52,AGENT
+54,Edit file tool,52|174,AGENT
+55,Search files tool (grep),52,AGENT
+56,Semantic search tool,52|98,AGENT
+57,Terminal tool,52|7,AGENT
+58,Web search tool,52,AGENT
+59,Fetch rules tool,52|111,AGENT
+60,Browser tool,52,AGENT
+61,Ask Questions tool,52,AGENT
+62,Subagents,40|52,AGENT
+63,Explore subagent,62|56,AGENT
+64,Todos,40|47,AGENT
+65,Auto-run mode,57,AGENT
+66,YOLO mode,65,AGENT
+67,Run modes / auto-review,65|68,AGENT
+68,Command allowlist,67,AGENT
+69,Terminal sandbox,57,AGENT
+70,Checkpoints,40,AGENT
+71,Restore checkpoint,70,AGENT
+72,Background agents,40|74,AGENT
+73,Cloud agents,72,AGENT
+74,Cloud VM environment,72,AGENT
+75,environment.json,74,AGENT
+76,Context,40|9,CTX
+77,Context window,76,CTX
+78,Manual context,76,CTX
+79,Automatic context,76|103,CTX
+80,@-mention context,78|10,CTX
+81,@Files,80,CTX
+82,@Folders,80|81,CTX
+83,@Code,80|81,CTX
+84,@Docs,80|105,CTX
+85,@Web,80|58,CTX
+86,@Git,80,CTX
+87,@Commit (diff of working state),86,CTX
+88,@Branch (diff with main),86,CTX
+89,@Recent Changes,86|79,CTX
+90,@Codebase,80|98,CTX
+91,@Definitions,80|83,CTX
+92,@Linter Errors,80|30,CTX
+93,@Past Chats,80|12,CTX
+94,@Terminals,80|7,CTX
+95,@Browser,80|60,CTX
+96,@Cursor Rules,80|122,CTX
+97,@Notepads,80|110,CTX
+98,Codebase indexing,18|100,CTX
+99,Code chunks,98,CTX
+100,Embeddings,99,CTX
+101,Vector database,100,CTX
+102,Semantic search,100|101,CTX
+103,Agentic search,102|104,CTX
+104,Instant grep,103,CTX
+105,Documentation indexing,100,CTX
+106,Custom docs,84|105,CTX
+107,Context management,77,CTX
+108,Automatic summarization,107,CTX
+109,Smart condensation,107|82,CTX
+110,Notepads,78|111,CTX
+111,Rules,51,RULES
+112,Project Rules,111|115,RULES
+113,User Rules,111|3,RULES
+114,Team Rules,111|196,RULES
+115,.cursor/rules directory,112,RULES
+116,.mdc rule files,115|117,RULES
+117,Rule frontmatter,116,RULES
+118,Rule body,116,RULES
+119,Always rule type,117,RULES
+120,Auto Attached rule type,117|123,RULES
+121,Agent Requested rule type,117,RULES
+122,Manual rule type,117|96,RULES
+123,Rule globs,117,RULES
+124,Nested rules,115,RULES
+125,Generate rules from chat,111|16,RULES
+126,Remote rules (GitHub),115|206,RULES
+127,Rule precedence,114|112|113,RULES
+128,AGENTS.md,111,RULES
+129,.cursorrules (legacy),112,RULES
+130,Memories,79|111,RULES
+131,.cursorignore,98,RULES
+132,Model Context Protocol (MCP),40|52,MCP
+133,MCP server,132,MCP
+134,mcp.json,133,MCP
+135,Project MCP config,134|115,MCP
+136,Global MCP config,134,MCP
+137,stdio transport,133,MCP
+138,SSE transport,133,MCP
+139,Streamable HTTP transport,133,MCP
+140,command field,137,MCP
+141,env field,137,MCP
+142,url field,138|139,MCP
+143,Config interpolation,134,MCP
+144,MCP tools,133|52,MCP
+145,MCP resources,133,MCP
+146,MCP prompts,133,MCP
+147,MCP tool approval,144|67,MCP
+148,MCP OAuth,138|139,MCP
+149,One-click install (deeplinks),134|133,MCP
+150,MCP in CLI / cloud agents,134|213|73,MCP
+151,Model picker,3,MODEL
+152,Auto model selection,151,MODEL
+153,Premium routing,152,MODEL
+154,Composer model,152,MODEL
+155,Claude models,151,MODEL
+156,GPT models,151,MODEL
+157,Gemini models,151,MODEL
+158,Grok models,151,MODEL
+159,Thinking / reasoning models,151,MODEL
+160,Per-model context window,151|77,MODEL
+161,Max Mode,160|169,MODEL
+162,Custom API keys,151,MODEL
+163,OpenAI API key,162,MODEL
+164,Anthropic API key,162,MODEL
+165,Google API key,162,MODEL
+166,Azure OpenAI key,162,MODEL
+167,Auto + Composer pool,152|154,MODEL
+168,API pool,151|153,MODEL
+169,Token-based pricing,168,MODEL
+170,Included allowance,169,MODEL
+171,On-demand usage,169|170,MODEL
+172,Cursor Token Rate,169|189,MODEL
+173,Free plan,167,MODEL
+174,Apply,19|54,REVIEW
+175,Accept / reject changes,174|20,REVIEW
+176,Accept all,175,REVIEW
+177,Agent review (find issues),19|40,REVIEW
+178,Bugbot,206,REVIEW
+179,Bugbot inline comments,178,REVIEW
+180,Bugbot manual trigger,178,REVIEW
+181,Bugbot autofix,178|174,REVIEW
+182,BUGBOT.md config,178|111,REVIEW
+183,Bugbot effort level,178,REVIEW
+184,Pull request review,178|206,REVIEW
+185,Cursor review command,180,REVIEW
+186,Pro plan,173|170,ENT
+187,Pro Plus plan,186,ENT
+188,Ultra plan,187,ENT
+189,Business plan,196|198,ENT
+190,Enterprise plan,189|200,ENT
+191,Privacy mode,3|192,ENT
+192,Zero data retention (ZDR),191,ENT
+193,SOC 2 Type II,191|194,ENT
+194,Data encryption,1,ENT
+195,Customer-managed keys (CMEK),190|194|100,ENT
+196,Team management,189,ENT
+197,RBAC roles,196,ENT
+198,SSO / SAML,196,ENT
+199,JIT provisioning,198,ENT
+200,SCIM provisioning,198,ENT
+201,Directory group sync,200,ENT
+202,Spend limits,171|201,ENT
+203,Usage analytics,196,ENT
+204,AI code tracking,203,ENT
+205,Admin API,190|203,ENT
+206,GitHub integration,1,INTEG
+207,GitLab integration,1,INTEG
+208,Bitbucket integration,1,INTEG
+209,GitHub Enterprise Server (GHES),206,INTEG
+210,Slack integration,73|206,INTEG
+211,Slack @Cursor mention,210,INTEG
+212,Linear integration,73,INTEG
+213,Cursor CLI,1|151,INTEG
+214,cursor-agent command,213,INTEG
+215,Non-interactive / CI mode,213,INTEG
+216,Cloud agent handoff,213|73,INTEG
+217,Cursor Web (cursor.com/agents),73,INTEG
+218,Branch + PR workflow,73|206,INTEG
+219,Parallel cloud execution,73,INTEG
+220,Multi-surface agent launch,210|217|212|216,INTEG

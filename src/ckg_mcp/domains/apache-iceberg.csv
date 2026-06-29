@@ -1,0 +1,228 @@
+ConceptID,ConceptLabel,Dependencies,TaxonomyID
+1,Apache Iceberg,,SPEC
+2,Open Table Format,1,SPEC
+3,Analytic Dataset,,SPEC
+4,Object Storage,,SPEC
+5,Immutable Data Files,4,SPEC
+6,Three-Layer Architecture,125|7|8,SPEC
+7,Metadata Layer,2|4,SPEC
+8,Data Layer,5,SPEC
+9,Table Metadata File,7|41|65|81|17,SPEC
+10,Metadata File Location,9|4,SPEC
+11,Metadata Pointer,9|125,SPEC
+12,Atomic Metadata Swap,11|136,SPEC
+13,Format Version,9,SPEC
+14,Format Version v1,13,SPEC
+15,Format Version v2,13|14,SPEC
+16,Format Version v3,13|15,SPEC
+17,Snapshot,19|18,SPEC
+18,Snapshot ID,17,SPEC
+19,Manifest List,17|20,SPEC
+20,Manifest File,19|21|22,SPEC
+21,Data File,5|33,SPEC
+22,Delete File,20|15,SPEC
+23,Position Delete File,22|15,SPEC
+24,Equality Delete File,22|15,SPEC
+25,Merge-on-Read,22|23|24,SPEC
+26,Copy-on-Write,21|5,SPEC
+27,Deletion Vector,16|23|120,SPEC
+28,Row Lineage,16|17,SPEC
+29,Row ID,28,SPEC
+30,Last Updated Sequence Number,28|31,SPEC
+31,Sequence Number,17|20,SPEC
+32,Data Sequence Number,31|21,SPEC
+33,File Format,21,SPEC
+34,Parquet,33,SPEC
+35,ORC,33,SPEC
+36,Avro,33|20,SPEC
+37,Column-Level Metrics,21|20,SPEC
+38,File I/O,4|21|9,SPEC
+39,Table Properties,9,SPEC
+40,Reserved Table Properties,39,SPEC
+41,Schema,9|42,SCHEMA
+42,Field ID,41,SCHEMA
+43,Schema ID,41,SCHEMA
+44,Column,41|42,SCHEMA
+45,Required Field,44,SCHEMA
+46,Optional Field,44,SCHEMA
+47,Iceberg Type System,41,SCHEMA
+48,Primitive Type,47,SCHEMA
+49,Nested Type,47,SCHEMA
+50,Struct Type,49|44,SCHEMA
+51,List Type,49,SCHEMA
+52,Map Type,49,SCHEMA
+53,Variant Type,47|16,SCHEMA
+54,Geometry Type,47|16,SCHEMA
+55,Schema Evolution,41|42,SCHEMA
+56,Add Column,55|46,SCHEMA
+57,Drop Column,55|42,SCHEMA
+58,Rename Column,55|42,SCHEMA
+59,Reorder Column,55|42,SCHEMA
+60,Type Promotion,55|47,SCHEMA
+61,Schema Evolution Correctness,55|42|60,SCHEMA
+62,Name Mapping,42|41,SCHEMA
+63,Identifier Field IDs,42|24,SCHEMA
+64,Default Value,44|16,SCHEMA
+65,Partition Spec,41|69|42,PART
+66,Partition Field,65|69,PART
+67,Hidden Partitioning,65|37,PART
+68,Hive-Style Partitioning,,PART
+69,Partition Transform,65,PART
+70,Identity Transform,69,PART
+71,Bucket Transform,69,PART
+72,Truncate Transform,69,PART
+73,Year Transform,69,PART
+74,Month Transform,69,PART
+75,Day Transform,69,PART
+76,Hour Transform,69,PART
+77,Void Transform,69,PART
+78,Partition Spec ID,65,PART
+79,Partition Evolution,65|78|55,PART
+80,Partition Tuple,66|21,PART
+81,Sort Order,41|82|69,PART
+82,Sort Field,81|42,PART
+83,Sort Order Evolution,81,PART
+84,Partition Pruning,67|37|80,PART
+85,Snapshot Log,17|9,SNAP
+86,Snapshot Reference,17|18,SNAP
+87,Branch,86,SNAP
+88,Tag,86,SNAP
+89,Main Branch,87|17,SNAP
+90,Ref Retention,86|108,SNAP
+91,Max Ref Age,90|88,SNAP
+92,Max Snapshot Age,90|87,SNAP
+93,Min Snapshots To Keep,90|87,SNAP
+94,Snapshot Isolation,17|136,SNAP
+95,Serializable Isolation,94,SNAP
+96,Time Travel,17|85,SNAP
+97,Time Travel By Snapshot ID,96|18,SNAP
+98,Time Travel By Timestamp,96|85,SNAP
+99,Incremental Read,17|31,SNAP
+100,Rollback,17|86|89,SNAP
+101,Cherry-Pick,17|87,SNAP
+102,Fast-Forward,87|89,SNAP
+103,Write-Audit-Publish,87|88|102,SNAP
+104,Snapshot Summary,17|37,SNAP
+105,Snapshot Operation,17|104,SNAP
+106,Snapshot Parent,17|18,SNAP
+107,Table Maintenance,9|17,MAINT
+108,Snapshot Expiration,107|85|17,MAINT
+109,Expire Snapshots Procedure,108|193,MAINT
+110,Remove Orphan Files,107|21|38,MAINT
+111,Remove Old Metadata Files,107|9,MAINT
+112,Compaction,107|21,MAINT
+113,Rewrite Data Files,112|21|193,MAINT
+114,Bin-Pack Strategy,113,MAINT
+115,Sort Compaction Strategy,113|81,MAINT
+116,Z-Order Compaction Strategy,113,MAINT
+117,Rewrite Manifests,107|20|19,MAINT
+118,Rewrite Position Delete Files,107|23,MAINT
+119,Small Files Problem,21|112,MAINT
+120,Puffin File,4|121,MAINT
+121,Table Statistics,120|37,MAINT
+122,Partition Statistics,120|65,MAINT
+123,NDV Sketch,121|120,MAINT
+124,Compute Statistics Procedure,121|193,MAINT
+125,Catalog Interface,11|126|127,CAT
+126,Namespace,125,CAT
+127,Table Identifier,126|125,CAT
+128,Namespace Properties,126,CAT
+129,Catalog Operations,125|9,CAT
+130,Create Table Operation,129|41|65,CAT
+131,Load Table Operation,129|11,CAT
+132,Drop Table Operation,129|127,CAT
+133,Rename Table Operation,129|127,CAT
+134,Register Table Operation,129|10,CAT
+135,Commit Operation,129|12|136,CAT
+136,Optimistic Concurrency Control,11|12,CAT
+137,Hive Catalog,125|11,CAT
+138,JDBC Catalog,125|11,CAT
+139,Hadoop Catalog,125|4,CAT
+140,AWS Glue Catalog,125|11,CAT
+141,DynamoDB Catalog,125|11,CAT
+142,Nessie Catalog,125|144,CAT
+143,In-Memory Catalog,125,CAT
+144,Catalog Versioning,125|17,CAT
+145,Iceberg REST Catalog API (neutral protocol),125|159|129,REST
+146,Catalog Interoperability via REST,145|2,REST
+147,REST OpenAPI Spec,145,REST
+148,REST Catalog Client,145,REST
+149,REST Catalog Server,145,REST
+150,GetConfig Endpoint,149|152,REST
+151,Endpoint Discovery,150|147,REST
+152,Catalog Config Overrides,150|39,REST
+153,REST Namespace Endpoints,145|126,REST
+154,REST Table Endpoints,145|127,REST
+155,LoadTable Endpoint,154|131|156,REST
+156,LoadTableResult,155|9|173,REST
+157,CreateTable Endpoint,154|130,REST
+158,UpdateTable Endpoint (commit),154|159,REST
+159,REST Commit Protocol,160|161|136,REST
+160,Table Requirement,159|18,REST
+161,Table Update,159|55|79,REST
+162,CommitTransaction Endpoint,145|159,REST
+163,RegisterTable Endpoint,154|134,REST
+164,RenameTable Endpoint,154|133,REST
+165,REST View Endpoints,145|176,REST
+166,Scan Planning Endpoints,154|169,REST
+167,PlanTableScan,166|84,REST
+168,FetchScanTasks,166|169,REST
+169,Scan Task,21|22|37,REST
+170,ReportMetrics Endpoint,154|204,REST
+171,Credential Vending,156|173|172,REST
+172,Access Delegation,171|149,REST
+173,Storage Credential,171|4,REST
+174,OAuth2 Token Endpoint,145|148,REST
+175,View Spec,2|4,VIEW
+176,View Metadata,175|41|12,VIEW
+177,View Version,176|43,VIEW
+178,View Representation,177,VIEW
+179,SQL Representation,178|180,VIEW
+180,SQL Dialect,179,VIEW
+181,View Version Log,177|176,VIEW
+182,View Schema,176|41,VIEW
+183,View History,181|96,VIEW
+184,View Properties,176|39,VIEW
+185,Materialized View,176|17|186,VIEW
+186,Storage Table,185|9,VIEW
+187,Compute Engine,125|169,ENG
+188,Query Planning,187|19|20|84,ENG
+189,Predicate Pushdown,188|37,ENG
+190,Vectorized Read,187|34,ENG
+191,Spark Integration,187|125,ENG
+192,Spark SQL Extensions,191|107,ENG
+193,Spark Procedures,192|107,ENG
+194,Flink Integration,187|125,ENG
+195,Flink Streaming Read,194|99,ENG
+196,Flink Streaming Write,194|25,ENG
+197,Trino Integration,187|145,ENG
+198,Hive Integration,187|137,ENG
+199,Kafka Connect Sink,187|135,ENG
+200,PyIceberg,125|145,ENG
+201,DuckDB Integration,187|200,ENG
+202,Iceberg Java Library,125|38,ENG
+203,Iceberg Rust Library,125|145,ENG
+204,Metrics Reporting,187|188,ENG
+205,Portability Spine,2|145|5,INTEROP
+206,Format Portability,13|34|7,INTEROP
+207,Catalog As The Seam,146|145,INTEROP
+208,Multi-Engine Read,206|125|2,INTEROP
+209,Single Writer Constraint,136|135,INTEROP
+210,Bidirectional Interoperability,146|211,INTEROP
+211,Catalog Federation,145|126,INTEROP
+212,Apache Polaris,145|149|171,INTEROP
+213,Unity Catalog Iceberg REST,145|149,INTEROP
+214,Snowflake Iceberg Tables,2|215,INTEROP
+215,External Volume,4|173,INTEROP
+216,Snowflake REST Catalog Integration,145|214,INTEROP
+217,Snowflake Glue Catalog Integration,140|214,INTEROP
+218,Snowflake Managed Iceberg,214|212,INTEROP
+219,Databricks Managed Iceberg,2|213,INTEROP
+220,Databricks UniForm,219|7|34,INTEROP
+221,AWS Glue Iceberg REST,140|145,INTEROP
+222,SageMaker Lakehouse,221|171,INTEROP
+223,AWS S3 Tables,2|221|4,INTEROP
+224,BigQuery Iceberg Tables,2|225,INTEROP
+225,BigLake Metastore,145|125,INTEROP
+226,Lock-In Above The Seam,207|171|211,INTEROP
+227,Vendor-Neutral Lakehouse,205|208|146,INTEROP

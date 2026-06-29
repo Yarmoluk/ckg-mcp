@@ -1,0 +1,281 @@
+ConceptID,ConceptLabel,Dependencies,TaxonomyID
+1,Gemini API,,CORE
+2,Google AI Studio,1,CORE
+3,Vertex AI,1,CORE
+4,AI Studio vs Vertex AI,2|3,CORE
+5,API key,2,CORE
+6,GEMINI_API_KEY env var,5,CORE
+7,x-goog-api-key header,5,CORE
+8,generativelanguage.googleapis.com,1,CORE
+9,REST endpoint,8,CORE
+10,v1beta API version,9,CORE
+11,Google GenAI SDK,1,CORE
+12,google-genai (Python),11,CORE
+13,@google/genai (JS/TS),11,CORE
+14,google.golang.org/genai (Go),11,CORE
+15,google-genai (Java/C#),11,CORE
+16,legacy google-generativeai (deprecated),11,CORE
+17,genai.Client,12|5,CORE
+18,client.models,17,CORE
+19,client.files,17,CORE
+20,client.caches,17,CORE
+21,client.batches,17,CORE
+22,client.chats,17,CORE
+23,OpenAI compatibility layer,9|5,CORE
+24,v1beta/openai/ base_url,23,CORE
+25,model ID string,18,MODEL
+26,Gemini model family,25,MODEL
+27,Gemini 3 series,26,MODEL
+28,Gemini 2.5 series,26,MODEL
+29,gemini-3.5-flash,27,MODEL
+30,gemini-3.1-pro-preview,27,MODEL
+31,gemini-3-flash-preview,27,MODEL
+32,gemini-3.1-flash-lite,27,MODEL
+33,gemini-2.5-pro,28,MODEL
+34,gemini-2.5-flash,28,MODEL
+35,gemini-2.5-flash-lite,28,MODEL
+36,Pro tier model,30|33,MODEL
+37,Flash tier model,29|34,MODEL
+38,Flash-Lite tier model,32|35,MODEL
+39,preview vs stable model,25,MODEL
+40,1M token context window,29|33,MODEL
+41,2M token context window,30,MODEL
+42,output token limit,25,MODEL
+43,model variant suffix,25,MODEL
+44,model lifecycle / deprecation,25|39,MODEL
+45,Gemini 2.0 shutdown (2026-06-01),44,MODEL
+46,native multimodality,26,MODEL
+47,input modalities,46,MODEL
+48,output modalities,46,MODEL
+49,models.list,18,MODEL
+50,models.get,18,MODEL
+51,default temperature 1.0 (Gemini 3),27,MODEL
+52,model knowledge cutoff,25,MODEL
+53,generateContent,18|25,GEN
+54,streamGenerateContent,53,GEN
+55,streaming output,54,GEN
+56,GenerateContentResponse,53,GEN
+57,contents array,53,GEN
+58,Content object,57,GEN
+59,part,58,GEN
+60,text part,59,GEN
+61,role,58,GEN
+62,user role,61,GEN
+63,model role,61,GEN
+64,multi-turn chat,57|61,GEN
+65,client.chats session,64|22,GEN
+66,system instruction,53,GEN
+67,generationConfig,53,GEN
+68,temperature,67,GEN
+69,topP,67,GEN
+70,topK,67,GEN
+71,maxOutputTokens,67|42,GEN
+72,stopSequences,67,GEN
+73,candidateCount,67,GEN
+74,seed,67,GEN
+75,presencePenalty,67,GEN
+76,frequencyPenalty,67,GEN
+77,responseLogprobs,67,GEN
+78,candidate,56|73,GEN
+79,finishReason,78,GEN
+80,finishReason STOP,79,GEN
+81,finishReason MAX_TOKENS,79|71,GEN
+82,text accessor (response.text),56,GEN
+83,tools array,53,TOOL
+84,function calling,83,TOOL
+85,functionDeclaration,84,TOOL
+86,function name,85,TOOL
+87,function description,85,TOOL
+88,function parameters (OpenAPI subset),85,TOOL
+89,functionCall part,84|59,TOOL
+90,functionResponse part,84|59,TOOL
+91,automatic function calling,84|12,TOOL
+92,manual function calling,84,TOOL
+93,parallel function calling,84,TOOL
+94,compositional function calling,84,TOOL
+95,toolConfig,84,TOOL
+96,function calling mode,95,TOOL
+97,mode AUTO,96,TOOL
+98,mode ANY,96,TOOL
+99,mode NONE,96,TOOL
+100,mode VALIDATED,96,TOOL
+101,allowedFunctionNames,95,TOOL
+102,function calling + structured output,84|124,TOOL
+103,google_search tool,83,TOOL
+104,grounding with Google Search,103,TOOL
+105,dynamic retrieval,104,TOOL
+106,groundingMetadata,104,TOOL
+107,groundingChunks,106,TOOL
+108,groundingSupports,106,TOOL
+109,searchEntryPoint,106,TOOL
+110,webSearchQueries,106,TOOL
+111,search suggestions (UI required),109,TOOL
+112,url_context tool,83,TOOL
+113,google_maps tool,83,TOOL
+114,code_execution tool,83,TOOL
+115,executableCode part,114|59,TOOL
+116,codeExecutionResult part,114|59,TOOL
+117,"Python sandbox (30s, 5 retries)",114,TOOL
+118,preinstalled libraries (numpy/pandas/matplotlib),117,TOOL
+119,built-in tools + custom functions,114|103|84,TOOL
+120,MCP support (SDK auto tool-calling),84|12,TOOL
+121,responseMimeType,67,STRUCT
+122,responseMimeType application/json,121,STRUCT
+123,responseMimeType text/x.enum,121,STRUCT
+124,structured output (responseSchema),122,STRUCT
+125,Schema object,124,STRUCT
+126,schema type (OpenAPI subset),125,STRUCT
+127,schema properties,125,STRUCT
+128,schema required fields,125,STRUCT
+129,schema enum values,125|123,STRUCT
+130,schema items (array),125,STRUCT
+131,schema nesting (object),125,STRUCT
+132,propertyOrdering,125,STRUCT
+133,responseJsonSchema,124,STRUCT
+134,Pydantic / Zod schema binding,124|12,STRUCT
+135,thinking models,27|28,THINK
+136,thinkingConfig,67|135,THINK
+137,thinkingBudget (2.5),136|34,THINK
+138,thinking_level (Gemini 3),136|27,THINK
+139,thinking_level low,138,THINK
+140,thinking_level high,138,THINK
+141,thinking_level minimal,138,THINK
+142,dynamic thinking (-1),137,THINK
+143,disable thinking (budget 0),137|35,THINK
+144,includeThoughts,136,THINK
+145,thought summaries,144,THINK
+146,thought signatures,135|64,THINK
+147,thoughtsTokenCount,145|257,THINK
+148,thinking + function calling,135|84,THINK
+149,thinking + tools continuity,146|83,THINK
+150,inlineData part (base64),59,MM
+151,fileData part (file URI),59|205,MM
+152,inline 20MB request limit,150,MM
+153,mediaResolution,67,MM
+154,image understanding,46|150,MM
+155,image MIME types (png/jpeg/webp/heic),154,MM
+156,multiple images per prompt,154,MM
+157,bounding box detection,154,MM
+158,segmentation masks (2.5),154|34,MM
+159,image token cost (258/tile),154|153,MM
+160,audio understanding,46|150,MM
+161,audio MIME types (wav/mp3/flac/aac/ogg/aiff),160,MM
+162,9.5 hour audio limit,160,MM
+163,audio token rate (32/sec),160,MM
+164,speech transcription + diarization,160,MM
+165,video understanding,46|151,MM
+166,video MIME types,165,MM
+167,YouTube URL input,165,MM
+168,video frame sampling (1 FPS),165,MM
+169,video clipping (start/end offset),165,MM
+170,video token rate (263/sec),165,MM
+171,low media resolution (video),153|165,MM
+172,document processing (PDF),46|151,MM
+173,PDF 1000 page limit,172,MM
+174,media_resolution_high (dense docs),153|172,MM
+175,responseModalities,67,MM
+176,image generation,175|46,MM
+177,gemini-2.5-flash-image (Nano Banana),176,MM
+178,gemini-3-pro-image-preview (Nano Banana Pro),176|27,MM
+179,imagen-4 model,176,MM
+180,conversational image editing,176|64,MM
+181,SynthID watermark,176,MM
+182,speech generation (TTS),175|46,MM
+183,gemini-2.5-flash-preview-tts,182,MM
+184,gemini-2.5-pro-preview-tts,182,MM
+185,speechConfig,182,MM
+186,voiceConfig / prebuiltVoiceConfig,185,MM
+187,prebuilt voice names (Kore/Puck/Charon),186,MM
+188,single-speaker TTS,186,MM
+189,multiSpeakerVoiceConfig,185,MM
+190,natural-language style control,182,MM
+191,long context,40,CACHE
+192,context caching,191|53,CACHE
+193,implicit caching (2.5+),192,CACHE
+194,explicit caching,192,CACHE
+195,CachedContent object,194|20,CACHE
+196,caches.create,195,CACHE
+197,cache ttl,195,CACHE
+198,cache expireTime,195,CACHE
+199,cache displayName,195,CACHE
+200,cache minimum token threshold,192,CACHE
+201,cachedContentTokenCount,192|257,CACHE
+202,cached-token discount pricing,192|263,CACHE
+203,Files API,19,CACHE
+204,files.upload (media.upload),203,CACHE
+205,file URI,204,CACHE
+206,file state (PROCESSING/ACTIVE/FAILED),204,CACHE
+207,file 48h TTL / 20GB / 2GB-per-file,203,CACHE
+208,files.get / files.list / files.delete,203,CACHE
+209,Live API,1|25,LIVE
+210,WebSocket (WSS) connection,209,LIVE
+211,BidiGenerateContent,210,LIVE
+212,live model variant,209|25,LIVE
+213,native audio Live model,212,LIVE
+214,half-cascade Live model,212,LIVE
+215,PCM 16kHz audio input,209,LIVE
+216,PCM 24kHz audio output,209,LIVE
+217,realtime video input (1 FPS),209,LIVE
+218,voice activity detection (VAD),209,LIVE
+219,interruption / barge-in,218,LIVE
+220,Live audio transcription,209,LIVE
+221,Live function calling,209|84,LIVE
+222,Live + Google Search,209|103,LIVE
+223,session management,210,LIVE
+224,session resumption,223,LIVE
+225,context window compression,223|191,LIVE
+226,ephemeral token,209|5,LIVE
+227,client-to-server (ephemeral),226,LIVE
+228,Live translation (70+ languages),209,LIVE
+229,proactive audio / affective dialog,213,LIVE
+230,embedContent,18|25,EMBED
+231,gemini-embedding-001,230,EMBED
+232,gemini-embedding-2,230|46,EMBED
+233,embedding vector,230,EMBED
+234,outputDimensionality,230,EMBED
+235,Matryoshka representation (MRL),234,EMBED
+236,default 3072 dimensions,234,EMBED
+237,embedding normalization,233,EMBED
+238,taskType,231,EMBED
+239,taskType RETRIEVAL_DOCUMENT/QUERY,238,EMBED
+240,taskType SEMANTIC_SIMILARITY,238,EMBED
+241,taskType CLASSIFICATION/CLUSTERING,238,EMBED
+242,taskType CODE_RETRIEVAL_QUERY,238,EMBED
+243,batch embeddings,230|244,EMBED
+244,Batch API,21|53,BATCH
+245,batches.create,244,BATCH
+246,inline batch requests,245,BATCH
+247,JSONL batch file input,245|203,BATCH
+248,BatchGenerateContent,244,BATCH
+249,batch 50% discount,244|263,BATCH
+250,batch 24h turnaround,244,BATCH
+251,batch job state (PENDING/RUNNING/SUCCEEDED),245,BATCH
+252,batch output retrieval,251,BATCH
+253,batch webhook notifications,244,BATCH
+254,batches.list / cancel / delete,244,BATCH
+255,batch + structured output,244|124,BATCH
+256,countTokens,18|57,OPS
+257,usageMetadata,56,OPS
+258,promptTokenCount,257,OPS
+259,candidatesTokenCount,257,OPS
+260,totalTokenCount,257,OPS
+261,toolUsePromptTokenCount,257|83,OPS
+262,token ≈ 4 chars,256,OPS
+263,pricing tier,1,OPS
+264,free tier,263,OPS
+265,paid tier,263,OPS
+266,rate limits,263,OPS
+267,RPM (requests per minute),266,OPS
+268,TPM (tokens per minute),266,OPS
+269,RPD (requests per day),266,OPS
+270,usage tier (Free/1/2/3),266|265,OPS
+271,quota upgrade,270,OPS
+272,priority / flex inference,263,OPS
+273,safetySettings,67,OPS
+274,harm category (HARASSMENT/HATE/SEXUAL/DANGEROUS),273,OPS
+275,harm category CIVIC_INTEGRITY,273,OPS
+276,block threshold (BLOCK_NONE..LOW_AND_ABOVE/OFF),273,OPS
+277,safetyRatings,78|273,OPS
+278,probability (NEGLIGIBLE/LOW/MEDIUM/HIGH),277,OPS
+279,promptFeedback / blockReason,56|273,OPS
+280,finishReason SAFETY,79|273,OPS

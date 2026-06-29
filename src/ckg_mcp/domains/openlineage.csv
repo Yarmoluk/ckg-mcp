@@ -1,0 +1,169 @@
+ConceptID,ConceptLabel,Dependencies,TaxonomyID
+1,OpenLineage Standard,,CORE
+2,LF AI & Data Foundation,,CORE
+3,OpenLineage Specification,1|2,CORE
+4,OpenLineage.json Schema,3,CORE
+5,Spec Versioning,4,CORE
+6,Producer,3,CORE
+7,Consumer,3,CORE
+8,schemaURL,4,CORE
+9,eventTime,3,CORE
+10,Namespace,3,CORE
+11,Job,3|10,CORE
+12,Run,11,CORE
+13,runId (UUID),12,CORE
+14,Dataset,3|10,CORE
+15,InputDataset,14,CORE
+16,OutputDataset,14,CORE
+17,eventType,3,CORE
+18,Run Lifecycle,17|12,CORE
+19,START Event,18,CORE
+20,RUNNING Event,18,CORE
+21,COMPLETE Event,18,CORE
+22,ABORT Event,18,CORE
+23,FAIL Event,18,CORE
+24,OTHER Event,18,CORE
+25,Naming Convention,10|14,NAME
+26,Dataset Naming,25|14,NAME
+27,Job Naming,25|11,NAME
+28,Run Naming,25|13,NAME
+29,Source URI Scheme,26,NAME
+30,Snowflake Dataset Name,29,NAME
+31,Postgres Dataset Name,29,NAME
+32,BigQuery Dataset Name,29,NAME
+33,Redshift Dataset Name,29,NAME
+34,MySQL Dataset Name,29,NAME
+35,Oracle Dataset Name,29,NAME
+36,Trino Dataset Name,29,NAME
+37,Athena Dataset Name,29,NAME
+38,Hive Metastore Dataset Name,29,NAME
+39,S3 Dataset Name,29,NAME
+40,GCS Dataset Name,29,NAME
+41,Azure Blob Dataset Name,29,NAME
+42,HDFS Dataset Name,29,NAME
+43,Kafka Dataset Name,29,NAME
+44,Airflow Job Name,27,NAME
+45,Spark Job Name,27,NAME
+46,SQL Job Name,27,NAME
+47,Facet,3,FACET
+48,Facet _producer,47|6,FACET
+49,Facet _schemaURL,47|8,FACET
+50,Custom Facet,47,FACET
+51,Run Facet,47|12,FACET
+52,Job Facet,47|11,FACET
+53,Dataset Facet,47|14,FACET
+54,Input Dataset Facet,47|15,FACET
+55,Output Dataset Facet,47|16,FACET
+56,Nominal Time Facet,51|9,FACET
+57,Parent Run Facet,51|13,FACET
+58,Error Message Facet,51|23,FACET
+59,Processing Engine Facet,51,FACET
+60,External Query Facet,51,FACET
+61,Extraction Error Facet,51,FACET
+62,Job Dependencies Facet,51|11,FACET
+63,SQL Job Facet,52,FACET
+64,Source Code Facet,52,FACET
+65,Source Code Location Facet,52,FACET
+66,Job Documentation Facet,52,FACET
+67,Job Ownership Facet,52,FACET
+68,Job Type Facet,52,FACET
+69,Schema Facet,53,FACET
+70,DataSource Facet,53|29,FACET
+71,Dataset Ownership Facet,53,FACET
+72,Symlinks Facet,53|26,FACET
+73,Lifecycle State Change Facet,53,FACET
+74,Dataset Version Facet,53,FACET
+75,Storage Facet,53,FACET
+76,Datasource Type Facet,53,FACET
+77,Data Quality Metrics Facet,54,FACET
+78,Output Statistics Facet,55,FACET
+79,Column Lineage Facet,53|69,COL
+80,Field-to-Field Lineage,79,COL
+81,Input Fields,80|15,COL
+82,Transformation Type,80,COL
+83,DIRECT Transformation,82,COL
+84,INDIRECT Transformation,82,COL
+85,Transformation Subtype,82,COL
+86,Masking Flag,82,COL
+87,Dataset-Level Dependencies,79|84,COL
+88,Data Quality Assertions Facet,54,COL
+89,Schema Field,69,COL
+90,Schema Field Type,89,COL
+91,OpenLineage Client,3,API
+92,Python Client,91,API
+93,Java Client,91,API
+94,RunEvent,12|11|17|6,API
+95,DatasetEvent,14|17|6,API
+96,JobEvent,11|17|6,API
+97,Static Lineage,95|96,API
+98,Event Emission,91|94,API
+99,Transport,91,API
+100,HTTP Transport,99,API
+101,Lineage API Endpoint,100,API
+102,ApiKeyTokenProvider,100,API
+103,Async HTTP Transport,99,API
+104,Kafka Transport,99,API
+105,Console Transport,99,API
+106,File Transport,99,API
+107,Composite Transport,99,API
+108,Transform Transport,99,API
+109,Kinesis Transport,99,API
+110,openlineage.yaml Config,91|99,API
+111,OPENLINEAGE_URL,110|101,API
+112,OPENLINEAGE_API_KEY,110|102,API
+113,OPENLINEAGE_CONFIG,110,API
+114,OPENLINEAGE_DISABLED,110,API
+115,Marquez,1|2,IMPL
+116,Marquez Endpoint,115|101,IMPL
+117,Marquez Postgres Backend,115,IMPL
+118,Marquez Metadata API,115|94,IMPL
+119,Lineage Graph,115|15|16,IMPL
+120,Marquez Web UI,119,IMPL
+121,Data Governance,118|71,IMPL
+122,Root Cause Analysis,119,IMPL
+123,Backfill Automation,119|18,IMPL
+124,SQL Parser,91|63,IMPL
+125,Common Library,91,IMPL
+126,OpenLineage Proxy,100|104,IMPL
+127,Event Validation,4|94,IMPL
+128,Producer Registry,6|5,IMPL
+129,Schema Registry,8|5,IMPL
+130,Lineage Backend,101|7,IMPL
+131,Pipeline Integration,91|98,INTEG
+132,Source Integration,91|95,INTEG
+133,Spark Integration,131|93,INTEG
+134,OpenLineageSparkListener,133|94,INTEG
+135,Spark Logical Plan Capture,134|79,INTEG
+136,Airflow Integration,131|92,INTEG
+137,Airflow OpenLineage Provider,136|44,INTEG
+138,dbt Integration,131|124,INTEG
+139,dbt-ol Wrapper,138|94,INTEG
+140,Flink Integration,131|93,INTEG
+141,Great Expectations Integration,131|88,INTEG
+142,Dagster Integration,131|116,INTEG
+143,Trino Integration,132|36,INTEG
+144,Hive Integration,132|38,INTEG
+145,Feast Integration,131,INTEG
+146,BigQuery Extractor,125|32,INTEG
+147,Redshift Extractor,125|33,INTEG
+148,Snowflake Extractor,124|30,INTEG
+149,Spark Column Lineage,135|80,INTEG
+150,dbt Column Lineage,139|124|80,INTEG
+151,Catalog Interop Layer,26|72,INTEROP
+152,Dataset Identity,151|70,INTEROP
+153,Snowflake Catalog Mapping,152|30,INTEROP
+154,Databricks Unity Mapping,152|38|39,INTEROP
+155,BigQuery Catalog Mapping,152|32,INTEROP
+156,S3 Glue Catalog Mapping,152|39|72,INTEROP
+157,Azure Purview Mapping,152|41,INTEROP
+158,Glue Symlink Resolution,156|72,INTEROP
+159,Three-Level Namespace Bridge,154|10,INTEROP
+160,Cross-Platform Lineage Reconciliation,153|154|155|156,INTEROP
+161,Multi-Catalog Lineage Graph,160|119,INTEROP
+162,Lineage Stitching,161|72,INTEROP
+163,Naming Drift,160,INTEROP
+164,Open Format Anchor,152|156,INTEROP
+165,Catalog Push vs Lineage Push,132|121,INTEROP
+166,Lineage-to-Catalog Sync,161|121,INTEROP
+167,Column Lineage Across Catalogs,160|79,INTEROP
+168,End-to-End Field Trace,167|162,INTEROP

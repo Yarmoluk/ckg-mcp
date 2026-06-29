@@ -1,0 +1,279 @@
+ConceptID,ConceptLabel,Dependencies,TaxonomyID
+1,Relational Database,,ARCH
+2,Client-Server Model,1,ARCH
+3,Postmaster Supervisor Process,2,ARCH
+4,Backend Process Per Connection,3,ARCH
+5,Shared Memory,3,ARCH
+6,Database Cluster,3,ARCH
+7,Data Directory PGDATA,6,ARCH
+8,Tablespace,7,ARCH
+9,Heap Table Storage,7,ARCH
+10,Page Block 8KB,9,ARCH
+11,Tuple Row Version,10,ARCH
+12,Shared Buffer Cache,5|10,ARCH
+13,Transaction ID XID,11,ARCH
+14,xmin xmax Visibility,13,ARCH
+15,MVCC,14|11,ARCH
+16,Snapshot,15|14,ARCH
+17,Write-Ahead Log WAL,11|12,ARCH
+18,Log Sequence Number LSN,17,ARCH
+19,WAL Segment File,17,ARCH
+20,Full Page Writes,17|10,ARCH
+21,Checkpoint,17|12,ARCH
+22,fsync Durability,17,ARCH
+23,Crash Recovery REDO,17|21,ARCH
+24,TOAST Oversized Storage,10|11,ARCH
+25,Free Space Map,9|10,ARCH
+26,Visibility Map,9|15,ARCH
+27,Data Type System,1,TYPE
+28,Integer Types,27,TYPE
+29,Numeric Arbitrary Precision,27,TYPE
+30,Floating Point Types,27,TYPE
+31,Serial Pseudo-Type,28|63,TYPE
+32,Character Types,27,TYPE
+33,Text Type,32,TYPE
+34,Bytea Binary Type,27,TYPE
+35,Boolean Type,27,TYPE
+36,Date Time Types,27,TYPE
+37,Timestamp With Time Zone,36,TYPE
+38,Interval Type,36,TYPE
+39,Enum Type,27,TYPE
+40,UUID Type,27,TYPE
+41,Geometric Types,27,TYPE
+42,Network Address Types,27,TYPE
+43,JSON Type,27|33,TYPE
+44,JSONB Binary JSON,43,TYPE
+45,JSONPath,44,TYPE
+46,JSON Operators,44,TYPE
+47,Array Type,27,TYPE
+48,Composite Type,27,TYPE
+49,Range Type,27,TYPE
+50,Domain Type,27|65,TYPE
+51,pg_lsn Type,27|18,TYPE
+52,tsvector Type,33,TYPE
+53,tsquery Type,33,TYPE
+54,NULL Three-Valued Logic,27,TYPE
+55,Schema Namespace,6,DDL
+56,search_path,55,DDL
+57,Table Definition,9|27|55,DDL
+58,Column,57,DDL
+59,Default Value,58,DDL
+60,Generated Column Stored,58,DDL
+61,Identity Column,58|63,DDL
+62,System Columns,57|14,DDL
+63,Sequence,55,DDL
+64,NOT NULL Constraint,58|54,DDL
+65,Check Constraint,58,DDL
+66,Unique Constraint,58|126,DDL
+67,Primary Key,66|64,DDL
+68,Foreign Key,67|69,DDL
+69,Referential Integrity,67,DDL
+70,Exclusion Constraint,118|65,DDL
+71,View Definition,85,DDL
+72,Materialized View,71|9,DDL
+73,ALTER TABLE,57,DDL
+74,DROP and CASCADE,57|75,DDL
+75,Dependency Tracking,268,DDL
+76,Table Inheritance,57,DDL
+77,Declarative Partitioning,57,DDL
+78,Partition Key,77,DDL
+79,Range Partitioning,78,DDL
+80,List Partitioning,78,DDL
+81,Hash Partitioning,78,DDL
+82,Default Partition,77,DDL
+83,Attach Detach Partition,77|73,DDL
+84,Sub-Partitioning,77|78,DDL
+85,SELECT Statement,57,QRY
+86,FROM Clause,85,QRY
+87,WHERE Clause,85|54,QRY
+88,Table Alias,86,QRY
+89,Inner Join,86,QRY
+90,Outer Join,89|54,QRY
+91,Natural Join USING,89,QRY
+92,Subquery,85,QRY
+93,Correlated Subquery,92|87,QRY
+94,Scalar Expression,85,QRY
+95,Aggregate Function,85,QRY
+96,GROUP BY,95,QRY
+97,HAVING Clause,96,QRY
+98,GROUPING SETS ROLLUP CUBE,96,QRY
+99,Window Function,85|95,QRY
+100,DISTINCT,85,QRY
+101,ORDER BY,85,QRY
+102,LIMIT OFFSET,101,QRY
+103,VALUES List,85,QRY
+104,Set Operations UNION INTERSECT EXCEPT,85,QRY
+105,Common Table Expression WITH,92,QRY
+106,Recursive CTE,105,QRY
+107,INSERT Statement,57,QRY
+108,UPDATE Statement,57|87,QRY
+109,DELETE Statement,57|87,QRY
+110,ON CONFLICT UPSERT,107|66,QRY
+111,RETURNING Clause,107|108,QRY
+112,MERGE Statement,107|108|109,QRY
+113,COPY Bulk Load,57,QRY
+114,Access Method,264,IDX
+115,Index,114|57,IDX
+116,B-tree Index,115,IDX
+117,Hash Index,115,IDX
+118,GiST Index,115,IDX
+119,SP-GiST Index,115,IDX
+120,GIN Index,115,IDX
+121,BRIN Index,115,IDX
+122,Operator Class,115|27,IDX
+123,Multicolumn Index,116,IDX
+124,Expression Index,115|94,IDX
+125,Partial Index,115|87,IDX
+126,Unique Index,116,IDX
+127,Covering Index INCLUDE,116,IDX
+128,Index-Only Scan,127|26,IDX
+129,Bitmap Index Scan,115,IDX
+130,Sequential Scan,9,IDX
+131,Index Scan,115,IDX
+132,GIN JSONB Index,120|44,IDX
+133,GiST Range Index,118|49,IDX
+134,Full Text Index,120|52,IDX
+135,BRIN Block Range Summary,121|10,IDX
+136,Transaction,15|17,TXN
+137,ACID Properties,136|22,TXN
+138,BEGIN COMMIT ROLLBACK,136,TXN
+139,Savepoint,136,TXN
+140,Isolation Level,136|16,TXN
+141,Read Committed,140,TXN
+142,Repeatable Read,140|16,TXN
+143,Serializable,142,TXN
+144,Serializable Snapshot Isolation SSI,143|145,TXN
+145,Predicate Locking,143,TXN
+146,Dirty Read,140,TXN
+147,Nonrepeatable Read,140,TXN
+148,Phantom Read,140,TXN
+149,Serialization Anomaly,140,TXN
+150,Serialization Failure Retry,144|149,TXN
+151,Row-Level Lock FOR UPDATE,136|11,TXN
+152,Table-Level Lock,136|57,TXN
+153,ACCESS EXCLUSIVE Lock,152,TXN
+154,Advisory Lock,136,TXN
+155,Deadlock Detection,151|152,TXN
+156,Query Planner Optimizer,85|157,PERF
+157,Cost Model,130|131,PERF
+158,Planner Statistics,267,PERF
+159,ANALYZE Statistics,158,PERF
+160,Extended Statistics,158,PERF
+161,Selectivity Estimation,158|157,PERF
+162,EXPLAIN Plan,156,PERF
+163,EXPLAIN ANALYZE,162,PERF
+164,Join Order Search,156|89,PERF
+165,Genetic Query Optimizer GEQO,164,PERF
+166,Nested Loop Join,164,PERF
+167,Hash Join,164,PERF
+168,Merge Join,164|101,PERF
+169,Partition Pruning,77|156,PERF
+170,Partitionwise Join,169|167,PERF
+171,work_mem,156,PERF
+172,Prepared Statement Plan Cache,156,PERF
+173,Dead Tuple,15|108|109,PERF
+174,VACUUM,173|25,PERF
+175,Autovacuum Daemon,174|159,PERF
+176,VACUUM FULL,174|153,PERF
+177,Table Bloat,173,PERF
+178,Transaction ID Wraparound,13|174,PERF
+179,Freezing Frozen XID,178|26,PERF
+180,Base Backup,7|21,REPL
+181,WAL Archiving,19,REPL
+182,Point-In-Time Recovery PITR,180|181|23,REPL
+183,Physical Streaming Replication,17|19,REPL
+184,Replication Slot,183,REPL
+185,Standby Server,183|23,REPL
+186,Hot Standby,185|15,REPL
+187,Synchronous Replication,183|22,REPL
+188,Failover Promotion,185,REPL
+189,Logical Decoding,17|184,REPL
+190,Logical Replication,189,REPL
+191,Publication,190|57,REPL
+192,Subscription,190|191,REPL
+193,Replica Identity,190|67,REPL
+194,Row Filter Column List,191|87,REPL
+195,Change Data Capture CDC,189|190,REPL
+196,Extension Mechanism,55|261,EXT
+197,CREATE EXTENSION,196,EXT
+198,Contrib Modules,196,EXT
+199,Foreign Data Wrapper FDW,196|27,EXT
+200,Foreign Table,199|57,EXT
+201,postgres_fdw Federation,199,EXT
+202,pgvector Embeddings,197|27,EXT
+203,Vector Similarity Search RAG,202|120,EXT
+204,HNSW Vector Index,202|114,EXT
+205,PostGIS Spatial,197|118|41,EXT
+206,pg_trgm Trigram Matching,197|120,EXT
+207,pg_stat_statements,197|156,EXT
+208,hstore Key-Value,197|120,EXT
+209,Citus Distributed Scale-Out,197|81,EXT
+210,TimescaleDB Time-Series,197|77,EXT
+211,uuid-ossp,197|40,EXT
+212,btree_gin btree_gist,197|120|118,EXT
+213,Procedural Language Handler,196|261,EXT
+214,Role,6,SEC
+215,Role Attribute LOGIN,214,SEC
+216,Superuser,214,SEC
+217,CREATEDB CREATEROLE,214,SEC
+218,Role Membership Group,214,SEC
+219,Privilege,214,SEC
+220,GRANT REVOKE,219,SEC
+221,Object Ownership,214|219,SEC
+222,Predefined Roles,214,SEC
+223,Row-Level Security RLS,219|87,SEC
+224,RLS Policy,223,SEC
+225,Column Privilege,219|58,SEC
+226,SECURITY DEFINER,232|219,SEC
+227,pg_hba.conf Authentication,2|214,SEC
+228,SCRAM-SHA-256 Auth,227,SEC
+229,Certificate Auth,227|230,SEC
+230,SSL TLS Connection,2,SEC
+231,GRANT Object Privileges,220|57,SEC
+232,User-Defined Function,261|27,PROC
+233,SQL Function,232|85,PROC
+234,PL/pgSQL,232|213,PROC
+235,PL/pgSQL Block Structure,234,PROC
+236,PL/pgSQL Variable,235,PROC
+237,TYPE ROWTYPE Attribute,236|48,PROC
+238,IF CASE Control,235,PROC
+239,Loop FOR WHILE,235,PROC
+240,SELECT INTO,235|85,PROC
+241,Dynamic EXECUTE,235,PROC
+242,Cursor,235|85,PROC
+243,Exception Handling,235,PROC
+244,RAISE Message,235,PROC
+245,Stored Procedure,232|138,PROC
+246,Procedure Transaction Control,245|139,PROC
+247,Set-Returning Function,232|86,PROC
+248,Aggregate Definition,232|95,PROC
+249,Trigger Function,234|232,PROC
+250,Trigger,249|57,PROC
+251,BEFORE AFTER Trigger,250,PROC
+252,Row Statement Level Trigger,250,PROC
+253,INSTEAD OF Trigger,250|71,PROC
+254,Event Trigger,249|73,PROC
+255,Rule System REWRITE,71|270,PROC
+256,pg_catalog Schema,55,CAT
+257,pg_class Catalog,256|57,CAT
+258,pg_attribute Catalog,256|58,CAT
+259,pg_type Catalog,256|27,CAT
+260,pg_namespace Catalog,256|55,CAT
+261,pg_proc Catalog,256,CAT
+262,pg_index Catalog,256|115,CAT
+263,pg_constraint Catalog,256|65,CAT
+264,pg_am Catalog,256,CAT
+265,pg_database Catalog,256|6,CAT
+266,pg_authid Catalog,256|214,CAT
+267,pg_statistic Catalog,256|158,CAT
+268,pg_depend Catalog,256,CAT
+269,pg_trigger Catalog,256|250,CAT
+270,pg_rewrite Catalog,256|71,CAT
+271,pg_locks View,256|152,CAT
+272,pg_stat_activity View,256|4,CAT
+273,pg_stat_replication View,256|183,CAT
+274,information_schema Interop,256,CAT
+275,information_schema Columns,274|258,CAT
+276,Postgres Iceberg Lakehouse Source,113|199,CAT
+277,OpenLineage postgres Dataset Naming,274|195,CAT
+278,Catalog Interop Layer,274|257|259,CAT
