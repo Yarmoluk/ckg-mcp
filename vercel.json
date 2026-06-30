@@ -1,0 +1,9 @@
+{
+  "buildCommand": null,
+  "framework": null,
+  "redirects": [
+    { "source": "/pro", "destination": "https://graphifymd.com/pro", "permanent": false },
+    { "source": "/paper", "destination": "https://github.com/Yarmoluk/ckg-benchmark/blob/main/paper/main.pdf", "permanent": false },
+    { "source": "/(.*)", "destination": "https://graphifymd.com/pro", "permanent": false }
+  ]
+}
