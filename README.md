@@ -1,5 +1,7 @@
 # ckg-mcp
 
+<!-- mcp-name: io.github.yarmoluk/ckg-mcp -->
+
 [![PyPI](https://img.shields.io/pypi/v/ckg-mcp)](https://pypi.org/project/ckg-mcp/)
 [![Downloads](https://static.pepy.tech/badge/ckg-mcp/month)](https://pepy.tech/project/ckg-mcp)
 [![Python](https://img.shields.io/pypi/pyversions/ckg-mcp)](https://pypi.org/project/ckg-mcp/)
@@ -251,7 +253,7 @@ get_agent_blueprint("gpu-inference-optimizer")
 **Pedagogy / tools** — automating-instructional-design, infographics, microsims, prompt-class, tracking-ai-course, vercel-ai-sdk, langchain-core
 **Business / society** — art-of-war, blockchain, digital-citizenship, economics-course, ethics-course, it-management-graph, laudato-si, learning-linux, personal-finance, reading-for-kindergarten, systems-thinking, theory-of-knowledge, unicorns, us-geography, asl-book
 
-**Pro only (24):** Healthcare · Enterprise data · AI infrastructure — [see full list →](https://graphifymd.com/pro)
+**Pro only (23):** Healthcare · Enterprise data · AI infrastructure — [see full list →](https://graphifymd.com/pro)
 
 ---
 
