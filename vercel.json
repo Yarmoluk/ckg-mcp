@@ -2,8 +2,8 @@
   "buildCommand": null,
   "framework": null,
   "redirects": [
-    { "source": "/pro", "destination": "https://graphifymd.com/pro", "permanent": false },
+    { "source": "/pro", "destination": "https://huggingface.co/spaces/danyarm/ckg-mcp", "permanent": false },
     { "source": "/paper", "destination": "https://github.com/Yarmoluk/ckg-benchmark/blob/main/paper/main.pdf", "permanent": false },
-    { "source": "/(.*)", "destination": "https://graphifymd.com/pro", "permanent": false }
+    { "source": "/(.*)", "destination": "https://huggingface.co/spaces/danyarm/ckg-mcp", "permanent": false }
   ]
 }
