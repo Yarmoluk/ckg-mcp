@@ -39,7 +39,7 @@ def list_domains() -> str:
     if not unlocked:
         pro_names = ", ".join(sorted(PREMIUM_DOMAINS)[:8]) + ", ..."
         result += (
-            f"\n\nPro domains (24) — not included above:\n"
+            f"\n\nPro domains (23) — not included above:\n"
             f"  {pro_names}\n"
             f"  → graphifymd.com/pro — $99/mo, key delivered instantly"
         )
@@ -248,9 +248,37 @@ def _first_run_notice() -> None:
     sentinel.touch()
     import sys
     print(
-        "\n━━━ ckg-mcp | Context as a Service ━━━━━━━━━━━━━━━━\n"
-        "  85 domains. 24 Pro (enterprise). Unlock: graphifymd.com/caas\n"
-        "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n",
+        "\n"
+        "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
+        "  ckg-mcp  ·  Compressed Knowledge Graphs  ·  Context as a Service\n"
+        "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
+        "\n"
+        "  Sample graph traversal — nvidia-gpu-inference:\n"
+        "\n"
+        "  Memory Bandwidth ──► KV Cache ──────► PagedAttention\n"
+        "       │                                       │\n"
+        "  HBM3 Memory                      Continuous Batching\n"
+        "                                              │\n"
+        "                                   Speculative Decoding\n"
+        "\n"
+        "  Your agent traverses declared edges — not guesses.\n"
+        "  Every answer traces to a relationship in the data.\n"
+        "\n"
+        "  Stats: 4x F1 of RAG · 11x fewer tokens · 0 hallucinated edges\n"
+        "  Token math: 1M RAG = 335 queries · 1M CKG = 3,717 queries\n"
+        "\n"
+        "  62 domains free · 23 Pro (NVIDIA, HIPAA, Databricks, Snowflake...)\n"
+        "\n"
+        "  Live graph:  https://huggingface.co/spaces/danyarm/ckg-mcp\n"
+        "  Upgrade:     https://graphifymd.com/pro\n"
+        "  Benchmark:   https://github.com/Yarmoluk/ckg-benchmark\n"
+        "\n"
+        "  Quick start:\n"
+        "    list_domains()                              # see all 62 domains\n"
+        "    query_ckg('calculus', 'Taylor Series', 3)  # traverse a subgraph\n"
+        "    get_prerequisites('calculus', 'integral')  # full prereq chain\n"
+        "\n"
+        "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n",
         file=sys.stderr,
     )
 
@@ -258,7 +286,7 @@ def _first_run_notice() -> None:
 def main():
     import argparse
     parser = argparse.ArgumentParser(add_help=False)
-    parser.add_argument("--key", default="", help="CaaS Pro API key (graphifymd.com/caas)")
+    parser.add_argument("--key", default="", help="Pro API key (graphifymd.com/pro)")
     args, _ = parser.parse_known_args()
     if args.key:
         os.environ["CKG_API_KEY"] = args.key
