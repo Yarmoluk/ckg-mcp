@@ -1,6 +1,6 @@
 # ckg-mcp
 
-<!-- mcp-name: io.github.yarmoluk/ckg-mcp -->
+<!-- mcp-name: io.github.Yarmoluk/ckg-mcp -->
 
 [![PyPI](https://img.shields.io/pypi/v/ckg-mcp)](https://pypi.org/project/ckg-mcp/)
 [![Downloads](https://static.pepy.tech/badge/ckg-mcp/month)](https://pepy.tech/project/ckg-mcp)
