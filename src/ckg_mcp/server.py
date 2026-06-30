@@ -1,4 +1,5 @@
 import json
+import os
 from pathlib import Path
 from mcp.server.fastmcp import FastMCP
 from .graph import available_domains, load_graph, find_concept, bfs_subgraph, prerequisite_chain
@@ -247,5 +248,11 @@ def _first_run_notice() -> None:
 
 
 def main():
+    import argparse
+    parser = argparse.ArgumentParser(add_help=False)
+    parser.add_argument("--key", default="", help="CaaS Pro API key (graphifymd.com/caas)")
+    args, _ = parser.parse_known_args()
+    if args.key:
+        os.environ["CKG_API_KEY"] = args.key
     _first_run_notice()
     mcp.run()

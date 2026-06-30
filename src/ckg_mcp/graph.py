@@ -1,15 +1,59 @@
 import csv
+import os
 from collections import defaultdict, deque
 from pathlib import Path
 
 DOMAINS_DIR = Path(__file__).parent / "domains"
 
+PREMIUM_DOMAINS: frozenset[str] = frozenset({
+    "payer-formulary",
+    "icd10-metabolic",
+    "cpt-em-coding",
+    "hipaa-compliance",
+    "hipaa-ai",
+    "drug-interactions",
+    "modeling-healthcare-data",
+    "organizational-analytics",
+    "databricks-unity",
+    "snowflake-horizon",
+    "postgresql",
+    "sql-dialect-portability",
+    "aws-data-catalog",
+    "azure-purview",
+    "google-dataplex",
+    "open-catalog-endpoints",
+    "openlineage",
+    "knowledge-layer-standards",
+})
+
+
+def _is_valid_key(key: str) -> bool:
+    if not key:
+        return False
+    valid_env = os.environ.get("CKG_VALID_KEYS", "")
+    if valid_env:
+        return key in {k.strip() for k in valid_env.split(",") if k.strip()}
+    key_file = Path.home() / ".ckg-mcp" / "keys.txt"
+    if key_file.exists():
+        return key in {ln.strip() for ln in key_file.read_text().splitlines() if ln.strip()}
+    return False
+
 
 def available_domains() -> list[str]:
-    return sorted(p.stem for p in DOMAINS_DIR.glob("*.csv"))
+    key = os.environ.get("CKG_API_KEY", "")
+    unlocked = _is_valid_key(key)
+    return sorted(
+        p.stem for p in DOMAINS_DIR.glob("*.csv")
+        if unlocked or p.stem not in PREMIUM_DOMAINS
+    )
 
 
 def load_graph(domain: str):
+    if domain in PREMIUM_DOMAINS and not _is_valid_key(os.environ.get("CKG_API_KEY", "")):
+        raise ValueError(
+            f"Domain '{domain}' requires a CaaS Pro key. "
+            "Subscribe at graphifymd.com/caas — key delivered instantly."
+        )
     csv_path = DOMAINS_DIR / f"{domain}.csv"
     if not csv_path.exists():
         raise ValueError(f"Domain '{domain}' not found. Available: {available_domains()}")
