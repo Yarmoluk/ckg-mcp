@@ -2,7 +2,7 @@ import json
 import os
 from pathlib import Path
 from mcp.server.fastmcp import FastMCP
-from .graph import available_domains, load_graph, find_concept, bfs_subgraph, prerequisite_chain
+from .graph import available_domains, load_graph, find_concept, bfs_subgraph, prerequisite_chain, PREMIUM_DOMAINS
 
 AGENTS_DIR = Path(__file__).parent / "agents"
 
@@ -34,7 +34,16 @@ def list_domains() -> str:
         "Available domains (65): algebra-1, aws-data-catalog, calculus, ...".
     """
     domains = available_domains()
-    return f"Available domains ({len(domains)}): " + ", ".join(domains)
+    unlocked = bool(os.environ.get("CKG_API_KEY"))
+    result = f"Available domains ({len(domains)}): " + ", ".join(domains)
+    if not unlocked:
+        pro_names = ", ".join(sorted(PREMIUM_DOMAINS)[:8]) + ", ..."
+        result += (
+            f"\n\nPro domains (24) — not included above:\n"
+            f"  {pro_names}\n"
+            f"  → graphifymd.com/pro — $99/mo, key delivered instantly"
+        )
+    return result
 
 
 @mcp.tool()

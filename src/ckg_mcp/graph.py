@@ -91,7 +91,7 @@ def load_graph(domain: str):
     if domain in PREMIUM_DOMAINS and not _is_valid_key(os.environ.get("CKG_API_KEY", "")):
         raise ValueError(
             f"Domain '{domain}' is a Pro domain. "
-            "Unlock all Pro domains at graphifymd.com/caas — $99/mo, key delivered instantly. "
+            "Unlock all Pro domains at graphifymd.com/pro — $99/mo, key delivered instantly. "
             "Set CKG_API_KEY=<your-key> to activate."
         )
     csv_path = DOMAINS_DIR / f"{domain}.csv"

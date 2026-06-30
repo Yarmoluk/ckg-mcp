@@ -42,7 +42,7 @@ const stripe = async (method, path, body) => {
     'line_items[0][price]': price.id,
     'line_items[0][quantity]': 1,
     'after_completion[type]': 'redirect',
-    'after_completion[redirect][url]': 'https://graphifymd.com/pro/success.html',
+    'after_completion[redirect][url]': 'https://graphifymd.com/pro/success.html?session_id={CHECKOUT_SESSION_ID}',
     'allow_promotion_codes': 'true',
     'billing_address_collection': 'auto',
     'metadata[product]': 'ckg-mcp-pro',

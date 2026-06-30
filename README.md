@@ -154,7 +154,7 @@ get_agent_blueprint("gpu-inference-optimizer")
 
 ## Free vs Pro
 
-| | **Free** | **Pro — $20/mo** |
+| | **Free** | **Pro — $99/mo** |
 |---|---|---|
 | Domains | 65 | 85 |
 | Healthcare | — | HIPAA, CPT, ICD-10, drug interactions, payer formulary, modeling healthcare data |
