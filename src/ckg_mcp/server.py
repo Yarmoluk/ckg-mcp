@@ -249,8 +249,7 @@ def _first_run_notice() -> None:
     import sys
     print(
         "\n━━━ ckg-mcp | Context as a Service ━━━━━━━━━━━━━━━━\n"
-        "  65 domains live. Hosted endpoint + private CKGs:\n"
-        "  graphifymd.com/caas\n"
+        "  85 domains. 24 Pro (enterprise). Unlock: graphifymd.com/caas\n"
         "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n",
         file=sys.stderr,
     )
