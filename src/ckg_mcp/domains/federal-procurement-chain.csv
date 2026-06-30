@@ -1,0 +1,66 @@
+ConceptID,ConceptLabel,Dependencies,TaxonomyID
+1,Federal Acquisition,,FOUND
+2,FAR (Federal Acquisition Regulation),1,FOUND
+3,DFARS,2,FOUND
+4,Agency Supplement,2,FOUND
+5,Contracting Officer,1,FOUND
+6,Contracting Officer Representative,5,FOUND
+7,Legal Counsel,1,FOUND
+8,Program Manager,1,FOUND
+9,Acquisition Planning,,PLAN
+10,Market Research,9,PLAN
+11,Acquisition Strategy,9|10,PLAN
+12,Independent Government Cost Estimate,9,PLAN
+13,Performance Work Statement,9,PLAN
+14,Statement of Objectives,9,PLAN
+15,Statement of Work,9,PLAN
+16,Quality Assurance Surveillance Plan,9,PLAN
+17,Small Business Review,9,PLAN
+18,Section 508 Review,9,PLAN
+19,Solicitation,,ACQUIS
+20,Request for Proposal,19,ACQUIS
+21,Request for Quotation,19,ACQUIS
+22,Invitation for Bid,19,ACQUIS
+23,Sources Sought Notice,19,ACQUIS
+24,Presolicitation Notice,23,ACQUIS
+25,Amendment,19,ACQUIS
+26,Q&A Period,20,ACQUIS
+27,Evaluation Criteria,20,ACQUIS
+28,Technical Evaluation Factors,27,ACQUIS
+29,Past Performance Evaluation,27,ACQUIS
+30,Price Evaluation,27,ACQUIS
+31,Proposal,20,ACQUIS
+32,Technical Volume,31,ACQUIS
+33,Management Volume,31,ACQUIS
+34,Past Performance Volume,31,ACQUIS
+35,Price Volume,31,ACQUIS
+36,Source Selection,,AWARD
+37,Technical Evaluation Panel,36,AWARD
+38,Source Selection Authority,36,AWARD
+39,Best Value Determination,36|27,AWARD
+40,Lowest Price Technically Acceptable,39,AWARD
+41,Tradeoff Analysis,39,AWARD
+42,Competitive Range,36,AWARD
+43,Discussion,42,AWARD
+44,Final Proposal Revision,43,AWARD
+45,Award Decision,36,AWARD
+46,Award Notice,45,AWARD
+47,Debriefing,45,AWARD
+48,Bid Protest,45,AWARD
+49,GAO Bid Protest,48,AWARD
+50,COFC Protest,48,AWARD
+51,Contract Administration,,OVER
+52,Contract Modification,51,OVER
+53,Change Order,52,OVER
+54,Equitable Adjustment,53,OVER
+55,Contracting Officer Final Decision,51,OVER
+56,Contract Dispute,55,OVER
+57,Board of Contract Appeals,56,OVER
+58,Subcontracting Plan,51,OVER
+59,Invoicing and Payment,51,OVER
+60,CPARS Rating,51,OVER
+61,Audit by DCAA,51,OVER
+62,Earned Value Reporting,51|8,OVER
+63,Contract Closeout,51,OVER
+64,SAM.gov Registration,1,FOUND
+65,USASpending API,45,FOUND

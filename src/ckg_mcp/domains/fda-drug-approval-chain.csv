@@ -1,0 +1,71 @@
+ConceptID,ConceptLabel,Dependencies,TaxonomyID
+1,FDA Drug Review,,FOUND
+2,New Drug Application,1,FOUND
+3,Biologics License Application,1,FOUND
+4,Abbreviated New Drug Application,1,FOUND
+5,505(b)(2) Application,2,FOUND
+6,Sponsor,1,FOUND
+7,Drug Substance,,FOUND
+8,Drug Product,7,FOUND
+9,Active Pharmaceutical Ingredient,7,FOUND
+10,Investigational New Drug,,PRECLIN
+11,Preclinical Studies,10,PRECLIN
+12,Animal Toxicology,11,PRECLIN
+13,ADME Studies,11,PRECLIN
+14,Chemistry Manufacturing Controls,10|8,PRECLIN
+15,IND Safety Reporting,10,PRECLIN
+16,Phase 1 Clinical Trial,10,CLINICAL
+17,Safety and Tolerability,16,CLINICAL
+18,Dose Escalation,16,CLINICAL
+19,PK/PD Studies,16|13,CLINICAL
+20,Phase 2 Clinical Trial,16,CLINICAL
+21,Efficacy Signal,20,CLINICAL
+22,Patient Population,20,CLINICAL
+23,Dose Selection,20,CLINICAL
+24,Phase 3 Clinical Trial,20,CLINICAL
+25,Randomized Controlled Trial,24,CLINICAL
+26,Placebo Control,25,CLINICAL
+27,Active Comparator,25,CLINICAL
+28,Primary Endpoint,24,CLINICAL
+29,Secondary Endpoint,24,CLINICAL
+30,Statistical Analysis Plan,24|28,CLINICAL
+31,PDUFA Date,2,REVIEW
+32,FDA Review Division,1,REVIEW
+33,Medical Review,32,REVIEW
+34,Statistical Review,32|30,REVIEW
+35,Clinical Pharmacology Review,32|19,REVIEW
+36,CMC Review,32|14,REVIEW
+37,Labeling Review,32,REVIEW
+38,Advisory Committee,32,REVIEW
+39,AdCom Vote,38,REVIEW
+40,Complete Response Letter,32,REVIEW
+41,Refuse to File,32,REVIEW
+42,Approval Action,32,REVIEW
+43,Priority Review,31,REVIEW
+44,Breakthrough Therapy Designation,43,REVIEW
+45,Accelerated Approval,42,REVIEW
+46,Confirmatory Trial,45,CLINICAL
+47,REMS,42,REVIEW
+48,REMS Elements to Assure Safe Use,47,REVIEW
+49,Black Box Warning,37,REVIEW
+50,Post-Market Surveillance,42,POSTMKT
+51,FAERS Reporting,50,POSTMKT
+52,Spontaneous Adverse Event Report,51,POSTMKT
+53,MedWatch Form,52,POSTMKT
+54,Expedited Report,52,POSTMKT
+55,Periodic Safety Update Report,50,POSTMKT
+56,Post-Market Requirement,42|45,POSTMKT
+57,Post-Market Commitment,42,POSTMKT
+58,FDA Safety Communication,50,POSTMKT
+59,Drug Safety Communication,58,POSTMKT
+60,Market Withdrawal,50,POSTMKT
+61,Recall,50|60,POSTMKT
+62,Class I Recall,61,POSTMKT
+63,Class II Recall,61,POSTMKT
+64,Class III Recall,61,POSTMKT
+65,Label Update,50|37,POSTMKT
+66,REMS Modification,47|50,POSTMKT
+67,Foreign Inspection,14,REVIEW
+68,Warning Letter,14|36,REVIEW
+69,FDA Form 483,68,REVIEW
+70,AI in Drug Review,32|34,REVIEW

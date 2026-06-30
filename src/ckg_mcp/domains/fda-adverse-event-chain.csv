@@ -1,0 +1,61 @@
+ConceptID,ConceptLabel,Dependencies,TaxonomyID
+1,Adverse Event,,FOUND
+2,Serious Adverse Event,1,FOUND
+3,Non-Serious Adverse Event,1,FOUND
+4,Drug-Related Adverse Event,1,FOUND
+5,Device-Related Adverse Event,1,FOUND
+6,Vaccine Adverse Event,1,FOUND
+7,Adverse Drug Reaction,4,FOUND
+8,Side Effect,4,FOUND
+9,Unexpected Adverse Event,1,FOUND
+10,FAERS Database,,REPORT
+11,Voluntary Report,10,REPORT
+12,Mandatory Report,10,REPORT
+13,MedWatch 3500A,12,REPORT
+14,MedWatch 3500,11,REPORT
+15,Healthcare Provider Report,11,REPORT
+16,Consumer Report,11,REPORT
+17,Manufacturer Report,12,REPORT
+18,15-Day Alert Report,12|2,REPORT
+19,Periodic Safety Update,12,REPORT
+20,VAERS Report,6,REPORT
+21,MDR Report,5,REPORT
+22,Signal Detection,,SIGNAL
+23,Disproportionality Analysis,22,SIGNAL
+24,Reporting Odds Ratio,23,SIGNAL
+25,Proportional Reporting Ratio,23,SIGNAL
+26,Bayesian Confidence Propagation,23,SIGNAL
+27,MGPS Score,23,SIGNAL
+28,Data Mining Algorithm,22|23,SIGNAL
+29,Signal Validation,22,SIGNAL
+30,Signal Prioritization,29,SIGNAL
+31,Causality Assessment,22,SIGNAL
+32,WHO-UMC Causality Scale,31,SIGNAL
+33,Naranjo Algorithm,31,SIGNAL
+34,Bradford Hill Criteria,31,SIGNAL
+35,FDA Safety Evaluation,,EVAL
+36,Clinical Evidence Review,35,EVAL
+37,Epidemiological Study,35,EVAL
+38,Pharmacovigilance Study,35|37,EVAL
+39,Risk-Benefit Assessment,35,EVAL
+40,Population Risk,39,EVAL
+41,Subgroup Vulnerability,39,EVAL
+42,Regulatory Action,,ACTION
+43,Label Change,42,ACTION
+44,Contraindication Addition,43,ACTION
+45,Warning Addition,43,ACTION
+46,Drug Withdrawal,42,ACTION
+47,Recall,42,ACTION
+48,Dear Healthcare Provider Letter,42,ACTION
+49,REMS Requirement,42,ACTION
+50,Restricted Distribution,49,ACTION
+51,MedGuide Requirement,49,ACTION
+52,Communication Campaign,42,ACTION
+53,openFDA API,10,FOUND
+54,FAERS Public Dashboard,10,FOUND
+55,Structured Product Label,1,FOUND
+56,MedDRA Coding,1,FOUND
+57,System Organ Class,56,FOUND
+58,Preferred Term,56,FOUND
+59,Signal-to-Noise Ratio,28|30,SIGNAL
+60,AI Pharmacovigilance,22|28,SIGNAL

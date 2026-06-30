@@ -1,0 +1,71 @@
+ConceptID,ConceptLabel,Dependencies,TaxonomyID
+1,GAO Report,,FOUND
+2,Report Type,1,FOUND
+3,Performance Audit,2,FOUND
+4,Financial Audit,2,FOUND
+5,Program Evaluation,2,FOUND
+6,Technology Assessment,2,FOUND
+7,Legal Decision,2,FOUND
+8,Bid Protest Decision,2,FOUND
+9,GAO Mandate,1,FOUND
+10,Congressional Request,9,FOUND
+11,Statutory Mandate,9,FOUND
+12,Comptroller General Initiative,9,FOUND
+13,Audit Objective,1,AUDIT
+14,Scope and Methodology,13,AUDIT
+15,Evidence Gathering,14,AUDIT
+16,Document Review,15,AUDIT
+17,Interviews,15,AUDIT
+18,Data Analysis,15,AUDIT
+19,Site Visits,15,AUDIT
+20,Agency Comments,14,AUDIT
+21,Written Comment,20,AUDIT
+22,Exit Conference,20,AUDIT
+23,Finding,1,FIND
+24,Root Cause,23,FIND
+25,Effect,23,FIND
+26,Criteria,23,FIND
+27,Condition,23,FIND
+28,Matter for Congressional Consideration,23,FIND
+29,Priority Recommendation,23,FIND
+30,Recommendation,23,RECOM
+31,Action Agency,30,RECOM
+32,Recommendation Status,30,RECOM
+33,Open Recommendation,32,RECOM
+34,Closed Implemented,32,RECOM
+35,Closed Not Implemented,32,RECOM
+36,Closed Alternative Action,32,RECOM
+37,Partially Implemented,32,STATUS
+38,Implementation Plan,33,STATUS
+39,Target Date,38,STATUS
+40,Agency Response,30,STATUS
+41,Agency Concurrence,40,STATUS
+42,Agency Non-Concurrence,40,STATUS
+43,Partial Concurrence,40,STATUS
+44,Priority Recommendation List,29,FIND
+45,High Risk Area,44,FIND
+46,High Risk Report,45,FIND
+47,High Risk Removal Criteria,45,FIND
+48,Government-Wide High Risk,45,FIND
+49,Agency-Specific High Risk,45,FIND
+50,Report Number,1,FOUND
+51,Congressional Addressee,1,FOUND
+52,Independent Cost Estimate,1,AUDIT
+53,Schedule Estimate,1,AUDIT
+54,Earned Value Management,52|53,AUDIT
+55,Program Effectiveness,5,FIND
+56,Overlap and Duplication,5,FIND
+57,Fragmentation,56,FIND
+58,TRL Assessment,6,FIND
+59,TRL Level,58,FIND
+60,AI in Federal Oversight,1|18,FIND
+61,Algorithm Transparency,60,FIND
+62,Automated Decision System,60,FIND
+63,Explainability Requirement,62,FIND
+64,Recommendation Compliance Chain,30|32|38,RECOM
+65,Oversight Audit Trail,1|23|30,AUDIT
+66,Federal Program CKG Gap,23|30,FIND
+67,Multi-Agency Coordination,31|56,FIND
+68,Inspector General Referral,23,FIND
+69,GAO API Access,1,FOUND
+70,Structured Finding Traversal,23|30|64,RECOM
