@@ -5,113 +5,209 @@
 [![Python](https://img.shields.io/pypi/pyversions/ckg-mcp)](https://pypi.org/project/ckg-mcp/)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 [![MCP](https://img.shields.io/badge/MCP-server-blue)](https://modelcontextprotocol.io)
-[![Benchmark](https://img.shields.io/badge/benchmark-reproducible-orange)](https://github.com/Yarmoluk/ckg-benchmark)
+[![Benchmark](https://img.shields.io/badge/benchmark-open%20%26%20reproducible-orange)](https://github.com/Yarmoluk/ckg-benchmark)
 
-`mcp-name: io.github.Yarmoluk/ckg-mcp`
+**Give your agent the structure, not the search.**
 
-**Give your agent the structure, not the search.** `ckg-mcp` serves **Compressed Knowledge Graphs** — pre-structured, typed dependency graphs — to any MCP client. Instead of retrieving text chunks and hoping the model infers the relationships, your agent traverses *declared* edges: prerequisites, dependency chains, and category membership, returned as a tight subgraph.
+`ckg-mcp` serves **Compressed Knowledge Graphs** to any LLM via MCP — pre-structured, typed dependency graphs your agent *traverses* instead of text chunks it *guesses from*.
 
-On the open [CKG Benchmark](https://github.com/Yarmoluk/ckg-benchmark), this approach scores **3.8× the F1 of RAG at 11× fewer tokens** — and unlike RAG, it **cannot fabricate a relationship that isn't in the graph**.
+```
+3.8× the F1 of RAG · 11× fewer tokens · works with Claude, GPT-4o, Gemini, Llama, Mistral, and any MCP client
+```
+
+> Measured on the open [CKG Benchmark](https://github.com/Yarmoluk/ckg-benchmark) — 45 domains, 7,928 queries. [Re-run it yourself.](#reproducibility)
 
 ---
 
-## Quickstart (30 seconds)
+## Quickstart — 30 seconds
 
 ```bash
-pip install ckg-mcp        # or: uvx ckg-mcp  (zero-install)
+pip install ckg-mcp        # Python ≥ 3.10
+# or zero-install:  uvx ckg-mcp
 ```
 
-**Claude Desktop** — add to `~/Library/Application Support/Claude/claude_desktop_config.json`:
+Pick your client:
+
+<details open>
+<summary><strong>Claude Desktop</strong></summary>
+
+Add to `~/Library/Application Support/Claude/claude_desktop_config.json`:
 
 ```json
 {
   "mcpServers": {
-    "ckg": {
-      "command": "ckg-mcp"
-    }
+    "ckg": { "command": "ckg-mcp" }
   }
 }
 ```
+</details>
 
-**Claude Code** (CLI):
+<details>
+<summary><strong>Claude Code (CLI)</strong></summary>
 
 ```bash
 claude mcp add ckg -- ckg-mcp
 ```
+</details>
 
-**Cursor / Cline / Windsurf** — same block in your MCP settings:
-
-```json
-{ "mcpServers": { "ckg": { "command": "ckg-mcp" } } }
-```
-
-Prefer no global install? Swap the command for uvx:
+<details>
+<summary><strong>Cursor · Cline · Windsurf · any MCP client</strong></summary>
 
 ```json
-{ "mcpServers": { "ckg": { "command": "uvx", "args": ["ckg-mcp"] } } }
+{
+  "mcpServers": {
+    "ckg": { "command": "ckg-mcp" }
+  }
+}
 ```
 
-Restart the client. Ask your agent: *"Use the ckg tools — list the domains, then trace the prerequisite chain for 'Taylor Series' in calculus."*
+Or with `uvx` (no global install):
+```json
+{
+  "mcpServers": {
+    "ckg": { "command": "uvx", "args": ["ckg-mcp"] }
+  }
+}
+```
+</details>
+
+<details>
+<summary><strong>LangChain / LangGraph / smolagents (Python)</strong></summary>
+
+```python
+from langchain_mcp_adapters.client import MultiServerMCPClient
+
+client = MultiServerMCPClient({
+    "ckg": {"command": "ckg-mcp", "transport": "stdio"}
+})
+tools = await client.get_tools()
+```
+</details>
+
+<details>
+<summary><strong>OpenAI SDK</strong></summary>
+
+```python
+import subprocess, json
+proc = subprocess.Popen(["ckg-mcp"], stdin=subprocess.PIPE, stdout=subprocess.PIPE)
+# Use any MCP-over-stdio adapter — e.g. mcp-client-python or openai-agents-mcp
+```
+</details>
+
+Restart your client, then try:
+
+```
+list_domains()
+get_prerequisites(domain="calculus", concept="Taylor Series")
+query_ckg(domain="nvidia-gpu-inference", concept="FlashAttention-3", depth=3)
+```
 
 ---
 
 ## What you get
 
-Four tools over **65 bundled domains** (no database, no embeddings, no API key):
+**6 tools. No database. No embeddings. No API key.**
 
-| Tool | Signature | What it does |
-|------|-----------|--------------|
-| `list_domains` | `list_domains()` | List all available CKG domains. **Call this first.** |
-| `query_ckg` | `query_ckg(domain, concept, depth=3)` | Extract the subgraph around a concept — related concepts up to `depth` hops. |
-| `get_prerequisites` | `get_prerequisites(domain, concept)` | The full prerequisite chain — everything to understand first. |
-| `search_concepts` | `search_concepts(domain, query)` | Find concepts in a domain by name. |
+| Tool | What it does |
+|------|--------------|
+| `list_domains()` | List all available domains. **Call this first.** |
+| `query_ckg(domain, concept, depth=3)` | Dependency subgraph around a concept — prerequisites + dependents up to N hops |
+| `get_prerequisites(domain, concept)` | Full prerequisite chain — every concept to understand first, in order |
+| `search_concepts(domain, query)` | Find concepts by name (partial match, case-insensitive) |
+| `list_agent_blueprints()` | List pre-built agent configs for specific use cases |
+| `get_agent_blueprint(use_case)` | Full blueprint: domains, constraints, workflow, prompt template, LangGraph hint |
 
-### Example
+### Example session
 
 ```
 list_domains()
-→ calculus, circuits, machine-learning-textbook, glp1-obesity, payer-formulary, google-dataplex, ... (65)
+→ Available domains (65 free / 85 pro): algebra-1, agent-reliability, calculus,
+  context-as-a-service, databricks-unity, glp1-obesity, hipaa-compliance,
+  nvidia-gpu-inference, payer-formulary, snowflake-horizon, ...
 
 get_prerequisites(domain="calculus", concept="Taylor Series")
-→ Taylor Series → Power Series → Higher-Order Derivative → Derivative Function
-  → … → Limit → … → Function   (20 concepts — every edge declared in the graph, not inferred from prose)
+→ Prerequisite chain for 'Taylor Series' in calculus (20 concepts):
+  Function → Limit → Derivative → ... → Power Series → Taylor Series
 
-query_ckg(domain="circuits", concept="RC Discharging", depth=2)
-→ subgraph: RC Discharging ← RC Circuit, Capacitor Energy Storage, Initial Conditions ...
+query_ckg(domain="nvidia-gpu-inference", concept="KV Cache", depth=3)
+→ ## CKG: KV Cache (nvidia-gpu-inference)
+  ### Prerequisites
+  - Memory Bandwidth
+    - HBM3 Memory (L2)
+  - Transformer Attention
+    - Scaled Dot-Product Attention (L2)
+  ### Builds toward
+  - PagedAttention
+  - Continuous Batching
+  - Speculative Decoding
+
+list_agent_blueprints()
+→ Agent blueprints (2):
+    gpu-inference-optimizer: Diagnoses GPU inference bottlenecks and recommends optimizations
+    context-as-a-service-advisor: Designs CaaS pipelines replacing RAG with CKG-based retrieval
+
+get_agent_blueprint("gpu-inference-optimizer")
+→ Full spec: required domains, constraints, 6-step workflow, prompt template, LangGraph state machine
 ```
 
 ---
 
-## Why it beats retrieval
+## Free vs Pro
 
-Three architectures, same questions, measured on the open [CKG Benchmark](https://github.com/Yarmoluk/ckg-benchmark) (45 domains, 7,928 queries, fully reproducible):
+| | **Free** | **Pro — $20/mo** |
+|---|---|---|
+| Domains | 65 | 85 |
+| Healthcare | — | HIPAA, CPT, ICD-10, drug interactions, payer formulary, modeling healthcare data |
+| Enterprise data | — | Databricks Unity, Snowflake Horizon, PostgreSQL, AWS, Azure Purview, GCP Dataplex, dbt, OpenLineage |
+| AI infrastructure | — | NVIDIA GPU inference, context-as-a-service, agent reliability, AI governance, token cost crisis |
+| Agent blueprints | 2 included | 2 included + priority access to new ones |
+| License | MIT | Commercial |
 
-| | **CKG** | RAG | GraphRAG |
+**Upgrade:** [graphifymd.com/pro](https://graphifymd.com/pro) — key delivered to your inbox, activate with one env var:
+
+```bash
+export CKG_API_KEY=your-license-key
+# restart your MCP client — all 85 domains now appear in list_domains()
+```
+
+---
+
+## Benchmark
+
+Three architectures. Same questions. Open methodology.
+
+| | **CKG (this tool)** | RAG | GraphRAG |
 |---|---|---|---|
-| Macro-F1 | **0.47** | 0.12 | 0.12 |
+| Macro-F1 | **0.471** | 0.123 | 0.120 |
 | Tokens / query | **269** | 2,982 | 3,450 |
+| Cost / query | **$0.0010** | $0.0106 | — |
 | F1 @ 5 hops | **0.772** | 0.170 | — |
-| Fabricated edges | **0 by construction** | variable | variable |
+| Fabricated edges | **0 — by construction** | variable | variable |
 
-- **3.8× the F1 of RAG**, at **11× fewer tokens** per query.
-- **~42× higher RDS** (Retrieval Density Score = F1 per token) — the compound efficiency metric.
-- **~10× cheaper** to run the full query set ($7.81 vs $76.23; ≈$0.0010 vs $0.0106 per query).
-- **CKG strengthens with depth** (0.37 → 0.77 from hop 0 to hop 5); RAG stays flat and low — retrieval has no mechanism for traversing a chain.
-- **GraphRAG is *not* better than RAG** here (0.120 vs 0.123, and *more* tokens). The win isn't "a graph" — it's a *pre-structured, compiled* graph.
+- **3.8× the F1 of RAG** at **11× fewer tokens**
+- **~42× higher RDS** (Retrieval Density Score) — the compound efficiency metric
+- **~10× cheaper** full query set ($7.81 vs $76.23)
+- **Scales with depth**: CKG F1 rises from 0.37 → 0.77 at 5 hops; RAG is flat. Retrieval has no traversal mechanism.
+- **GraphRAG ≈ RAG** (0.120 vs 0.123) — the word "graph" isn't the win. *Pre-structured, compiled* graphs are.
 
-> **Don't trust the numbers — re-run them:**
-> ```bash
-> git clone https://github.com/Yarmoluk/ckg-benchmark && cd ckg-benchmark
-> pip install -r evaluation/requirements.txt
-> python evaluation/ckg_harness.py --domain calculus
-> python evaluation/analyze_results.py
-> ```
+Also validated by independent academic benchmark: [arXiv:2603.14045](https://arxiv.org/abs/2603.14045) (Zarrinkia, Thomo, Srinivasan — U. Victoria / Santa Clara) finds **73–84% of Graph-RAG errors are reasoning failures**, not retrieval failures — the problem CKGs solve by construction.
+
+### Reproducibility
+
+```bash
+git clone https://github.com/Yarmoluk/ckg-benchmark && cd ckg-benchmark
+pip install -r evaluation/requirements.txt
+python evaluation/ckg_harness.py --domain calculus
+python evaluation/analyze_results.py
+```
+
+[Full benchmark paper →](https://github.com/Yarmoluk/ckg-benchmark/blob/main/paper/main.pdf)
 
 ---
 
 ## How it works
 
-A Compressed Knowledge Graph is a plain-text `.csv`/`.md` DAG — entities, typed dependency edges, and taxonomy — that the LLM reads **directly**:
+A Compressed Knowledge Graph is a plain-text `.csv` DAG — concepts, typed dependency edges, taxonomy tags — that the LLM reads directly:
 
 ```csv
 ConceptID,ConceptLabel,Dependencies,TaxonomyID
@@ -120,33 +216,61 @@ ConceptID,ConceptLabel,Dependencies,TaxonomyID
 4,Composite Function,1|3,FOUND
 ```
 
-`ckg-mcp` does deterministic graph traversal (BFS/DFS) over these declared edges and hands the agent the exact subgraph it asked for. Because the server returns **declared edges, not generated text**, it cannot invent a relationship that isn't in the graph — that's what "**0 fabricated edges by construction**" means. (The LLM still writes the final answer in prose; the *knowledge* it reasons over is exact.)
+`ckg-mcp` runs deterministic BFS/DFS over declared edges and returns the exact subgraph the agent asked for. Because the server only returns **edges that are declared in the data**, it cannot invent a relationship. The LLM still writes the answer in prose — the *knowledge* it reasons over is exact.
 
-No graph database. No vector store. No retrieval pipeline. Drop the server in, or drop a single `.md` into a system prompt.
+No graph database. No vector store. No retrieval pipeline. No inference at query time.
+
+```
+1M RAG tokens = 335 queries   (burning context at $0.013/query)
+1M CKG tokens = 3,717 queries (11× compression — the same budget, 11× the coverage)
+```
 
 ---
 
-## Bundled domains (65)
+## Agent Blueprints (new in v0.6.0)
 
-**Reference graphs** — laudato-si, art-of-war, token-cost-crisis, agent-reliability, ai-governance, hipaa-ai
-**Data catalog / governance** — google-dataplex, aws-data-catalog, azure-purview, databricks-unity, snowflake-horizon
-**Life sciences / clinical** — glp1-obesity, glp1-muscle-loss, drug-interactions, dementia, icd10-metabolic, cpt-em-coding, hipaa-compliance, payer-formulary, modeling-healthcare-data, bioinformatics, genetics, biology
-**STEM / math** — calculus, pre-calc, algebra-1, linear-algebra, geometry-course, statistics-course, functions, intro-to-physics-course, chemistry, ecology, signal-processing, fft-benchmarking
-**Engineering / CS** — circuits, digital-electronics, computer-science, quantum-computing, machine-learning-textbook, langchain-core, claude-skills, data-science-course, it-management-graph, intro-to-graph
-**AI / data / pedagogy** — conversational-ai, prompt-class, tracking-ai-course, automating-instructional-design, microsims, infographics, modeling-healthcare-data
-**Business / society / other** — economics-course, personal-finance, organizational-analytics, ethics-course, theory-of-knowledge, systems-thinking, digital-citizenship, learning-linux, reading-for-kindergarten, us-geography, asl-book, moss, unicorns, blockchain
+Blueprints are pre-built, domain-locked agent specifications: which CKG domains to load, workflow steps, constraints, a ready-to-use system prompt, example queries, and a LangGraph orchestration hint.
 
-Need a domain we don't ship? Build your own CKG from a CSV, or ask about managed enterprise domains → [graphifymd.com](https://graphifymd.com).
+```
+get_agent_blueprint("gpu-inference-optimizer")
+→ Required domains: nvidia-gpu-inference, context-as-a-service
+  Constraints: only traverse declared edges, cite concept IDs, flag gaps
+  Workflow: 1. list_domains → 2. query_ckg bottleneck → 3. trace prereqs →
+            4. identify optimization path → 5. recommend with citations
+  Prompt template: [ready to paste]
+  LangGraph hint: StateGraph with 4 nodes: diagnose, trace, optimize, report
+```
+
+---
+
+## Bundled domains (65 free)
+
+**AI tools** — claude-anthropic, claude-skills, conversational-ai, cursor, deepseek, gemini-api, grok-xai, kimi-moonshot, midjourney, moss, openai-platform, qwen
+**STEM / math** — algebra-1, calculus, chemistry, circuits, computer-science, data-science-course, digital-electronics, ecology, fft-benchmarking, functions, genetics, geometry-course, intro-to-graph, intro-to-physics-course, linear-algebra, machine-learning-textbook, pre-calc, quantum-computing, signal-processing, statistics-course
+**Life sciences** — biology, bioinformatics, dementia, drug-interactions, glp1-muscle-loss, glp1-obesity
+**Pedagogy / tools** — automating-instructional-design, infographics, microsims, prompt-class, tracking-ai-course, vercel-ai-sdk, langchain-core
+**Business / society** — art-of-war, blockchain, digital-citizenship, economics-course, ethics-course, it-management-graph, laudato-si, learning-linux, personal-finance, reading-for-kindergarten, systems-thinking, theory-of-knowledge, unicorns, us-geography, asl-book
+
+**Pro only (24):** Healthcare · Enterprise data · AI infrastructure — [see full list →](https://graphifymd.com/pro)
 
 ---
 
 ## Compatibility
 
-Works with any MCP client — Claude Desktop, Claude Code, Cursor, Cline, Windsurf — and any agent framework that speaks MCP (LangGraph, AutoGen, etc.). Model-agnostic: the graph is plain text, so it works equally with Claude, GPT, Llama, or a local model. Python ≥ 3.10, stdio transport, single dependency (`mcp`).
+Model-agnostic — the graph is plain text, readable by any LLM:
 
-## Commercial
+| LLM | Agent framework | MCP client |
+|-----|-----------------|------------|
+| Claude (all tiers) | LangChain / LangGraph | Claude Desktop |
+| GPT-4o / GPT-4 | AutoGen | Claude Code |
+| Gemini 1.5 / 2.0 | smolagents | Cursor |
+| Llama 3 / 3.1 | CrewAI | Cline |
+| Mistral | Haystack | Windsurf |
+| DeepSeek | OpenAI Agents SDK | Any MCP stdio client |
 
-The open package ships 65 domains under MIT. Managed enterprise domains (clinical, regulatory, financial), weekly delta updates, and pilot engagements are available through **[Graphify.md](https://graphifymd.com)**.
+Python ≥ 3.10 · single dependency (`mcp`) · stdio transport · zero configuration
+
+---
 
 ## License
 
@@ -160,8 +284,10 @@ MIT. Source learning graphs derive from the McCreary Intelligent Textbook Corpus
             and Commercial Domains: RAG, GraphRAG, and Compressed (Compact) Knowledge Graphs},
   author = {Yarmoluk, Daniel and McCreary, Dan},
   year   = {2026},
-  note   = {Pre-print in preparation. v0.6.2.}
+  note   = {v0.6.2. https://github.com/Yarmoluk/ckg-benchmark}
 }
 ```
 
-**Links:** [CKG Benchmark](https://github.com/Yarmoluk/ckg-benchmark) · [Paper](https://graphifymd.com/paper.html) · [Graphify.md](https://graphifymd.com)
+---
+
+**Links:** [Benchmark](https://github.com/Yarmoluk/ckg-benchmark) · [Paper](https://github.com/Yarmoluk/ckg-benchmark/blob/main/paper/main.pdf) · [Pro domains](https://graphifymd.com/pro) · [Graphify.md](https://graphifymd.com) · [arXiv:2603.14045](https://arxiv.org/abs/2603.14045)
