@@ -230,5 +230,22 @@ def get_agent_blueprint(use_case: str) -> str:
     return "\n".join(lines)
 
 
+def _first_run_notice() -> None:
+    sentinel = Path.home() / ".ckg-mcp" / ".welcomed"
+    if sentinel.exists():
+        return
+    sentinel.parent.mkdir(exist_ok=True)
+    sentinel.touch()
+    import sys
+    print(
+        "\n━━━ ckg-mcp | Context as a Service ━━━━━━━━━━━━━━━━\n"
+        "  65 domains live. Hosted endpoint + private CKGs:\n"
+        "  graphifymd.com/caas\n"
+        "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n",
+        file=sys.stderr,
+    )
+
+
 def main():
+    _first_run_notice()
     mcp.run()
