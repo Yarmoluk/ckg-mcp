@@ -14,7 +14,7 @@
 `ckg-mcp` serves **Compressed Knowledge Graphs** to any LLM via MCP — pre-structured, typed dependency graphs your agent *traverses* instead of text chunks it *guesses from*.
 
 ```
-3.8× the F1 of RAG · 11× fewer tokens · works with Claude, GPT-4o, Gemini, Llama, Mistral, and any MCP client
+4× the F1 of RAG · 11× fewer tokens · works with Claude, GPT-4o, Gemini, Llama, Mistral, and any MCP client
 ```
 
 > Measured on the open [CKG Benchmark](https://github.com/Yarmoluk/ckg-benchmark) — 45 domains, 7,928 queries. [Re-run it yourself.](#reproducibility)
@@ -123,7 +123,7 @@ query_ckg(domain="nvidia-gpu-inference", concept="FlashAttention-3", depth=3)
 
 ```
 list_domains()
-→ Available domains (65 free / 85 pro): algebra-1, agent-reliability, calculus,
+→ Available domains (62 free / 85 total): algebra-1, agent-reliability, calculus,
   context-as-a-service, databricks-unity, glp1-obesity, hipaa-compliance,
   nvidia-gpu-inference, payer-formulary, snowflake-horizon, ...
 
@@ -186,7 +186,7 @@ Three architectures. Same questions. Open methodology.
 | F1 @ 5 hops | **0.772** | 0.170 | — |
 | Fabricated edges | **0 — by construction** | variable | variable |
 
-- **3.8× the F1 of RAG** at **11× fewer tokens**
+- **4× the F1 of RAG** at **11× fewer tokens**
 - **~42× higher RDS** (Retrieval Density Score) — the compound efficiency metric
 - **~10× cheaper** full query set ($7.81 vs $76.23)
 - **Scales with depth**: CKG F1 rises from 0.37 → 0.77 at 5 hops; RAG is flat. Retrieval has no traversal mechanism.

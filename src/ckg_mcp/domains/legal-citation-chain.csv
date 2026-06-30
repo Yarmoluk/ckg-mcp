@@ -1,0 +1,71 @@
+ConceptID,ConceptLabel,Dependencies,TaxonomyID
+1,Legal Authority,,FOUND
+2,Primary Authority,1,FOUND
+3,Secondary Authority,1,FOUND
+4,Mandatory Authority,2,PREC
+5,Persuasive Authority,2,PREC
+6,Constitution,2,FOUND
+7,Statute,2,FOUND
+8,Case Law,2,FOUND
+9,Regulation,2,FOUND
+10,Administrative Ruling,9,FOUND
+11,Treatise,3,FOUND
+12,Law Review Article,3,FOUND
+13,Restatement,3,FOUND
+14,Legal Citation,,CITE
+15,Case Citation,14|8,CITE
+16,Neutral Citation,15,CITE
+17,Reporter Citation,15,CITE
+18,Pinpoint Citation,15,CITE
+19,Parallel Citation,15,CITE
+20,Short Form Citation,15,CITE
+21,Bluebook Citation,15,CITE
+22,Case Name,15,CITE
+23,Docket Number,15,CITE
+24,Court Identifier,23,CITE
+25,Decision Date,23,CITE
+26,Statute Citation,14|7,CITE
+27,Title and Section,26,CITE
+28,Public Law Number,26,CITE
+29,Codification,26,CITE
+30,Regulation Citation,14|9,CITE
+31,CFR Citation,30,CITE
+32,Federal Register Citation,30,CITE
+33,Holding,,PREC
+34,Ratio Decidendi,33,PREC
+35,Obiter Dicta,33,PREC
+36,Majority Opinion,33|34,PREC
+37,Concurring Opinion,33,PREC
+38,Dissenting Opinion,33,PREC
+39,Stare Decisis,,PREC
+40,Binding Precedent,39|4,PREC
+41,Distinguishing Precedent,40,PREC
+42,Overruling Precedent,40,PREC
+43,Limiting Precedent,40,PREC
+44,Following Precedent,40,PREC
+45,Subsequent History,33,PREC
+46,Affirmed,45,PREC
+47,Reversed,45,PREC
+48,Remanded,45,PREC
+49,Overruled,45|42,PREC
+50,Citator Service,14,PREC
+51,KeyCite,50,PREC
+52,Shepards Citations,50,PREC
+53,Negative Treatment,50,PREC
+54,Positive Treatment,50,PREC
+55,Legal Issue,,ANAL
+56,Rule of Law,55|2,ANAL
+57,IRAC Structure,55,ANAL
+58,Issue Statement,57,ANAL
+59,Rule Statement,57|56,ANAL
+60,Application,57|56,ANAL
+61,Conclusion,57,ANAL
+62,Counter-Argument,55,ANAL
+63,Rebuttal,62,ANAL
+64,Legal Memorandum,57,ANAL
+65,Court Brief,57,ANAL
+66,Argument Section,65|57,ANAL
+67,Table of Authorities,65|14,ANAL
+68,AI Hallucination Risk,8|14,ANAL
+69,Citation Verification,68|50,ANAL
+70,Fabricated Citation,68,ANAL

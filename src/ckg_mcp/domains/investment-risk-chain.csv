@@ -1,0 +1,66 @@
+ConceptID,ConceptLabel,Dependencies,TaxonomyID
+1,Investment Risk,,FOUND
+2,Market Risk,1,FOUND
+3,Credit Risk,1,FOUND
+4,Liquidity Risk,1,FOUND
+5,Operational Risk,1,FOUND
+6,Counterparty Risk,3,FOUND
+7,Concentration Risk,1,FOUND
+8,Model Risk,1,FOUND
+9,Systemic Risk,1,FOUND
+10,Value at Risk,2,MEAS
+11,Historical VaR,10,MEAS
+12,Parametric VaR,10,MEAS
+13,Monte Carlo VaR,10,MEAS
+14,Stressed VaR,10,MEAS
+15,Expected Shortfall,10,MEAS
+16,Credit VaR,3|10,MEAS
+17,Duration,2,MEAS
+18,DV01,17,MEAS
+19,Convexity,17,MEAS
+20,Beta,2,MEAS
+21,Sharpe Ratio,2,MEAS
+22,Greeks,2,MEAS
+23,Delta,22,MEAS
+24,Gamma,22,MEAS
+25,Vega,22,MEAS
+26,Theta,22,MEAS
+27,Credit Rating,3,MEAS
+28,Probability of Default,3,MEAS
+29,Loss Given Default,3,MEAS
+30,Exposure at Default,3|6,MEAS
+31,Risk Mitigation,,MITIG
+32,Hedging,31|2,MITIG
+33,Diversification,31|7,MITIG
+34,Collateral,31|6,MITIG
+35,Netting Agreement,6|34,MITIG
+36,Credit Default Swap,3|32,MITIG
+37,Interest Rate Swap,2|32,MITIG
+38,Stop-Loss Order,31,MITIG
+39,Position Limit,31,MITIG
+40,Risk Limit Framework,31,MITIG
+41,Risk Reporting,,REPORT
+42,Risk Dashboard,41,REPORT
+43,Board Risk Report,41,REPORT
+44,Regulatory Capital,,REGUL
+45,Basel III,44,REGUL
+46,Tier 1 Capital,45,REGUL
+47,Tier 2 Capital,45,REGUL
+48,Risk-Weighted Assets,45,REGUL
+49,Capital Conservation Buffer,45,REGUL
+50,CCAR,45,REGUL
+51,Stress Testing,44|14,REGUL
+52,DFAST,51,REGUL
+53,FRTB,2|45,REGUL
+54,SA-CCR,6|45,REGUL
+55,Dodd-Frank,,REGUL
+56,Volcker Rule,55,REGUL
+57,Swap Reporting,55,REGUL
+58,Margin Requirements,34|55,REGUL
+59,MiFID II,,REGUL
+60,Transaction Reporting,59,REGUL
+61,Best Execution,59,REGUL
+62,AI Risk Model,8|10,REGUL
+63,Model Validation,62,REGUL
+64,Model Documentation,62,REGUL
+65,SR 11-7,8|62,REGUL

@@ -1,0 +1,66 @@
+ConceptID,ConceptLabel,Dependencies,TaxonomyID
+1,Contract,,FOUND
+2,Common Law Contract,1,FOUND
+3,UCC Contract,1,FOUND
+4,Offer,1,FORM
+5,Definite Terms,4,FORM
+6,Communication of Offer,4,FORM
+7,Intent to Be Bound,4,FORM
+8,Acceptance,4,FORM
+9,Mirror Image Rule,8,FORM
+10,Battle of the Forms,9|3,FORM
+11,Mailbox Rule,8,FORM
+12,Consideration,1,FORM
+13,Bargained-For Exchange,12,FORM
+14,Past Consideration,12,FORM
+15,Pre-Existing Duty Rule,12,FORM
+16,Moral Obligation,12,FORM
+17,Promissory Estoppel,12,FORM
+18,Mutual Assent,4|8,FORM
+19,Meeting of the Minds,18,FORM
+20,Capacity,1,FORM
+21,Infancy Doctrine,20,FORM
+22,Mental Incapacity,20,FORM
+23,Intoxication,20,FORM
+24,Legality of Purpose,1,FORM
+25,Contract Void ab Initio,24,FORM
+26,Unconscionability,1,FORM
+27,Procedural Unconscionability,26,FORM
+28,Substantive Unconscionability,26,FORM
+29,Statute of Frauds,1,FORM
+30,Writing Requirement,29,FORM
+31,Electronic Signature,30,FORM
+32,Contract Terms,,PERF
+33,Express Terms,32,PERF
+34,Implied Terms,32,PERF
+35,Implied in Fact,34,PERF
+36,Implied in Law,34,PERF
+37,Condition Precedent,32,PERF
+38,Condition Subsequent,32,PERF
+39,Concurrent Condition,32,PERF
+40,Parol Evidence Rule,33,PERF
+41,Integration Clause,40,PERF
+42,Performance,32,PERF
+43,Substantial Performance,42,PERF
+44,Perfect Tender Rule,42|3,PERF
+45,Divisible Contract,42,PERF
+46,Material Breach,42,BREACH
+47,Minor Breach,42,BREACH
+48,Anticipatory Repudiation,46,BREACH
+49,Adequate Assurance,48,BREACH
+50,Excuse of Performance,,BREACH
+51,Impossibility,50,BREACH
+52,Impracticability,50,BREACH
+53,Frustration of Purpose,50,BREACH
+54,Force Majeure,50,BREACH
+55,Remedies,,REM
+56,Expectation Damages,55,REM
+57,Consequential Damages,56,REM
+58,Incidental Damages,56,REM
+59,Reliance Damages,55,REM
+60,Restitution,55,REM
+61,Specific Performance,55,REM
+62,Injunction,55,REM
+63,Liquidated Damages,55|32,REM
+64,Duty to Mitigate,55,REM
+65,Nominal Damages,55,REM

@@ -1,0 +1,71 @@
+ConceptID,ConceptLabel,Dependencies,TaxonomyID
+1,Motion Planning,,FOUND
+2,Configuration Space,1,FOUND
+3,C-Space,2,FOUND
+4,Free Configuration Space,3,FOUND
+5,Obstacle Configuration Space,3,FOUND
+6,Degree of Freedom,2,FOUND
+7,Joint Space,6,FOUND
+8,Task Space,6,FOUND
+9,Workspace,8,FOUND
+10,Kinematic Model,6,FOUND
+11,Forward Kinematics,10,FOUND
+12,Inverse Kinematics,10|11,FOUND
+13,Jacobian Matrix,11,FOUND
+14,Singularity,12|13,FOUND
+15,Goal Specification,,PLAN
+16,Goal Pose,15,PLAN
+17,Goal Region,15,PLAN
+18,Start Configuration,1,PLAN
+19,Planning Algorithm,1,PLAN
+20,Grid-Based Planning,19,PLAN
+21,A-Star Algorithm,20,PLAN
+22,Dijkstra Algorithm,20,PLAN
+23,Sampling-Based Planning,19,PLAN
+24,RRT,23,PLAN
+25,RRT-Star,24,PLAN
+26,PRM,23,PLAN
+27,Potential Field,19,PLAN
+28,Gradient Descent,27,PLAN
+29,Collision Checking,4|5,PLAN
+30,AABB,29,PLAN
+31,GJK Algorithm,29,PLAN
+32,FCL Library,29,PLAN
+33,Path,19,TRAJ
+34,Geometric Path,33,TRAJ
+35,Smooth Path,33,TRAJ
+36,Trajectory,35,TRAJ
+37,Time Parameterization,36,TRAJ
+38,Velocity Profile,37,TRAJ
+39,Trapezoidal Profile,38,TRAJ
+40,Minimum Jerk Trajectory,36,TRAJ
+41,Dynamic Feasibility,36,TRAJ
+42,Kinodynamic Planning,36|19,TRAJ
+43,Torque Limits,41,TRAJ
+44,Velocity Limits,41,TRAJ
+45,Control,,CTRL
+46,PID Controller,45,CTRL
+47,Proportional Term,46,CTRL
+48,Integral Term,46,CTRL
+49,Derivative Term,46,CTRL
+50,Model Predictive Control,45,CTRL
+51,Feedforward Control,45,CTRL
+52,Feedback Control,45,CTRL
+53,Joint Torque Control,45,CTRL
+54,Position Control,45,CTRL
+55,Force Control,45,CTRL
+56,Impedance Control,55,CTRL
+57,Admittance Control,55,CTRL
+58,Control Loop Frequency,45,CTRL
+59,Execution Monitoring,33,SAFE
+60,Path Deviation,59,SAFE
+61,Re-planning Trigger,60,SAFE
+62,Safe Stop,59,SAFE
+63,Contact Detection,59,SAFE
+64,Collision Response,63,SAFE
+65,Workspace Boundary,9|59,SAFE
+66,Self-Collision Checking,29|65,SAFE
+67,Dynamic Obstacle,5|59,SAFE
+68,Human-Robot Safety Zone,67,SAFE
+69,ISO 10218 Standard,68,SAFE
+70,AI Planning Breakdown,19|67,SAFE

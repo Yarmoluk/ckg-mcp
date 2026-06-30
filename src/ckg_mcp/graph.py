@@ -39,6 +39,15 @@ PREMIUM_DOMAINS: frozenset[str] = frozenset({
     "ai-governance",
     "organizational-analytics",
     "token-cost-crisis",
+    # Legal (agent hallucination hotspots)
+    "legal-citation-chain",
+    "contract-law-elements",
+    # Healthcare chains
+    "clinical-decision-chain",
+    "medical-billing-chain",
+    # Finance & compliance chains
+    "aml-kyc-chain",
+    "investment-risk-chain",
 })
 
 

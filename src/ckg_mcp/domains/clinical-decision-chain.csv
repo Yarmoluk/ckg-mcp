@@ -1,0 +1,71 @@
+ConceptID,ConceptLabel,Dependencies,TaxonomyID
+1,Clinical Encounter,,FOUND
+2,Chief Complaint,1,FOUND
+3,History of Present Illness,2,FOUND
+4,Past Medical History,1,FOUND
+5,Medication History,4,FOUND
+6,Allergy History,4,FOUND
+7,Family History,4,FOUND
+8,Social History,4,FOUND
+9,Review of Systems,3,FOUND
+10,Physical Examination,3,FOUND
+11,Vital Signs,10,FOUND
+12,General Appearance,10,FOUND
+13,System-Specific Exam,10,FOUND
+14,Diagnostic Workup,,DIAG
+15,Differential Diagnosis,3|10|14,DIAG
+16,Working Diagnosis,15,DIAG
+17,Definitive Diagnosis,16,DIAG
+18,Laboratory Tests,14,DIAG
+19,Complete Blood Count,18,DIAG
+20,Basic Metabolic Panel,18,DIAG
+21,Comprehensive Metabolic Panel,20,DIAG
+22,Coagulation Studies,18,DIAG
+23,Urinalysis,18,DIAG
+24,Imaging Studies,14,DIAG
+25,X-Ray,24,DIAG
+26,CT Scan,24,DIAG
+27,MRI,24,DIAG
+28,Ultrasound,24,DIAG
+29,Pathology,14,DIAG
+30,Biopsy,29,DIAG
+31,Culture and Sensitivity,18,DIAG
+32,Treatment Plan,,TX
+33,Pharmacologic Treatment,32,TX
+34,Drug Selection,33|16,TX
+35,Dosing,33|34,TX
+36,Weight-Based Dosing,35,TX
+37,Renal Dosing Adjustment,35,TX
+38,Hepatic Dosing Adjustment,35,TX
+39,Drug-Drug Interaction,33|5,TX
+40,Drug-Allergy Contraindication,34|6,TX
+41,Drug-Disease Contraindication,34|4,TX
+42,Non-Pharmacologic Treatment,32,TX
+43,Procedure,32,TX
+44,Surgical Intervention,43,TX
+45,Physical Therapy,42,TX
+46,Dietary Modification,42,TX
+47,Treatment Response Assessment,32,MONITOR
+48,Clinical Response,47,MONITOR
+49,Lab Response,47|18,MONITOR
+50,Therapeutic Drug Monitoring,35|49,MONITOR
+51,Adverse Effect Monitoring,33,MONITOR
+52,Toxicity Grade,51,MONITOR
+53,Treatment Modification,47,MONITOR
+54,Dose Reduction,53|35,MONITOR
+55,Drug Discontinuation,53,MONITOR
+56,Transition of Care,32,MONITOR
+57,Discharge Planning,56,MONITOR
+58,Follow-Up Scheduling,56,MONITOR
+59,Patient Safety,,SAFETY
+60,Look-Alike Sound-Alike Drug,34|59,SAFETY
+61,High-Alert Medication,33|59,SAFETY
+62,Fall Risk,59,SAFETY
+63,Pressure Injury Risk,59,SAFETY
+64,Handoff Communication,59|56,SAFETY
+65,SBAR,64,SAFETY
+66,Medication Reconciliation,5|33,SAFETY
+67,AI Decision Support Risk,15|34,SAFETY
+68,Hallucination in Clinical Context,67,SAFETY
+69,Human Oversight Requirement,68,SAFETY
+70,Documentation,1|32,MONITOR

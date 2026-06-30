@@ -1,0 +1,71 @@
+ConceptID,ConceptLabel,Dependencies,TaxonomyID
+1,Anti-Money Laundering,,FOUND
+2,Bank Secrecy Act,1,FOUND
+3,USA PATRIOT Act,1,FOUND
+4,FinCEN,1|2,FOUND
+5,FATF,1,FOUND
+6,AML Program,1,FOUND
+7,Policies and Procedures,6,FOUND
+8,Internal Controls,6,FOUND
+9,Independent Testing,6,FOUND
+10,AML Officer,6,FOUND
+11,Training,6,FOUND
+12,Customer Identification Program,6,KYC
+13,Identity Verification,12,KYC
+14,Documentary Verification,13,KYC
+15,Non-Documentary Verification,13,KYC
+16,Customer Due Diligence,,KYC
+17,Simplified Due Diligence,16,KYC
+18,Standard Due Diligence,16,KYC
+19,Enhanced Due Diligence,16,KYC
+20,Customer Risk Rating,16,KYC
+21,Low Risk Customer,20,KYC
+22,High Risk Customer,20,KYC
+23,Beneficial Ownership,16,KYC
+24,25 Percent Ownership Threshold,23,KYC
+25,Control Prong,23,KYC
+26,Legal Entity Customer,23,KYC
+27,Shell Company,26,KYC
+28,Politically Exposed Person,22|19,KYC
+29,Sanctions Screening,12,KYC
+30,OFAC SDN List,29,KYC
+31,Transaction Monitoring,,MONITOR
+32,Transaction Rules,31,MONITOR
+33,Structuring,31,MONITOR
+34,Layering,31,MONITOR
+35,Integration,34,MONITOR
+36,Placement,31,MONITOR
+37,Cash Transaction,31,MONITOR
+38,Wire Transfer,31,MONITOR
+39,Trade-Based Money Laundering,31,MONITOR
+40,Unusual Activity,31,MONITOR
+41,Alert,31,MONITOR
+42,Alert Disposition,41,MONITOR
+43,Alert Escalation,42,MONITOR
+44,Case Investigation,43,MONITOR
+45,30-Day SAR Decision,44,MONITOR
+46,Currency Transaction Report,37,REPORT
+47,CTR Threshold,46,REPORT
+48,CTR Exemption,46,REPORT
+49,Suspicious Activity Report,44,REPORT
+50,SAR Narrative,49,REPORT
+51,SAR Filing Deadline,49,REPORT
+52,SAR Safe Harbor,49,REPORT
+53,Voluntary SAR,49,REPORT
+54,Law Enforcement Request,49,REPORT
+55,Regulatory Examination,,ENFORCE
+56,FFIEC Exam Manual,55,ENFORCE
+57,Matter Requiring Attention,55,ENFORCE
+58,Consent Order,55,ENFORCE
+59,Civil Money Penalty,55,ENFORCE
+60,Criminal Referral,55,ENFORCE
+61,Deferred Prosecution Agreement,60,ENFORCE
+62,Correspondent Banking Risk,19,KYC
+63,Nested Correspondent,62,KYC
+64,SWIFT Messaging,38,KYC
+65,AI in Transaction Monitoring,31|41,MONITOR
+66,False Positive Rate,65,MONITOR
+67,Explainability Requirement,65,MONITOR
+68,Threshold Tuning,32|41,MONITOR
+69,Agent Traversal Risk,65|49,MONITOR
+70,Audit Trail,6|49,ENFORCE

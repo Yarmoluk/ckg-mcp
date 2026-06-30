@@ -1,0 +1,66 @@
+ConceptID,ConceptLabel,Dependencies,TaxonomyID
+1,Healthcare Encounter,,FOUND
+2,Encounter Type,1,FOUND
+3,Inpatient Encounter,2,FOUND
+4,Outpatient Encounter,2,FOUND
+5,Emergency Encounter,2,FOUND
+6,Telehealth Encounter,2,FOUND
+7,Evaluation and Management,1,FOUND
+8,Medical Decision Making,7,FOUND
+9,Time-Based Billing,7,FOUND
+10,ICD-10-CM,,CODE
+11,Principal Diagnosis,10,CODE
+12,Secondary Diagnosis,10,CODE
+13,Comorbidity,12,CODE
+14,Complication,12,CODE
+15,Manifestation Code,10,CODE
+16,Etiology Code,10,CODE
+17,Combination Code,10,CODE
+18,Excludes1 Note,10,CODE
+19,Excludes2 Note,10,CODE
+20,CPT Code,,CODE
+21,Evaluation and Management Code,20|7,CODE
+22,Surgical CPT Code,20,CODE
+23,Diagnostic CPT Code,20,CODE
+24,CPT Modifier,20,CODE
+25,Modifier 25,24,CODE
+26,Modifier 59,24,CODE
+27,Modifier 51,24,CODE
+28,HCPCS Code,20,CODE
+29,NDC Code,,CODE
+30,Revenue Code,,CODE
+31,DRG,3|10,CODE
+32,Payer Rules,,CLAIM
+33,Medicare Rules,32,CLAIM
+34,Medicaid Rules,32,CLAIM
+35,Commercial Payer Rules,32,CLAIM
+36,Coverage Determination,32,CLAIM
+37,Medical Necessity,36,CLAIM
+38,Prior Authorization,37,CLAIM
+39,Formulary,32|29,CLAIM
+40,Clean Claim,,CLAIM
+41,Claim Submission,40,CLAIM
+42,Electronic Data Interchange,41,CLAIM
+43,ANSI X12 837,42,CLAIM
+44,Claim Adjudication,41|32,CLAIM
+45,Remittance Advice,44,CLAIM
+46,Explanation of Benefits,45,CLAIM
+47,Denial,44,DENY
+48,Coding Denial,47|20,DENY
+49,Medical Necessity Denial,47|37,DENY
+50,Authorization Denial,47|38,DENY
+51,Timely Filing Denial,47,DENY
+52,Duplicate Claim Denial,47,DENY
+53,Appeal,47,APPEAL
+54,First-Level Appeal,53,APPEAL
+55,Second-Level Appeal,54,APPEAL
+56,External Review,55,APPEAL
+57,Administrative Law Judge,55|33,APPEAL
+58,Documentation Requirement,53,APPEAL
+59,Medical Records,58,APPEAL
+60,Letter of Medical Necessity,58|37,APPEAL
+61,Peer-to-Peer Review,54,APPEAL
+62,AI Coding Risk,20|10,CODE
+63,Upcoding Risk,62|21,CODE
+64,Undercoding Risk,62,CODE
+65,Query Physician Process,11,CODE

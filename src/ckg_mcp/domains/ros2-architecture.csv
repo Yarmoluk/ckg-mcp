@@ -1,0 +1,66 @@
+ConceptID,ConceptLabel,Dependencies,TaxonomyID
+1,ROS 2,,FOUND
+2,ROS 2 Architecture,1,FOUND
+3,Node,2,FOUND
+4,Compute Graph,3,FOUND
+5,DDS (Data Distribution Service),1,FOUND
+6,QoS Profile,5,COMM
+7,Reliability Policy,6,COMM
+8,Durability Policy,6,COMM
+9,History Policy,6,COMM
+10,Topic,3,COMM
+11,Publisher,10|3,COMM
+12,Subscriber,10|3,COMM
+13,Message Type,10,COMM
+14,std_msgs,13,COMM
+15,sensor_msgs,13,COMM
+16,geometry_msgs,13,COMM
+17,nav_msgs,13,COMM
+18,Service,3,COMM
+19,Service Server,18|3,COMM
+20,Service Client,18|3,COMM
+21,Request-Response Pattern,18,COMM
+22,Action,3,COMM
+23,Action Server,22|3,COMM
+24,Action Client,22|3,COMM
+25,Goal,22,COMM
+26,Feedback,22,COMM
+27,Result,22,COMM
+28,Parameter,3,EXEC
+29,Parameter Server,28,EXEC
+30,Launch System,,EXEC
+31,Launch File,30,EXEC
+32,Node Composition,3|30,EXEC
+33,Intra-Process Communication,32,EXEC
+34,Executor,3,EXEC
+35,Single-Threaded Executor,34,EXEC
+36,Multi-Threaded Executor,34,EXEC
+37,Callback,34,EXEC
+38,Timer,37,EXEC
+39,Lifecycle Node,3,EXEC
+40,Lifecycle State,39,EXEC
+41,Unconfigured State,40,EXEC
+42,Inactive State,40,EXEC
+43,Active State,40,EXEC
+44,Finalized State,40,EXEC
+45,TF2,,TOOLS
+46,Transform Tree,45,TOOLS
+47,Static Transform,45,TOOLS
+48,Dynamic Transform,45,TOOLS
+49,base_link Frame,46,TOOLS
+50,map Frame,46,TOOLS
+51,odom Frame,46,TOOLS
+52,colcon Build Tool,,TOOLS
+53,Package,1,TOOLS
+54,package.xml,53,TOOLS
+55,CMakeLists.txt,53,TOOLS
+56,rviz2,,TOOLS
+57,rqt,,TOOLS
+58,ros2bag,,TOOLS
+59,Real-Time Constraint,,SAFETY
+60,Deterministic Execution,59,SAFETY
+61,RTOS Integration,59,SAFETY
+62,Watchdog,59,SAFETY
+63,Safety Node,3|59,SAFETY
+64,Emergency Stop,63,SAFETY
+65,Fault Detection,59,SAFETY
