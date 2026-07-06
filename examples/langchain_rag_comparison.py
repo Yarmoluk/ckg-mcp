@@ -209,46 +209,30 @@ def build_rag_corpus(concepts):
         docs.append(text)
     return docs
 
-def build_rag_chain(docs, llm):
+def build_rag_retriever(docs):
     try:
-        from langchain.text_splitter import CharacterTextSplitter
         from langchain_community.vectorstores import FAISS
         from langchain_community.embeddings import HuggingFaceEmbeddings
-        from langchain.chains import RetrievalQA
-        from langchain.docstore.document import Document
     except ImportError:
         raise SystemExit(
             "LangChain not installed.\n"
-            "Run: pip install langchain langchain-community faiss-cpu sentence-transformers"
+            "Run: pip install langchain-community faiss-cpu sentence-transformers"
         )
-
-    splitter = CharacterTextSplitter(chunk_size=300, chunk_overlap=30)
-    lc_docs  = [Document(page_content=d) for d in docs]
-    chunks   = splitter.split_documents(lc_docs)
-
-    print(f"  Building FAISS index ({len(chunks)} chunks)…", end=" ", flush=True)
+    print(f"  Building FAISS index ({len(docs)} chunks)…", end=" ", flush=True)
     t0 = time.time()
     embeddings = HuggingFaceEmbeddings(
         model_name="all-MiniLM-L6-v2",
-        model_kwargs={"device":"cpu"},
+        model_kwargs={"device": "cpu"},
     )
-    vectorstore = FAISS.from_documents(chunks, embeddings)
+    vectorstore = FAISS.from_texts(docs, embeddings)
     print(f"done ({time.time()-t0:.1f}s)")
+    return vectorstore.as_retriever(search_kwargs={"k": 5})
 
-    chain = RetrievalQA.from_chain_type(
-        llm=llm, chain_type="stuff",
-        retriever=vectorstore.as_retriever(search_kwargs={"k": 5}),
-        return_source_documents=True,
-    )
-    return chain
-
-def rag_query(chain, question):
-    result    = chain.invoke({"query": question})
-    answer    = result.get("result","")
-    src_docs  = result.get("source_documents",[])
-    ctx_text  = " ".join(d.page_content for d in src_docs)
-    ctx_toks  = len(ctx_text.split())
-    return answer, ctx_toks
+def rag_retrieve(retriever, question):
+    """Return (context_string, ctx_token_count)."""
+    docs     = retriever.invoke(question)
+    ctx_text = "\n".join(d.page_content for d in docs)
+    return ctx_text, len(ctx_text.split())
 
 
 # ── LLM backends ─────────────────────────────────────────────────────────────
@@ -302,20 +286,29 @@ def make_llm_backend():
         except ImportError:
             pass
 
-    # Ollama fallback
+    # Ollama fallback — use requests directly, no LangChain LLM object needed
+    global OLLAMA_MODEL
+    import requests
     try:
-        from langchain_community.llms import Ollama
-        lc_llm = Ollama(model=OLLAMA_MODEL, system=SYSTEM_PROMPT)
-        def call(ctx, q):
-            return _call_ollama(ctx, q)
-        print(f"  LLM: Ollama {OLLAMA_MODEL} (local)")
-        return call, lc_llm, OLLAMA_PRICE, OLLAMA_PRICE, f"Ollama/{OLLAMA_MODEL}"
-    except ImportError:
+        r = requests.get("http://localhost:11434/api/tags", timeout=3)
+        models = [m["name"] for m in r.json().get("models", [])]
+    except Exception:
         raise SystemExit(
-            "No LLM available.\n"
-            "Option A (local): pip install ollama && ollama pull llama3.2:3b\n"
-            "Option B (API):   pip install anthropic langchain-anthropic && export ANTHROPIC_API_KEY=..."
+            "Ollama not running. Install at https://ollama.ai then:\n"
+            f"  ollama pull {OLLAMA_MODEL}\n"
+            "Or set ANTHROPIC_API_KEY to use Claude instead."
         )
+    # Pick best available model
+    preferred = [OLLAMA_MODEL, "phi4-mini:latest", "mistral:latest", "qwen3:8b", "deepseek-r1:8b"]
+    chosen = next((m for m in preferred if m in models), models[0] if models else None)
+    if not chosen:
+        raise SystemExit("No Ollama models found. Run: ollama pull llama3.2:3b")
+    OLLAMA_MODEL = chosen
+
+    def call(ctx, q):
+        return _call_ollama(ctx, q)
+    print(f"  LLM: Ollama {chosen} (local)")
+    return call, None, OLLAMA_PRICE, OLLAMA_PRICE, f"Ollama/{chosen}"
 
 
 # ── Pretty output ─────────────────────────────────────────────────────────────
@@ -397,8 +390,8 @@ def main():
 
     call_llm, lc_llm, price_in, price_out, llm_label = make_llm_backend()
 
-    corpus = build_rag_corpus(concepts)
-    rag_chain = build_rag_chain(corpus, lc_llm)
+    corpus      = build_rag_corpus(concepts)
+    retriever   = build_rag_retriever(corpus)
 
     print_header(args.domain, len(queries), llm_label)
 
@@ -417,10 +410,10 @@ def main():
         results_ckg.append({"f1": f1_ckg, "tokens": total_ckg, "cost": cost_ckg})
 
         # ── RAG ──
-        ans_rag, ctx_tok_rag = rag_query(rag_chain, qtext)
-        # RAG total tokens = retrieved context + question + system prompt estimate
-        total_rag = ctx_tok_rag + len(qtext.split()) + 50
-        cost_rag  = total_rag * price_in + len(ans_rag.split()) * price_out
+        ctx_rag, ctx_tok_rag = rag_retrieve(retriever, qtext)
+        ans_rag, pt_rag, ct_rag, _ = call_llm(ctx_rag, qtext)
+        total_rag = pt_rag + ct_rag
+        cost_rag  = pt_rag * price_in + ct_rag * price_out
         f1_rag    = token_f1(ans_rag, truth)
         results_rag.append({"f1": f1_rag, "tokens": total_rag, "cost": cost_rag})
 
