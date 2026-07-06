@@ -9,6 +9,8 @@
 [![MCP](https://img.shields.io/badge/MCP-server-blue)](https://modelcontextprotocol.io)
 [![Benchmark](https://img.shields.io/badge/benchmark-open%20%26%20reproducible-orange)](https://github.com/Yarmoluk/ckg-benchmark)
 
+If ckg-mcp is useful to you, a ⭐ on [GitHub](https://github.com/Yarmoluk/ckg-mcp) helps others find it.
+
 ---
 
 ## The problem you already have

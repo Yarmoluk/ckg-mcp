@@ -1,17 +1,17 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "io.github.Yarmoluk/ckg-mcp",
-  "description": "Compressed Knowledge Graphs via MCP: 85 domains, 4x F1 of RAG, 11x fewer tokens, any LLM.",
+  "description": "Compressed Knowledge Graphs via MCP: 97 domains, 3.8x F1 of RAG at 11x fewer tokens. Works with Claude, GPT-4o, Gemini, Llama, and any MCP client.",
   "repository": {
     "url": "https://github.com/Yarmoluk/ckg-mcp",
     "source": "github"
   },
-  "version": "0.7.5",
+  "version": "0.7.6",
   "packages": [
     {
       "registryType": "pypi",
       "identifier": "ckg-mcp",
-      "version": "0.7.5",
+      "version": "0.7.6",
       "transport": {
         "type": "stdio"
       },
