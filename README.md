@@ -44,10 +44,16 @@ That is the architectural shift. Everything else — the benchmark numbers, the 
 
 ## Install and first query (60 seconds)
 
+No global install needed — just run:
+
+```bash
+uvx ckg-mcp
+```
+
+Or install permanently:
+
 ```bash
 pip install ckg-mcp        # Python ≥ 3.10
-# or no global install:
-uvx ckg-mcp
 ```
 
 **Claude Desktop** — add to `~/Library/Application Support/Claude/claude_desktop_config.json`:
@@ -55,14 +61,14 @@ uvx ckg-mcp
 ```json
 {
   "mcpServers": {
-    "ckg": { "command": "ckg-mcp" }
+    "ckg": { "command": "uvx", "args": ["ckg-mcp"] }
   }
 }
 ```
 
 **Claude Code:**
 ```bash
-claude mcp add ckg -- ckg-mcp
+claude mcp add ckg -- uvx ckg-mcp
 ```
 
 **Cursor / Cline / Windsurf / any MCP client:**
