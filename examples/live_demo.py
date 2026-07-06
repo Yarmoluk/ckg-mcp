@@ -34,8 +34,12 @@ import os
 import re
 import sys
 import time
+import warnings
 from collections import defaultdict
 from pathlib import Path
+
+warnings.filterwarnings("ignore")
+os.environ.setdefault("TOKENIZERS_PARALLELISM", "false")
 
 # ── Config ────────────────────────────────────────────────────────────────────
 
@@ -243,9 +247,15 @@ def build_rag(text: str):
 
     print(f"  Building RAG index ({len(docs)} chunks)…", end=" ", flush=True)
     t0 = time.time()
-    embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2",
-                                        model_kwargs={"device":"cpu"})
-    store = FAISS.from_documents(docs, embeddings)
+    devnull = open(os.devnull, "w")
+    old_stderr, sys.stderr = sys.stderr, devnull
+    try:
+        embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2",
+                                            model_kwargs={"device":"cpu"})
+        store = FAISS.from_documents(docs, embeddings)
+    finally:
+        sys.stderr = old_stderr
+        devnull.close()
     print(f"done ({time.time()-t0:.1f}s)")
     return store.as_retriever(search_kwargs={"k": 5})
 
