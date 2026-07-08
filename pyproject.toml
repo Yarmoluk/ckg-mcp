@@ -4,8 +4,8 @@ build-backend = "hatchling.build"
 
 [project]
 name = "ckg-mcp"
-version = "0.7.6"
-description = "Compressed Knowledge Graph MCP server — 97 domains (68 free + 29 Pro), 4x the F1 of RAG at 11x fewer tokens (~42x RDS). Works with Claude, GPT-4o, Gemini, Llama, Mistral, and any MCP client."
+version = "0.7.7"
+description = "Context optimization for AI agents — 97 domain knowledge graphs (68 free + 29 Pro), MCP-native traversal. 4× F1 of RAG, 11× fewer tokens per query. Works with Claude, GPT-4o, Gemini, and any MCP client."
 readme = "README.md"
 license = { text = "MIT" }
 authors = [{ name = "Daniel Yarmoluk", email = "daniel.yarmoluk@gmail.com" }]
