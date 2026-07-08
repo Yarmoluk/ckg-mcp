@@ -104,7 +104,7 @@ ConceptID, ConceptLabel,      Dependencies,      TaxonomyID
 No embeddings. No probabilistic retrieval. Built once, reviewed once, traversed forever.
 
 <div align="center">
-  <img src="docs/demo.png" alt="ckg-mcp slide — Every edge is a decision" width="860">
+  <img src="docs/slide-edges.png" alt="ckg-mcp — Every edge is a decision: REQUIRES · ENABLES · RELATES_TO · IMPLEMENTS" width="860">
 </div>
 
 ---
