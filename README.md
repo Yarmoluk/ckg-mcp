@@ -25,6 +25,12 @@
 
 </div>
 
+<div align="center">
+  <a href="https://yarmoluk.github.io/ckg-mcp/carousel.html">
+    <img src="docs/demo.png" alt="ckg-mcp — Context Optimization for AI Agents" width="960">
+  </a>
+</div>
+
 ---
 
 ## Context Optimization — The Problem
@@ -97,7 +103,9 @@ ConceptID, ConceptLabel,      Dependencies,      TaxonomyID
 
 No embeddings. No probabilistic retrieval. Built once, reviewed once, traversed forever.
 
-<!-- Insert: agent traversal diagram — concept node with REQUIRES/ENABLES edges radiating out, depth=3 -->
+<div align="center">
+  <img src="docs/demo.png" alt="ckg-mcp slide — Every edge is a decision" width="860">
+</div>
 
 ---
 
@@ -117,7 +125,9 @@ CKG addresses all three root causes they identify:
 
 When agent A hands off to agent B, neither re-retrieves the domain. They both traverse the same declared graph. **Structured context doesn't consume your context window — it opens it.**
 
-<!-- Insert: agent team diagram — three agents sharing one CKG layer vs three agents each running RAG -->
+<div align="center">
+  <img src="docs/slide-tokens.png" alt="ckg-mcp — 11× fewer tokens: 269 vs 2,982 per query" width="860">
+</div>
 
 ---
 
@@ -193,7 +203,6 @@ python evaluation/ckg_harness.py --domain calculus
 python evaluation/analyze_results.py
 ```
 
-<!-- Insert: token cost bar chart — CKG 269 vs RAG 2,982 vs GraphRAG 3,450+ -->
 
 | System | Macro F1 | Tokens / query | Cost / 1K queries | F1 at 5 hops |
 |---|---|---|---|---|
