@@ -79,6 +79,31 @@ RAG would:    ~2,982 tokens · probabilistic retrieval · degrades at 3+ hops
 
 **You go from prompting the domain into existence to asking questions inside it.**
 
+---
+
+## One Use Case — Becoming Nemotron-Enabled
+
+Perplexity is a model aggregator. Shortest route to Nemotron — click the dropdown, select the model, query. But it's their pipeline, their infrastructure. Your queries go through their system.
+
+If you want to run Nemotron yourself — sovereign, private, on your own hardware — you need to navigate NVIDIA's stack: NGC API key, NIM container, Enterprise License, inference endpoint. The dependency chain is non-obvious. Most developers hit the wrong door first.
+
+**Without CKG:** search the docs, hit the Enterprise License wall, spend two hours finding `build.nvidia.com`.
+
+**With CKG:**
+```
+query_ckg("Nemotron Model", "nvidia-nim")
+→ [REQUIRES] Model Weights
+  → [REQUIRES] NGC Container Registry
+    → [REQUIRES] NGC API Key        ← start here
+
+query_ckg("NIM Docker Container", "nvidia-nim")
+→ [REQUIRES] NGC API Key
+→ [REQUIRES] NVIDIA AI Enterprise License   ← production path
+→ [ENABLES]  NIM Microservice               ← what you're building toward
+```
+
+Two traversals. Correct path. No wrong doors. The graph knew — the model just told you.
+
 ### Typed edges carry semantic meaning
 
 | Edge type | Meaning | Agent use |
