@@ -7,10 +7,14 @@ from collections import defaultdict, deque
 from pathlib import Path
 
 _VALIDATE_URL = "https://graphifymd.com/api/validate-license"
+_GRAPH_API_URL = "https://graphifymd.com/api/graph"
 _CACHE_FILE = Path.home() / ".ckg-mcp" / "license_cache.json"
 _CACHE_TTL = 86400  # 24 hours
 
 DOMAINS_DIR = Path(__file__).parent / "domains"
+
+# In-memory graph cache — avoid redundant API calls within a session
+_GRAPH_CACHE: dict = {}
 
 PREMIUM_DOMAINS: frozenset[str] = frozenset({
     # Healthcare & clinical
@@ -96,22 +100,75 @@ def available_domains() -> list[str]:
     )
 
 
-def load_graph(domain: str):
-    if domain in PREMIUM_DOMAINS and not _is_valid_key(os.environ.get("CKG_API_KEY", "")):
-        raise ValueError(
-            f"Domain '{domain}' is a Pro domain. "
-            "Unlock all Pro domains at graphifymd.com/caas — $99/mo, key delivered instantly. "
-            "Set CKG_API_KEY=<your-key> to activate."
+def _parse_graph_nodes(nodes: list) -> tuple:
+    """Parse the JSON node list from the API into the same tuple load_graph returns."""
+    id_to_label: dict = {}
+    label_to_id: dict = {}
+    prerequisites: dict = defaultdict(list)
+    dependents: dict = defaultdict(list)
+    taxonomy: dict = {}
+    for node in nodes:
+        cid = node["id"]
+        label = node["label"]
+        id_to_label[cid] = label
+        label_to_id[label.lower()] = cid
+        taxonomy[cid] = node.get("taxonomy", "")
+        deps = node.get("deps", [])
+        prerequisites[cid] = deps
+        for dep_str in deps:
+            dep_id = dep_str.split(":")[0]
+            dependents[dep_id].append(cid)
+    return id_to_label, label_to_id, prerequisites, dependents, taxonomy
+
+
+def _fetch_graph_from_api(domain: str, key: str) -> tuple | None:
+    """Fetch a Pro domain graph from the graphifymd.com API. Returns parsed tuple or None on error."""
+    try:
+        req = urllib.request.Request(
+            f"{_GRAPH_API_URL}/{domain}",
+            headers={"Authorization": f"Bearer {key}"},
         )
+        with urllib.request.urlopen(req, timeout=5) as resp:
+            data = json.loads(resp.read())
+        return _parse_graph_nodes(data["nodes"])
+    except Exception:
+        return None
+
+
+def load_graph(domain: str):
+    if domain in _GRAPH_CACHE:
+        return _GRAPH_CACHE[domain]
+
+    key = os.environ.get("CKG_API_KEY", "")
+
+    if domain in PREMIUM_DOMAINS:
+        if not _is_valid_key(key):
+            raise ValueError(
+                f"Domain '{domain}' is a Pro domain. "
+                "Unlock at graphifymd.com/pro/ — $99/mo, key delivered instantly. "
+                "Set CKG_API_KEY=<your-key> to activate."
+            )
+        # Try API first — graph data is served remotely, never bundled in the wheel
+        result = _fetch_graph_from_api(domain, key)
+        if result is not None:
+            _GRAPH_CACHE[domain] = result
+            return result
+        # Fallback: local CSV if present (offline / legacy)
+
     csv_path = DOMAINS_DIR / f"{domain}.csv"
     if not csv_path.exists():
+        if domain in PREMIUM_DOMAINS:
+            raise ValueError(
+                f"Domain '{domain}' could not be fetched from the API and no local copy exists. "
+                "Check your network connection or contact support@graphifymd.com."
+            )
         raise ValueError(f"Domain '{domain}' not found. Available: {available_domains()}")
 
-    id_to_label = {}
-    label_to_id = {}
-    prerequisites = defaultdict(list)
-    dependents = defaultdict(list)
-    taxonomy = {}
+    id_to_label: dict = {}
+    label_to_id: dict = {}
+    prerequisites: dict = defaultdict(list)
+    dependents: dict = defaultdict(list)
+    taxonomy: dict = {}
 
     with open(csv_path) as f:
         for row in csv.DictReader(f):
@@ -125,7 +182,9 @@ def load_graph(domain: str):
             for dep in deps:
                 dependents[dep].append(cid)
 
-    return id_to_label, label_to_id, prerequisites, dependents, taxonomy
+    result = id_to_label, label_to_id, prerequisites, dependents, taxonomy
+    _GRAPH_CACHE[domain] = result
+    return result
 
 
 def find_concept(label_to_id: dict, query: str) -> str | None:
