@@ -1,0 +1,31 @@
+ConceptID,ConceptLabel,SourceURL,Dependencies,TaxonomyID
+1,Salesforce Data Cloud,https://help.salesforce.com/s/articleView?id=sf.c360_a_data_cloud.htm&type=5,,PLATFORM
+2,Data Stream,https://help.salesforce.com/s/articleView?id=sf.c360_a_data_stream.htm&type=5,1:REQUIRES:0.95,INGEST
+3,Data Lake Object,https://help.salesforce.com/s/articleView?id=sf.c360_a_dlm_object.htm&type=5,2:REQUIRES:0.95,MODEL
+4,Data Model Object,https://help.salesforce.com/s/articleView?id=sf.c360_a_dm_data_model_objects.htm&type=5,3:REQUIRES:0.90|19:REQUIRES:0.85,MODEL
+5,Unified Individual,https://help.salesforce.com/s/articleView?id=sf.c360_a_unified_individual.htm&type=5,4:REQUIRES:0.90|7:REQUIRES:0.90,IDENTITY
+6,Unified Profile,https://help.salesforce.com/s/articleView?id=sf.c360_a_unified_profile.htm&type=5,5:REQUIRES:0.95,IDENTITY
+7,Identity Resolution,https://help.salesforce.com/s/articleView?id=sf.c360_a_identity_resolution_intro.htm&type=5,4:REQUIRES:0.90|8:REQUIRES:0.85|9:REQUIRES:0.85,IDENTITY
+8,Match Rule,https://help.salesforce.com/s/articleView?id=sf.c360_a_identity_resolution_intro.htm&type=5,4:REQUIRES:0.90,IDENTITY
+9,Reconciliation Rule,https://help.salesforce.com/s/articleView?id=sf.c360_a_identity_resolution_intro.htm&type=5,4:REQUIRES:0.90,IDENTITY
+10,Segment,https://help.salesforce.com/s/articleView?id=sf.c360_a_segment.htm&type=5,6:REQUIRES:0.90|11:REQUIRES:0.85,SEGMENT
+11,Segment Criteria,https://help.salesforce.com/s/articleView?id=sf.c360_a_segment.htm&type=5,6:REQUIRES:0.90|12:REQUIRES:0.80,SEGMENT
+12,Calculated Insight,https://help.salesforce.com/s/articleView?id=sf.c360_a_calculated_insight.htm&type=5,6:REQUIRES:0.85|21:REQUIRES:0.80,SEGMENT
+13,Activation,https://help.salesforce.com/s/articleView?id=sf.c360_a_activation.htm&type=5,10:REQUIRES:0.90|14:REQUIRES:0.90,ACTIVATE
+14,Activation Target,https://help.salesforce.com/s/articleView?id=sf.c360_a_activation.htm&type=5,1:REQUIRES:0.85,ACTIVATE
+15,Data Action,https://help.salesforce.com/s/articleView?id=sf.c360_a_data_action.htm&type=5,6:REQUIRES:0.85|16:REQUIRES:0.85,ACTIVATE
+16,Data Action Trigger,https://help.salesforce.com/s/articleView?id=sf.c360_a_data_action.htm&type=5,12:REQUIRES:0.85,ACTIVATE
+17,Real-Time Data,https://help.salesforce.com/s/articleView?id=sf.c360_a_data_stream.htm&type=5,2:REQUIRES:0.90,INGEST
+18,Batch Data,https://help.salesforce.com/s/articleView?id=sf.c360_a_data_stream.htm&type=5,2:REQUIRES:0.90,INGEST
+19,Schema Mapping,https://help.salesforce.com/s/articleView?id=sf.c360_a_schema_mapping.htm&type=5,3:REQUIRES:0.90,MODEL
+20,Harmonization,https://help.salesforce.com/s/articleView?id=sf.c360_a_dm_harmonization.htm&type=5,19:REQUIRES:0.90|4:REQUIRES:0.85,MODEL
+21,Semantic Layer,https://help.salesforce.com/s/articleView?id=sf.c360_a_dm_data_model_objects.htm&type=5,4:REQUIRES:0.85|20:REQUIRES:0.80,MODEL
+22,Data Explorer,https://help.salesforce.com/s/articleView?id=sf.c360_a_data_explorer.htm&type=5,21:REQUIRES:0.85|6:REQUIRES:0.80,MODEL
+23,Profile API,https://developer.salesforce.com/docs/marketing/marketing-cloud/guide/profile-api.html,6:REQUIRES:0.90,GROUND
+24,Einstein Studio,https://help.salesforce.com/s/articleView?id=sf.einstein_studio.htm&type=5,6:REQUIRES:0.85|1:REQUIRES:0.80,GROUND
+25,Data Space,https://help.salesforce.com/s/articleView?id=sf.c360_a_data_space.htm&type=5,1:REQUIRES:0.85,MODEL
+26,Grounding,https://help.salesforce.com/s/articleView?id=ai.service_agent_considerations.htm&type=5,27:REQUIRES:0.95|23:REQUIRES:0.90,GROUND
+27,Knowledge Base,https://help.salesforce.com/s/articleView?id=ai.service_agent_considerations.htm&type=5,21:REQUIRES:0.85|6:REQUIRES:0.85,GROUND
+28,Consent Management,https://help.salesforce.com/s/articleView?id=sf.c360_a_consent_management.htm&type=5,6:REQUIRES:0.85,MODEL
+29,Data Kit,https://help.salesforce.com/s/articleView?id=sf.c360_a_data_kit.htm&type=5,2:REQUIRES:0.85,INGEST
+30,Data Share,https://help.salesforce.com/s/articleView?id=sf.c360_a_data_share.htm&type=5,25:REQUIRES:0.85,INGEST

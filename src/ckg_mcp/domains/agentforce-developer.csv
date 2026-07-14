@@ -1,0 +1,41 @@
+ConceptID,ConceptLabel,SourceURL,Dependencies,TaxonomyID
+1,AgentForce Developer Platform,https://developer.salesforce.com/docs/ai/agentforce/guide/get-started.html,,PLATFORM
+2,Agent Definition,https://developer.salesforce.com/docs/ai/agentforce/guide/get-started.html,1:REQUIRES:0.95,SCRIPTING
+3,Agent Action,https://developer.salesforce.com/docs/ai/agentforce/guide/agent-actions.html,1:REQUIRES:0.95,ACTION
+4,Apex Action,https://developer.salesforce.com/docs/ai/agentforce/guide/agent-apex.html,3:REQUIRES:0.95|35:REQUIRES:0.90,ACTION
+5,Flow Action,https://developer.salesforce.com/docs/ai/agentforce/guide/agent-auraenabled.html,3:REQUIRES:0.95|36:REQUIRES:0.90,ACTION
+6,External Service Action,https://developer.salesforce.com/docs/ai/agentforce/guide/agent-actions.html,3:REQUIRES:0.95,ACTION
+7,Prompt Action,https://developer.salesforce.com/docs/ai/agentforce/guide/agent-actions.html,3:REQUIRES:0.95,ACTION
+8,Named Query Action,https://developer.salesforce.com/docs/ai/agentforce/guide/agent-namedquery.html,3:REQUIRES:0.95|37:REQUIRES:0.90,ACTION
+9,Standard Action,https://developer.salesforce.com/docs/ai/agentforce/guide/agent-actions.html,3:REQUIRES:0.95,ACTION
+10,Action Parameter,https://developer.salesforce.com/docs/ai/agentforce/guide/agent-actions.html,3:REQUIRES:0.90,ACTION
+11,Action Output,https://developer.salesforce.com/docs/ai/agentforce/guide/agent-actions.html,3:REQUIRES:0.90,ACTION
+12,Action Chaining,https://developer.salesforce.com/docs/ai/agentforce/guide/agent-actions.html,3:REQUIRES:0.90|2:REQUIRES:0.85,ACTION
+13,Subagent,https://developer.salesforce.com/docs/ai/agentforce/guide/get-started.html,2:REQUIRES:0.95|3:REQUIRES:0.85,SCRIPTING
+14,Agent Channel,https://developer.salesforce.com/docs/ai/agentforce/guide/agent-api.html,1:REQUIRES:0.90,CHANNEL
+15,Agent API,https://developer.salesforce.com/docs/ai/agentforce/guide/agent-api.html,14:REQUIRES:0.95,CHANNEL
+16,Agent Session,https://developer.salesforce.com/docs/ai/agentforce/guide/agent-api.html,15:REQUIRES:0.95,RUNTIME
+17,Session Lifecycle,https://developer.salesforce.com/docs/ai/agentforce/guide/agent-api.html,16:REQUIRES:0.90,RUNTIME
+18,Context Window,https://developer.salesforce.com/docs/ai/agentforce/guide/agent-api.html,16:REQUIRES:0.90,RUNTIME
+19,Model Invocation,https://developer.salesforce.com/docs/ai/agentforce/guide/agent-api.html,18:REQUIRES:0.95,RUNTIME
+20,AScript,https://developer.salesforce.com/docs/ai/agentforce/guide/ascript-reference.html,2:REQUIRES:0.90,SCRIPTING
+21,AScript Context Variable,https://developer.salesforce.com/docs/ai/agentforce/guide/ascript-reference.html,20:REQUIRES:0.95,SCRIPTING
+22,AScript Merge Field,https://developer.salesforce.com/docs/ai/agentforce/guide/ascript-reference.html,20:REQUIRES:0.90,SCRIPTING
+23,Agent DX,https://developer.salesforce.com/docs/ai/agentforce/guide/agent-dx.html,1:REQUIRES:0.85,TESTING
+24,Agent Testing API,https://developer.salesforce.com/docs/ai/agentforce/guide/agent-api.html,23:REQUIRES:0.90,TESTING
+25,AgentForce Sandbox,https://developer.salesforce.com/docs/ai/agentforce/guide/agent-dx.html,23:REQUIRES:0.90,TESTING
+26,AWU (Agentic Work Unit),https://help.salesforce.com/s/articleView?id=ai.einstein_copilot_agentic_work_units.htm&type=5,1:REQUIRES:0.95,BILLING
+27,Flex Credit,https://www.salesforce.com/blog/flex-credits/,26:REQUIRES:0.95,BILLING
+28,Standard Credit,https://www.salesforce.com/blog/flex-credits/,27:REQUIRES:0.90,BILLING
+29,Premium Credit,https://www.salesforce.com/blog/flex-credits/,27:REQUIRES:0.90,BILLING
+30,Digital Wallet,https://help.salesforce.com/s/articleView?id=ai.generative_ai_usage_metering_logic.htm&type=5,27:REQUIRES:0.95,MONITORING
+31,Action Allowance,https://help.salesforce.com/s/articleView?id=ai.generative_ai_usage_einstein_requests.htm&type=5,26:REQUIRES:0.95|3:REQUIRES:0.90,BILLING
+32,Token Budget Per Action,https://help.salesforce.com/s/articleView?id=ai.generative_ai_usage_einstein_requests.htm&type=5,31:REQUIRES:0.95|18:REQUIRES:0.90,BILLING
+33,Metering Logic,https://help.salesforce.com/s/articleView?id=ai.generative_ai_usage_metering_logic.htm&type=5,26:REQUIRES:0.90|30:REQUIRES:0.90,MONITORING
+34,Credit Consumption Rate,https://help.salesforce.com/s/articleView?id=ai.generative_ai_usage_metering_logic.htm&type=5,33:REQUIRES:0.90|29:REQUIRES:0.85,MONITORING
+35,Invocable Method,https://developer.salesforce.com/docs/ai/agentforce/guide/agent-invocablemethod.html,1:REQUIRES:0.85,ACTION
+36,Aura-Enabled Method,https://developer.salesforce.com/docs/ai/agentforce/guide/agent-auraenabled.html,1:REQUIRES:0.85,ACTION
+37,Named Query,https://developer.salesforce.com/docs/ai/agentforce/guide/agent-namedquery.html,1:REQUIRES:0.85,ACTION
+38,Citation,https://developer.salesforce.com/docs/ai/agentforce/guide/agent-actions.html,3:REQUIRES:0.80,ACTION
+39,Agent Script,https://developer.salesforce.com/docs/ai/agentforce/guide/ascript-reference.html,20:REQUIRES:0.90|2:REQUIRES:0.85,SCRIPTING
+40,Grounding Instruction,https://developer.salesforce.com/docs/ai/agentforce/guide/get-started.html,2:REQUIRES:0.90|13:REQUIRES:0.85,SCRIPTING

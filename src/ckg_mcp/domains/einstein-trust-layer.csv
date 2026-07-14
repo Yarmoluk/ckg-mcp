@@ -1,0 +1,26 @@
+ConceptID,ConceptLabel,SourceURL,Dependencies,TaxonomyID
+1,Einstein Trust Layer,https://help.salesforce.com/s/articleView?id=sf.einstein_ai_trust_layer.htm&type=5,,GOVERNANCE
+2,Zero Data Retention,https://help.salesforce.com/s/articleView?id=sf.einstein_ai_trust_layer.htm&type=5,1:REQUIRES:0.95,SECURITY
+3,Data Masking,https://help.salesforce.com/s/articleView?id=sf.einstein_ai_trust_layer.htm&type=5,1:REQUIRES:0.95|4:REQUIRES:0.90,SECURITY
+4,PII Detection,https://help.salesforce.com/s/articleView?id=sf.einstein_ai_trust_layer.htm&type=5,1:REQUIRES:0.95,SECURITY
+5,Toxicity Detection,https://help.salesforce.com/s/articleView?id=sf.einstein_ai_trust_layer.htm&type=5,1:REQUIRES:0.95,SECURITY
+6,Content Filter,https://help.salesforce.com/s/articleView?id=sf.einstein_ai_trust_layer.htm&type=5,5:REQUIRES:0.90|3:REQUIRES:0.85,SECURITY
+7,Audit Trail,https://help.salesforce.com/s/articleView?id=sf.einstein_ai_trust_layer.htm&type=5,1:REQUIRES:0.95,AUDIT
+8,Audit Log Export,https://help.salesforce.com/s/articleView?id=sf.einstein_ai_trust_layer.htm&type=5,7:REQUIRES:0.90,AUDIT
+9,Trust Score,https://help.salesforce.com/s/articleView?id=sf.einstein_ai_trust_layer.htm&type=5,1:REQUIRES:0.90|11:REQUIRES:0.85|12:REQUIRES:0.85,GOVERNANCE
+10,Data Residency,https://help.salesforce.com/s/articleView?id=sf.einstein_ai_trust_layer.htm&type=5,1:REQUIRES:0.90|16:REQUIRES:0.85,DATA
+11,Input Validation,https://help.salesforce.com/s/articleView?id=sf.einstein_ai_trust_layer.htm&type=5,1:REQUIRES:0.95,SECURITY
+12,Output Validation,https://help.salesforce.com/s/articleView?id=sf.einstein_ai_trust_layer.htm&type=5,1:REQUIRES:0.95,SECURITY
+13,Grounding Filter,https://help.salesforce.com/s/articleView?id=sf.einstein_ai_trust_layer.htm&type=5,1:REQUIRES:0.90|11:REQUIRES:0.85,SECURITY
+14,GDPR Compliance,https://help.salesforce.com/s/articleView?id=sf.einstein_gdpr_compliance.htm&type=5,2:REQUIRES:0.95|10:REQUIRES:0.90|3:REQUIRES:0.85,COMPLIANCE
+15,HIPAA Compliance,https://help.salesforce.com/s/articleView?id=sf.einstein_hipaa_compliance.htm&type=5,2:REQUIRES:0.95|16:REQUIRES:0.90|7:REQUIRES:0.90,COMPLIANCE
+16,Data Encryption,https://help.salesforce.com/s/articleView?id=sf.einstein_ai_trust_layer.htm&type=5,1:REQUIRES:0.95,DATA
+17,Named Credential,https://help.salesforce.com/s/articleView?id=sf.named_credentials_about.htm&type=5,1:REQUIRES:0.85,SECURITY
+18,Permission Set,https://help.salesforce.com/s/articleView?id=sf.perm_sets_overview.htm&type=5,1:REQUIRES:0.85,GOVERNANCE
+19,Org-Level Policy,https://help.salesforce.com/s/articleView?id=sf.einstein_ai_trust_layer.htm&type=5,18:REQUIRES:0.90|22:REQUIRES:0.85,GOVERNANCE
+20,User-Level Policy,https://help.salesforce.com/s/articleView?id=sf.einstein_ai_trust_layer.htm&type=5,18:REQUIRES:0.90,GOVERNANCE
+21,Trust Gate,https://help.salesforce.com/s/articleView?id=sf.einstein_ai_trust_layer.htm&type=5,19:REQUIRES:0.90|9:REQUIRES:0.85,GOVERNANCE
+22,Sensitive Data Policy,https://help.salesforce.com/s/articleView?id=sf.einstein_ai_trust_layer.htm&type=5,4:REQUIRES:0.90|18:REQUIRES:0.85,GOVERNANCE
+23,Einstein Shield,https://help.salesforce.com/s/articleView?id=sf.einstein_shield.htm&type=5,1:REQUIRES:0.90|7:REQUIRES:0.85|16:REQUIRES:0.85,SECURITY
+24,Data Cloud Integration,https://help.salesforce.com/s/articleView?id=sf.einstein_ai_trust_layer.htm&type=5,1:REQUIRES:0.85|10:REQUIRES:0.80,DATA
+25,Model Access Agreement,https://help.salesforce.com/s/articleView?id=sf.einstein_ai_trust_layer.htm&type=5,1:REQUIRES:0.90,GOVERNANCE

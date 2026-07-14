@@ -24,6 +24,7 @@ PREMIUM_DOMAINS = {
     "organizational-analytics", "token-cost-crisis", "legal-citation-chain",
     "contract-law-elements", "clinical-decision-chain", "medical-billing-chain",
     "aml-kyc-chain", "investment-risk-chain",
+    "agentforce-developer", "agentforce-vibes", "einstein-trust-layer", "data-cloud",
 }
 
 def build():

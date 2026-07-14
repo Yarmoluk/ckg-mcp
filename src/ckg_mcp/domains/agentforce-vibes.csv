@@ -1,0 +1,31 @@
+ConceptID,ConceptLabel,SourceURL,Dependencies,TaxonomyID
+1,Agentforce Vibes,https://developer.salesforce.com/blogs/2025/12/five-pro-tips-for-using-agentforce-vibes,,PLATFORM
+2,Daily Token Quota,https://help.salesforce.com/s/articleView?id=ai.generative_ai_usage_einstein_requests.htm&type=5,1:REQUIRES:0.95,QUOTA
+3,Premium Request Limit,https://help.salesforce.com/s/articleView?id=ai.generative_ai_usage_einstein_requests.htm&type=5,2:REQUIRES:0.95,QUOTA
+4,Token Ceiling,https://help.salesforce.com/s/articleView?id=ai.generative_ai_usage_einstein_requests.htm&type=5,2:REQUIRES:0.95,QUOTA
+5,File Read Operation,https://developer.salesforce.com/blogs/2025/12/five-pro-tips-for-using-agentforce-vibes,1:REQUIRES:0.90,BURN
+6,At-File Reference,https://developer.salesforce.com/blogs/2025/12/five-pro-tips-for-using-agentforce-vibes,5:REQUIRES:0.95,BURN
+7,Deep Planning Mode,https://developer.salesforce.com/blogs/2025/12/five-pro-tips-for-using-agentforce-vibes,1:REQUIRES:0.90,BURN
+8,Architecture Document,https://developer.salesforce.com/blogs/2025/12/five-pro-tips-for-using-agentforce-vibes,7:REQUIRES:0.95,BURN
+9,Iterative Planning Loop,https://developer.salesforce.com/blogs/2025/12/five-pro-tips-for-using-agentforce-vibes,7:REQUIRES:0.90|10:REQUIRES:0.85,BURN
+10,Context Window,https://developer.salesforce.com/blogs/2026/04/new-developer-edition-agentforce-vibes-claude-mcp,1:REQUIRES:0.95,EXECUTION
+11,Context Compaction,https://developer.salesforce.com/blogs/2025/12/five-pro-tips-for-using-agentforce-vibes,10:REQUIRES:0.95,STRATEGY
+12,Codebase Analysis,https://developer.salesforce.com/blogs/2025/12/five-pro-tips-for-using-agentforce-vibes,1:REQUIRES:0.85|6:REQUIRES:0.90,EXECUTION
+13,Schema Inference,https://developer.salesforce.com/blogs/2025/12/five-pro-tips-for-using-agentforce-vibes,12:REQUIRES:0.90,EXECUTION
+14,API Contract Loading,https://developer.salesforce.com/blogs/2025/12/five-pro-tips-for-using-agentforce-vibes,6:REQUIRES:0.90,EXECUTION
+15,Subagent Delegation,https://developer.salesforce.com/blogs/2026/04/new-developer-edition-agentforce-vibes-claude-mcp,1:REQUIRES:0.85,EXECUTION
+16,Error Recovery Loop,https://help.salesforce.com/s/articleView?id=ai.generative_ai_usage_metering_logic.htm&type=5,1:REQUIRES:0.85|10:REQUIRES:0.80,BURN
+17,Multi-Turn Session,https://developer.salesforce.com/blogs/2026/04/new-developer-edition-agentforce-vibes-claude-mcp,10:REQUIRES:0.90,EXECUTION
+18,Quota Exhaustion,https://help.salesforce.com/s/articleView?id=ai.generative_ai_usage_einstein_requests.htm&type=5,3:REQUIRES:0.90|4:REQUIRES:0.90,QUOTA
+19,Background Task,https://developer.salesforce.com/blogs/2026/04/new-developer-edition-agentforce-vibes-claude-mcp,1:REQUIRES:0.80,EXECUTION
+20,Tool Call Chain,https://developer.salesforce.com/blogs/2026/04/new-developer-edition-agentforce-vibes-claude-mcp,1:REQUIRES:0.85|10:REQUIRES:0.80,EXECUTION
+21,Pre-loaded Graph Context,https://developer.salesforce.com/blogs/2025/12/five-pro-tips-for-using-agentforce-vibes,11:REQUIRES:0.95|28:REQUIRES:0.90,STRATEGY
+22,Selective File Loading,https://developer.salesforce.com/blogs/2025/12/five-pro-tips-for-using-agentforce-vibes,6:REQUIRES:0.90|11:REQUIRES:0.85,STRATEGY
+23,Compact Prompt Strategy,https://developer.salesforce.com/blogs/2025/12/five-pro-tips-for-using-agentforce-vibes,11:REQUIRES:0.90,STRATEGY
+24,MCP Server Connection,https://developer.salesforce.com/blogs/2026/04/new-developer-edition-agentforce-vibes-claude-mcp,1:REQUIRES:0.90,INTEGRATION
+25,At-MCP Reference,https://developer.salesforce.com/blogs/2026/04/new-developer-edition-agentforce-vibes-claude-mcp,24:REQUIRES:0.95,INTEGRATION
+26,Credit Burn Rate,https://help.salesforce.com/s/articleView?id=ai.generative_ai_usage_metering_logic.htm&type=5,2:REQUIRES:0.90|5:REQUIRES:0.85,QUOTA
+27,Usage Monitoring,https://help.salesforce.com/s/articleView?id=ai.generative_ai_usage_metering_logic.htm&type=5,26:REQUIRES:0.90,QUOTA
+28,Knowledge Caching,https://developer.salesforce.com/blogs/2025/12/five-pro-tips-for-using-agentforce-vibes,11:REQUIRES:0.90,STRATEGY
+29,Incremental Context Update,https://developer.salesforce.com/blogs/2026/04/new-developer-edition-agentforce-vibes-claude-mcp,11:REQUIRES:0.85|17:REQUIRES:0.85,STRATEGY
+30,Org Token Usage,https://help.salesforce.com/s/articleView?id=ai.generative_ai_usage_metering_logic.htm&type=5,2:REQUIRES:0.95|27:REQUIRES:0.90,QUOTA

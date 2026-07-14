@@ -52,6 +52,11 @@ PREMIUM_DOMAINS: frozenset[str] = frozenset({
     # Finance & compliance chains
     "aml-kyc-chain",
     "investment-risk-chain",
+    # Salesforce AgentForce stack
+    "agentforce-developer",
+    "agentforce-vibes",
+    "einstein-trust-layer",
+    "data-cloud",
 })
 
 
@@ -180,7 +185,7 @@ def load_graph(domain: str):
             taxonomy[cid] = row.get("TaxonomyID", "").strip()
             prerequisites[cid] = deps
             for dep in deps:
-                dependents[dep].append(cid)
+                dependents[_dep_id(dep)].append(cid)
 
     result = id_to_label, label_to_id, prerequisites, dependents, taxonomy
     _GRAPH_CACHE[domain] = result
@@ -197,24 +202,31 @@ def find_concept(label_to_id: dict, query: str) -> str | None:
     return None
 
 
+def _dep_id(dep_str: str) -> str:
+    """Extract concept ID from a dependency string — handles both '5' and '5:REQUIRES:0.95'."""
+    return dep_str.split(":")[0] if ":" in dep_str else dep_str
+
+
 def bfs_subgraph(start_id: str, adj: dict, id_to_label: dict, max_depth: int) -> list[dict]:
     visited = set()
     queue = deque([(start_id, 0)])
     results = []
     while queue:
         cid, depth = queue.popleft()
+        cid = _dep_id(cid)
         if cid in visited or depth > max_depth:
             continue
         visited.add(cid)
         neighbors = adj.get(cid, [])
         results.append({
             "concept": id_to_label.get(cid, cid),
-            "related": [id_to_label.get(n, n) for n in neighbors],
+            "related": [id_to_label.get(_dep_id(n), _dep_id(n)) for n in neighbors],
             "depth": depth,
         })
         for n in neighbors:
-            if n not in visited:
-                queue.append((n, depth + 1))
+            n_id = _dep_id(n)
+            if n_id not in visited:
+                queue.append((n_id, depth + 1))
     return results
 
 
@@ -224,11 +236,13 @@ def prerequisite_chain(start_id: str, prerequisites: dict, id_to_label: dict) ->
     chain = []
     while queue:
         cid = queue.popleft()
+        cid = _dep_id(cid)
         if cid in visited:
             continue
         visited.add(cid)
         chain.append(id_to_label.get(cid, cid))
         for p in prerequisites.get(cid, []):
-            if p not in visited:
-                queue.append(p)
+            p_id = _dep_id(p)
+            if p_id not in visited:
+                queue.append(p_id)
     return chain
