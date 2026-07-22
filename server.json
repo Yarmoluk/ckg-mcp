@@ -1,17 +1,17 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "io.github.Yarmoluk/ckg-mcp",
-  "description": "Context optimization for AI agents — 97 domain knowledge graphs (68 free + 29 Pro), MCP-native traversal. 4× F1 of RAG, 11× fewer tokens per query.",
+  "description": "97-domain knowledge graphs for AI agents — 4× F1 of RAG, 11× fewer tokens. MCP-native.",
   "repository": {
     "url": "https://github.com/Yarmoluk/ckg-mcp",
     "source": "github"
   },
-  "version": "0.7.7",
+  "version": "0.7.9",
   "packages": [
     {
       "registryType": "pypi",
       "identifier": "ckg-mcp",
-      "version": "0.7.7",
+      "version": "0.7.9",
       "transport": {
         "type": "stdio"
       },
