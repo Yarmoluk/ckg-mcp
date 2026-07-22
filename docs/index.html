@@ -1,0 +1,485 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta property="og:title" content="ckg-mcp — 97 domain knowledge graphs for AI agents">
+<meta property="og:description" content="Context optimization for AI agents. 97 traversable knowledge graphs: math, NVIDIA, healthcare, regulatory, finance, legal. 4× RAG F1 at 11× fewer tokens.">
+<meta property="og:image" content="https://raw.githubusercontent.com/Yarmoluk/ckg-mcp/main/docs/social-preview.png">
+<title>ckg-mcp — Context Optimization for AI Agents</title>
+<style>
+:root {
+  --bg:#fbfbf9; --surf:#fff; --surf2:#f6f5ef; --bdr:#e6e4da; --bdr2:#d8d5c8;
+  --ink:#13201c; --mid:#6b7570; --sub:#8a938e;
+  --acc:#0f6e56; --acc-hi:#0c5a46; --acc-bg:rgba(15,110,86,.08);
+  --red:#c92a2a; --red-bg:rgba(201,42,42,.08);
+  --code-bg:#0d1117; --code-txt:#e6edf3; --code-bdr:#30363d;
+  --f-head:'Segoe UI',system-ui,-apple-system,sans-serif;
+  --f-body:'Segoe UI',system-ui,-apple-system,sans-serif;
+  --f-mono:ui-monospace,'SFMono-Regular',Menlo,Consolas,monospace;
+  --c-core:#0f6e56; --c-math:#2563eb; --c-ai:#7c3aed;
+  --c-health:#c92a2a; --c-reg:#b45309; --c-sci:#0e7490; --c-biz:#db2777;
+}
+@media(prefers-color-scheme:dark){:root{
+  --bg:#0d1117; --surf:#161b22; --surf2:#21262d; --bdr:#30363d; --bdr2:#3d444d;
+  --ink:#e6edf3; --mid:#8b949e; --sub:#6e7681;
+  --acc:#3fb950; --acc-hi:#56d364; --acc-bg:rgba(63,185,80,.1);
+  --red:#f85149; --red-bg:rgba(248,81,73,.1);
+  --code-bg:#010409; --code-txt:#e6edf3; --code-bdr:#21262d;
+  --c-core:#3fb950; --c-math:#60a5fa; --c-ai:#a78bfa;
+  --c-health:#f87171; --c-reg:#fbbf24; --c-sci:#22d3ee; --c-biz:#f472b6;
+}}
+:root[data-theme=light]{--bg:#fbfbf9;--surf:#fff;--surf2:#f6f5ef;--bdr:#e6e4da;--bdr2:#d8d5c8;--ink:#13201c;--mid:#6b7570;--sub:#8a938e;--acc:#0f6e56;--acc-hi:#0c5a46;--acc-bg:rgba(15,110,86,.08);--red:#c92a2a;--red-bg:rgba(201,42,42,.08);--c-core:#0f6e56;--c-math:#2563eb;--c-ai:#7c3aed;--c-health:#c92a2a;--c-reg:#b45309;--c-sci:#0e7490;--c-biz:#db2777;}
+:root[data-theme=dark]{--bg:#0d1117;--surf:#161b22;--surf2:#21262d;--bdr:#30363d;--bdr2:#3d444d;--ink:#e6edf3;--mid:#8b949e;--sub:#6e7681;--acc:#3fb950;--acc-hi:#56d364;--acc-bg:rgba(63,185,80,.1);--red:#f85149;--red-bg:rgba(248,81,73,.1);--c-core:#3fb950;--c-math:#60a5fa;--c-ai:#a78bfa;--c-health:#f87171;--c-reg:#fbbf24;--c-sci:#22d3ee;--c-biz:#f472b6;}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:15px;-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);line-height:1.7;padding:0 16px 80px}
+::selection{background:rgba(15,110,86,.2)}
+.w{max-width:860px;margin:0 auto;padding-top:44px}
+h1,h2,h3,h4{font-family:var(--f-head);color:var(--ink);text-wrap:balance;line-height:1.25;letter-spacing:-.01em}
+h1{font-size:1.85rem;font-weight:700}
+h2{font-size:1.1rem;font-weight:700;margin:44px 0 14px;padding-bottom:8px;border-bottom:1px solid var(--bdr)}
+h3{font-size:.95rem;font-weight:600;margin:20px 0 8px}
+p{margin:10px 0}
+a{color:var(--acc);text-decoration:none}
+a:hover{color:var(--acc-hi);text-decoration:underline}
+strong{font-weight:600}
+hr{border:none;border-top:1px solid var(--bdr);margin:36px 0}
+
+.hd{text-align:center;padding-bottom:28px;border-bottom:1px solid var(--bdr);margin-bottom:4px}
+.hd-eye{font-family:var(--f-mono);font-size:10.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--acc);margin-bottom:10px}
+.hd h1{margin-bottom:6px}
+.hd-opener{font-size:14px;color:var(--ink);line-height:1.75;margin:12px auto 14px;max-width:680px;text-align:left}
+.not-callout{display:inline-block;background:var(--surf2);border:1px solid var(--bdr);border-left:2px solid var(--sub);border-radius:6px;padding:8px 14px;font-family:var(--f-mono);font-size:11.5px;color:var(--sub);margin:0 0 4px}
+.pip{display:inline-flex;align-items:center;gap:10px;background:var(--code-bg);border:1px solid var(--code-bdr);border-radius:7px;padding:9px 16px;font-family:var(--f-mono);font-size:13.5px;color:var(--code-txt);margin:14px 0 16px}
+.pip .$ {color:#8b949e;user-select:none}
+.pip .cmd{color:#a5d6ff}
+.pip .pkg{color:#a8d8a8}
+.hd-quote{font-family:var(--f-mono);font-size:11.5px;color:var(--sub);margin-bottom:18px;font-style:italic}
+.badges{display:flex;flex-wrap:wrap;gap:5px;justify-content:center;margin-bottom:16px}
+.badge{display:inline-flex;align-items:center;gap:4px;padding:3px 9px;border-radius:4px;font-family:var(--f-mono);font-size:10.5px;background:var(--surf2);border:1px solid var(--bdr);color:var(--mid)}
+.badge.a{background:var(--acc-bg);border-color:rgba(15,110,86,.25);color:var(--acc)}
+.links{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.links a{font-size:13px;font-weight:500}
+
+.graph-box{background:var(--surf);border:1px solid var(--bdr);border-radius:10px;overflow:hidden;position:relative;margin:4px 0 16px}
+#graph-canvas{display:block;width:100%;cursor:default}
+.graph-legend{display:flex;flex-wrap:wrap;gap:10px 18px;padding:10px 16px;border-top:1px solid var(--bdr);background:var(--surf2)}
+.leg-item{display:flex;align-items:center;gap:5px;font-family:var(--f-mono);font-size:10.5px;color:var(--mid)}
+.leg-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+
+pre{background:var(--code-bg);border:1px solid var(--code-bdr);border-radius:8px;padding:16px 18px;overflow-x:auto;margin:12px 0;font-family:var(--f-mono);font-size:12.5px;line-height:1.65;color:var(--code-txt)}
+code{font-family:var(--f-mono);font-size:.875em;background:var(--surf2);border:1px solid var(--bdr);padding:1px 5px;border-radius:3px;color:var(--acc)}
+pre code{background:none;border:none;padding:0;font-size:inherit;color:inherit;border-radius:0}
+.cm{color:#8b949e} .kw{color:#a5d6ff} .st{color:#a8d8a8} .sy{color:#d2a8ff}
+
+.prob-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:14px 0}
+.prob{background:var(--surf);border:1px solid var(--bdr);border-left:3px solid var(--red);border-radius:8px;padding:14px 16px;text-align:center}
+.prob-lbl{font-family:var(--f-mono);font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--red);margin-bottom:4px}
+.prob h3{margin:0 0 4px;font-size:.88rem}
+.prob p{margin:0;font-size:12.5px;color:var(--mid)}
+
+.sol-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:14px 0}
+.sol{background:var(--surf);border:1px solid var(--bdr);border-left:3px solid var(--acc);border-radius:8px;padding:14px 16px;text-align:center}
+.sol-n{font-family:var(--f-mono);font-size:1.6rem;font-weight:700;color:var(--acc);letter-spacing:-.02em;line-height:1;margin-bottom:4px}
+.sol-lbl{font-family:var(--f-mono);font-size:9.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--sub)}
+
+.domain-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:12px 0}
+.dg{background:var(--surf);border:1px solid var(--bdr);border-radius:8px;padding:13px 15px}
+.dg-lbl{display:flex;align-items:center;gap:6px;font-family:var(--f-mono);font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--sub);margin-bottom:6px}
+.dg-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.dg p{margin:0;font-size:12.5px;color:var(--mid);line-height:1.55}
+
+.tw{overflow-x:auto;margin:12px 0;border-radius:8px;border:1px solid var(--bdr)}
+table{width:100%;border-collapse:collapse;font-size:13.5px}
+thead tr{background:var(--surf2)}
+th{padding:9px 13px;text-align:left;font-family:var(--f-mono);font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--mid);border-bottom:1px solid var(--bdr)}
+td{padding:8px 13px;border-bottom:1px solid var(--bdr);vertical-align:top}
+tr:last-child td{border-bottom:none}
+tbody tr:nth-child(even){background:var(--surf2)}
+.mono{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+
+.bench{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:14px 0}
+.bc{background:var(--surf);border:1px solid var(--bdr);border-radius:8px;padding:15px 17px;text-align:center}
+.bc.hero{border-color:var(--acc);box-shadow:0 0 0 1px rgba(15,110,86,.2)}
+.bc-n{font-family:var(--f-mono);font-size:1.75rem;font-weight:700;color:var(--acc);letter-spacing:-.03em;line-height:1}
+.bc.dim .bc-n{color:var(--mid)}
+.bc-l{font-family:var(--f-mono);font-size:9.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--sub);margin-top:5px}
+.bc-sub{font-size:11.5px;color:var(--sub);margin-top:3px}
+
+.cta{background:var(--acc-bg);border:1px solid rgba(15,110,86,.25);border-radius:10px;padding:26px 28px;margin:14px 0;display:flex;flex-direction:column;align-items:center;text-align:center;gap:12px}
+.cta h3{font-size:1.1rem;margin:0}
+.cta p{margin:0;font-size:13.5px;color:var(--mid);max-width:560px}
+.cta-btns{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+.btn{display:inline-flex;align-items:center;padding:9px 20px;border-radius:7px;font-family:var(--f-mono);font-size:12.5px;font-weight:600;cursor:pointer;border:none;text-decoration:none;transition:opacity .15s}
+.btn.pri{background:var(--acc);color:#fff}
+.btn.pri:hover{opacity:.88;color:#fff;text-decoration:none}
+.btn.sec{background:var(--surf);border:1px solid var(--bdr);color:var(--ink)}
+.btn.sec:hover{background:var(--surf2);color:var(--ink);text-decoration:none}
+
+.footer{text-align:center;margin-top:56px;padding-top:22px;border-top:1px solid var(--bdr);font-family:var(--f-mono);font-size:10.5px;color:var(--sub);letter-spacing:.06em}
+
+@media(max-width:640px){
+  h1{font-size:1.45rem}
+  .prob-grid{grid-template-columns:1fr}
+  .sol-grid{grid-template-columns:1fr 1fr}
+  .domain-grid{grid-template-columns:1fr}
+  .bench{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+<div class="w">
+
+<header class="hd">
+  <div class="hd-eye">Graphify.md · 97 domain knowledge graphs · free + pro</div>
+  <h1>Context optimization<br>for AI agents</h1>
+  <p class="hd-opener">ckg-mcp is the context layer between agents and the domains they operate in. 97 pre-compiled knowledge graphs — mathematics, GPU inference, healthcare, regulatory, legal, finance, robotics — served over MCP. Agents traverse declared dependencies instead of re-inferring domain structure on every query. No model, no embeddings, no API key for the 68 free domains.</p>
+  <div class="not-callout">Read-only. The server can only return edges that exist in the data. It returns nothing rather than inferring a path that isn't there.</div>
+  <div class="pip"><span class="$">$</span><span><span class="cmd">pip install</span> <span class="pkg">ckg-mcp</span></span></div>
+  <p class="hd-quote">"You go from prompting the domain into existence to asking questions inside it."</p>
+  <div class="badges">
+    <span class="badge a">PyPI v0.7.8</span>
+    <span class="badge a">97 domains · 68 free</span>
+    <span class="badge a">F1 0.471 · 4× RAG</span>
+    <span class="badge a">KRB v0.6.2</span>
+    <span class="badge">MIT (free)</span>
+    <span class="badge">Graphify.md</span>
+  </div>
+  <div class="links">
+    <a href="https://pypi.org/project/ckg-mcp/">PyPI</a>
+    <a href="https://github.com/Yarmoluk/ckg-mcp">GitHub</a>
+    <a href="https://github.com/Yarmoluk/ckg-benchmark/blob/main/paper/main.pdf">Benchmark paper</a>
+    <a href="https://huggingface.co/datasets/danyarm/ckg-benchmark">HF dataset</a>
+    <a href="https://graphifymd.com/pro/">Pro — 97 domains</a>
+    <a href="https://graphifymd.com">graphifymd.com</a>
+  </div>
+</header>
+
+<h2>The catalog</h2>
+<p style="font-size:13px;color:var(--mid);margin:0 0 8px">97 domains clustered by category · hover to explore · each dot = a domain graph</p>
+<div class="graph-box">
+  <canvas id="graph-canvas" height="380"></canvas>
+  <div class="graph-legend">
+    <span class="leg-item"><span class="leg-dot" style="background:var(--c-core)"></span>Core</span>
+    <span class="leg-item"><span class="leg-dot" style="background:var(--c-math)"></span>Mathematics</span>
+    <span class="leg-item"><span class="leg-dot" style="background:var(--c-ai)"></span>AI Tools</span>
+    <span class="leg-item"><span class="leg-dot" style="background:var(--c-health)"></span>Health</span>
+    <span class="leg-item"><span class="leg-dot" style="background:var(--c-reg)"></span>Regulatory</span>
+    <span class="leg-item"><span class="leg-dot" style="background:var(--c-sci)"></span>Science</span>
+    <span class="leg-item"><span class="leg-dot" style="background:var(--c-biz)"></span>Business</span>
+  </div>
+</div>
+
+<h2>The problem every agent team hits</h2>
+<div class="prob-grid">
+  <div class="prob">
+    <div class="prob-lbl">Long system prompt</div>
+    <h3>No structure</h3>
+    <p>Drifts with every model update. Cannot traverse. The model re-infers the domain on every query.</p>
+  </div>
+  <div class="prob">
+    <div class="prob-lbl">RAG retrieval</div>
+    <h3>Probabilistic</h3>
+    <p>Accuracy degrades at each hop. 0.123 macro F1 on multi-hop domain queries. Expensive per query.</p>
+  </div>
+  <div class="prob">
+    <div class="prob-lbl">Fine-tuning</div>
+    <h3>6-month cycle</h3>
+    <p>Stale by delivery. Retrains when knowledge shifts. Does not give you a traversable graph.</p>
+  </div>
+</div>
+<p>All three share the same failure: the agent re-infers domain structure on every query instead of reading structure that was declared once.</p>
+
+<h2>The solution</h2>
+<div class="sol-grid">
+  <div class="sol">
+    <div class="sol-n">0.471</div>
+    <div class="sol-lbl">CKG macro F1<br>vs 0.123 RAG</div>
+  </div>
+  <div class="sol">
+    <div class="sol-n">11×</div>
+    <div class="sol-lbl">fewer tokens<br>269 vs 2,982</div>
+  </div>
+  <div class="sol">
+    <div class="sol-n">97</div>
+    <div class="sol-lbl">domains<br>68 free</div>
+  </div>
+</div>
+
+<h2>Traversal example</h2>
+<pre><span class="kw">query_ckg</span>(<span class="st">"Taylor Series"</span>, <span class="st">"calculus"</span>, <span class="st">3</span>)
+
+→ Function → Limit → Continuity → Derivative →
+  Higher-Order Derivatives → Convergence →
+  Power Series → <span class="st">Taylor Series</span>
+
+<span class="cm">8-hop chain · 269 tokens · declared edges only
+RAG: "A Taylor series is a polynomial approximation..." (2,982 tokens · probabilistic)</span>
+
+<span class="kw">get_prerequisites</span>(<span class="st">"Business Associate Agreement"</span>, <span class="st">"hipaa-compliance"</span>)
+
+→ Covered Entity → PHI Definition → Minimum Necessary Standard
+  → Access Controls → Breach Notification Rule → <span class="st">BAA</span>
+
+<span class="cm">HIPAA chain in 5 traversal steps. Ask the graph, get the chain.</span>
+
+<span class="kw">query_ckg</span>(<span class="st">"FlashAttention-3"</span>, <span class="st">"nvidia-gpu-inference"</span>, <span class="st">3</span>)
+
+→ SRAM Tiling · On-Chip Memory Budget · Transformer Attention ·
+  Softmax Stability → <span class="st">FlashAttention-3</span> → Multi-Head Attention → KV Cache
+
+<span class="cm">GPU inference chain. Correct every time. Zero inference at query time.</span></pre>
+
+<h2>Quickstart</h2>
+<pre><span class="cm"># Claude Desktop</span>
+<span class="sy">{</span> <span class="kw">"mcpServers"</span>: <span class="sy">{</span>
+  <span class="kw">"ckg"</span>: <span class="sy">{</span> <span class="kw">"command"</span>: <span class="st">"uvx"</span>, <span class="kw">"args"</span>: <span class="sy">[</span><span class="st">"ckg-mcp"</span><span class="sy">]</span> <span class="sy">}</span>
+<span class="sy">}}</span>
+
+<span class="cm"># Claude Code</span>
+claude mcp add ckg -- uvx ckg-mcp
+
+<span class="cm"># Try immediately</span>
+<span class="kw">list_domains</span>()          <span class="cm">→ see all 68 free domains</span>
+<span class="kw">query_ckg</span>(<span class="st">"TLS"</span>, <span class="st">"hipaa-compliance"</span>, <span class="st">2</span>)
+<span class="kw">get_prerequisites</span>(<span class="st">"Nemotron-4 340B"</span>, <span class="st">"nemotron"</span>)</pre>
+
+<h2>Tools</h2>
+<div class="tw"><table>
+  <thead><tr><th>Tool</th><th>Description</th></tr></thead>
+  <tbody>
+    <tr><td class="mono">list_domains()</td><td>Every available domain — start here. Grouped by category.</td></tr>
+    <tr><td class="mono">query_ckg(concept, domain, depth)</td><td>Prerequisites + dependents, up to N hops. The core traversal tool.</td></tr>
+    <tr><td class="mono">get_prerequisites(concept, domain)</td><td>Full upstream chain in dependency order — every prerequisite in sequence.</td></tr>
+    <tr><td class="mono">search_concepts(query, domain)</td><td>Find concepts by keyword before traversing.</td></tr>
+    <tr><td class="mono">list_agent_blueprints()</td><td>Pre-built agent configs: domains, workflow, system prompt, LangGraph hint.</td></tr>
+    <tr><td class="mono">get_agent_blueprint(use_case)</td><td>Full spec for a use case — paste into any agent framework.</td></tr>
+  </tbody>
+</table></div>
+
+<h2>Domain library — 68 free</h2>
+<div class="domain-grid">
+  <div class="dg"><div class="dg-lbl"><span class="dg-dot" style="background:var(--c-math)"></span>Mathematics</div><p>calculus · pre-calc · algebra-1 · linear-algebra · geometry-course · statistics-course · functions · fft-benchmarking</p></div>
+  <div class="dg"><div class="dg-lbl"><span class="dg-dot" style="background:var(--c-ai)"></span>AI Tools</div><p>claude-anthropic · cursor · deepseek · gemini-api · grok-xai · kimi-moonshot · openai-platform · qwen · vercel-ai-sdk · langchain-core · dbt-core · apache-iceberg</p></div>
+  <div class="dg"><div class="dg-lbl"><span class="dg-dot" style="background:var(--c-sci)"></span>Engineering & CS</div><p>circuits · digital-electronics · computer-science · quantum-computing · signal-processing · intro-to-graph · ros2-architecture · robot-motion-planning</p></div>
+  <div class="dg"><div class="dg-lbl"><span class="dg-dot" style="background:var(--c-health)"></span>Clinical & Health</div><p>glp1-obesity · glp1-muscle-loss · dementia · biology · bioinformatics · genetics · ecology · chemistry</p></div>
+  <div class="dg"><div class="dg-lbl"><span class="dg-dot" style="background:var(--c-reg)"></span>Regulatory & Government</div><p>fda-drug-approval-chain · fda-adverse-event-chain · federal-procurement-chain · gao-oversight-chain</p></div>
+  <div class="dg"><div class="dg-lbl"><span class="dg-dot" style="background:var(--c-biz)"></span>Business & Society</div><p>economics-course · personal-finance · ethics-course · systems-thinking · digital-citizenship · blockchain · unicorns · machine-learning-textbook · data-science-course</p></div>
+  <div class="dg"><div class="dg-lbl"><span class="dg-dot" style="background:var(--c-core)"></span>Reference & Learning</div><p>art-of-war · laudato-si · learning-linux · us-geography · asl-book · prompt-class · tracking-ai-course · microsims · infographics</p></div>
+  <div class="dg"><div class="dg-lbl"><span class="dg-dot" style="background:var(--c-ai)"></span>Conversational AI</div><p>conversational-ai · machine-learning-textbook · automating-instructional-design · it-management-graph · theory-of-knowledge</p></div>
+</div>
+
+<h3>Pro — 97 domains ($99/mo)</h3>
+<div class="tw"><table>
+  <thead><tr><th>Category</th><th>Domains</th></tr></thead>
+  <tbody>
+    <tr><td>Healthcare & clinical</td><td>HIPAA · CPT coding · ICD-10 · payer formulary · drug interactions · clinical decision chain · medical billing</td></tr>
+    <tr><td>Enterprise data stack</td><td>Databricks Unity · Snowflake Horizon · PostgreSQL · AWS Data Catalog · Azure Purview · GCP Dataplex · OpenLineage</td></tr>
+    <tr><td>AI infrastructure</td><td>NVIDIA GPU inference · AgentForce · context-as-a-service · agent reliability · AI governance · token cost crisis</td></tr>
+    <tr><td>Legal & compliance</td><td>Legal citation chain · contract law elements · AML/KYC chain · investment risk chain</td></tr>
+  </tbody>
+</table></div>
+
+<h2>Benchmark (KRB v0.6.2 locked)</h2>
+<div class="bench">
+  <div class="bc hero">
+    <div class="bc-n">0.471</div>
+    <div class="bc-l">CKG Macro F1</div>
+    <div class="bc-sub">269 tokens · $7.81/1k</div>
+  </div>
+  <div class="bc dim">
+    <div class="bc-n">0.123</div>
+    <div class="bc-l">RAG baseline</div>
+    <div class="bc-sub">2,982 tokens · $76.23/1k</div>
+  </div>
+  <div class="bc dim">
+    <div class="bc-n">0.120</div>
+    <div class="bc-l">GraphRAG baseline</div>
+    <div class="bc-sub">~3,000 tokens · ~$76/1k</div>
+  </div>
+</div>
+<p style="font-size:12.5px;color:var(--sub);text-align:center">7,928 queries · 5-hop F1: 0.772 (CKG) vs 0.170 (RAG) · <a href="https://huggingface.co/datasets/danyarm/ckg-benchmark">dataset public on HuggingFace</a> · run it yourself</p>
+
+<h2>Try it now</h2>
+<div class="cta">
+  <h3>68 domains. Free. No API key.</h3>
+  <p>Install in one command and connect to Claude Desktop, Claude Code, Cursor, or any MCP client. Upgrade to Pro for 97 domains including healthcare, legal, and enterprise infrastructure.</p>
+  <div class="cta-btns">
+    <a class="btn pri" href="https://graphifymd.com/pro/">Get Pro — 97 domains →</a>
+    <a class="btn sec" href="https://pypi.org/project/ckg-mcp/">View on PyPI</a>
+    <a class="btn sec" href="https://github.com/Yarmoluk/ckg-benchmark/blob/main/paper/main.pdf">Read the paper</a>
+  </div>
+  <p style="font-size:12px;margin-top:4px"><strong>Free tier</strong> · 68 domains · MIT licensed · no API key · Python ≥ 3.10 · single dependency</p>
+</div>
+
+<div class="footer">Built by <a href="https://graphifymd.com">Graphify.md</a> · <a href="https://pypi.org/project/ckg-mcp/">PyPI</a> · patent pending<br><span style="margin-top:4px;display:inline-block;font-size:9.5px">ckg-mcp is the core product of Graphify.md. Open benchmark. Human-authored graphs. Run the numbers yourself.</span></div>
+
+</div>
+
+<script>
+(function(){
+const LAYERS={core:'--c-core',math:'--c-math',ai:'--c-ai',health:'--c-health',reg:'--c-reg',sci:'--c-sci',biz:'--c-biz'};
+const NS=[
+  {id:'ckg-mcp',l:'core',r:13},
+  // Math cluster
+  {id:'calculus',l:'math',r:7},{id:'linear-alg.',l:'math',r:6},{id:'statistics',l:'math',r:6},{id:'algebra-1',l:'math',r:5},{id:'quantum-comp.',l:'math',r:6},
+  // AI cluster
+  {id:'nvidia-ai',l:'ai',r:8},{id:'langchain',l:'ai',r:7},{id:'openai',l:'ai',r:7},{id:'anthropic',l:'ai',r:7},{id:'cursor',l:'ai',r:6},{id:'deepseek',l:'ai',r:6},{id:'dbt-core',l:'ai',r:5},
+  // Health cluster
+  {id:'glp1-obesity',l:'health',r:7},{id:'dementia',l:'health',r:6},{id:'bioinformatics',l:'health',r:6},{id:'genetics',l:'health',r:5},
+  // Regulatory
+  {id:'fda-drug',l:'reg',r:7},{id:'hipaa',l:'reg',r:7},{id:'gao-oversight',l:'reg',r:6},{id:'procurement',l:'reg',r:5},
+  // Science
+  {id:'ros2',l:'sci',r:6},{id:'circuits',l:'sci',r:6},{id:'signal-proc.',l:'sci',r:5},{id:'computer-sci.',l:'sci',r:6},
+  // Business
+  {id:'economics',l:'biz',r:6},{id:'blockchain',l:'biz',r:6},{id:'ethics',l:'biz',r:5},{id:'unicorns',l:'biz',r:5},
+];
+const ES=[
+  ['ckg-mcp','calculus'],['ckg-mcp','nvidia-ai'],['ckg-mcp','glp1-obesity'],['ckg-mcp','fda-drug'],
+  ['ckg-mcp','ros2'],['ckg-mcp','economics'],['ckg-mcp','linear-alg.'],['ckg-mcp','langchain'],
+  ['ckg-mcp','anthropic'],['ckg-mcp','hipaa'],['ckg-mcp','dementia'],['ckg-mcp','circuits'],
+  ['calculus','linear-alg.'],['calculus','statistics'],['linear-alg.','algebra-1'],['statistics','algebra-1'],
+  ['calculus','quantum-comp.'],
+  ['nvidia-ai','langchain'],['langchain','openai'],['openai','anthropic'],['anthropic','cursor'],['openai','deepseek'],['langchain','dbt-core'],
+  ['glp1-obesity','dementia'],['dementia','bioinformatics'],['bioinformatics','genetics'],
+  ['fda-drug','hipaa'],['hipaa','gao-oversight'],['gao-oversight','procurement'],
+  ['ros2','signal-proc.'],['circuits','computer-sci.'],
+  ['economics','blockchain'],['economics','ethics'],['blockchain','unicorns'],
+];
+
+const canvas=document.getElementById('graph-canvas');
+const ctx=canvas.getContext('2d');
+let W,H,hoverId=null,dragging=null;
+
+function cssVar(v){return getComputedStyle(document.documentElement).getPropertyValue(v).trim()}
+
+function resize(){
+  W=canvas.offsetWidth; H=380;
+  canvas.width=W*devicePixelRatio; canvas.height=H*devicePixelRatio;
+  ctx.scale(devicePixelRatio,devicePixelRatio);
+  canvas.style.height=H+'px';
+}
+
+NS.forEach((n,i)=>{
+  const angle=(i/NS.length)*Math.PI*2;
+  const layerR={core:0,math:130,ai:160,health:190,reg:170,sci:150,biz:140}[n.l]||130;
+  n.x=(W/2||430)+layerR*Math.cos(angle)*(0.7+Math.random()*0.5);
+  n.y=(H/2||190)+layerR*Math.sin(angle)*(0.7+Math.random()*0.5);
+  n.vx=0; n.vy=0;
+});
+
+function tick(){
+  const cx=W/2||430,cy=H/2||190;
+  NS.forEach(a=>{
+    NS.forEach(b=>{
+      if(a===b)return;
+      const dx=a.x-b.x,dy=a.y-b.y,d=Math.sqrt(dx*dx+dy*dy)||1;
+      const f=5000/(d*d);
+      a.vx+=dx/d*f; a.vy+=dy/d*f;
+    });
+  });
+  ES.forEach(([ai,bi])=>{
+    const a=NS.find(n=>n.id===ai),b=NS.find(n=>n.id===bi);
+    if(!a||!b)return;
+    const dx=b.x-a.x,dy=b.y-a.y,d=Math.sqrt(dx*dx+dy*dy)||1;
+    const ideal=a.id==='ckg-mcp'?130:80;
+    const f=(d-ideal)*0.03;
+    a.vx+=dx/d*f; a.vy+=dy/d*f;
+    b.vx-=dx/d*f; b.vy-=dy/d*f;
+  });
+  NS.forEach(n=>{
+    n.vx+=(cx-n.x)*0.006; n.vy+=(cy-n.y)*0.006;
+    n.vx*=0.82; n.vy*=0.82;
+    n.x+=n.vx; n.y+=n.vy;
+    const pad=n.r+24;
+    n.x=Math.max(pad,Math.min((W||860)-pad,n.x));
+    n.y=Math.max(pad,Math.min((H||380)-pad-10,n.y));
+  });
+}
+
+resize();
+NS[0].x=W/2; NS[0].y=H/2;
+NS.slice(1).forEach((n,i)=>{
+  const angle=(i/(NS.length-1))*Math.PI*2;
+  n.x=W/2+150*Math.cos(angle)*(0.7+Math.random()*0.6);
+  n.y=H/2+150*Math.sin(angle)*(0.7+Math.random()*0.6);
+});
+for(let i=0;i<450;i++)tick();
+
+function draw(){
+  ctx.clearRect(0,0,W,H);
+  const bg=cssVar('--surf'),edgeC=cssVar('--bdr'),textC=cssVar('--ink');
+  ctx.fillStyle=bg; ctx.fillRect(0,0,W,H);
+  const nbrs=new Set();
+  if(hoverId){ES.forEach(([a,b])=>{if(a===hoverId)nbrs.add(b);if(b===hoverId)nbrs.add(a);});}
+  ES.forEach(([ai,bi])=>{
+    const a=NS.find(n=>n.id===ai),b=NS.find(n=>n.id===bi);
+    if(!a||!b)return;
+    const hi=hoverId&&(hoverId===ai||hoverId===bi);
+    ctx.beginPath();
+    ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y);
+    ctx.strokeStyle=hi?cssVar('--acc'):edgeC;
+    ctx.lineWidth=hi?1.8:.7;
+    ctx.globalAlpha=hi?0.9:0.4;
+    ctx.stroke();
+    ctx.globalAlpha=1;
+  });
+  NS.forEach(n=>{
+    const col=cssVar(LAYERS[n.l]);
+    const isHov=n.id===hoverId,isNbr=nbrs.has(n.id),faded=hoverId&&!isHov&&!isNbr;
+    ctx.globalAlpha=faded?0.2:1;
+    if(isHov){
+      ctx.beginPath();
+      ctx.arc(n.x,n.y,n.r+6,0,Math.PI*2);
+      ctx.fillStyle=col+'40';
+      ctx.fill();
+    }
+    ctx.beginPath();
+    ctx.arc(n.x,n.y,n.r,0,Math.PI*2);
+    ctx.fillStyle=col;
+    ctx.fill();
+    ctx.strokeStyle=bg;
+    ctx.lineWidth=1.5;
+    ctx.stroke();
+    ctx.font=`500 9px ui-monospace,monospace`;
+    ctx.textAlign='center';
+    ctx.textBaseline='top';
+    ctx.globalAlpha=faded?0.15:1;
+    const ty=n.y+n.r+3;
+    ctx.lineWidth=3;
+    ctx.strokeStyle=bg;
+    ctx.strokeText(n.id,n.x,ty);
+    ctx.fillStyle=textC;
+    ctx.fillText(n.id,n.x,ty);
+    ctx.globalAlpha=1;
+  });
+}
+
+function loop(){tick();draw();requestAnimationFrame(loop);}
+requestAnimationFrame(loop);
+
+canvas.addEventListener('mousemove',e=>{
+  const r=canvas.getBoundingClientRect();
+  const mx=e.clientX-r.left,my=e.clientY-r.top;
+  if(dragging){dragging.x=mx;dragging.y=my;dragging.vx=0;dragging.vy=0;return;}
+  hoverId=null;
+  canvas.style.cursor='default';
+  for(const n of NS){
+    const dx=mx-n.x,dy=my-n.y;
+    if(dx*dx+dy*dy<=n.r*n.r*1.8){hoverId=n.id;canvas.style.cursor='pointer';break;}
+  }
+});
+canvas.addEventListener('mouseleave',()=>{hoverId=null;});
+canvas.addEventListener('mousedown',e=>{
+  const r=canvas.getBoundingClientRect();
+  const mx=e.clientX-r.left,my=e.clientY-r.top;
+  for(const n of NS){const dx=mx-n.x,dy=my-n.y;if(dx*dx+dy*dy<=n.r*n.r*1.8){dragging=n;break;}}
+});
+canvas.addEventListener('mouseup',()=>{dragging=null;});
+window.addEventListener('resize',()=>{resize();});
+})();
+</script>
+</body>
+</html>
