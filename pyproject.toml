@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "ckg-mcp"
-version = "0.7.8"
+version = "0.7.9"
 description = "Context optimization for AI agents — 97 domain knowledge graphs (68 free + 29 Pro), MCP-native traversal. 4× F1 of RAG, 11× fewer tokens per query. Works with Claude, GPT-4o, Gemini, and any MCP client."
 readme = "README.md"
 license = { text = "MIT" }

@@ -112,7 +112,7 @@ def query_ckg(concept: str, depth: int = 3, domain: str = "") -> str:
     """
     depth = min(depth, 5)
     domain = _resolve_domain(domain)
-    id_to_label, label_to_id, prerequisites, dependents, taxonomy = load_graph(domain)
+    id_to_label, label_to_id, prerequisites, dependents, taxonomy, _ = load_graph(domain)
     cid = find_concept(label_to_id, concept)
     if not cid:
         close = [l for l in label_to_id if concept.lower()[:4] in l][:5]
@@ -168,7 +168,7 @@ def get_prerequisites(concept: str, domain: str = "") -> str:
         not found.
     """
     domain = _resolve_domain(domain)
-    id_to_label, label_to_id, prerequisites, _, _ = load_graph(domain)
+    id_to_label, label_to_id, prerequisites, _, _, _ = load_graph(domain)
     cid = find_concept(label_to_id, concept)
     if not cid:
         return f"Concept '{concept}' not found in {domain}."
@@ -201,7 +201,7 @@ def search_concepts(query: str, domain: str = "") -> str:
         message when there are no matches.
     """
     domain = _resolve_domain(domain)
-    _, label_to_id, _, _, taxonomy = load_graph(domain)
+    _, label_to_id, _, _, taxonomy, _ = load_graph(domain)
     q = query.lower().strip()
     matches = [(label, cid) for label, cid in label_to_id.items() if q in label]
     if not matches:
@@ -290,6 +290,52 @@ def get_agent_blueprint(use_case: str) -> str:
         for g in agent_map.get("guardrails", []):
             lines.append(f"  - {g}")
 
+    return "\n".join(lines)
+
+
+@mcp.tool()
+def verify_source(concept: str, domain: str = "") -> str:
+    """Return the source URL and SHA-256 content hash for a concept node.
+
+    Audit chain: edge answer → graph commit → source_content_hash → source_url (fetch hint).
+    Verification: curl -s <source_url> | sha256sum  # compare to source_hash
+
+    Args:
+        concept: Concept label (partial match supported).
+        domain:  Domain from list_domains() (omit when CKG_DOMAIN is set).
+    """
+    domain = _resolve_domain(domain)
+    try:
+        id_to_label, label_to_id, _, _, taxonomy, provenance = load_graph(domain)
+    except ValueError as e:
+        return str(e)
+    cid = find_concept(label_to_id, concept.lower())
+    if not cid:
+        return f"Concept '{concept}' not found in {domain}. Use search_concepts() to find the closest match."
+    label = id_to_label[cid]
+    prov = provenance.get(cid, {})
+    source_url = prov.get("source_url") or "unknown"
+    source_hash = prov.get("source_hash") or "sha256:not-computed"
+    lines = [
+        f"## Source provenance — {label} ({domain})",
+        f"",
+        f"**concept:**      {label}",
+        f"**taxonomy:**     {taxonomy.get(cid, 'unknown')}",
+        f"**source_url:**   {source_url}",
+        f"**source_hash:**  {source_hash}",
+        f"**provenance:**   GuardrailDecisionV1 · v1",
+        f"",
+    ]
+    if source_hash == "sha256:not-computed":
+        lines.append("ℹ Per-node source hashes not available for this domain. Audit trail: git log -- src/ckg_mcp/domains/")
+    else:
+        lines += [
+            "**Verification:**",
+            f"```bash",
+            f"curl -s '{source_url}' | sha256sum",
+            f"# expected: {source_hash.removeprefix('sha256:')}",
+            f"```",
+        ]
     return "\n".join(lines)
 
 

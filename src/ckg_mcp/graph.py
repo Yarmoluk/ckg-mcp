@@ -123,7 +123,7 @@ def _parse_graph_nodes(nodes: list) -> tuple:
         for dep_str in deps:
             dep_id = dep_str.split(":")[0]
             dependents[dep_id].append(cid)
-    return id_to_label, label_to_id, prerequisites, dependents, taxonomy
+    return id_to_label, label_to_id, prerequisites, dependents, taxonomy, {}
 
 
 def _fetch_graph_from_api(domain: str, key: str) -> tuple | None:
@@ -174,6 +174,7 @@ def load_graph(domain: str):
     prerequisites: dict = defaultdict(list)
     dependents: dict = defaultdict(list)
     taxonomy: dict = {}
+    provenance: dict = {}
 
     with open(csv_path) as f:
         for row in csv.DictReader(f):
@@ -186,8 +187,12 @@ def load_graph(domain: str):
             prerequisites[cid] = deps
             for dep in deps:
                 dependents[_dep_id(dep)].append(cid)
+            src_url = row.get("SourceURL", "").strip()
+            src_hash = row.get("source_content_hash", "").strip()
+            if src_url or src_hash:
+                provenance[cid] = {"source_url": src_url, "source_hash": src_hash}
 
-    result = id_to_label, label_to_id, prerequisites, dependents, taxonomy
+    result = id_to_label, label_to_id, prerequisites, dependents, taxonomy, provenance
     _GRAPH_CACHE[domain] = result
     return result
 

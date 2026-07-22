@@ -217,6 +217,22 @@ query_ckg("FlashAttention-3", "nvidia-gpu-inference", 3)
 
 ---
 
+## Source provenance — verifiable to the byte
+
+Every node carries a `source_url` and a `source_hash` (SHA-256 of source bytes at extraction time) where available. The full audit chain: edge answer → graph commit hash → source_content_hash → knowledge_source_ref.
+
+```bash
+# For domains with per-node hashes:
+curl -s <source_url> | sha256sum
+# compare to source_hash — mismatch = stale edge or silent upstream edit
+```
+
+Via MCP — `verify_source(concept, domain)` returns source URL, hash, and verification command. Run `scripts/refresh_hashes.py` to recompute.
+
+Reference implementation from [GuardrailDecisionV1](https://github.com/crewAIInc/crewAI/issues/4877).
+
+---
+
 ## Benchmark
 
 > These are our numbers on our open benchmark. The dataset is on HuggingFace. Run it yourself before citing them.
