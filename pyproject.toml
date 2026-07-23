@@ -21,8 +21,12 @@ classifiers = [
 requires-python = ">=3.10"
 dependencies = ["mcp>=1.0.0"]
 
+[project.optional-dependencies]
+serve = ["starlette", "uvicorn", "httpx"]
+
 [project.scripts]
 ckg-mcp = "ckg_mcp.server:main"
+ckg-mcp-serve = "ckg_mcp.serve:main"
 
 [project.urls]
 Homepage = "https://graphifymd.com"

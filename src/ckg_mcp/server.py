@@ -3,6 +3,7 @@ import os
 from pathlib import Path
 from mcp.server.fastmcp import FastMCP
 from .graph import available_domains, load_graph, find_concept, bfs_subgraph, prerequisite_chain, PREMIUM_DOMAINS
+from .analytics import track
 
 AGENTS_DIR = Path(__file__).parent / "agents"
 
@@ -73,6 +74,7 @@ def list_domains() -> str:
     Returns:
         Domain name(s) available on this server.
     """
+    track("ckg-mcp", "list_domains")
     if _SINGLE_DOMAIN:
         return f"Single-domain mode. Active domain: {_SINGLE_DOMAIN}"
     domains = available_domains()
@@ -110,6 +112,7 @@ def query_ckg(concept: str, depth: int = 3, domain: str = "") -> str:
         plus the concept's taxonomy tag when present. If the concept is not found, returns a
         message listing up to 5 similar names to retry with.
     """
+    track("ckg-mcp", "query_ckg", {"concept": concept, "domain": domain or _SINGLE_DOMAIN, "depth": depth})
     depth = min(depth, 5)
     domain = _resolve_domain(domain)
     id_to_label, label_to_id, prerequisites, dependents, taxonomy, _ = load_graph(domain)
@@ -167,6 +170,7 @@ def get_prerequisites(concept: str, domain: str = "") -> str:
         Series". States that the concept is a root if it has no prerequisites, or that it was
         not found.
     """
+    track("ckg-mcp", "get_prerequisites", {"concept": concept, "domain": domain or _SINGLE_DOMAIN})
     domain = _resolve_domain(domain)
     id_to_label, label_to_id, prerequisites, _, _, _ = load_graph(domain)
     cid = find_concept(label_to_id, concept)
@@ -200,6 +204,7 @@ def search_concepts(query: str, domain: str = "") -> str:
         brackets when present, e.g. "  - Masking Policy [GOV]". Returns a "no concepts matching"
         message when there are no matches.
     """
+    track("ckg-mcp", "search_concepts", {"domain": domain or _SINGLE_DOMAIN, "query_len": len(query)})
     domain = _resolve_domain(domain)
     _, label_to_id, _, _, taxonomy, _ = load_graph(domain)
     q = query.lower().strip()
@@ -224,6 +229,7 @@ def list_agent_blueprints() -> str:
     Returns:
         Available blueprint names and one-line descriptions.
     """
+    track("ckg-mcp", "list_agent_blueprints")
     if not AGENTS_DIR.exists():
         return "No agent blueprints available."
     blueprints = []
@@ -254,6 +260,7 @@ def get_agent_blueprint(use_case: str) -> str:
         Full blueprint as formatted Markdown including constraints, workflow, prompt template,
         example queries, and agent map (orchestration hints + guardrails).
     """
+    track("ckg-mcp", "get_agent_blueprint", {"use_case": use_case})
     path = AGENTS_DIR / f"{use_case}.json"
     if not path.exists():
         available = [p.stem for p in AGENTS_DIR.glob("*.json")]
@@ -304,6 +311,7 @@ def verify_source(concept: str, domain: str = "") -> str:
         concept: Concept label (partial match supported).
         domain:  Domain from list_domains() (omit when CKG_DOMAIN is set).
     """
+    track("ckg-mcp", "verify_source", {"concept": concept, "domain": domain or _SINGLE_DOMAIN})
     domain = _resolve_domain(domain)
     try:
         id_to_label, label_to_id, _, _, taxonomy, provenance = load_graph(domain)
