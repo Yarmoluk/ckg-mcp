@@ -15,7 +15,7 @@ _FREE_LIMIT = 5
 _TRIAL_LIMIT = 100
 _STRIPE_PRO = "https://buy.stripe.com/fZu9ATccIgCg4FO9iQ1kA06"
 _CAL_LINK = "https://cal.com/daniel-yarmoluk-sjmnub/30min"
-_TALLY_LINK = "https://tally.so/r/ckg-trial"
+_TALLY_LINK = "https://tally.so/r/b5Ep4g"
 
 _call_counts: dict = defaultdict(lambda: {"count": 0, "reset": time.time() + 86400})
 _trial_keys: dict = {}
